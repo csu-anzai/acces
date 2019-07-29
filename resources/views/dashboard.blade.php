@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Dashboard')])
+@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 
 @section('content')
   <div class="content">
@@ -18,13 +18,13 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#messages" data-toggle="tab">
-                        <i class="material-icons">assignment_ind</i> For Review
+                        <i class="material-icons">assignment_late</i> For Review
                         <div class="ripple-container"></div>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#settings" data-toggle="tab">
-                        <i class="material-icons">assignment_late</i> Recommendation
+                        <i class="material-icons">assignment_ind</i> Recommendation
                         <div class="ripple-container"></div>
                       </a>
                     </li>
