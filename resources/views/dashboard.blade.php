@@ -1,6 +1,9 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 
 @section('content')
+
+<title>ACCES - Home</title>
+
   <div class="content">
     <div class="container-fluid">
       <div class="row">

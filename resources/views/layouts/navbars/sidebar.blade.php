@@ -17,30 +17,30 @@
             <p>{{ __('Proposals') }}</p>
         </a>
       </li>
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-          <i class="material-icons">person_outline</i>
-          <p>{{ __('Profile Management') }}
-            <b class="caret"></b>
-          </p>
+      <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
+          <a class="nav-link" href="#">
+            <span class="sidebar-mini"><i class="material-icons">assignment_turned_in</i></span>
+            <span class="sidebar-normal">{{ __('Approved Proposals') }} </span>
+          </a>
+        </li>
+        <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
+          <a class="nav-link" href="#">
+            <span class="sidebar-mini"><i class="material-icons">assignment_returned</i></span>
+            <span class="sidebar-normal"> {{ __('Pending Proposals') }} </span>
+          </a>
+        </li>
+      <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">description</i>
+            <p>{{ __('Reports') }}</p>
         </a>
-        <div class="collapse show" id="laravelExample">
-          <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('profile.edit') }}">
-                <span class="sidebar-mini"><i class="material-icons">person</i></span>
-                <span class="sidebar-normal">{{ __('User profile') }} </span>
-              </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('user.index') }}">
-                <span class="sidebar-mini"><i class="material-icons">people</i></span>
-                <span class="sidebar-normal"> {{ __('User Management') }} </span>
-              </a>
-            </li>
-          </ul>
-        </div>
       </li>
+      <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+          <a class="nav-link" href="{{ route('user.index') }}">
+            <i class="material-icons">people</i>
+            <p>{{ __('User Management') }}</p>
+          </a>
+        </li>
       <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('table') }}">
           <i class="material-icons">content_paste</i>
