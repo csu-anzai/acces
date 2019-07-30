@@ -1,16 +1,22 @@
 @extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('ACCES')])
-
 @section('content')
+
+<title>ACCES - Welcome!</title>
+
 <div class="container" style="height: auto;">
   <div class="row align-items-center">
     <div class="col-md-7 ml-auto mr-auto">
+
+      {{-- Insert logo here --}}
+
       <h3 class="display-1 font-weight-bold mb-0" style="">ACCES</h3>
       <h4 class="lead">Access Center for Community Extension Services</h4>
     </div>
     <div class="col-lg-5 col-md-5 col-sm-5 ml-auto mr-auto">
+
+      {{-- Login form --}}
       <form class="form" method="POST" action="{{ route('login') }}">
         @csrf
-
         <div class="card card-login card-hidden mb-3">
           <div class="card-body">
             <p class="card-description text-center">Sign in to your account.</p>
@@ -21,13 +27,8 @@
                     <i class="material-icons">email</i>
                   </span>
                 </div>
-                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email', 'admin@material.com') }}" required>
+                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" required>
               </div>
-              @if ($errors->has('email'))
-                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                  <strong>{{ $errors->first('email') }}</strong>
-                </div>
-              @endif
             </div>
             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : ' has-success' }} mt-3">
               <div class="input-group">
@@ -36,7 +37,7 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" value="{{ !$errors->has('password') ? "secret" : "" }}" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" required>
               </div>
               @if ($errors->has('password'))
                 <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
@@ -44,6 +45,11 @@
                 </div>
               @endif
             </div>
+              @if ($errors->has('email'))
+                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
+                  <strong>{{ $errors->first('email') }}</strong>
+                </div>
+              @endif            
             <div class="form-check mr-auto ml-3 mt-3">
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember me') }}
@@ -58,6 +64,8 @@
           </div>
         </div>
       </form>
+
+      {{-- Forgot password --}}
       <div class="row">
         <div class="col-6">
             @if (Route::has('password.request'))
@@ -66,6 +74,8 @@
               </a>
             @endif
         </div>
+
+        {{-- Registration --}}
         <div class="col-6 text-right">
             <a href="#" class="text-white" data-toggle="modal" rel="tooltip" title="For Co-curricular and Extra-curricular Student Organization Representatives, Student Organization Adviser, and Faculty." data-target="#exampleModal">
                 <small>Don't have an account?</small>
@@ -77,47 +87,41 @@
 </div>
 @endsection
 
+{{-- Registration Modal --}}
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-
         <form class="form" method="POST" action="{{ route('register') }}">
             @csrf
-
               <div class="card-body ">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                <p>For Co-curricular and Extra-curricular Student Organization Representatives, Student Organization Adviser, and Faculty.</p>
-                <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : ' has-success' }}">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <p>For Co-curricular and Extra-curricular Student Organization Representatives, Student Organization Adviser, and Faculty.</p>
+                  <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : ' has-success' }}">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                       <span class="input-group-text">
                           <i class="material-icons">face</i>
-                      </span>
+                        </span>
+                      </div>
+                      <input type="text" name="name" class="form-control" placeholder="{{ __('Name...') }}" value="{{ old('name') }}" required>
                     </div>
-                    <input type="text" name="name" class="form-control" placeholder="{{ __('Name...') }}" value="{{ old('name') }}" required>
-                  </div>
-                  @if ($errors->has('name'))
+                    @if ($errors->has('name'))
                     <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
                       <strong>{{ $errors->first('name') }}</strong>
                     </div>
-                  @endif
-                </div>
-                <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : ' has-success' }} mt-3">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">email</i>
-                      </span>
-                    </div>
-                    <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
+                    @endif
                   </div>
-                  @if ($errors->has('email'))
-                    <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                      <strong>{{ $errors->first('email') }}</strong>
+                  <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : ' has-success' }} mt-3">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                       <span class="input-group-text">
+                         <i class="material-icons">email</i>
+                       </span>
+                      </div>
+                      <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
                     </div>
-                  @endif
                 </div>
                 <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : ' has-success' }} mt-3">
                   <div class="input-group">
@@ -159,6 +163,7 @@
   </div>
 </div>
 
+{{-- Forgot Password Modal --}}
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -195,19 +200,13 @@
                       </div>
                       <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
                     </div>
-                    @if ($errors->has('email'))
-                      <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                        <strong>{{ $errors->first('email') }}</strong>
-                      </div>
-                    @endif
                   </div>
                 </div>
                 <div class="card-footer justify-content-center">
                   <button type="submit" class="btn btn-success btn-link btn-lg">{{ __('Send Password Reset Link') }}</button>
                 </div>
               </div>
-            </form>
-  
+            </form>  
       </div>
     </div>
   </div>
