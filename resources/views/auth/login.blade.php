@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('Material Dashboard')])
+@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('ACCES')])
 
 @section('content')
 <div class="container" style="height: auto;">
@@ -67,7 +67,7 @@
             @endif
         </div>
         <div class="col-6 text-right">
-            <a href="#" class="text-white" data-toggle="modal" data-target="#exampleModal">
+            <a href="#" class="text-white" data-toggle="modal" rel="tooltip" title="For Co-curricular and Extra-curricular Student Organization Representatives, Student Organization Adviser, and Faculty." data-target="#exampleModal">
                 <small>Don't have an account?</small>
             </a>
         </div>
