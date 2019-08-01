@@ -11,6 +11,10 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
+    <div class="alert alert-success ml-3" role="alert">
+      <a href="#" class="alert-link">Maria Ligaya Suico</a><br>
+      Coordinator
+    </div>
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
           <i class="material-icons">assignment</i>

@@ -8,7 +8,7 @@
             <div class="card">
               <div class="card-header card-header-success">
                 <h4 class="card-title ">{{ __('Users') }}</h4>
-                <p class="card-category"> {{ __('Here you can manage users') }}</p>
+                <p class="card-category"> {{ __('Manage individual user accounts.') }}</p>
               </div>
               <div class="card-body">
                 @if (session('status'))
@@ -30,7 +30,7 @@
                 </div>
                 <div class="table-responsive">
                   <table class="table">
-                    <thead class=" text-primary">
+                    <thead class=" text-success">
                       <th>
                           {{ __('Name') }}
                       </th>

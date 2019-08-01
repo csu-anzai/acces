@@ -77,7 +77,7 @@
 
         {{-- Registration --}}
         <div class="col-6 text-right">
-            <a href="#" class="text-white" data-toggle="modal" rel="tooltip" title="For Co-curricular and Extra-curricular Student Organization Representatives, Student Organization Adviser, and Faculty." data-target="#exampleModal">
+            <a href="#" class="text-white" data-toggle="modal" rel="tooltip" data-placement="bottom" title="For Co-curricular and Extra-curricular Student Organization Representatives, Student Organization Adviser, and Faculty." data-target="#exampleModal">
                 <small>Don't have an account?</small>
             </a>
         </div>

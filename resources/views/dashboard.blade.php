@@ -247,6 +247,9 @@
                     </tbody>
                   </table>
                 </div>
+                <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;" onclick='swal({ title:"Good job!", text: "New proposal created!", type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"})'>
+                    <i class="material-icons" style="font-size: 35px">add</i>
+                  </button>
               </div>
             </div>
           </div>
