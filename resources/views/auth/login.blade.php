@@ -20,14 +20,14 @@
         <div class="card card-login card-hidden mb-3">
           <div class="card-body">
             <p class="card-description text-center">Sign in to your account.</p>
-            <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : ' has-success' }}">
+            <div class="bmd-form-group{{ $errors->has('username') ? ' has-danger' : ' has-success' }}">
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                    <i class="material-icons">email</i>
+                    <i class="material-icons">person</i>
                   </span>
                 </div>
-                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
+                <input type="text" name="username" class="form-control" placeholder="{{ __('Username...') }}" value="{{ old('username') }}" required>
               </div>
             </div>
             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : ' has-success' }} mt-3">
@@ -45,9 +45,9 @@
                 </div>
               @endif
             </div>
-              @if ($errors->has('email'))
-                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                  <strong>{{ $errors->first('email') }}</strong>
+              @if ($errors->has('username'))
+                <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">
+                  <strong>{{ $errors->first('username') }}</strong>
                 </div>
               @endif            
             <div class="form-check mr-auto ml-3 mt-3">
