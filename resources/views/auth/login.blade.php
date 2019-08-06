@@ -158,7 +158,6 @@
                 <button type="submit" class="btn btn-success btn-block">{{ __('Create account') }}</button>
               </div>
           </form>
-
     </div>
   </div>
 </div>
