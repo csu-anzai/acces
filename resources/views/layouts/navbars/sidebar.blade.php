@@ -5,9 +5,7 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('ACCES') }}
-    </a>
+    <img src="images/logo_main.png" style="width: 100%; max-width: 225px; height: auto; display: block; margin-left:auto; margin-right:auto;">
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
