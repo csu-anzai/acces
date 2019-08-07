@@ -6,11 +6,7 @@
 <div class="container" style="height: auto;">
   <div class="row align-items-center">
     <div class="col-md-7 ml-auto mr-auto">
-
-      {{-- Insert logo here --}}
-
-      <h3 class="display-1 font-weight-bold mb-0" style="">ACCES</h3>
-      <h4 class="lead">Access Center for Community Extension Services</h4>
+      <img src="images/logo_main.png" style="width: 100%; max-width: 550px; height: auto;">
     </div>
     <div class="col-lg-5 col-md-5 col-sm-5 ml-auto mr-auto">
 

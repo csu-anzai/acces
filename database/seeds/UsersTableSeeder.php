@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'organization' => 'Admin',
             'designation' => 'Admin',
             'contact' => 'Admin',
-            'email' => 'admin@material.com',
+            'email' => 'admin@acces.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'created_at' => now(),
