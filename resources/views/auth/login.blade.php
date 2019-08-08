@@ -23,7 +23,10 @@
                     <i class="material-icons">person</i>
                   </span>
                 </div>
-                <input type="text" name="username" class="form-control" placeholder="{{ __('Username...') }}" value="{{ old('username') }}" required>
+                <div class="form-group bmd-form-group" style="width:76%">
+                  <label class="bmd-label-floating">Username</label>
+                  <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
+                </div>
               </div>
             </div>
             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : ' has-success' }} mt-3">
@@ -33,7 +36,10 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" required>
+                <div class="form-group bmd-form-group" style="width:76%">
+                  <label class="bmd-label-floating">Password</label>
+                  <input type="password" name="password" id="password" class="form-control" required>
+                </div>
               </div>
               @if ($errors->has('password'))
               <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
