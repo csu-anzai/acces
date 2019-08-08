@@ -18,7 +18,11 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
+
+            //Foreign Key
+            'department_id' => '1',
+            'designation_id' => '1',
         ]);
     }
 }
