@@ -17,8 +17,8 @@
   <div class="sidebar-wrapper">
     <ul class="nav">
       <div class="alert alert-success ml-3" role="alert">
-        <a href="#" class="alert-link">Maria Ligaya Suico</a><br>
-        Coordinator
+        <a href="#" class="alert-link">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a><br>
+        {{Auth::user()->designation}}
       </div>
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
