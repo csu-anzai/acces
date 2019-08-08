@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
 
             //Foreign Key
             'department_id' => '1',
-            'designation_id' => '1',
+            'designation_id' => '1'
         ]);
     }
 }
