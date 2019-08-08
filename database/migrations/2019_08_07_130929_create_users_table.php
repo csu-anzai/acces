@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('designation_id');
 
             $table->foreign('department_id')->references('id')->on('departments');
-            $table->foreign('designation_id')->references('id')->on('designtaions');
+            $table->foreign('designation_id')->references('id')->on('designations');
         });
     }
 
