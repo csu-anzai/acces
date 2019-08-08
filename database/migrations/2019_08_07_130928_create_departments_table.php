@@ -17,6 +17,11 @@ class CreateDepartmentsTable extends Migration
             $table->increments('id');
             $table->string("name", 100);
             $table->timestamps();
+
+            //Foreign Key
+            $table->unsignedInteger('school_id');
+
+            $table->foreign('school_id')->references('id')->on('schools');
         });
     }
 
