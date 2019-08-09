@@ -246,7 +246,7 @@
                     </div>
                     <div class="form-group bmd-form-group" style="width:76%">
                       <label class="bmd-label-floating">Password</label>
-                      <input type="password" name="password" id="register_password" class="form-control" minlength="8" onkeyup='check();' required>
+                      <input type="password" name="password" id="register_password" class="form-control" minlength="8" required>
                       <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted">
                           Minimum of 8 characters.
                       </small>
@@ -350,14 +350,4 @@
       document.getElementById("btnSubmit").disabled = true;
     }
   }
-  // $('#register_password, #register_password_confirmation').on('keyup', function () {
-  //   if ($('#register_password').val() == $('#register_password_confirmation').val()) {
-  //     $("#confirm_password").removeClass( "has-danger" ).addClass( "has-success" );      
-  //     $('#btnSubmit').attr("disabled", false);
-  //     $('#message').html('Match!').css('color', 'green');
-  //   } else 
-  //     $("#confirm_password").removeClass( "has-success" ).addClass( "has-danger" );    
-  //     $("#btnSubmit").attr("disabled", true);
-  //     $('#message').html('Not Matching').css('color', 'red');
-  // });
 </script>
