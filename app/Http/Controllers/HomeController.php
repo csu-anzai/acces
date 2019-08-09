@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $result = DB::table('users')
+            ->join('designations', 'designations.id', '=', 'designation_id')
+            ->where('users.id', auth()->user()->designation_id)
+            ->first();
+        return view('dashboard', ['result' => $result]);
     }
 }
