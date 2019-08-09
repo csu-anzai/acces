@@ -161,7 +161,6 @@
 
                 <!-- Organization -->
                 <div class="form-group">
-                  <label class="bmd-label-floating">Organization</label>
                   <select name="organization" class="form-control" value="{{ old('organization') }}" required>
                     <option disabled selected>Organization</option>
                     <option value="Catholic Charismatic Carolinians">Catholic Charismatic Carolinians</option>
