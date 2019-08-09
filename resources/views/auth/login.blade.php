@@ -246,7 +246,7 @@
                     </div>
                     <div class="form-group bmd-form-group" style="width:76%">
                       <label class="bmd-label-floating">Password</label>
-                      <input type="password" name="password" id="password" class="form-control" required>
+                      <input type="password" name="password" id="register_password" class="form-control" minlength="8" onkeyup='check();' required>
                       <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted">
                           Minimum of 8 characters.
                       </small>
@@ -254,7 +254,8 @@
                   </div>
                 </div>
 
-                <div class="bmd-form-group{{ $errors->has('password_confirmation') ? ' has-danger' : ' has-success' }}">
+                <!-- Confirm Password -->
+                <div class="bmd-form-group" id="confirm_password">
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
@@ -263,19 +264,10 @@
                     </div>
                     <div class="form-group bmd-form-group" style="width:76%">
                       <label class="bmd-label-floating">Confirm password</label>
-                      <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
+                      <input type="password" name="password_confirmation" id="register_password_confirmation" class="form-control" minlength="8" onkeyup='check();' required>
+                      <small id="message" class="form-text text-danger"> </small>
                     </div>                      
-                  </div>                
-                  @if ($errors->has('password'))
-                  <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
-                    <strong>{{ $errors->first('password') }}</strong>
                   </div>
-                  @endif
-                  @if ($errors->has('password_confirmation'))
-                  <div id="password_confirmation-error" class="error text-danger pl-3" for="password_confirmation" style="display: block;">
-                    <strong>{{ $errors->first('password_confirmation') }}</strong>
-                  </div>
-                  @endif
                 </div>
 
               </div>
@@ -286,7 +278,7 @@
 
         <!-- Create Account Button -->
         <div class="card-footer justify-content-center">
-          <button type="submit" class="btn btn-success btn-block">{{ __('Create account') }}</button>
+          <button type="submit" id="btnSubmit" class="btn btn-success btn-block">{{ __('Create account') }}</button>
         </div>
 
       </form>
@@ -341,3 +333,31 @@
     </div>
   </div>
 </div>
+
+<script>
+
+  var check = function() {
+    if (document.getElementById('register_password').value ==
+      document.getElementById('register_password_confirmation').value) {
+      document.getElementById("confirm_password").classList.remove("has-danger");
+      document.getElementById("confirm_password").classList.add("has-success");
+      document.getElementById("btnSubmit").disabled = false;
+      document.getElementById('message').innerHTML = '';
+    } else {
+      document.getElementById('message').innerHTML = 'Password does not match.';
+      document.getElementById("confirm_password").classList.remove("has-success");
+      document.getElementById("confirm_password").classList.add("has-danger");
+      document.getElementById("btnSubmit").disabled = true;
+    }
+  }
+  // $('#register_password, #register_password_confirmation').on('keyup', function () {
+  //   if ($('#register_password').val() == $('#register_password_confirmation').val()) {
+  //     $("#confirm_password").removeClass( "has-danger" ).addClass( "has-success" );      
+  //     $('#btnSubmit').attr("disabled", false);
+  //     $('#message').html('Match!').css('color', 'green');
+  //   } else 
+  //     $("#confirm_password").removeClass( "has-success" ).addClass( "has-danger" );    
+  //     $("#btnSubmit").attr("disabled", true);
+  //     $('#message').html('Not Matching').css('color', 'red');
+  // });
+</script>
