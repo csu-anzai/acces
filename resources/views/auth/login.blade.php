@@ -114,66 +114,66 @@
                 <!-- First Name -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">First name</label>
-                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                  <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}" required>
                 </div>
-                @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
+                @if ($errors->has('firstname'))
+                <div id="firstname-error" class="error text-danger pl-3" for="firstname" style="display: block;">
+                  <strong>{{ $errors->first('firstname') }}</strong>
                 </div>
                 @endif
 
                 <!-- Last Name -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Last name</label>
-                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                  <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}" required>
                 </div>
-                @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
+                @if ($errors->has('lastname'))
+                <div id="lastname-error" class="error text-danger pl-3" for="lastname" style="display: block;">
+                  <strong>{{ $errors->first('lastname') }}</strong>
                 </div>
                 @endif
 
                 <!-- Designation -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Designation</label>
-                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                  <input type="text" name="designation" class="form-control" value="{{ old('designation') }}" required>
                 </div>
-                @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
+                @if ($errors->has('designation'))
+                <div id="designation-error" class="error text-danger pl-3" for="designation" style="display: block;">
+                  <strong>{{ $errors->first('designation') }}</strong>
                 </div>
                 @endif
 
                 <!-- School -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">School</label>
-                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                  <input type="text" name="school" class="form-control" value="{{ old('school') }}" required>
                 </div>
-                @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
+                @if ($errors->has('school'))
+                <div id="school-error" class="error text-danger pl-3" for="school" style="display: block;">
+                  <strong>{{ $errors->first('school') }}</strong>
                 </div>
                 @endif
 
                 <!-- Department -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Department</label>
-                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                  <input type="text" name="department" class="form-control" value="{{ old('department') }}" required>
                 </div>
-                @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
+                @if ($errors->has('department'))
+                <div id="department-error" class="error text-danger pl-3" for="department" style="display: block;">
+                  <strong>{{ $errors->first('department') }}</strong>
                 </div>
                 @endif
 
                 <!-- Organization -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Organization</label>
-                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                  <input type="text" name="organization" class="form-control" value="{{ old('organization') }}" required>
                 </div>
-                @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
+                @if ($errors->has('organization'))
+                <div id="organization-error" class="error text-danger pl-3" for="organization" style="display: block;">
+                  <strong>{{ $errors->first('organization') }}</strong>
                 </div>
                 @endif
               </div>
@@ -191,12 +191,12 @@
                   </div>
                   <div class="form-group bmd-form-group" style="width:76%">
                     <label class="bmd-label-floating">Username</label>
-                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                    <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
                   </div>
                 </div>
-                @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
+                @if ($errors->has('username'))
+                <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">
+                  <strong>{{ $errors->first('username') }}</strong>
                 </div>
                 @endif
 
@@ -212,9 +212,9 @@
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
                   </div>
                 </div>
-                @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
+                @if ($errors->has('email'))
+                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
+                  <strong>{{ $errors->first('email') }}</strong>
                 </div>
                 @endif
 
@@ -227,12 +227,12 @@
                   </div>
                   <div class="form-group bmd-form-group" style="width:76%">
                     <label class="bmd-label-floating">Contact Number</label>
-                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                    <input type="text" name="contact" class="form-control" value="{{ old('contact') }}" required>
                   </div>
                 </div>
-                @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
+                @if ($errors->has('contact'))
+                <div id="contact-error" class="error text-danger pl-3" for="contact" style="display: block;">
+                  <strong>{{ $errors->first('contact  ') }}</strong>
                 </div>
                 @endif
 
@@ -247,13 +247,11 @@
                     <div class="form-group bmd-form-group" style="width:76%">
                       <label class="bmd-label-floating">Password</label>
                       <input type="password" name="password" id="password" class="form-control" required>
+                      <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted">
+                          Minimum of 8 characters.
+                      </small>
                     </div>                    
                   </div>
-                  @if ($errors->has('password'))
-                  <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
-                    <strong>{{ $errors->first('password') }}</strong>
-                  </div>
-                  @endif
                 </div>
 
                 <div class="bmd-form-group{{ $errors->has('password_confirmation') ? ' has-danger' : ' has-success' }}">
@@ -267,7 +265,12 @@
                       <label class="bmd-label-floating">Confirm password</label>
                       <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
                     </div>                      
+                  </div>                
+                  @if ($errors->has('password'))
+                  <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
+                    <strong>{{ $errors->first('password') }}</strong>
                   </div>
+                  @endif
                   @if ($errors->has('password_confirmation'))
                   <div id="password_confirmation-error" class="error text-danger pl-3" for="password_confirmation" style="display: block;">
                     <strong>{{ $errors->first('password_confirmation') }}</strong>
