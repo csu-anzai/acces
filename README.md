@@ -28,4 +28,3 @@ Configure the following in the .env file:
     MAIL_USERNAME=accessdontreply@gmail.com
     MAIL_PASSWORD=accessecret123
     MAIL_ENCRYPTION=tls
-    
