@@ -134,9 +134,14 @@
                 @endif
 
                 <!-- Designation -->
-                <div class="form-group bmd-form-group">
-                  <label class="bmd-label-floating">Designation</label>
-                  <input type="text" name="designation" class="form-control" value="{{ old('designation') }}" required>
+                <div class="form-group">
+                  <select class="form-control" name="designation" value="{{ old('designation') }}" required>
+                    <option value="" disabled selected>Designation</option>
+                    <option value="Co-Curricular Organization">Co-Curricular Organization</option>
+                    <option value="Extra-Curricular Organization">Extra-Curricular Organization</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Student Organization Adviser">Student Organization Adviser</option>
+                  </select>
                 </div>
                 @if ($errors->has('designation'))
                 <div id="designation-error" class="error text-danger pl-3" for="designation" style="display: block;">
@@ -145,9 +150,11 @@
                 @endif
 
                 <!-- School -->
-                <div class="form-group bmd-form-group">
-                  <label class="bmd-label-floating">School</label>
-                  <input type="text" name="school" class="form-control" value="{{ old('school') }}" required>
+                <div class="form-group">
+                  <select name="school" class="form-control" value="{{ old('school') }}" required>
+                    <option value="" disabled selected>School</option>
+                    <option value="School of Architecture, Fine Arts and Design">Faculty</option>
+                  </select>
                 </div>
                 @if ($errors->has('school'))
                 <div id="school-error" class="error text-danger pl-3" for="school" style="display: block;">
@@ -247,9 +254,7 @@
                     <div class="form-group bmd-form-group" style="width:76%">
                       <label class="bmd-label-floating">Password</label>
                       <input type="password" name="password" id="register_password" class="form-control" minlength="8" required>
-                      <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted">
-                          Minimum of 8 characters.
-                      </small>
+                      <small class="form-text text-muted"> Minimum of 8 characters.</small>
                     </div>                    
                   </div>
                 </div>
