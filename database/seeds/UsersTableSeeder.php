@@ -16,16 +16,17 @@ class UsersTableSeeder extends Seeder
             'username' => 'Admin',
             'firstname' => 'Admin',
             'lastname' => 'Admin',
-            'school' => 'Admin',
-            'department' => 'Admin',
             'organization' => 'Admin',
-            'designation' => 'Admin',
             'contact' => 'Admin',
             'email' => 'admin@acces.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
+
+            //Foreign Key
+            'department_id' => '1',
+            'designation_id' => '1'
         ]);
     }
 }
