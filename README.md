@@ -18,7 +18,7 @@ $ composer update
 $ php artisan serve
 ```
 
-###To setup reset password functionality
+### To setup reset password functionality
 
 Configure the following in the .env file:
 
