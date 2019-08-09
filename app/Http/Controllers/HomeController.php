@@ -27,6 +27,11 @@ class HomeController extends Controller
             ->join('designations', 'designations.id', '=', 'designation_id')
             ->where('users.id', auth()->user()->designation_id)
             ->first();
-        return view('dashboard', ['result' => $result]);
+
+        if($result){            
+            return view('dashboard', ['result' => $result]);
+        }else{
+            return view('auth/login');
+        }
     }
 }

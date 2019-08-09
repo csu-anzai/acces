@@ -11,13 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    if(Auth::check() == 1){
-		return view('dashboard');
-	}else{
-		return view('auth/login');
-	}
-});
+Route::get('/', 'HomeController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

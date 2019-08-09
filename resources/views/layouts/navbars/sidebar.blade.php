@@ -1,9 +1,4 @@
 <div class="sidebar bg-success" data-color="orange" data-background-color="black">
-  <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-      Tip 2: you can also add an image using data-image tag
-  -->
   <div class="logo">
     <img src="images/logo_main.png" style="
       width: 100%;
