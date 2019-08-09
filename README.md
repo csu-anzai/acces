@@ -17,3 +17,15 @@ $ php artisan migrate:refresh --seed
 $ composer update
 $ php artisan serve
 ```
+
+####To setup reset password functionality
+
+Configure the following in the .env file:
+
+    MAIL_DRIVER=smtp
+    MAIL_HOST=smtp.gmail.com
+    MAIL_PORT=587
+    MAIL_USERNAME=accessdontreply@gmail.com
+    MAIL_PASSWORD=accessecret123
+    MAIL_ENCRYPTION=tls
+    
