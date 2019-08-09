@@ -126,7 +126,7 @@
                 <!-- Designation -->
                 <div class="form-group">
                   <select class="form-control" name="designation" value="{{ old('designation') }}" required>
-                    <option value="" disabled selected>Designation</option>
+                    <option disabled selected>Designation</option>
                     <option value="Co-Curricular Organization">Co-Curricular Organization</option>
                     <option value="Extra-Curricular Organization">Extra-Curricular Organization</option>
                     <option value="Faculty">Faculty</option>
@@ -137,7 +137,7 @@
                 <!-- School -->
                 <div class="form-group">
                   <select name="school" class="form-control" value="{{ old('school') }}" required>
-                    <option value="" disabled selected>School</option>
+                    <option disabled selected>School</option>
                     <option value="School of Architecture, Fine Arts and Design">School of Architecture, Fine Arts and Design</option>
                     <option value="School of Arts and Sciences">School of Arts and Sciences</option>
                     <option value="School of Education">School of Education</option>
@@ -152,22 +152,22 @@
                 <!-- Department -->
                 <div class="form-group">
                   <select name="department" class="form-control" value="{{ old('department') }}" required>
-                    <option value="" disabled selected>School</option>
+                    <option disabled selected>Department</option>
                     <option disabled>School of Architecture, Fine Arts and Design</option>
-                    <option value="School of Arts and Sciences">School of Arts and Sciences</option>
-                    <option value="School of Education">School of Education</option>
-                    <option value="School of Health Care Professions">School of Health Care Professions</option>
-                    <option value="School of Law and Governance">School of Law and Governance</option>
-                    <option value="School of Business and Economics">School of Business and Economics</option>
-                    <option value="School of Engineering">School of Engineering</option>
-                    <option value="Extra-Curricular">Extra-Curricular</option>
+                    <option value="Architecture">Architecture</option>
+                    <!-- Please continue -->
                   </select>
                 </div>
 
                 <!-- Organization -->
-                <div class="form-group bmd-form-group">
+                <div class="form-group">
                   <label class="bmd-label-floating">Organization</label>
-                  <input type="text" name="organization" class="form-control" value="{{ old('organization') }}" required>
+                  <select name="organization" class="form-control" value="{{ old('organization') }}" required>
+                    <option disabled selected>Organization</option>
+                    <option value="Catholic Charismatic Carolinians">Catholic Charismatic Carolinians</option>
+                    <option value="Supreme Student Council">Supreme Student Council</option>
+                    <!-- Please continue -->
+                  </select>
                 </div>
 
               </div>
