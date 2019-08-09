@@ -116,22 +116,12 @@
                   <label class="bmd-label-floating">First name</label>
                   <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}" required>
                 </div>
-                @if ($errors->has('firstname'))
-                <div id="firstname-error" class="error text-danger pl-3" for="firstname" style="display: block;">
-                  <strong>{{ $errors->first('firstname') }}</strong>
-                </div>
-                @endif
 
                 <!-- Last Name -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Last name</label>
                   <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}" required>
                 </div>
-                @if ($errors->has('lastname'))
-                <div id="lastname-error" class="error text-danger pl-3" for="lastname" style="display: block;">
-                  <strong>{{ $errors->first('lastname') }}</strong>
-                </div>
-                @endif
 
                 <!-- Designation -->
                 <div class="form-group">
@@ -143,46 +133,43 @@
                     <option value="Student Organization Adviser">Student Organization Adviser</option>
                   </select>
                 </div>
-                @if ($errors->has('designation'))
-                <div id="designation-error" class="error text-danger pl-3" for="designation" style="display: block;">
-                  <strong>{{ $errors->first('designation') }}</strong>
-                </div>
-                @endif
 
                 <!-- School -->
                 <div class="form-group">
                   <select name="school" class="form-control" value="{{ old('school') }}" required>
                     <option value="" disabled selected>School</option>
-                    <option value="School of Architecture, Fine Arts and Design">Faculty</option>
+                    <option value="School of Architecture, Fine Arts and Design">School of Architecture, Fine Arts and Design</option>
+                    <option value="School of Arts and Sciences">School of Arts and Sciences</option>
+                    <option value="School of Education">School of Education</option>
+                    <option value="School of Health Care Professions">School of Health Care Professions</option>
+                    <option value="School of Law and Governance">School of Law and Governance</option>
+                    <option value="School of Business and Economics">School of Business and Economics</option>
+                    <option value="School of Engineering">School of Engineering</option>
+                    <option value="Extra-Curricular">Extra-Curricular</option>
                   </select>
                 </div>
-                @if ($errors->has('school'))
-                <div id="school-error" class="error text-danger pl-3" for="school" style="display: block;">
-                  <strong>{{ $errors->first('school') }}</strong>
-                </div>
-                @endif
 
                 <!-- Department -->
-                <div class="form-group bmd-form-group">
-                  <label class="bmd-label-floating">Department</label>
-                  <input type="text" name="department" class="form-control" value="{{ old('department') }}" required>
+                <div class="form-group">
+                  <select name="department" class="form-control" value="{{ old('department') }}" required>
+                    <option value="" disabled selected>School</option>
+                    <option disabled>School of Architecture, Fine Arts and Design</option>
+                    <option value="School of Arts and Sciences">School of Arts and Sciences</option>
+                    <option value="School of Education">School of Education</option>
+                    <option value="School of Health Care Professions">School of Health Care Professions</option>
+                    <option value="School of Law and Governance">School of Law and Governance</option>
+                    <option value="School of Business and Economics">School of Business and Economics</option>
+                    <option value="School of Engineering">School of Engineering</option>
+                    <option value="Extra-Curricular">Extra-Curricular</option>
+                  </select>
                 </div>
-                @if ($errors->has('department'))
-                <div id="department-error" class="error text-danger pl-3" for="department" style="display: block;">
-                  <strong>{{ $errors->first('department') }}</strong>
-                </div>
-                @endif
 
                 <!-- Organization -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Organization</label>
                   <input type="text" name="organization" class="form-control" value="{{ old('organization') }}" required>
                 </div>
-                @if ($errors->has('organization'))
-                <div id="organization-error" class="error text-danger pl-3" for="organization" style="display: block;">
-                  <strong>{{ $errors->first('organization') }}</strong>
-                </div>
-                @endif
+
               </div>
               
               <!-- Account Information -->
@@ -201,11 +188,6 @@
                     <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
                   </div>
                 </div>
-                @if ($errors->has('username'))
-                <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">
-                  <strong>{{ $errors->first('username') }}</strong>
-                </div>
-                @endif
 
                 <!-- Email Address -->
                 <div class="input-group">
@@ -219,11 +201,6 @@
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
                   </div>
                 </div>
-                @if ($errors->has('email'))
-                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                  <strong>{{ $errors->first('email') }}</strong>
-                </div>
-                @endif
 
                 <!-- Contact Number -->
                 <div class="input-group">
@@ -237,11 +214,6 @@
                     <input type="text" name="contact" class="form-control" value="{{ old('contact') }}" required>
                   </div>
                 </div>
-                @if ($errors->has('contact'))
-                <div id="contact-error" class="error text-danger pl-3" for="contact" style="display: block;">
-                  <strong>{{ $errors->first('contact  ') }}</strong>
-                </div>
-                @endif
 
                 <!-- Password -->
                 <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : ' has-success' }} mt-3">
