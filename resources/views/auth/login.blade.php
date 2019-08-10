@@ -93,7 +93,7 @@
       <div class="row">
         <div class="col-6">
           @if (Route::has('password.request'))
-          <a href="#" class="text-white" data-toggle="modal" data-target="#exampleModal2">
+          <a href="#" class="text-white" data-toggle="modal" data-target="#forgotPassword">
             <small>Forgot password?</small>
           </a>
           @endif
@@ -285,49 +285,29 @@
 </div>
 
 <!-- Forgot Password Modal -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="forgotPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-
-      <form class="form" method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <div class="card card-login card-hidden mb-3">
-          <div class="card-header card-header-success text-center">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      
+      <!-- Reset password form -->
+      <form class="text-center border border-light p-5 has-success" method="POST" action="{{ route('password.email') }}">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="card-title"><strong>{{ __('Forgot Password') }}</strong></h4>
-          </div>
-          <div class="card-body">
-            @if (session('status'))
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="alert alert-success">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="material-icons">close</i>
-                  </button>
-                  <span>{{ session('status') }}</span>
-                </div>
-              </div>
-            </div>
-            @endif
-            <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : ' has-success' }}">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">email</i>
-                  </span>
-                </div>
-                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-success btn-link btn-lg">{{ __('Send Password Reset Link') }}</button>
-          </div>
-        </div>
+          </button>
+
+          <p class="h3 mb-4"><strong>Password Reset</strong></p>
+
+          <p>Enter your email address so we could send a link to recover your password.</p>
+
+          <!-- Email -->
+          <input type="email" name="email" class="form-control mb-4" placeholder="E-mail">
+
+          <!-- Sign in button -->
+          <button class="btn btn-success btn-block" type="submit">{{ __('Send Password Reset Link') }}</button>
+
       </form>
+      <!-- Reset password form -->
+
     </div>
   </div>
 </div>
