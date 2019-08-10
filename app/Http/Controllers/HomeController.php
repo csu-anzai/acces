@@ -22,16 +22,7 @@ class HomeController extends Controller
      * @return \Illuminate\View\View
      */
     public function index()
-    {
-        $result = DB::table('users')
-            ->join('designations', 'designations.id', '=', 'designation_id')
-            ->where('users.id', auth()->user()->designation_id)
-            ->first();
-
-        if($result){            
-            return view('dashboard', ['result' => $result]);
-        }else{
-            return view('auth/login');
-        }
+    {              
+        return view('dashboard');
     }
 }

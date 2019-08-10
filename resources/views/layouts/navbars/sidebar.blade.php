@@ -1,3 +1,10 @@
+<?php
+  $result = DB::table('users')
+    ->join('designations', 'designations.id', '=', 'designation_id')
+    ->where('users.id', auth()->user()->designation_id)
+    ->first();
+?>
+
 <div class="sidebar bg-success" data-color="orange" data-background-color="black">
   <div class="logo">
     <img src="images/logo_main.png" style="
