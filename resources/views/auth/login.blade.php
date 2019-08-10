@@ -1,3 +1,25 @@
+<!-- Preloader -->
+<div class="loader" ></div>
+
+<!-- Preloader CSS -->
+<style>
+.loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: white;
+            background: url('../images/gradient.gif') 50% 50% no-repeat rgb(249,249,249);
+        }
+        .loader img{
+            position: relative;
+            left: 40%;
+            top: 40%;
+        }
+</style>
+
 @extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('ACCES')])
 @section('content')
 
@@ -312,6 +334,13 @@
 
 <script>
 
+  //Preloader
+  window.onload = function(){
+    // loader on page load 
+    $('.loader').fadeOut();
+  }
+
+  // Password confirmation
   var check = function() {
     if (document.getElementById('register_password').value ==
       document.getElementById('register_password_confirmation').value) {
@@ -326,4 +355,5 @@
       document.getElementById("btnSubmit").disabled = true;
     }
   }
+
 </script>
