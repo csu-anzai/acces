@@ -15,6 +15,9 @@
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     </head>
     <body class="{{ $class ?? '' }}">
+    
+    <div id="preloaders" class="preloader"></div>
+    
         @auth()
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf

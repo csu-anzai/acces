@@ -1,4 +1,4 @@
-/******/ (function(modules) { // webpackBootstrap
+﻿/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -49514,3 +49514,7 @@ module.exports = __webpack_require__(/*! /home/bryl/acces/resources/sass/app.scs
 /***/ })
 
 /******/ });
+$(window).load(function() 
+{          
+                 $("#preloaders").fadeOut(2000);
+   });

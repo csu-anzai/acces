@@ -1,8 +1,28 @@
+<div class="loader" ></div>
+
+<style>
+.loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: white;
+            background: url('../images/gradient.gif') 50% 50% no-repeat rgb(249,249,249);
+        }
+        .loader img{
+            position: relative;
+            left: 40%;
+            top: 40%;
+        }
+</style>
+
 @extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('ACCES')])
 @section('content')
 
-<title>ACCES - Welcome!</title>
 
+<title>ACCES - Welcome!</title>
 <div class="container" style="height: auto;">
   <div class="row align-items-center">
     <div class="col-md-7 ml-auto mr-auto">
@@ -210,4 +230,12 @@
       </div>
     </div>
   </div>
+  <script>
+    window.onload = function() 
+    {
+        // loader on page load 
+        $('.loader').fadeOut();
+    }
+
+</script>
   
