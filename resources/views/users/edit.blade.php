@@ -59,17 +59,6 @@
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Contact Number') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('contact') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" id="input-contact" type="text" placeholder="{{ __('Contact Number') }}" value="{{ old('contact', $user->contact) }}" required="true" aria-required="true"/>
-                      @if ($errors->has('contact'))
-                        <span id="contact-error" class="error text-danger" for="input-contact">{{ $errors->first('contact') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Designation') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('designation') ? ' has-danger' : '' }}">
@@ -138,12 +127,34 @@
                   </div>
                 </div>
                 <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Username') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" id="input-username" type="text" placeholder="{{ __('Username') }}" value="{{ old('username', $user->username) }}" required />
+                      @if ($errors->has('username'))
+                        <span id="username-error" class="error text-danger" for="input-username">{{ $errors->first('username') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                       <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="{{ old('email', $user->email) }}" required />
                       @if ($errors->has('email'))
                         <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Contact Number') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('contact') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" id="input-contact" type="text" placeholder="{{ __('Contact Number') }}" value="{{ old('contact', $user->contact) }}" required="true" aria-required="true"/>
+                      @if ($errors->has('contact'))
+                        <span id="contact-error" class="error text-danger" for="input-contact">{{ $errors->first('contact') }}</span>
                       @endif
                     </div>
                   </div>
