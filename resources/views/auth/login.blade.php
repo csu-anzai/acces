@@ -157,7 +157,7 @@
 
                 <!-- Designation -->
                 <div class="form-group">
-                  <select class="form-control" name="designation" value="{{ old('designation') }}" required>
+                  <select class="form-control" name="designation" required>
                     <option disabled selected value="">Designation</option>
                     @foreach($designations as $designation)
                     <option value="{{$designation->id}}">{{$designation->name}}</option>
@@ -167,7 +167,7 @@
                 
                 <!-- School -->
                 <div class="form-group">
-                  <select id="school_dropbox" name="school" class="form-control" value="{{ old('school') }}" required>
+                  <select id="school_dropbox" name="school" class="form-control" required>
                     <option disabled selected value="">School</option>
                     @foreach($schools as $school)
                     <option value="{{$school->id}}">{{$school->name}}</option>
@@ -177,14 +177,14 @@
 
                 <!-- Department -->
                 <div class="form-group">
-                  <select id="department_dropbox" name="department" class="form-control" value="{{ old('department') }}" required>
+                  <select id="department_dropbox" name="department" class="form-control" required>
                     <option disabled selected value="">Deparment</option>                       
                   </select>
                 </div>
 
                 <!-- Organization -->
                 <div class="form-group">
-                  <select name="organization" class="form-control" value="{{ old('organization') }}" required>
+                  <select name="organization" class="form-control" required>
                     <option disabled selected value="">Organization</option>
                     @foreach($organizations as $organization)
                     <option value="{{$organization->id}}">{{$organization->name}}</option>
