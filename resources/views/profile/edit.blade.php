@@ -10,7 +10,7 @@
             @method('put')
 
             <div class="card ">
-              <div class="card-header card-header-primary">
+              <div class="card-header card-header-success">
                 <h4 class="card-title">{{ __('Edit Profile') }}</h4>
                 <p class="card-category">{{ __('User information') }}</p>
               </div>
@@ -30,7 +30,7 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('First Name') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('firstname') ? ' has-danger' : '' }}">
+                    <div class="form-group{{ $errors->has('firstname') ? ' has-danger' : ' has-success' }}">
                       <input class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" id="input-firstname" type="text" placeholder="{{ __('First Name') }}" value="{{ old('firstname', auth()->user()->firstname) }}" required="true" aria-required="true"/>
                       @if ($errors->has('firstname'))
                         <span id="firstname-error" class="error text-danger" for="input-firstname">{{ $errors->first('firstname') }}</span>
@@ -41,7 +41,7 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Last Name') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('lastname') ? ' has-danger' : '' }}">
+                    <div class="form-group{{ $errors->has('lastname') ? ' has-danger' : ' has-success' }}">
                       <input class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" id="input-lastname" type="text" placeholder="{{ __('Last Name') }}" value="{{ old('lastname', auth()->user()->lastname) }}" required="true" aria-required="true"/>
                       @if ($errors->has('lastname'))
                         <span id="lastname-error" class="error text-danger" for="input-lastname">{{ $errors->first('lastname') }}</span>
@@ -50,9 +50,9 @@
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Contact') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Contact Number') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('contact') ? ' has-danger' : '' }}">
+                    <div class="form-group{{ $errors->has('contact') ? ' has-danger' : ' has-success' }}">
                       <input class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" id="input-contact" type="text" placeholder="{{ __('Contact') }}" value="{{ old('contact', auth()->user()->contact) }}" required="true" aria-required="true"/>
                       @if ($errors->has('contact'))
                         <span id="contact-error" class="error text-danger" for="input-contact">{{ $errors->first('contact') }}</span>
@@ -64,7 +64,7 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : ' has-success' }}">
                       <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required />
                       @if ($errors->has('email'))
                         <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
@@ -74,7 +74,7 @@
                 </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                <button type="submit" class="btn btn-success">{{ __('Save') }}</button>
               </div>
             </div>
           </form>
@@ -87,7 +87,7 @@
             @method('put')
 
             <div class="card ">
-              <div class="card-header card-header-primary">
+              <div class="card-header card-header-success">
                 <h4 class="card-title">{{ __('Change password') }}</h4>
                 <p class="card-category">{{ __('Password') }}</p>
               </div>
@@ -107,7 +107,7 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label" for="input-current-password">{{ __('Current Password') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
+                    <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : ' has-success' }}">
                       <input class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" input type="password" name="old_password" id="input-current-password" placeholder="{{ __('Current Password') }}" value="" required />
                       @if ($errors->has('old_password'))
                         <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('old_password') }}</span>
@@ -118,7 +118,7 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label" for="input-password">{{ __('New Password') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                    <div class="form-group{{ $errors->has('password') ? ' has-danger' : ' has-success' }}">
                       <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="input-password" type="password" placeholder="{{ __('New Password') }}" value="" required />
                       @if ($errors->has('password'))
                         <span id="password-error" class="error text-danger" for="input-password">{{ $errors->first('password') }}</span>
@@ -136,7 +136,7 @@
                 </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Change password') }}</button>
+                <button type="submit" class="btn btn-success">{{ __('Change password') }}</button>
               </div>
             </div>
           </form>
