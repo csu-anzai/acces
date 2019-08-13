@@ -16,7 +16,6 @@ class UsersTableSeeder extends Seeder
             'username' => 'Admin',
             'firstname' => 'Admin',
             'lastname' => 'Admin',
-            'organization' => 'Admin',
             'contact' => 'Admin',
             'email' => 'admin@acces.com',
             'email_verified_at' => now(),
@@ -26,7 +25,8 @@ class UsersTableSeeder extends Seeder
 
             //Foreign Key
             'department_id' => '1',
-            'designation_id' => '1'
+            'designation_id' => '10',
+            'organization_id' => '1'
         ]);
     }
 }
