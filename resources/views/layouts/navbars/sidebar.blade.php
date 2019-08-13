@@ -7,7 +7,7 @@
 
 <div class="sidebar bg-success" data-color="orange" data-background-color="black">
   <div class="logo">
-    <img src="images/logo_main.png" style="
+    <img src="../../images/logo_main.png" style="
       width: 100%;
       max-width: 225px;
       height: auto;
