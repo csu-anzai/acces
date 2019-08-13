@@ -11,8 +11,19 @@ class DesignationsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('designations')->insert([
-            'name' => 'Super Admin'
-        ]);
+        $designations = [
+            ['name' => 'Co-Curricular Organization'],
+            ['name' => 'Extra-Curricular Organization'],
+            ['name' => 'Faculty'],
+            ['name' => 'Student Organization Adviser'],
+            ['name' => 'CES Representative'],
+            ['name' => 'Department Chair'],
+            ['name' => 'School Dean'],
+            ['name' => 'CES Director'],
+            ['name' => 'VPAA'],
+            ['name' => 'Super Admin']
+        ];
+        
+        DB::table('designations')->insert($designations);
     }
 }

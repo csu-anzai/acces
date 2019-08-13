@@ -1,7 +1,7 @@
 <?php
   $result = DB::table('users')
     ->join('designations', 'designations.id', '=', 'designation_id')
-    ->where('users.id', auth()->user()->designation_id)
+    ->where('users.id', auth()->user()->id)
     ->first();
 ?>
 

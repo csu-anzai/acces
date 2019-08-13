@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-
 class HomeController extends Controller
 {
     /**
