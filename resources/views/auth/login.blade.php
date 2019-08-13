@@ -1,3 +1,11 @@
+<?php
+  $schools = DB::table('schools')->get();
+
+  $designations = DB::table('designations')
+    ->whereIn('id', array(1, 2, 3, 4))
+    ->get();
+?>
+
 <!-- Preloader -->
 <div class="loader" ></div>
 
@@ -148,78 +156,35 @@
                 <!-- Designation -->
                 <div class="form-group">
                   <select class="form-control" name="designation" value="{{ old('designation') }}" required>
-                    <option disabled selected>Designation</option>
-                    <option value="Co-Curricular Organization">Co-Curricular Organization</option>
-                    <option value="Extra-Curricular Organization">Extra-Curricular Organization</option>
-                    <option value="Faculty">Faculty</option>
-                    <option value="Student Organization Adviser">Student Organization Adviser</option>
+                    <option disabled selected value="">Designation</option>
+                    @foreach($designations as $designation)
+                    <option value="{{$designation->id}}">{{$designation->name}}</option>
+                    @endforeach
                   </select>
                 </div>
                 
                 <!-- School -->
                 <div class="form-group">
-                  <select name="school" class="form-control" value="{{ old('school') }}" required>
-                    <option disabled selected>School</option>
-                    <option value="School of Architecture, Fine Arts and Design">School of Architecture, Fine Arts and Design</option>
-                    <option value="School of Arts and Sciences">School of Arts and Sciences</option>
-                    <option value="School of Education">School of Education</option>
-                    <option value="School of Health Care Professions">School of Health Care Professions</option>
-                    <option value="School of Law and Governance">School of Law and Governance</option>
-                    <option value="School of Business and Economics">School of Business and Economics</option>
-                    <option value="School of Engineering">School of Engineering</option>
-                    <option value="Extra-Curricular">Extra-Curricular</option>
+                  <select id="school_dropbox" name="school" class="form-control" value="{{ old('school') }}" required>
+                    <option disabled selected value="">School</option>
+                    @foreach($schools as $school)
+                    <option value="{{$school->id}}">{{$school->name}}</option>
+                    @endforeach
                   </select>
                 </div>
 
                 <!-- Department -->
                 <div class="form-group">
-                  <select name="department" class="form-control" value="{{ old('department') }}" required>
-                    <option disabled selected>Department</option>
-                    <option disabled>--School of Architecture, Fine Arts and Design--</option>
-                    <option value="Architecture">Architecture</option>
-                    <option value="Fine Arts">Fine Arts</option>
-                    <option disabled>--School of Arts and Sciences--</option>
-                    <option value="Languages and Literature">Languages and Literature</option>
-                    <option value="Philosophy and Religious Studies">Philosophy and Religious Studies</option>
-                    <option value="Psychology">Psychology</option>
-                    <option value="Anthropology, Sociology and History">Anthropology, Sociology and History</option>
-                    <option value="Biology">Biology</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Computer and Information Sciences">Computer and Information Sciences</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="Physics">Physics</option>
-                    <option disabled>--School of Education--</option>
-                    <option value="Teacher Education">Teacher Education</option>
-                    <option value="Science and Mathematics">Science and Mathematics</option>
-                    <option value="Physical Education">Physical Education</option>
-                    <option disabled>--School of Health Care Professions--</option>
-                    <option value="Nursing">Nursing</option>
-                    <option value="Pharmacy">Pharmacy</option>
-                    <option value="Nutrition and Dietics">Nutrition and Dietics</option>
-                    <option disabled>--School of Law and Governance--</option>
-                    <option value="Law">Law</option>
-                    <option value="Political Science">Political Science</option>
-                    <option disabled>--School of Business and Economics--</option>
-                    <option value="Accountancy">Accountancy</option>
-                    <option value="Business Administration">Business Administration</option>
-                    <option value="Economics">Economics</option>
-                    <option value="Hospitality Management">Hospitality Management</option>
-                    <option disabled>--School of Engineering--</option>
-                    <option value="Chemical Engineering">Chemical Engineering</option>
-                    <option value="Civil Engineering">Civil Engineering</option>
-                    <option value="Computer Engineering">Computer Engineering</option>
-                    <option value="Electronics and Communications Engineering">Electronics and Communications Engineering</option>
-                    <option value="Industrial Engineering">Industrial Engineering</option>
-                    <option value="Mechanical Engineering">Mechanical Engineering</option>
-                    <option disabled>--Extra Curricular--</option>
-                    <option value="Extra Curricular">Extra Curricular</option>                                                           
+                  <select id="department_dropbox" name="department" class="form-control" value="{{ old('department') }}" required>
+                    <option disabled selected value="">Deparment</option>                       
                   </select>
                 </div>
 
                 <!-- Organization -->
                 <div class="form-group">
                   <select name="organization" class="form-control" value="{{ old('organization') }}" required>
-                    <option disabled selected>Organization</option>
+                    <option disabled selected value="">Organization</option>
+                    <option value="None">None</option>
                     <option value="Catholic Charismatic Carolinians">Catholic Charismatic Carolinians</option>
                     <option value="Supreme Student Council">Supreme Student Council</option>
                     <option value="USC-Chemical Engineering Council">USC-Chemical Engineering Council</option>
@@ -396,8 +361,8 @@
   </div>
 </div>
 
+<script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
 <script>
-
   //Preloader
   window.onload = function(){
     // loader on page load 
@@ -419,5 +384,26 @@
       document.getElementById("btnSubmit").disabled = true;
     }
   }
+
+  //Dynamic department dropbox
+  $("#school_dropbox").change(function(){
+    $.ajax({
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      type:'POST',
+      url:'/getDepartments',
+      data:{id: $("#school_dropbox").val()},
+      success:function(data){
+        var options = '<option disabled selected value="">Deparment</option>';
+        
+        $.each(data.departments, function(key, value){
+          options += '<option value="'+value.id+'">'+value.name+'</option>';
+        });
+
+        $("#department_dropbox").html(options);
+      }
+    });
+  });
 
 </script>

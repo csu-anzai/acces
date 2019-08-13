@@ -11,8 +11,17 @@ class SchoolsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('schools')->insert([
-            'name' => 'USC'
-        ]);
+        $schools = [
+            ['name' => 'School of Architecture, Fine Arts and Design'],
+            ['name' => 'School of Arts and Sciences'],
+            ['name' => 'School of Education'],
+            ['name' => 'School of Health Care Professions'],
+            ['name' => 'School of Law and Governance'],
+            ['name' => 'School of Business and Economics'],
+            ['name' => 'School of Engineering'],
+            ['name' => 'Extra-Curricular']
+        ];
+        
+        DB::table('schools')->insert($schools);
     }
 }
