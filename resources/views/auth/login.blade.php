@@ -28,6 +28,7 @@
             left: 40%;
             top: 40%;
         }
+
 </style>
 
 @extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('ACCES')])
@@ -157,7 +158,7 @@
 
                 <!-- Designation -->
                 <div class="form-group">
-                  <select class="form-control" name="designation" required>
+                  <select class="browser-default custom-select" name="designation" required>
                     <option disabled selected value="">Designation</option>
                     @foreach($designations as $designation)
                     <option value="{{$designation->id}}">{{$designation->name}}</option>
@@ -167,7 +168,7 @@
                 
                 <!-- School -->
                 <div class="form-group">
-                  <select id="school_dropbox" name="school" class="form-control" required>
+                  <select id="school_dropbox" name="school" class="browser-default custom-select" required>
                     <option disabled selected value="">School</option>
                     @foreach($schools as $school)
                     <option value="{{$school->id}}">{{$school->name}}</option>
@@ -177,14 +178,14 @@
 
                 <!-- Department -->
                 <div class="form-group">
-                  <select id="department_dropbox" name="department" class="form-control" required>
+                  <select id="department_dropbox" name="department" class="browser-default custom-select" required>
                     <option disabled selected value="">Deparment</option>                       
                   </select>
                 </div>
 
                 <!-- Organization -->
                 <div class="form-group">
-                  <select name="organization" class="form-control" required>
+                  <select name="organization" class="browser-default custom-select" required>
                     <option disabled selected value="">Organization</option>
                     @foreach($organizations as $organization)
                     <option value="{{$organization->id}}">{{$organization->name}}</option>
