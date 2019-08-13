@@ -147,13 +147,13 @@
                 <!-- First Name -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">First name</label>
-                  <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}" required>
+                  <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}" pattern="[a-zA-Z][a-zA-Z ]{1,}" required>
                 </div>
 
                 <!-- Last Name -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Last name</label>
-                  <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}" required>
+                  <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}" pattern="[a-zA-Z][a-zA-Z ]{1,}" required>
                 </div>
 
                 <!-- Designation -->
@@ -234,7 +234,7 @@
                   </div>
                   <div class="form-group bmd-form-group" style="width:76%">
                     <label class="bmd-label-floating">Contact Number</label>
-                    <input type="text" name="contact" class="form-control" value="{{ old('contact') }}" required>
+                    <input type="number" name="contact" class="form-control" value="{{ old('contact') }}" required>
                   </div>
                 </div>
 
