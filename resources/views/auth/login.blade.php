@@ -4,6 +4,8 @@
   $designations = DB::table('designations')
     ->whereIn('id', array(1, 2, 3, 4))
     ->get();
+
+  $organizations = DB::table('organizations')->get();
 ?>
 
 <!-- Preloader -->
@@ -55,7 +57,7 @@
                 </div>
                 <div class="form-group bmd-form-group" style="width:76%">
                   <label class="bmd-label-floating">Username</label>
-                  <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
+                  <input type="text" name="username" class="form-control" value="{{ old('username') }}">
                 </div>
               </div>
             </div>
@@ -68,7 +70,7 @@
                 </div>
                 <div class="form-group bmd-form-group" style="width:76%">
                   <label class="bmd-label-floating">Password</label>
-                  <input type="password" name="password" id="password" class="form-control" required>
+                  <input type="password" name="password" id="password" class="form-control">
                 </div>
               </div>
               @if ($errors->has('password'))
@@ -124,7 +126,7 @@
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-signup modal-lg" role="document">
     <div class="modal-content">
-      <form class="form" method="POST" action="{{ route('register') }}">
+      <form class="form" method="POST" id="registrationForm" action="{{ route('register') }}">
         @csrf
         <div class="card-body">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -132,7 +134,7 @@
           </button>
           <h2 class="text-center"><strong>Registration</strong></h2>
           <p class="text-muted text-center" style="font-size:90%">For Co-curricular and Extra-curricular Student Organization Representatives, Student Organization Advisers, and Faculty.</p>
-          <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : ' has-success' }}">
+          <div id='identifier' class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : ' has-success' }}">
 
           <div class="container">
             <div class="row">
@@ -144,18 +146,18 @@
                 <!-- First Name -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">First name</label>
-                  <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}" required>
+                  <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}">
                 </div>
 
                 <!-- Last Name -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Last name</label>
-                  <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}" required>
+                  <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}">
                 </div>
 
                 <!-- Designation -->
                 <div class="form-group">
-                  <select class="form-control" name="designation" value="{{ old('designation') }}" required>
+                  <select class="form-control" name="designation">
                     <option disabled selected value="">Designation</option>
                     @foreach($designations as $designation)
                     <option value="{{$designation->id}}">{{$designation->name}}</option>
@@ -165,7 +167,7 @@
                 
                 <!-- School -->
                 <div class="form-group">
-                  <select id="school_dropbox" name="school" class="form-control" value="{{ old('school') }}" required>
+                  <select id="school_dropbox" name="school" class="form-control">
                     <option disabled selected value="">School</option>
                     @foreach($schools as $school)
                     <option value="{{$school->id}}">{{$school->name}}</option>
@@ -175,68 +177,18 @@
 
                 <!-- Department -->
                 <div class="form-group">
-                  <select id="department_dropbox" name="department" class="form-control" value="{{ old('department') }}" required>
+                  <select id="department_dropbox" name="department" class="form-control">
                     <option disabled selected value="">Deparment</option>                       
                   </select>
                 </div>
 
                 <!-- Organization -->
                 <div class="form-group">
-                  <select name="organization" class="form-control" value="{{ old('organization') }}" required>
+                  <select name="organization" class="form-control">
                     <option disabled selected value="">Organization</option>
-                    <option value="None">None</option>
-                    <option value="Catholic Charismatic Carolinians">Catholic Charismatic Carolinians</option>
-                    <option value="Supreme Student Council">Supreme Student Council</option>
-                    <option value="USC-Chemical Engineering Council">USC-Chemical Engineering Council</option>
-                    <option value="USC Electronics Engineering Council">USC Electronics Engineering Council</option>
-                    <option value="Sophia Organization">Sophia Organization</option>
-                    <option value="Psychology Society">Psychology Society</option>
-                    <option value="Electrical Engineering Council">Electrical Engineering Council</option>
-                    <option value="Computer Engineering Council">Computer Engineering Council</option>
-                    <option value="Junior Philippine Pharmacists Association ">Junior Philippine Pharmacists Association</option>
-                    <option value="Science Education Students Organization">Science Education Students Organization</option>
-                    <option value="Datalogics Society">Datalogics Society</option>
-                    <option value="Industrial Engineering Council">Industrial Engineering Council</option>
-                    <option value="Mechanical Engineering Council">Mechanical Engineering Council</option>
-                    <option value="Civil Engineering Council">Civil Engineering Council</option>
-                    <option value="Collegiate Engineering Council">Collegiate Engineering Council</option>
-                    <option value="Carolinian Physics Society">Carolinian Physics Society</option>
-                    <option value="Manufacturing Engineering Council">Manufacturing Engineering Council</option>
-                    <option value="Carolinian Library and Information Science Association">Carolinian Library and Information Science Association</option>
-                    <option value="USC Architecture Society">USC Architecture Society</option>
-                    <option value="Integrated Students of the Interior Design Education">Integrated Students of the INterior Design Education</option>
-                    <option value="Solares">Solares</option>
-                    <option value="Nutrition and Dietetics Student Organization">Nutrition and Dietetics Student Organization</option>
-                    <option value="Nursing Student Body Organization">Nursing Student Body Organization</option>
-                    <option value="Dynamic Communication Society">Dynamic Communication Society</option>
-                    <option value="Biology Integrated Organization">Biology Integrated Organization</option>
-                    <option value="Chemistry Student Association">Chemistry Student Association</option>
-                    <option value="Students Electronic Society">Solares</option>
-                    <option value="Amateur Radio Club">Amateur Radio Club</option>
-                    <option value="Movir Engineering Society">Movir Engineering Society</option>
-                    <option value="Pathways">Pathways</option>
-                    <option value="Chemical Engineering Society">Chemical Engineering Society</option>
-                    <option value="Society of Circuit Researchers">Society of Circuit Researchers</option>
-                    <option value="Computer Driven Enthusiasts">Computer Driven Enthusiasts</option>
-                    <option value="Association of Civil Engineering Students">Association of Civil Engineering Students</option>
-                    <option value="Philippine Institute of Civil Engineers">Philippine Institute of Civil Engineers</option>
-                    <option value="USC Medics">USC Medics</option>
-                    <option value="Junior People Management Association of the Philippines">Junior People Management Association of the Philippines</option>
-                    <option value="Carolinian Residents Association">Carolinian Residents Association</option>
-                    <option value="Youth For Christ">Youth For Christ</option>
-                    <option value="Safety First">Safety First</option>
-                    <option value="Rotarac Club of Cebu">Rotarac Club of Cebu</option>
-                    <option value="Philippine Junior Jaycees Inc. - USC Chapter">Philippine Junior Jaycees Inc. - USC Chapter</option>
-                    <option value="Carolinian Economics Society">Carolinian Economics Society</option>
-                    <option value="School of Education Council">School of Education Council</option>
-                    <option value="CAWSA">CAWSA</option>
-                    <option value="Junior Financial Executives">Junior Financial Executives</option>
-                    <option value="Carolinian Political Science">Carolinian Political Science</option>
-                    <option value="Junior Philippine Institute of Accountants - USC Chapter">Junior Philippine Institute of Accountants - USC Chapter</option>
-                    <option value="SHOTS">SHOTS</option>
-                    <option value="PJJJI">PJJJI</option>
-                    <option value="CES OFFICE">CES OFFICE</option>
-                    <option value="Red Cross Youth - USC Council">Red Cross Youth - USC Council</option>
+                    @foreach($organizations as $organization)
+                    <option value="{{$organization->id}}">{{$organization->name}}</option>
+                    @endforeach
                   </select>
                 </div>
 
@@ -255,7 +207,7 @@
                   </div>
                   <div class="form-group bmd-form-group" style="width:76%">
                     <label class="bmd-label-floating">Username</label>
-                    <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
+                    <input type="text" name="username" class="form-control" value="{{ old('username') }}">
                   </div>
                 </div>
 
@@ -268,7 +220,7 @@
                   </div>
                   <div class="form-group bmd-form-group" style="width:76%">
                     <label class="bmd-label-floating">Email Address</label>
-                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                    <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                   </div>
                 </div>
 
@@ -281,7 +233,7 @@
                   </div>
                   <div class="form-group bmd-form-group" style="width:76%">
                     <label class="bmd-label-floating">Contact Number</label>
-                    <input type="text" name="contact" class="form-control" value="{{ old('contact') }}" required>
+                    <input type="text" name="contact" class="form-control" value="{{ old('contact') }}" >
                   </div>
                 </div>
 
@@ -295,7 +247,7 @@
                     </div>
                     <div class="form-group bmd-form-group" style="width:76%">
                       <label class="bmd-label-floating">Password</label>
-                      <input type="password" name="password" id="register_password" class="form-control" minlength="8" required>
+                      <input type="password" name="password" id="register_password" class="form-control">
                       <small class="form-text text-muted"> Minimum of 8 characters.</small>
                     </div>                    
                   </div>
@@ -311,7 +263,7 @@
                     </div>
                     <div class="form-group bmd-form-group" style="width:76%">
                       <label class="bmd-label-floating">Confirm password</label>
-                      <input type="password" name="password_confirmation" id="register_password_confirmation" class="form-control" minlength="8" onkeyup='check();' required>
+                      <input type="password" name="password_confirmation" id="register_password_confirmation" class="form-control">
                       <small id="message" class="form-text text-danger"> </small>
                     </div>                      
                   </div>
@@ -368,7 +320,10 @@
     // loader on page load 
     $('.loader').fadeOut();
   }
+  
 
+  
+  /*
   // Password confirmation
   var check = function() {
     if (document.getElementById('register_password').value ==
@@ -384,6 +339,63 @@
       document.getElementById("btnSubmit").disabled = true;
     }
   }
+  */
+$(document).ready(function(){
+   $.validator.addMethod('doesNotContainNumber', function(value) {  
+        if(/\d/.test(value)==false){
+        $('#identifier').removeClass('has-danger');
+         $('#identifier').addClass('has-success');
+          return true;
+        } else {
+          $('#identifier').removeClass('has-success');
+          $('#identifier').addClass('has-danger');
+        }
+        
+        
+    },"<small class='text-danger'>Input contains a number.</small>");
+
+    $("#registrationForm").validate({
+        rules: {
+          firstname: {
+            required:true,
+            doesNotContainNumber:true
+          },
+          lastname: {
+            required:true,
+            doesNotContainNumber:true
+          },
+          username:{
+            required:true
+          },
+          email: {
+            required:true,
+            email:true
+          },
+          desgination: {
+            required:true
+          },
+          school:{
+            required:true
+          },
+          department:{
+            required:true
+          },
+          contact: {
+            required:true,
+            number:true,
+            maxlength:11
+          },
+          password: {
+            required:true,
+            minlength:8
+          },
+          password_confirmation: {
+            required:true,
+            minlength:8,
+            equalTo:"#register_password"
+          }
+        }
+      });
 
   //Dynamic department dropbox
   $("#school_dropbox").change(function(){
@@ -405,5 +417,5 @@
       }
     });
   });
-
+});
 </script>
