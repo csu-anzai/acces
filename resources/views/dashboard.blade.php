@@ -247,18 +247,101 @@
                   </tbody>
                 </table>
               </div>
-              <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;" onclick='swal({
-                    title:"Good job!",
-                    text: "New proposal created!",
-                    type: "success",
-                    buttonsStyling: false,
-                    confirmButtonClass: "btn btn-success"
-                    })'>
+              <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal">
                 <i class="material-icons" style="font-size: 35px">add</i>
               </button>
             </div>
           </div>
         </div>
       </div>
+      <!-- Modal Area -->
+<div class="modal fade" id="formModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <form class="border border-light p-5">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <i class="material-icons" style="font-size: 35px">clear</i>
+          </button>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-center mb-4">
+                <h3><strong>Create Proposal</strong></h3>
+                <h4>Types of CES Program/Project/Activity Proposals</h4>
+              </div>              
+            </div>
+            <div class="row bg-light">
+              <div class="col-md-8 mt-4 mb-4">
+                <h4>1. Course-based CES Program/Project/Activity</h4>                
+                <small>a. Deadline for 1st Semester: last Friday of June</small>
+                <br>
+                <small>b. Deadline for 2nd Semester: last Friday of September</small>
+              </div>  
+              <div class="col-md-4 mt-4">
+                <button class="btn btn-success btn-lg">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></button>
+              </div>  
+            </div>
+            <div class="row bg-light mt-2">
+              <div class="col-md-8 mt-4 mb-2">
+                <h4>2. CES Proposals from Department/School and Student Organizations (co-curricular and extra-curricular)</h4>                
+                <small>a. <strong>Medium and Long term proposals planned by 1st quarter of the year</strong> (first Friday of February)</small>
+                <br>
+              </div>  
+              <div class="col-md-4 mt-4">
+                <button class="btn btn-success btn-lg">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></button>
+              </div>  
+            </div>
+            <div class="row bg-light">
+              <div class="col-md-8 mt-2">              
+                <small>b. <strong>Submitted Within the Academic Year</strong>: <div class="text-danger">Deadlines only apply to items I, II, III and not for Special Projects</div></small>
+              </div>  
+            </div>
+            <div class="row bg-light">
+
+              <div class="col-md-8 mb-5 mt-4">              
+                <small><strong>I</strong>. Medium and Long Term proposal and planned within the academic year</small>
+              </div>  
+              <div class="col-md-4 mt-1">
+                <button class="btn btn-success btn-lg">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></button>
+              </div>  
+
+              <div class="col-md-8 mb-4 mt-4">              
+                <small><strong>II</strong>. Short term proposals (one time activity; or to be implemented in one semester) with cash out requirement</small>
+              </div>  
+              <div class="col-md-4 mt-1">
+                <button class="btn btn-success btn-lg">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></button>
+              </div>  
+
+              <div class="col-md-8 mb-4 mt-4">              
+                <small><strong>III</strong>. Short term proposals (one time activity; or to be implemented in one semester) without cash out requirement</small>
+              </div>  
+              <div class="col-md-4 mt-1">
+                <button class="btn btn-success btn-lg">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></button>
+              </div>  
+
+              <div class="col-md-8 mb-4 mt-4">              
+                <small><strong>IV</strong>. Special Projects (those requested by partners from within and outside USC) with cash out requirement</small>
+              </div>  
+              <div class="col-md-4 mt-1">
+                <button class="btn btn-success btn-lg">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></button>
+              </div>  
+
+              <div class="col-md-8 mb-4 mt-4">              
+                <small><strong>V</strong>. Special Projects (those requested by partners from within and outside USC) without cash out requirement</small>
+              </div>  
+              <div class="col-md-4 mt-1">
+                <button class="btn btn-success btn-lg">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></button>
+              </div>  
+  
+            </div>
+          </div>   
+      </form>
+    </div>
+  </div>
+</div>
+
+    <!-- End of Modal Area -->
     </div>
     @endsection
+
+    
