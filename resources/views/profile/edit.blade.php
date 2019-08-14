@@ -31,7 +31,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('First Name') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('firstname') ? ' has-danger' : ' has-success' }}">
-                      <input class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" id="input-firstname" type="text" placeholder="{{ __('First Name') }}" value="{{ old('firstname', auth()->user()->firstname) }}" required="true" aria-required="true"/>
+                      <input class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" pattern="[a-zA-Z][a-zA-Z ]{1,}" name="firstname" id="input-firstname" type="text" placeholder="{{ __('First Name') }}" value="{{ old('firstname', auth()->user()->firstname) }}" required="true" aria-required="true"/>
                       @if ($errors->has('firstname'))
                         <span id="firstname-error" class="error text-danger" for="input-firstname">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -42,7 +42,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Last Name') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('lastname') ? ' has-danger' : ' has-success' }}">
-                      <input class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" id="input-lastname" type="text" placeholder="{{ __('Last Name') }}" value="{{ old('lastname', auth()->user()->lastname) }}" required="true" aria-required="true"/>
+                      <input class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" pattern="[a-zA-Z][a-zA-Z ]{1,}" name="lastname" id="input-lastname" type="text" placeholder="{{ __('Last Name') }}" value="{{ old('lastname', auth()->user()->lastname) }}" required="true" aria-required="true"/>
                       @if ($errors->has('lastname'))
                         <span id="lastname-error" class="error text-danger" for="input-lastname">{{ $errors->first('lastname') }}</span>
                       @endif
@@ -53,7 +53,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Contact Number') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('contact') ? ' has-danger' : ' has-success' }}">
-                      <input class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" id="input-contact" type="text" placeholder="{{ __('Contact') }}" value="{{ old('contact', auth()->user()->contact) }}" required="true" aria-required="true"/>
+                      <input class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" id="input-contact" type="number" placeholder="{{ __('Contact') }}" value="{{ old('contact', auth()->user()->contact) }}" required="true" aria-required="true"/>
                       @if ($errors->has('contact'))
                         <span id="contact-error" class="error text-danger" for="input-contact">{{ $errors->first('contact') }}</span>
                       @endif
