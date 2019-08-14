@@ -28,6 +28,7 @@
             left: 40%;
             top: 40%;
         }
+
 </style>
 
 @extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('ACCES')])
@@ -146,18 +147,18 @@
                 <!-- First Name -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">First name</label>
-                  <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}" required>
+                  <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}" pattern="[a-zA-Z][a-zA-Z ]{1,}" required>
                 </div>
 
                 <!-- Last Name -->
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Last name</label>
-                  <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}" required>
+                  <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}" pattern="[a-zA-Z][a-zA-Z ]{1,}" required>
                 </div>
 
                 <!-- Designation -->
                 <div class="form-group">
-                  <select class="form-control" name="designation" required>
+                  <select class="browser-default custom-select" name="designation" required>
                     <option disabled selected value="">Designation</option>
                     @foreach($designations as $designation)
                     <option value="{{$designation->id}}">{{$designation->name}}</option>
@@ -167,7 +168,7 @@
                 
                 <!-- School -->
                 <div class="form-group">
-                  <select id="school_dropbox" name="school" class="form-control" required>
+                  <select id="school_dropbox" name="school" class="browser-default custom-select" required>
                     <option disabled selected value="">School</option>
                     @foreach($schools as $school)
                     <option value="{{$school->id}}">{{$school->name}}</option>
@@ -177,14 +178,14 @@
 
                 <!-- Department -->
                 <div class="form-group">
-                  <select id="department_dropbox" name="department" class="form-control" required>
+                  <select id="department_dropbox" name="department" class="browser-default custom-select" required>
                     <option disabled selected value="">Deparment</option>                       
                   </select>
                 </div>
 
                 <!-- Organization -->
                 <div class="form-group">
-                  <select name="organization" class="form-control" required>
+                  <select name="organization" class="browser-default custom-select" required>
                     <option disabled selected value="">Organization</option>
                     @foreach($organizations as $organization)
                     <option value="{{$organization->id}}">{{$organization->name}}</option>
@@ -233,7 +234,7 @@
                   </div>
                   <div class="form-group bmd-form-group" style="width:76%">
                     <label class="bmd-label-floating">Contact Number</label>
-                    <input type="text" name="contact" class="form-control" value="{{ old('contact') }}" required>
+                    <input type="number" name="contact" class="form-control" value="{{ old('contact') }}" required>
                   </div>
                 </div>
 
