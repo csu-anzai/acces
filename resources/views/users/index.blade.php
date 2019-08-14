@@ -24,9 +24,6 @@
                   </div>
                 @endif
                 <div class="row">
-                  <div class="col-12 text-right">
-                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-success">{{ __('Add user') }}</a>
-                  </div>
                 </div>
                 <div class="table-responsive">
                   <table class="table">
@@ -89,6 +86,9 @@
                       @endforeach
                     </tbody>
                   </table>
+                  <a href="{{ route('user.create') }}" class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;">
+                    <i class="material-icons">person_add</i>
+                  </a>
                 </div>
               </div>
             </div>
