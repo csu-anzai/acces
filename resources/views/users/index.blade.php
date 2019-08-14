@@ -35,7 +35,7 @@
                         {{ __('Designation') }}
                       </th>
                       <th>
-                        {{ __('Email') }}
+                        {{ __('School') }}
                       </th>
                       <th class="text-right">
                         {{ __('Actions') }}
@@ -43,22 +43,25 @@
                     </thead>
                     <tbody>
                       @foreach($users as $user)
+                      <?php
+                        $designation = DB::table('designations')
+                          ->where('id', $user->designation_id)
+                          ->first();
+
+                        $school = DB::table('departments')
+                          ->join('schools', 'departments.school_id', 'schools.id')
+                          ->where('departments.id', $user->id)
+                          ->first();
+                      ?>
                         <tr>
                           <td>
                             {{$user->firstname}} {{$user->lastname}}
                           </td>
                           <td>
-                            <?php
-                              $designations = DB::table('designations')->get();
-                            ?>
-                            @foreach($designations as $designation)
-                              @if($designation->id == $user->designation_id)
-                                {{$designation->name}}
-                              @endif
-                            @endforeach
+                            {{$designation->name}}
                           </td>
                           <td>
-                          {{ $user->email }}
+                            {{$school->name}}
                           </td>
                           <td class="td-actions text-right">
                             @if ($user->id != auth()->id())
