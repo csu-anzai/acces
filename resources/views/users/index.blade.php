@@ -35,10 +35,10 @@
                           {{ __('Name') }}
                       </th>
                       <th>
-                        {{ __('Email') }}
+                        {{ __('Designation') }}
                       </th>
                       <th>
-                        {{ __('Creation date') }}
+                        {{ __('Email') }}
                       </th>
                       <th class="text-right">
                         {{ __('Actions') }}
@@ -51,10 +51,17 @@
                             {{$user->firstname}} {{$user->lastname}}
                           </td>
                           <td>
-                            {{ $user->email }}
+                            <?php
+                              $designations = DB::table('designations')->get();
+                            ?>
+                            @foreach($designations as $designation)
+                              @if($designation->id == $user->designation_id)
+                                {{$designation->name}}
+                              @endif
+                            @endforeach
                           </td>
                           <td>
-                            {{ $user->created_at->format('Y-m-d') }}
+                          {{ $user->email }}
                           </td>
                           <td class="td-actions text-right">
                             @if ($user->id != auth()->id())

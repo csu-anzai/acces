@@ -1,3 +1,9 @@
+<style>
+  .dropdown-item:hover {
+    background-color: orange !important;
+  }
+</style>
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
   <div class="container-fluid">

@@ -182,7 +182,7 @@
         url:'/getDepartments',
         data:{id: $("#school_dropbox").val()},
         success:function(data){
-          var options = '<option disabled selected value="">Deparment</option>';
+          var options = '<option disabled selected value="">Department</option>';
           
           $.each(data.departments, function(key, value){
             options += '<option value="'+value.id+'">'+value.name+'</option>';

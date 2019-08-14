@@ -129,7 +129,7 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label" for="input-password-confirmation">{{ __('Confirm New Password') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-danger' : ' has-success' }}">
                       <input class="form-control" name="password_confirmation" id="input-password-confirmation" type="password" placeholder="{{ __('Confirm New Password') }}" value="" required />
                     </div>
                   </div>
