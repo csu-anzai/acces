@@ -62,7 +62,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Designation') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('designation') ? ' has-danger' : ' has-success' }}">
-                      <select class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" name="designation_id" id="input-designation" required>
+                      <select class="browser-default custom-select{{ $errors->has('designation') ? ' is-invalid' : '' }}" name="designation_id" id="input-designation" required>
                         <option disabled selected value="">Designation</option>
                         @foreach($designations as $designation)
                         @if($designation->id == $user->designation_id)
@@ -79,7 +79,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('School') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('school') ? ' has-danger' : ' has-success' }}">
-                      <select id="school_dropbox" class="form-control{{ $errors->has('school') ? ' is-invalid' : '' }}" name="school_id" id="input-school" required>
+                      <select id="school_dropbox" class="browser-default custom-select{{ $errors->has('school') ? ' is-invalid' : '' }}" name="school_id" id="input-school" required>
                         <option disabled selected value="">School</option>
                         @foreach($schools as $school)
                         @if($school->id == $school_id->school_id)
@@ -96,7 +96,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Department') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('department') ? ' has-danger' : ' has-success' }}">
-                      <select id="department_dropbox" class="form-control{{ $errors->has('department') ? ' is-invalid' : '' }}" name="department_id" id="input-department" required>
+                      <select id="department_dropbox" class="browser-default custom-select{{ $errors->has('department') ? ' is-invalid' : '' }}" name="department_id" id="input-department" required>
                         <option disabled selected value="">Department</option>
                         @foreach($departments as $department)
                         @if($department->id == $user->department_id)
@@ -113,7 +113,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Organization') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('organization') ? ' has-danger' : ' has-success' }}">
-                      <select class="form-control{{ $errors->has('organization') ? ' is-invalid' : '' }}" name="organization_id" id="input-organization" required>
+                      <select class="browser-default custom-select{{ $errors->has('organization') ? ' is-invalid' : '' }}" name="organization_id" id="input-organization" required>
                         <option disabled selected value="">Organization</option>
                         @foreach($organizations as $organization)
                         @if($organization->id == $user->organization_id)
