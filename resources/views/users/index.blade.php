@@ -50,7 +50,7 @@
 
                         $school = DB::table('departments')
                           ->join('schools', 'departments.school_id', 'schools.id')
-                          ->where('departments.id', $user->id)
+                          ->where('departments.id', $user->department_id)
                           ->first();
                       ?>
                         <tr>
