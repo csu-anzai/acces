@@ -119,7 +119,7 @@
                   <label class="col-sm-2 col-form-label" for="input-password">{{ __('New Password') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('password') ? ' has-danger' : ' has-success' }}">
-                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="input-password" type="password" placeholder="{{ __('New Password') }}" value="" required />
+                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="password1" type="password" placeholder="{{ __('New Password') }}" value="" minlength="8" required />
                       @if ($errors->has('password'))
                         <span id="password-error" class="error text-danger" for="input-password">{{ $errors->first('password') }}</span>
                       @endif
@@ -129,14 +129,15 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label" for="input-password-confirmation">{{ __('Confirm New Password') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-danger' : ' has-success' }}">
-                      <input class="form-control" name="password_confirmation" id="input-password-confirmation" type="password" placeholder="{{ __('Confirm New Password') }}" value="" required />
+                    <div class="form-group" id="confirm_password">
+                      <input class="form-control" name="password_confirmation" id="password2" type="password" placeholder="{{ __('Confirm New Password') }}" minlength="8" onkeyup='check();' required />
+                      <small id="message" class="form-text text-danger"> </small>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-success">{{ __('Change password') }}</button>
+                <button type="submit" id="btnSubmit" class="btn btn-success">{{ __('Change password') }}</button>
               </div>
             </div>
           </form>
@@ -145,3 +146,21 @@
     </div>
   </div>
 @endsection
+
+<script>
+  // Password confirmation
+  var check = function() {
+    if (document.getElementById('password1').value == document.getElementById('password2').value) {
+      document.getElementById("confirm_password").classList.remove("has-danger");
+      document.getElementById("confirm_password").classList.add(" has-success");
+      document.getElementById("btnSubmit").disabled = false;
+      document.getElementById('message').innerHTML = '';
+      console.log("Good job!");
+    } else {
+      document.getElementById('message').innerHTML = 'Password does not match.';
+      document.getElementById("confirm_password").classList.remove(" has-success");
+      document.getElementById("confirm_password").classList.add("has-danger");
+      document.getElementById("btnSubmit").disabled = true;
+    }
+  }
+</script>
