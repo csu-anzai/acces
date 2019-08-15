@@ -293,6 +293,7 @@
       
       <!-- Reset password form -->
       <form class="text-center border border-light p-5 has-success" method="POST" action="{{ route('password.email') }}">
+      @csrf
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
