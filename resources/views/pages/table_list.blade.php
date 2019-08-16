@@ -119,7 +119,64 @@
                 <button type="submit" class="btn btn-success">{{ __('Save') }}</button>
         </div>        
       </div>
+      <div class="card">
+                <div class="card-header card-header-success">
+                  <h4 class="card-title " style="font-size:40px;">{{ __('Form B') }}</h4>
+                  <p class="card-category"> {{ __('Filling Out Form B CES Program/Project/Activity Proposal (Details)') }}</p>
+                </div>
+        <div class="card-body">
+          @if (session('status'))
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="alert alert-success">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="material-icons">close</i>
+                  </button>
+                    <span>{{ session('status') }}</span>
+                </div>
+              </div>
+            </div>
+          @endif
+          
+          <!-- start of textareas and other things--> 
+          <div> 
+            <div>
+              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
+                <span class="navbar-brand mb-0 h1">Program/Project/Activity Profile</span> 
+              </nav>
+              
+            </div>
+          </div>
+          <div> 
+            <div>
+              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
+                <span class="navbar-brand mb-0 h1">Significance/Relevance Matrix</span>
+              </nav>
+            </div>
+          </div>
+          <div> 
+            <div>
+              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
+                <span class="navbar-brand mb-0 h1">Participants, Partners and Beneficiaries</span>
+              </nav>
+            </div>
+          </div>
+          <div> 
+            <div>
+              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
+                <span class="navbar-brand mb-0 h1">Implications to Work hours, Academic Program, and Research</span>
+              </nav>
+            </div>
+          </div>
+          <div> 
+            <div>
+              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
+                <span class="navbar-brand mb-0 h1">Linkage Profile</span>
+              </nav>
+            </div>
+          </div>
     </div>
   </div>
 </div>
 @endsection
+
