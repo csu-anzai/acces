@@ -152,13 +152,12 @@
   var check = function() {
     if (document.getElementById('password1').value == document.getElementById('password2').value) {
       document.getElementById("confirm_password").classList.remove("has-danger");
-      document.getElementById("confirm_password").classList.add(" has-success");
+      document.getElementById("confirm_password").classList.add("has-success");
       document.getElementById("btnSubmit").disabled = false;
       document.getElementById('message').innerHTML = '';
-      console.log("Good job!");
     } else {
       document.getElementById('message').innerHTML = 'Password does not match.';
-      document.getElementById("confirm_password").classList.remove(" has-success");
+      document.getElementById("confirm_password").classList.remove("has-success");
       document.getElementById("confirm_password").classList.add("has-danger");
       document.getElementById("btnSubmit").disabled = true;
     }

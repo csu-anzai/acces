@@ -136,7 +136,7 @@
                   <label class="col-sm-2 col-form-label" for="input-password">{{ __(' Password') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('password') ? ' has-danger' : ' has-success' }}">
-                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" input type="password" name="password" id="input-password" placeholder="{{ __('Password') }}" value="" minlength="8" required />
+                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" input type="password" name="password" id="password1" placeholder="{{ __('Password') }}" value="" minlength="8" required />
                       @if ($errors->has('password'))
                         <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('password') }}</span>
                       @endif
@@ -146,14 +146,15 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label" for="input-password-confirmation">{{ __('Confirm Password') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group has-success">
-                      <input class="form-control" name="password_confirmation" id="input-password-confirmation" type="password" placeholder="{{ __('Confirm Password') }}" value="" required />
+                    <div class="form-group" id="confirm_password">
+                      <input class="form-control" name="password_confirmation" id="password2" type="password" placeholder="{{ __('Confirm Password') }}" value="" minlength="8"  onkeyup='check();' required />
+                      <small id="message" class="form-text text-danger"> </small>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-success">{{ __('Add User') }}</button>
+                <button type="submit" class="btn btn-success" id='btnSubmit'>{{ __('Add User') }}</button>
               </div>
             </div>
           </form>
@@ -184,6 +185,19 @@
         }
       });
     });
-
+    // Password confirmation
+    var check = function() {
+      if (document.getElementById('password1').value == document.getElementById('password2').value) {
+        document.getElementById("confirm_password").classList.remove("has-danger");
+        document.getElementById("confirm_password").classList.add("has-success");
+        document.getElementById("btnSubmit").disabled = false;
+        document.getElementById('message').innerHTML = '';
+      } else {
+        document.getElementById('message').innerHTML = 'Password does not match.';
+        document.getElementById("confirm_password").classList.remove("has-success");
+        document.getElementById("confirm_password").classList.add("has-danger");
+        document.getElementById("btnSubmit").disabled = true;
+      }
+    }
   </script>
 @endsection
