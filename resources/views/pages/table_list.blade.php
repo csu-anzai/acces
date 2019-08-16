@@ -98,20 +98,100 @@
             </div>
           </div>
           <div> 
-            <div>
-              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
-                <span class="navbar-brand mb-0 h1">Outline of Activities</span>
-              </nav>
-            </div>
+            <!-- outline of activities -->
             <!-- place code here -->
+                    <div class="card">
+                      <div class="navbar navbar-light" style="background-color: #dfede3 !important;">
+                        <h4 class="navbar-brand mb-0 h1">Outline of Activities</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead class=" text-primary" style='color:black !important;'>
+                              <th>
+                                Tentative date
+                              </th>
+                              <th>
+                                Activities
+                              </th>
+                              <th>
+                                Participants needed
+                              </th>
+                              <th>
+                                Person/s In-charge
+                              </th>
+                              <th>
+                                Add row
+                              </th>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <input type='text' class='form-control'>
+                                </td>
+                                <td>
+                                  <input type='text' class='form-control'>
+                                </td>
+                                <td>
+                                  <input type='text' class='form-control'>
+                                </td>
+                                <td>
+                                  <input type='text' class='form-control'>
+                                </td>
+                                <td class="text-primary">
+                                  
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end of table -->
           </div>
           <div> 
-            <div>
-              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
-                <span class="navbar-brand mb-0 h1">Budgetary Requirements</span>
-              </nav>
-            </div>
+            <!-- Budgetary requirements -->
             <!-- place code here -->
+            <div class="card">
+                      <div class="navbar navbar-light" style="background-color: #dfede3 !important;">
+                        <h4 class="navbar-brand mb-0 h1">Budgetary Requirements</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead class=" text-primary" style='color:black !important;'>
+                              <th>
+                                Particulars
+                              </th>
+                              <th>
+                                Frequency
+                              </th>
+                              <th>
+                                Quantity
+                              </th>
+                              <th>
+                                Amount 
+                              </th>
+                              <th>
+                                Subtotal
+                              </th>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td> A. Meals and Snacks </td>
+                              </tr>
+                              <tr>
+                                <td> B. Transportation </td>
+                              </tr>
+                              <tr>
+                                <td> C. Materials </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end of table -->
           </div>
           
         </div>
