@@ -121,7 +121,7 @@
                                 Person/s In-charge
                               </th>
                               <th>
-                                <button class='btn btn-success'> <span class='add'> </span> Add row </button>
+                                <button class='btn btn-success'>  Add row </button>
                               </th>
                             </thead>
                             <tbody>
