@@ -238,14 +238,139 @@
           @endif
           
           <!-- start of textareas and other things--> 
+          <!-- first navbar -->
           <div> 
             <div>
               <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
                 <span class="navbar-brand mb-0 h1">Program/Project/Activity Profile</span> 
               </nav>
-              
-            </div>
+                <!-- mini navbar A -->
+                <div style="width:95%; margin:auto;">
+                  <nav class="navbar navbar-light" style="background-color: #dfede3 !important; margin:auto;">
+                    <span class="navbar-brand mb-0 h1">A. College/School/Department/Unit Responsible (please check/tick the appropiate item)</span> 
+                  </nav>
+                  <!-- dept check buttons table -->
+                  <table class="table">                   
+                    <tbody>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox" style="margin:10px;">
+                                        <input type="checkbox" class="custom-control-input" id="cesoffice">
+                                        <label class="custom-control-label" for="cesoffice" style="color:#484a49 !important; font:Roboto !important;">CES Office</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="sas">
+                                        <label class="custom-control-label" for="sas" style="color:#484a49 !important; font:Roboto !important;">School of Arts and Sciences</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="safad">
+                                        <label class="custom-control-label" for="safad" style="color:#484a49 !important; font:Roboto !important;">School of Architecture, Fine Arts and Design</label>
+                                    </div>
+                                  </td>      
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox" style="margin:10px;">
+                                        <input type="checkbox" class="custom-control-input" id="sed">
+                                        <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="soe">
+                                        <label class="custom-control-label" for="soe" style="color:#484a49 !important; font:Roboto !important;">School of Engineering</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox>
+                                        <input type="checkbox" class="custom-control-input" id="sbe">
+                                        <label class="custom-control-label" for="safad" style="color:#484a49 !important; font:Roboto !important;">School of Business and Economics</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox" style="margin:10px;">
+                                        <input type="checkbox" class="custom-control-input" id="sed">
+                                        <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="shcp">
+                                        <label class="custom-control-label" for="shcp" style="color:#484a49 !important; font:Roboto !important;">School of Health Care Profession</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="slg">
+                                        <label class="custom-control-label" for="slg" style="color:#484a49 !important; font:Roboto !important;">School of Law and Governance</label>
+                                    </div>
+                                  </td>                                
+                                </tr> 
+                                <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox" style="margin:10px;">
+                                        <input type="checkbox" class="custom-control-input" id="supp">
+                                        <label class="custom-control-label" for="supp" style="color:#484a49 !important; font:Roboto !important;">Support Unit</label>
+                                    </div>
+                                  </td>
+                                </tr>                            
+                              </tbody>
+                  </table> 
+                  <!-- end of check buttons table -->          
+                </div> 
+                <!-- end of mini navbar A --> 
+                <!-- mini navbar B-->
+                <div style="width:95%; margin:auto;">
+                  <nav class="navbar navbar-light" style="background-color: #dfede3 !important; margin:auto;">
+                  <span class="navbar-brand mb-0 h1">B. Time Frame (please check/tick the appropriate item)</span> 
+                  </nav>
+                  <!-- timeframe radio buttons table -->
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="custom-control custom-radio" style="margin:10px;">
+                            <input type="radio" class="custom-control-input" id="shortterm" name="defaultExampleRadios">
+                            <label class="custom-control-label" for="shortterm" style="color:black !important;">Short Term</label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="medterm" name="defaultExampleRadios">
+                            <label class="custom-control-label" for="medterm" style="color:black !important;">Medium Term</label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="longterm" name="defaultExampleRadios">
+                            <label class="custom-control-label" for="longterm" style="color:black !important;">Long Term</label>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- end of timeframe radio buttons table -->  
+                </div>
+                <!-- end of mini navbar B --> 
+                <!-- mini navbar c-->
+                <div style="width:95%; margin:auto;">
+                  <nav class="navbar navbar-light" style="background-color: #dfede3 !important; margin:auto;">
+                  <span class="navbar-brand mb-0 h1">C. Locus and Leadership (please check/tick the appropriate item)</span>
+                  </nav>
+                  <!-- leadership buttons table goes here-->
+
+                </div>  
+
+             </div><!--untouchable div-->         
           </div>
+          <!-- end of first navbar -->
+          <!-- start of second navbar -->
           <div> 
             <div>
               <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
