@@ -121,7 +121,7 @@
                                 Person/s In-charge
                               </th>
                               <th>
-                                Add row
+                                <button class='btn btn-success'> <span class='add'> </span> Add row </button>
                               </th>
                             </thead>
                             <tbody>
@@ -179,12 +179,24 @@
                             <tbody>
                               <tr>
                                 <td> A. Meals and Snacks </td>
+                                <td> </td> 
+                                <td> </td> 
+                                <td> </td>
+                                <td> <button class='btn btn-success'> Add row </button> </td>
                               </tr>
                               <tr>
                                 <td> B. Transportation </td>
+                                <td> </td> 
+                                <td> </td> 
+                                <td> </td>
+                                <td> <button class='btn btn-success'> Add row </button> </td>
                               </tr>
                               <tr>
                                 <td> C. Materials </td>
+                                <td> </td> 
+                                <td> </td> 
+                                <td> </td>
+                                <td> <button class='btn btn-success' > Add row </button> </td>
                               </tr>
                             </tbody>
                           </table>
