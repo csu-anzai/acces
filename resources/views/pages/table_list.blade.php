@@ -121,7 +121,7 @@
                                 Person/s In-charge
                               </th>
                               <th>
-                                <button class='btn btn-success'>  Add row </button>
+                                <button class='btn btn-success'> <span class="material-icons" style="font-size: 25px">add</span> Add Row </button>
                               </th>
                             </thead>
                             <tbody>
@@ -182,21 +182,28 @@
                                 <td> </td> 
                                 <td> </td> 
                                 <td> </td>
-                                <td> <button class='btn btn-success'> Add row </button> </td>
+                                <td> <button class='btn btn-success'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> </td>
                               </tr>
                               <tr>
                                 <td> B. Transportation </td>
                                 <td> </td> 
                                 <td> </td> 
                                 <td> </td>
-                                <td> <button class='btn btn-success'> Add row </button> </td>
+                                <td> <button class='btn btn-success'> <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
                               </tr>
                               <tr>
                                 <td> C. Materials </td>
                                 <td> </td> 
                                 <td> </td> 
                                 <td> </td>
-                                <td> <button class='btn btn-success' > Add row </button> </td>
+                                <td> <button class='btn btn-success' > <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
+                              </tr>
+                              <tr>
+                                <td> </td>
+                                <td> </td> 
+                                <td> </td> 
+                                <td> <strong> Grand Total: </strong> </td>
+                                <td> </td>
                               </tr>
                             </tbody>
                           </table>
