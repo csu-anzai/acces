@@ -3,220 +3,297 @@
 @section('content')
 <div class="content">
   <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="margin-top:-3%">
       <div class="col-md-12">
         <div class="card">
-                <div class="card-header card-header-success">
-                  <h4 class="card-title " style="font-size:40px;">{{ __('Form A') }}</h4>
-                  <p class="card-category"> {{ __('Filling Out Form A: CES Program/Project/Activity Proposal') }}</p>
+          <div class="card-header card-header-success">
+            <h3 class="card-title" style='font-family: "Roboto Black";'>Form A</h3>
+            <p class="card-category"> {{ __('CES Program/Project/Activity Proposal') }}</p>
+          </div>
+        <div class="card-body mt-4">
+          <div class="row">
+            <label class="col-sm-2 col-form-label" style="color:black">{{ __('Title:') }}</label>
+            <div class="col-sm-7">
+              <div class="form-group{{ $errors->has('title') ? ' has-danger' : ' has-success' }}">
+                <input class="form-control" name="title" id="input-title" type="text" placeholder="{{ __('Name of the Program/Project/Activity') }}" required="true" aria-required="true"/>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-2 col-form-label" style="color:black">{{ __('CES Type:') }}</label>
+            <div class="col-sm-7">
+              <div class="form-group">
+                <select name="cestype" class="browser-default custom-select" required>
+                  <option selected value="Program Based">Program Based</option>
+                  <option value="Activity Based">Activity Based</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2"> 
+              <label class="col-form-label" style="color:black">{{ __('Inclusive Date:') }}</label>
+            </div>
+            <div class="col-sm-2">          
+              <div class="form-group has-success">
+                <input class="form-control" type="date" required>
+                <small>Start of Activity</small>
+              </div>                         
+            </div>
+            <div class="col-sm-1 mt-3" style="margin-right: -3%">          
+              <p>to</p>                      
+            </div>
+            <div class="col-sm-2">          
+              <div class="form-group has-success">
+                <input class="form-control" type="date" required>
+                <small>End of Activity</small>
+              </div>                         
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-2 col-form-label" style="color:black">{{ __('Venue:') }}</label>
+            <div class="col-sm-7">
+              <div class="form-group{{ $errors->has('venue') ? ' has-danger' : ' has-success' }}">
+                <input class="form-control" name="venue" id="input-title" type="text" placeholder="{{ __('Where will the activity take place?') }}" value="" required="true" aria-required="true"/>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Rationale and Contextualization -->
+          <div class="col-md-12">
+            <div class="card" style="margin-top: 7%">
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                    <h5 class="card-title"><strong>Rationale and Contextualization</strong></h5>
+                  </div>
                 </div>
-        <div class="card-body">
-          @if (session('status'))
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="alert alert-success">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="material-icons">close</i>
-                  </button>
-                    <span>{{ session('status') }}</span>
+                <div class="card-body">
+                 <div class="form-group has-success">
+                  <textarea id="form1" class="md-textarea form-control text-left" rows="9"
+                  placeholder="This portion will serve as the justification for your proposal. Please provide the following minimum information for the rationale and introduction of your program/project/activity: 
+                  
+                  1. Current condition of the community.
+                  2. Problem/need identified by the unit that you intend to address.
+                  3. Data source as well as the process underwent to generate the data.
+                  4. How will the unit respond to the condition?
+                      What expertise and competencies from the unit or in collaboration with others will be useful to address the identified condition?                  
+                  "
+                  ></textarea>
                 </div>
               </div>
             </div>
-          @endif
-          <div class="row">
-                  <label class="col-sm-2 col-form-label" style="color:black">{{ __('Title') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('title') ? ' has-danger' : ' has-success' }}">
-                      <input class="form-control" name="title" id="input-title" type="text" placeholder="{{ __('Name of the Program/Project/Activity') }}" value="" required="true" aria-required="true"/>
-                    </div>
-                  </div>
           </div>
-          <div class="row">
-                  <label class="col-sm-2 col-form-label" style="color:black">{{ __('CES Type') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group" name="cestype" required>
-                      <select class="form-control" name="CES Type" required>
-                        <option disabled selected value="">CES Type</option>
-                        <option value="Program Based">Program Based</option>
-                        <option value="Program Based">Activity Based</option>                       
-                      </select>
-                    </div>
-                  </div>
-          </div>
-          <div class="row">
-                  <label class="col-sm-2 col-form-label" style="color:black">{{ __('Inclusive Date') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group row">
-                      <input class="form-control col-sm-5" type="date" placeholder="from" required>
-                      <p style="width:20px"></p>
-                      <p style="font-size:20px">to</p>        
-                      <p style="width:20px"></p>
-                      <input class="form-control col-sm-5" type="date" required>
-                    </div>
-                  </div>
-          </div>
-          <div class="row">
-                  <label class="col-sm-2 col-form-label" style="color:black">{{ __('Venue') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('venue') ? ' has-danger' : ' has-success' }}">
-                      <input class="form-control" name="title" id="input-title" type="text" placeholder="{{ __('Where will the activity take place?') }}" value="" required="true" aria-required="true"/>
-                    </div>
-                  </div>
-          </div>
-          <!-- start of textareas and other things--> 
-          <div> 
-            <div>
-              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
-                <span class="navbar-brand mb-0 h1">Rationale and Contextualization</span> 
-              </nav>
-            </div>
-            <div class="md-form">
-                <textarea id="form1" class="md-textarea form-control" rows="6"></textarea>
-                <label for="form1">Type here</label>
-            </div>
-          </div>
-          <div> 
-            <div>
-              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
-                <span class="navbar-brand mb-0 h1">Goal, Objectives, and Outcomes</span>
-              </nav>
-            </div>
-            <div class="md-form">
-                <textarea id="form2" class="md-textarea form-control" rows="6"></textarea>
-                <label for="form2">Type here</label>
-            </div>
-          </div>
-          <div> 
-            <div>
-              <nav class="navbar navbar-light" style="background-color: #dfede3 !important;">
-                <span class="navbar-brand mb-0 h1">Participants, Partners and Beneficiaries</span>
-              </nav>
-            </div>
-            <div class="md-form">
-                <textarea id="form3" class="md-textarea form-control" rows="6"></textarea>
-                <label for="form3">Type here</label>
-            </div>
-          </div>
-          <div> 
-            <!-- outline of activities -->
-            <!-- place code here -->
-                    <div class="card">
-                      <div class="navbar navbar-light" style="background-color: #dfede3 !important;">
-                        <h4 class="navbar-brand mb-0 h1">Outline of Activities</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table">
-                            <thead class=" text-primary" style='color:black !important;'>
-                              <th>
-                                Tentative date
-                              </th>
-                              <th>
-                                Activities
-                              </th>
-                              <th>
-                                Participants needed
-                              </th>
-                              <th>
-                                Person/s In-charge
-                              </th>
-                              <th>
-                                <button class='btn btn-success'> <span class="material-icons" style="font-size: 25px">add</span> Add Row </button>
-                              </th>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <input type='text' class='form-control'>
-                                </td>
-                                <td>
-                                  <input type='text' class='form-control'>
-                                </td>
-                                <td>
-                                  <input type='text' class='form-control'>
-                                </td>
-                                <td>
-                                  <input type='text' class='form-control'>
-                                </td>
-                                <td class="text-primary">
-                                  
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end of table -->
-          </div>
-          <div> 
-            <!-- Budgetary requirements -->
-            <!-- place code here -->
+          <!-- End of Rationale and Contextualization -->
+
+          <!-- Goals, Objectives, and Outcomes -->
+          <div class="col-md-12">
             <div class="card">
-                      <div class="navbar navbar-light" style="background-color: #dfede3 !important;">
-                        <h4 class="navbar-brand mb-0 h1">Budgetary Requirements</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table">
-                            <thead class=" text-primary" style='color:black !important;'>
-                              <th>
-                                Particulars
-                              </th>
-                              <th>
-                                Frequency
-                              </th>
-                              <th>
-                                Quantity
-                              </th>
-                              <th>
-                                Amount 
-                              </th>
-                              <th>
-                                Subtotal
-                              </th>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td> A. Meals and Snacks </td>
-                                <td> </td> 
-                                <td> </td> 
-                                <td> </td>
-                                <td> <button class='btn btn-success'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> </td>
-                              </tr>
-                              <tr>
-                                <td> B. Transportation </td>
-                                <td> </td> 
-                                <td> </td> 
-                                <td> </td>
-                                <td> <button class='btn btn-success'> <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
-                              </tr>
-                              <tr>
-                                <td> C. Materials </td>
-                                <td> </td> 
-                                <td> </td> 
-                                <td> </td>
-                                <td> <button class='btn btn-success' > <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
-                              </tr>
-                              <tr>
-                                <td> </td>
-                                <td> </td> 
-                                <td> </td> 
-                                <td> <strong> Grand Total: </strong> </td>
-                                <td> </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end of table -->
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                    <h5 class="card-title"><strong>Goals, Objectives, and Outcomes</strong></h5>
+                  </div>
+                </div>
+                <div class="card-body">
+                 <div class="form-group has-success">
+                  <textarea id="form1" class="md-textarea form-control" rows="6"
+                  placeholder="This section must enumerate the following items: 
+                  
+                  1. Over-all goal of the proposed program/project/activity.
+                  2. The specific objectives that will be useful in achieving the goal (be sure they are SMART).
+                  3. What are the expected outcomes after implementing the program/project/activity?
+                  "
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Goals, Objectives, and Outcomes -->
+
+          <!-- Participants, Partners, and Beneficiaries -->
+          <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                    <h5 class="card-title"><strong>Participants, Partners, and Beneficiaries</strong></h5>
+                  </div>
+                </div>
+                <div class="card-body">
+                 <div class="form-group has-success">
+                  <textarea id="form1" class="md-textarea form-control" rows="6"
+                  placeholder="This part must explicitly provide the specific roles/responsibilities or deliverables as well as benefits of the following:
+                  
+                  1. Implementing team from USC/Unit.
+                  2. Internal and external partners.
+                  3. Beneficiaries and/or partner community/organization/institutions.
+                  "
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Participants, Partners, and Beneficiaries -->
+
+          <!-- Outline of Activites -->
+          <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                    <h5 class="card-title"><strong>Outline of Activites</strong></h5>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table activities_table">
+                      <thead>
+                        <th>
+                          Tentative date
+                        </th>
+                        <th>
+                          Activities
+                        </th>
+                        <th>
+                          Participants needed
+                        </th>
+                        <th>
+                          Person/s In-charge
+                        </th>
+                        <th>
+                          <button class='btn btn-success activities_add'> <span class="material-icons" style="font-size: 25px">add</span> Add Row </button>
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="form-group has-success">
+                              <input type='text' class='form-control'>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group has-success">
+                              <input type='text' class='form-control'>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group has-success">
+                              <input type='text' class='form-control'>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group has-success">
+                              <input type='text' class='form-control'>
+                            </div>
+                          </td>
+                          <td>                            
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End of Outline of Activities -->
+            
+            <!-- Budgetary Requirements -->
+          <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                    <h5 class="card-title"><strong>Budgetary Requirements</strong></h5>
+                  </div>
+                </div>
+                <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary" style='color:black !important;'>
+                      <th>
+                        Particulars
+                      </th>
+                      <th>
+                        Frequency
+                      </th>
+                      <th>
+                        Quantity
+                      </th>
+                      <th>
+                        Amount 
+                      </th>
+                      <th>
+                        Subtotal
+                      </th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td> A. Meals and Snacks </td>
+                        <td> </td> 
+                        <td> </td> 
+                        <td> </td>
+                        <td> <button class='btn btn-success'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> </td>
+                      </tr>
+                      <tr>
+                        <td> B. Transportation </td>
+                        <td> </td> 
+                        <td> </td> 
+                        <td> </td>
+                        <td> <button class='btn btn-success'> <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
+                      </tr>
+                      <tr>
+                        <td> C. Materials </td>
+                        <td> </td> 
+                        <td> </td> 
+                        <td> </td>
+                        <td> <button class='btn btn-success' > <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
+                      </tr>
+                      <tr>
+                        <td> </td>
+                        <td> </td> 
+                        <td> </td> 
+                        <td> <strong> Grand Total: </strong> </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Budgetary Requirements -->
+          
+          
+          <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
+          <script>
+            $('document').ready(function() {
+              //function to add new table row
+              $('.activities_add').click(function() {
+                  //long string because having escape characters won't make it work
+                  $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+              });
+            })
+            
+            //function to delete row containing selected button
+            function DeleteRow(o) {
+            var p = o.parentNode.parentNode;
+                p.parentNode.removeChild(p);                
+            }
+          </script>
+
+          <!-- Floating Action Buttons -->
+          <button class="btn btn-round btn-fab btn-danger" style="position: fixed; bottom: 26%; right: 4%;">
+            <i class="material-icons" style="font-size: 20px">clear</i>
+          </button>
+          <button class="btn btn-round btn-fab" style="position: fixed; bottom: 18%; right: 4%; background-color: grey;">
+            <i class="material-icons" style="font-size: 20px">archive</i>
+          </button>
+          <button class="btn btn-round btn-fab btn-success" style="position: fixed; bottom: 10%; right: 4%;">
+            <i class="material-icons" style="font-size: 20px">check</i>
+          </button>
+
+
+        </div>
+
           </div>
           
-        </div>
-        <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-success">{{ __('Save') }}</button>
-        </div>        
+        </div>     
       </div>
       <div class="card">
                 <div class="card-header card-header-success">
@@ -819,6 +896,7 @@
           </div>
     </div>
   </div>
+          </div>
 </div>
 @endsection
 
