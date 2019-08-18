@@ -278,7 +278,7 @@
                 <small>b. Deadline for 2nd Semester: last Friday of September</small>
               </div>  
               <div class="col-md-4 mt-4">
-                <button class="btn btn-success btn-lg">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></button>
+                <a class="btn btn-success btn-lg" href="{{ route('form1') }}">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></a>
               </div>  
             </div>
             <div class="row bg-light mt-2">
