@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'table', 'titlePage' => __('Table List')])
+@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 
 @section('content')
 <div class="content">
@@ -175,7 +175,7 @@
                           </td>
                           <td>
                             <div class="form-group has-success">
-                              <input type='text' class='form-control'>
+                              <input type='number' min='1' class='form-control'>
                             </div>
                           </td>
                           <td>
@@ -221,37 +221,73 @@
                       <th>
                         Subtotal
                       </th>
+                      <th>
+                      </th>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td> A. Meals and Snacks </td>
-                        <td> </td> 
-                        <td> </td> 
-                        <td> </td>
-                        <td> <button class='btn btn-success'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> </td>
-                      </tr>
-                      <tr>
-                        <td> B. Transportation </td>
-                        <td> </td> 
-                        <td> </td> 
-                        <td> </td>
-                        <td> <button class='btn btn-success'> <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
-                      </tr>
-                      <tr>
-                        <td> C. Materials </td>
-                        <td> </td> 
-                        <td> </td> 
-                        <td> </td>
-                        <td> <button class='btn btn-success' > <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
-                      </tr>
-                      <tr>
-                        <td> </td>
-                        <td> </td> 
-                        <td> </td> 
-                        <td> <strong> Grand Total: </strong> </td>
-                        <td> </td>
-                      </tr>
+                    <thead class=" text-primary" style='color:black !important;'>
+                      <th>
+                        A. Meals / Snacks 
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th> <button class='btn btn-success meals-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
+                      </th>
+                    </thead>
+                    <tbody class="meals-row">
                     </tbody>
+                    <thead class=" text-primary" style='color:black !important;'>
+                      <th>
+                        B. Transportation
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th> <button class='btn btn-success meals-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
+                      </th>
+                    </thead>
+                    <tbody class="transportation-row">
+                    </tbody>
+                    <thead class=" text-primary" style='color:black !important;'>
+                      <th>
+                        C. Materials
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th> <button class='btn btn-success meals-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
+                      </th>
+                    </thead>
+                    <tbody class="materials-row">
+                    </tbody>
+                    <thead class=" text-primary" style='color:black !important;'>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th><strong> Grand Total: </strong>
+                      </th>
+                      <th>
+                      </th>
+                      <th></th>
+                    </thead>
                   </table>
                 </div>
               </div>
@@ -266,29 +302,42 @@
               //function to add new table row
               $('.activities_add').click(function() {
                   //long string because having escape characters won't make it work
-                  $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+                  $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
               });
+              //function to add Meals and Snacks row
+              $('.meals-add').click(function() {
+                  //long string because having escape characters won't make it work
+                  $(".meals-row").append(
+                    "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
+                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-frequency' onkeyup='foodTotal();'></div></td>" +
+                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-quantity' onkeyup='foodTotal();'></div></td>" +
+                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-amount' onkeyup='foodTotal();'></div></td>" +
+                    "<td><div class='form-group has-success'><input type='number' min='1' readonly class='form-control food-total'></div></td>" +
+                    "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+              });
+              
             })
             
             //function to delete row containing selected button
-            function DeleteRow(o) {
-            var p = o.parentNode.parentNode;
-                p.parentNode.removeChild(p);                
+            function DeleteRow(o)
+            {
+              var p = o.parentNode.parentNode;
+              p.parentNode.removeChild(p);                
+            }
+
+            function foodTotal()
+            {
+              var frequency = $('.food-frequency').val();
+              var quantity = $('.food-quantity').val();
+              var amount = $('.food-amount').val();
+              $('.food-total').val(frequency*quantity*amount);
             }
           </script>
 
           <!-- Floating Action Buttons -->
-          <button class="btn btn-round btn-fab btn-danger" style="position: fixed; bottom: 26%; right: 4%;">
-            <i class="material-icons" style="font-size: 20px">clear</i>
+          <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%; background-color: grey;" rel="tooltip" data-placement="left" title="Save as Draft">
+            <i class="material-icons" style="font-size: 35px">archive</i>
           </button>
-          <button class="btn btn-round btn-fab" style="position: fixed; bottom: 18%; right: 4%; background-color: grey;">
-            <i class="material-icons" style="font-size: 20px">archive</i>
-          </button>
-          <button class="btn btn-round btn-fab btn-success" style="position: fixed; bottom: 10%; right: 4%;">
-            <i class="material-icons" style="font-size: 20px">check</i>
-          </button>
-
-
         </div>
 
           </div>

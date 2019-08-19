@@ -73,7 +73,26 @@
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
                                   </a>
-                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title=""
+                                  onclick="Swal.fire({
+                                            title: 'Are you sure?',
+                                            text: 'This user account will be permanently deleted.',
+                                            type: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#d33',
+                                            cancelButtonColor: '#5cb85c',
+                                            confirmButtonText: 'Delete'
+                                            }).then((result) => {
+                                              if (result.value) {
+                                                Swal.fire(
+                                                  'Deleted!',
+                                                  'Your file has been deleted.',
+                                                  'success'
+                                                );                                                
+                                                this.parentElement.submit();
+                                               }
+                                             })
+                                    ">
                                       <i class="material-icons">close</i>
                                       <div class="ripple-container"></div>
                                   </button>
@@ -89,7 +108,7 @@
                       @endforeach
                     </tbody>
                   </table>
-                  <a href="{{ route('user.create') }}" class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;">
+                  <a href="{{ route('user.create') }}" class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;" rel="tooltip" data-placement="left" title="Create New User">
                     <i class="material-icons">person_add</i>
                   </a>
                 </div>
