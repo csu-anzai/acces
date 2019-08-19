@@ -73,7 +73,26 @@
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
                                   </a>
-                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title=""
+                                  onclick="Swal.fire({
+                                            title: 'Are you sure?',
+                                            text: 'This user account will be permanently deleted.',
+                                            type: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#d33',
+                                            cancelButtonColor: '#5cb85c',
+                                            confirmButtonText: 'Delete'
+                                            }).then((result) => {
+                                              if (result.value) {
+                                                this.parentElement.submit();
+                                                Swal.fire(
+                                                'Deleted!',
+                                                'Your file has been deleted.',
+                                                'success'
+                                              );
+                                            }
+                                          })
+                                    ">
                                       <i class="material-icons">close</i>
                                       <div class="ripple-container"></div>
                                   </button>

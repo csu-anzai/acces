@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'proposals', 'titlePage' => __('Proposals')])
+@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 
 @section('content')
 <div class="content">
@@ -221,37 +221,73 @@
                       <th>
                         Subtotal
                       </th>
+                      <th>
+                      </th>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td> A. Meals and Snacks </td>
-                        <td> </td> 
-                        <td> </td> 
-                        <td> </td>
-                        <td> <button class='btn btn-success'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> </td>
-                      </tr>
-                      <tr>
-                        <td> B. Transportation </td>
-                        <td> </td> 
-                        <td> </td> 
-                        <td> </td>
-                        <td> <button class='btn btn-success'> <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
-                      </tr>
-                      <tr>
-                        <td> C. Materials </td>
-                        <td> </td> 
-                        <td> </td> 
-                        <td> </td>
-                        <td> <button class='btn btn-success' > <span class="material-icons" style="font-size: 25px">add</span> Add row </button> </td>
-                      </tr>
-                      <tr>
-                        <td> </td>
-                        <td> </td> 
-                        <td> </td> 
-                        <td> <strong> Grand Total: </strong> </td>
-                        <td> </td>
-                      </tr>
+                    <thead class=" text-primary" style='color:black !important;'>
+                      <th>
+                        A. Meals / Snacks 
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th> <button class='btn btn-success meals-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
+                      </th>
+                    </thead>
+                    <tbody class="meals-row">
                     </tbody>
+                    <thead class=" text-primary" style='color:black !important;'>
+                      <th>
+                        B. Transportation
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th> <button class='btn btn-success meals-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
+                      </th>
+                    </thead>
+                    <tbody class="transportation-row">
+                    </tbody>
+                    <thead class=" text-primary" style='color:black !important;'>
+                      <th>
+                        C. Materials
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th> <button class='btn btn-success meals-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
+                      </th>
+                    </thead>
+                    <tbody class="materials-row">
+                    </tbody>
+                    <thead class=" text-primary" style='color:black !important;'>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th>
+                      </th>
+                      <th><strong> Grand Total: </strong>
+                      </th>
+                      <th>
+                      </th>
+                      <th></th>
+                    </thead>
                   </table>
                 </div>
               </div>
@@ -267,6 +303,11 @@
               $('.activities_add').click(function() {
                   //long string because having escape characters won't make it work
                   $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+              });
+              //function to add Meals and Snacks row
+              $('.meals-add').click(function() {
+                  //long string because having escape characters won't make it work
+                  $(".meals-row").append("<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
               });
             })
             
