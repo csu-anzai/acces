@@ -4,11 +4,13 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row" style="margin-top:-3%">
+
+    <!-- Form A -->
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-success">
             <h3 class="card-title" style='font-family: "Roboto Black";'>Form A</h3>
-            <p class="card-category"> {{ __('CES Program/Project/Activity Proposal') }}</p>
+            <p class="card-category"> {{ __('CES Program/Project/Activity Proposal (Concept Note)') }}</p>
           </div>
         <div class="card-body mt-4">
           <div class="row">
@@ -344,24 +346,158 @@
           
         </div>     
       </div>
+      
+
+      <!-- Form B -->
       <div class="card">
                 <div class="card-header card-header-success">
-                  <h4 class="card-title " style="font-size:40px;">{{ __('Form B') }}</h4>
-                  <p class="card-category"> {{ __('Filling Out Form B CES Program/Project/Activity Proposal (Details)') }}</p>
+                <h3 class="card-title" style='font-family: "Roboto Black";'>Form B</h3>
+                <p class="card-category"> {{ __('CES Program/Project/Activity Proposal (Details)') }}</p>
                 </div>
         <div class="card-body">
-          @if (session('status'))
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="alert alert-success">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="material-icons">close</i>
-                  </button>
-                    <span>{{ session('status') }}</span>
+
+         <!-- Program/Project/Activity Profile -->
+         <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-success">
+                  <h5 class="card-title"><strong>Program/Project/Activity Profile</strong></h5>
+                </div>
+                <div class="card-body">
+                
+                  <!-- College/School/Department/Unit Responsible -->
+                    <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header card-header-text card-header-success">
+                            <div class="card-text">
+                              <h5 class="card-title"><strong>A. College/School/Department/Unit Responsible</strong></h5>
+                              <p class="card-category"> {{ __('Please select all that apply.') }}</p>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <!-- dept check buttons table -->
+                            <table class="table">                   
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cesoffice">
+                                        <label class="custom-control-label" for="cesoffice" style="color:#484a49 !important; font:Roboto !important;">CES Office</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="sas">
+                                        <label class="custom-control-label" for="sas" style="color:#484a49 !important; font:Roboto !important;">School of Arts and Sciences</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="safad">
+                                        <label class="custom-control-label" for="safad" style="color:#484a49 !important; font:Roboto !important;">School of Architecture, Fine Arts and Design</label>
+                                    </div>
+                                  </td>      
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="sed">
+                                        <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="soe">
+                                        <label class="custom-control-label" for="soe" style="color:#484a49 !important; font:Roboto !important;">School of Engineering</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="sbe">
+                                        <label class="custom-control-label" for="sbe" style="color:#484a49 !important; font:Roboto !important;">School of Business and Economics</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="shcp">
+                                        <label class="custom-control-label" for="shcp" style="color:#484a49 !important; font:Roboto !important;">School of Health Care Profession</label>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="slg">
+                                        <label class="custom-control-label" for="slg" style="color:#484a49 !important; font:Roboto !important;">School of Law and Governance</label>
+                                    </div>
+                                  </td>      
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="supp">
+                                        <label class="custom-control-label" for="supp" style="color:#484a49 !important; font:Roboto !important;">Support Unit</label>
+                                    </div>
+                                  </td>
+                                </tr>                            
+                              </tbody>
+                             </table> 
+                  <!-- end of check buttons table -->  
+                        </div>
+                      </div>
+                    </div>
+                <!-- End of College/School/Department/Unit Responsible -->
+
+                <!-- Time Frame -->
+                <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header card-header-text card-header-success">
+                            <div class="card-text">
+                              <h5 class="card-title"><strong>B. Time Frame</strong></h5>
+                              <p class="card-category"> {{ __('Please select all that apply.') }}</p>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Short Term</th>
+                                  <th>Medium Term</th>
+                                  <th>Long Term</th>
+                                </tr>                  
+                              </thead>
+                              <tr>
+                                <td>
+                                
+                                </td>
+                              </tr>                                
+                            </div>
+                            </table>
+                        </div>
+                      </div>
+                    </div>
+                <!-- End of Time Frame -->
+
+                <!-- Time Frame -->
+                <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header card-header-text card-header-success">
+                            <div class="card-text">
+                              <h5 class="card-title"><strong>B. Time Frame</strong></h5>
+                              <p class="card-category"> {{ __('Please select all that apply.') }}</p>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            
+                        </div>
+                      </div>
+                    </div>
+                <!-- End of Time Frame -->
+
                 </div>
               </div>
             </div>
-          @endif
+          </div>
+          <!-- End of Program/Project/Activity Profile -->
+          
+    </div>
           
           <!-- start of textareas and other things--> 
           <!-- first navbar -->
@@ -943,7 +1079,6 @@
                   
             </div>
           </div>
-    </div>
   </div>
           </div>
 </div>
