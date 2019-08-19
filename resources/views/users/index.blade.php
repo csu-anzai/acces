@@ -89,7 +89,7 @@
                       @endforeach
                     </tbody>
                   </table>
-                  <a href="{{ route('user.create') }}" class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;">
+                  <a href="{{ route('user.create') }}" class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;" rel="tooltip" data-placement="left" title="Create New User">
                     <i class="material-icons">person_add</i>
                   </a>
                 </div>

@@ -278,17 +278,9 @@
           </script>
 
           <!-- Floating Action Buttons -->
-          <button class="btn btn-round btn-fab btn-danger" style="position: fixed; bottom: 26%; right: 4%;">
-            <i class="material-icons" style="font-size: 20px">clear</i>
+          <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%; background-color: grey;" rel="tooltip" data-placement="left" title="Save as Draft">
+            <i class="material-icons" style="font-size: 35px">archive</i>
           </button>
-          <button class="btn btn-round btn-fab" style="position: fixed; bottom: 18%; right: 4%; background-color: grey;">
-            <i class="material-icons" style="font-size: 20px">archive</i>
-          </button>
-          <button class="btn btn-round btn-fab btn-success" style="position: fixed; bottom: 10%; right: 4%;">
-            <i class="material-icons" style="font-size: 20px">check</i>
-          </button>
-
-
         </div>
 
           </div>

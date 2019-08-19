@@ -247,7 +247,7 @@
                   </tbody>
                 </table>
               </div>
-              <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal">
+              <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal" rel="tooltip" data-placement="left" title="Create New Proposal">
                 <i class="material-icons" style="font-size: 35px">add</i>
               </button>
             </div>
