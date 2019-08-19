@@ -247,7 +247,7 @@
                   </tbody>
                 </table>
               </div>
-              <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal">
+              <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal" rel="tooltip" data-placement="left" title="Create New Proposal">
                 <i class="material-icons" style="font-size: 35px">add</i>
               </button>
             </div>
@@ -266,7 +266,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12 text-center mb-4">
-                <h3><strong>Create Proposal</strong></h3>
+                <h3 style='font-family: "Roboto Black"; margin-top: -3%'><strong>Create Proposal</strong></h3>
                 <h4>Types of CES Program/Project/Activity Proposals</h4>
               </div>              
             </div>
@@ -278,7 +278,7 @@
                 <small>b. Deadline for 2nd Semester: last Friday of September</small>
               </div>  
               <div class="col-md-4 mt-4">
-                <button class="btn btn-success btn-lg">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></button>
+                <a class="btn btn-success btn-lg" href="{{ route('form1') }}">Proceed <i class="material-icons" style="font-size: 35px">keyboard_arrow_right</i></a>
               </div>  
             </div>
             <div class="row bg-light mt-2">
