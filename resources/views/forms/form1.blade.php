@@ -255,10 +255,10 @@
                       </th>
                       <th>
                       </th>
-                      <th> <button class='btn btn-success meals-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
+                      <th> <button class='btn btn-success transportations-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
                       </th>
                     </thead>
-                    <tbody class="transportation-row">
+                    <tbody class="transportations-row">
                     </tbody>
                     <thead class=" text-primary" style='color:black !important;'>
                       <th>
@@ -272,7 +272,7 @@
                       </th>
                       <th>
                       </th>
-                      <th> <button class='btn btn-success meals-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
+                      <th> <button class='btn btn-success materials-add'>  <span class="material-icons" style="font-size: 25px">add</span>Add row </button> 
                       </th>
                     </thead>
                     <tbody class="materials-row">
@@ -286,7 +286,7 @@
                       </th>
                       <th><strong> Grand Total: </strong>
                       </th>
-                      <th>
+                      <th id="grand-total">
                       </th>
                       <th></th>
                     </thead>
@@ -311,29 +311,95 @@
                   //long string because having escape characters won't make it work
                   $(".meals-row").append(
                     "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
-                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-frequency' onkeyup='foodTotal();'></div></td>" +
-                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-quantity' onkeyup='foodTotal();'></div></td>" +
-                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-amount' onkeyup='foodTotal();'></div></td>" +
-                    "<td><div class='form-group has-success'><input type='number' min='1' readonly class='form-control food-total'></div></td>" +
+                    "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
+                    "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
+                    "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
+                    "<td class='data-total'><div class='form-group has-success'><input type='text' min='1' readonly class='data-total-input'></div></td>" +
                     "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
               });
-              
+
+              //function to add Transportation row
+              $('.transportations-add').click(function() {
+                  //long string because having escape characters won't make it work
+                  $(".transportations-row").append(
+                    "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
+                    "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
+                    "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
+                    "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
+                    "<td class='data-total'><div class='form-group has-success'><input type='text' min='1' readonly class='data-total-input'></div></td>" +
+                    "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+              });
+
+              //function to add Transportation row
+              $('.materials-add').click(function() {
+                  //long string because having escape characters won't make it work
+                  $(".materials-row").append(
+                    "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
+                    "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
+                    "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
+                    "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
+                    "<td class='data-total'><div class='form-group has-success'><input type='text' min='1' readonly class='data-total-input'></div></td>" +
+                    "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+              });
             })
             
+            function commaSeparateNumber(val){
+              while (/(\d+)(\d{3})/.test(val.toString())){
+                val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+              }
+              return val;
+            }
+
+            function calcuGrandTotal(){
+              var grand = 0;
+
+              $('.data-total-input').each(function(){
+                grand += parseFloat($(this).val().replace(/\,/g, ''));
+              });
+
+              var splitString = grand.toString().split('.');
+              var decimal = splitString[1];
+
+              if(decimal === undefined){
+                decimal = "00"
+              }
+              console.log("grandTotal: " + grand);
+              $('#grand-total').html(commaSeparateNumber(splitString[0]) + '.' + decimal.substring(0,2));
+            }
+
             //function to delete row containing selected button
             function DeleteRow(o)
             {
               var p = o.parentNode.parentNode;
-              p.parentNode.removeChild(p);                
+              p.parentNode.removeChild(p);
+              
+              calcuGrandTotal();
             }
 
-            function foodTotal()
-            {
-              var frequency = $('.food-frequency').val();
-              var quantity = $('.food-quantity').val();
-              var amount = $('.food-amount').val();
-              $('.food-total').val(frequency*quantity*amount);
-            }
+            $(document).on('keyup', 'input.data-input', function(){
+              //Subtotal
+              var siblings = $(this).parent().parent().siblings('.data-table');
+              var total = $(this).val();
+
+              siblings.each(function(){
+                total *= $(this).children(':first').children(':first').val();
+              });
+
+              var splitString = total.toString().split('.');
+
+              var decimal = splitString[1];
+
+              if(decimal === undefined){
+                decimal = "00"
+              }
+
+              $(this).parent().parent().
+                siblings('.data-total:first').children(':first')
+                .children(':first').val(commaSeparateNumber(splitString[0]) + '.' + decimal.substring(0,2));     
+
+              calcuGrandTotal();
+            });
+
           </script>
 
           <!-- Floating Action Buttons -->
