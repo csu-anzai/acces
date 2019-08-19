@@ -400,6 +400,14 @@
               calcuGrandTotal();
             });
 
+            //time frame toggle
+            $(document).ready(function(){
+              $(".selectdiv").hide();
+              $(".selecttoggle").click(function(){
+                $(this).parent().next().toggle();
+            });
+            });
+
           </script>
 
           <!-- Floating Action Buttons -->
@@ -452,54 +460,94 @@
                                   </td>
                                   <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="sas">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="sas">
                                         <label class="custom-control-label" for="sas" style="color:#484a49 !important; font:Roboto !important;">School of Arts and Sciences</label>
                                     </div>
+                                    <div class="form-group selectdiv">
+                                      <select class="browser-default custom-select">
+                                        <option selected value="Program Based">Select Department</option>
+                                      </select>
+                                    </div>
                                   </td>
                                   <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="safad">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="safad">
                                         <label class="custom-control-label" for="safad" style="color:#484a49 !important; font:Roboto !important;">School of Architecture, Fine Arts and Design</label>
                                     </div>
+                                    <div class="form-group selectdiv">
+                                      <select class="browser-default custom-select">
+                                        <option selected value="Program Based">Select Department</option>
+                                      </select>
+                                    </div>
                                   </td>      
                                 </tr>
                                 <tr>
                                   <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="sed">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="sed">
                                         <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
                                     </div>
-                                  </td>
-                                  <td>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="soe">
-                                        <label class="custom-control-label" for="soe" style="color:#484a49 !important; font:Roboto !important;">School of Engineering</label>
+                                    <div class="form-group selectdiv">
+                                      <select class="browser-default custom-select">
+                                        <option selected value="Program Based">Select Department</option>
+                                      </select>
                                     </div>
                                   </td>
                                   <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="sbe">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="soe">
+                                        <label class="custom-control-label" for="soe" style="color:#484a49 !important; font:Roboto !important;">School of Engineering</label>
+                                    </div>
+                                    <div class="form-group selectdiv">
+                                      <select class="browser-default custom-select">
+                                        <option selected value="Program Based">Select Department</option>
+                                      </select>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="sbe">
                                         <label class="custom-control-label" for="sbe" style="color:#484a49 !important; font:Roboto !important;">School of Business and Economics</label>
+                                    </div>
+                                    <div class="form-group selectdiv">
+                                      <select class="browser-default custom-select">
+                                        <option selected value="Program Based">Select Department</option>
+                                      </select>
                                     </div>
                                   </td>
                                 </tr>
                                 <tr>
                                   <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="shcp">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="shcp">
                                         <label class="custom-control-label" for="shcp" style="color:#484a49 !important; font:Roboto !important;">School of Health Care Profession</label>
+                                    </div>
+                                    <div class="form-group selectdiv">
+                                      <select class="browser-default custom-select">
+                                        <option selected value="Program Based">Select Department</option>
+                                      </select>
                                     </div>
                                   </td>
                                   <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="slg">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="slg">
                                         <label class="custom-control-label" for="slg" style="color:#484a49 !important; font:Roboto !important;">School of Law and Governance</label>
+                                    </div>
+                                    <div class="form-group selectdiv">
+                                      <select class="browser-default custom-select">
+                                        <option selected value="Program Based">Select Department</option>
+                                      </select>
                                     </div>
                                   </td>      
                                   <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="supp">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="supp">
                                         <label class="custom-control-label" for="supp" style="color:#484a49 !important; font:Roboto !important;">Support Unit</label>
+                                    </div>
+                                    <div class="form-group selectdiv">
+                                      <select class="browser-default custom-select">
+                                        <option selected value="Program Based">Select Unit</option>
+                                      </select>
                                     </div>
                                   </td>
                                 </tr>                            
