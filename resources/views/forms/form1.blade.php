@@ -309,10 +309,10 @@
                   //long string because having escape characters won't make it work
                   $(".meals-row").append(
                     "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
-                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-frequency' onkeyup='foodTotal();'></div></td>" +
-                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-quantity' onkeyup='foodTotal();'></div></td>" +
-                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-amount' onkeyup='foodTotal();'></div></td>" +
-                    "<td><div class='form-group has-success'><input type='number' min='1' readonly class='form-control food-total'></div></td>" +
+                    "<td class='data-food'><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td>" +
+                    "<td class='data-food'><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td>" +
+                    "<td class='data-food'><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td>" +
+                    "<td class='data-food-total'><div class='form-group has-success'><input type='number' min='1' readonly class='form-control'></div></td>" +
                     "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
               });
               
@@ -325,13 +325,17 @@
               p.parentNode.removeChild(p);                
             }
 
-            function foodTotal()
-            {
-              var frequency = $('.food-frequency').val();
-              var quantity = $('.food-quantity').val();
-              var amount = $('.food-amount').val();
-              $('.food-total').val(frequency*quantity*amount);
-            }
+            $(document).on('keyup', 'input.food-input', function(){
+              var siblings = $(this).parent().parent().siblings('.data-food');
+              var total = $(this).val();
+
+              siblings.each(function(){
+                total *= $(this).children(':first').children(':first').val();
+              });
+
+              $(this).parent().parent().siblings('.data-food-total:first').children(':first').children(':first').val(total);     
+            });
+
           </script>
 
           <!-- Floating Action Buttons -->
