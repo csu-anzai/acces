@@ -84,14 +84,14 @@
                                             confirmButtonText: 'Delete'
                                             }).then((result) => {
                                               if (result.value) {
-                                                this.parentElement.submit();
                                                 Swal.fire(
-                                                'Deleted!',
-                                                'Your file has been deleted.',
-                                                'success'
-                                              );
-                                            }
-                                          })
+                                                  'Deleted!',
+                                                  'Your file has been deleted.',
+                                                  'success'
+                                                );                                                
+                                                this.parentElement.submit();
+                                               }
+                                             })
                                     ">
                                       <i class="material-icons">close</i>
                                       <div class="ripple-container"></div>

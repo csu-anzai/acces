@@ -175,7 +175,7 @@
                           </td>
                           <td>
                             <div class="form-group has-success">
-                              <input type='text' class='form-control'>
+                              <input type='number' min='1' class='form-control'>
                             </div>
                           </td>
                           <td>
@@ -302,20 +302,35 @@
               //function to add new table row
               $('.activities_add').click(function() {
                   //long string because having escape characters won't make it work
-                  $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+                  $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
               });
               //function to add Meals and Snacks row
               $('.meals-add').click(function() {
                   //long string because having escape characters won't make it work
-                  $(".meals-row").append("<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+                  $(".meals-row").append(
+                    "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
+                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-frequency' onkeyup='foodTotal();'></div></td>" +
+                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-quantity' onkeyup='foodTotal();'></div></td>" +
+                    "<td><div class='form-group has-success'><input type='number' min='1' class='form-control food-amount' onkeyup='foodTotal();'></div></td>" +
+                    "<td><div class='form-group has-success'><input type='number' min='1' readonly class='form-control food-total'></div></td>" +
+                    "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
               });
               
             })
             
             //function to delete row containing selected button
-            function DeleteRow(o) {
-            var p = o.parentNode.parentNode;
-                p.parentNode.removeChild(p);                
+            function DeleteRow(o)
+            {
+              var p = o.parentNode.parentNode;
+              p.parentNode.removeChild(p);                
+            }
+
+            function foodTotal()
+            {
+              var frequency = $('.food-frequency').val();
+              var quantity = $('.food-quantity').val();
+              var amount = $('.food-amount').val();
+              $('.food-total').val(frequency*quantity*amount);
             }
           </script>
 
