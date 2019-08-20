@@ -10,21 +10,21 @@
                      <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                            <a class="nav-link active" href="#form-a" data-toggle="tab">
-                              <h3 class="card-title" style='font-family: "Roboto Black";'>1. Form A</h3>
+                              <h3 class="card-title" style='font-family: "Roboto Black";'><i class="material-icons" style="font-size: 35px">looks_one</i> Form A</h3>
                               <p class="card-category"> {{ __('CES Program/Project/Activity Proposal (Concept Note)') }}</p>
                               <div class="ripple-container"></div>
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="#form-b" data-toggle="tab">
-                              <h3 class="card-title" style='font-family: "Roboto Black";'>2. Form B</h3>
+                           <a class="nav-link" id="formb" href="#form-b" data-toggle="tab">
+                              <h3 class="card-title" style='font-family: "Roboto Black";'><i class="material-icons" style="font-size: 35px">looks_two</i> Form B</h3>
                               <p class="card-category"> {{ __('CES Program/Project/Activity Proposal (Details)') }}</p>
                               <div class="ripple-container"></div>
                            </a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="#form-review" data-toggle="tab">
-                              <h3 class="card-title" style='font-family: "Roboto Black";'>3. Review</h3>
+                              <h3 class="card-title" style='font-family: "Roboto Black";'><i class="material-icons" style="font-size: 35px">looks_3</i> Review</h3>
                               <p class="card-category"> {{ __('Review and submit the proposal') }}</p>
                               <div class="ripple-container"></div>
                            </a>
@@ -185,7 +185,7 @@
                                        <tr>
                                           <td>
                                              <div class="form-group has-success">
-                                                <input type='text' class='form-control'>
+                                                <input type='date' class='form-control'>
                                              </div>
                                           </td>
                                           <td>
@@ -313,6 +313,10 @@
                         </div>
                      </div>
                      <!-- End of Budgetary Requirements -->
+                     <button class='btn btn-success float-right' style="margin-right:2%" id="btnNext">
+                        <strong>PROCEED TO FORM B </strong>
+                        <span class="material-icons" style="font-size:25px;">chevron_right</span>
+                     </button>
                      <!-- END OF FORM A -->
                   </div>
                   <div class="tab-pane" id="form-b">
@@ -437,7 +441,7 @@
          </div>
       </div>
       <!-- Floating Action Buttons -->
-      <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%; background-color: grey;" rel="tooltip" data-placement="left" title="Save as Draft">
+      <button class="btn btn-default btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;" rel="tooltip" data-placement="left" title="Save as Draft">
       <i class="material-icons" style="font-size: 35px">archive</i>
       </button>
       <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
@@ -446,7 +450,7 @@
            //function to add new table row
            $('.activities_add').click(function() {
                //long string because having escape characters won't make it work
-               $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+               $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='date' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
            //function to add Meals and Snacks row
            $('.meals-add').click(function() {
@@ -505,7 +509,6 @@
            if(decimal === undefined){
              decimal = "00"
            }
-           console.log("grandTotal: " + grand);
            $('#grand-total').html(commaSeparateNumber(splitString[0]) + '.' + decimal.substring(0,2));
          }
          
@@ -541,11 +544,15 @@
          
            calcuGrandTotal();
          });
-         
+
+         $('#btnNext').click(function(){
+            $('#formb').trigger('click');
+            console.log("good!");
+            // window.scrollTo(0, 0);
+         });
+
       </script>
    </div>
-</div>
-</div>
 </div>
 </div>
 @endsection
