@@ -2,14 +2,14 @@
 @section('content')
 <div class="content">
    <div class="container-fluid">
-      <div class="row" style="margin-top:-3%">
+      <div class="row" style="margin-top:-3%" id="topPage">
          <div class="card">
             <div class="card-header card-header-tabs card-header-success">
                <div class="nav-tabs-navigation">
                   <div class="nav-tabs-wrapper">
                      <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
-                           <a class="nav-link active" href="#form-a" data-toggle="tab">
+                           <a class="nav-link active" id="forma" href="#form-a" data-toggle="tab">
                               <h3 class="card-title" style='font-family: "Roboto Black";'><i class="material-icons" style="font-size: 35px">looks_one</i> Form A</h3>
                               <p class="card-category"> {{ __('CES Program/Project/Activity Proposal (Concept Note)') }}</p>
                               <div class="ripple-container"></div>
@@ -23,7 +23,7 @@
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="#form-review" data-toggle="tab">
+                           <a class="nav-link" id="formreview" href="#form-review" data-toggle="tab">
                               <h3 class="card-title" style='font-family: "Roboto Black";'><i class="material-icons" style="font-size: 35px">looks_3</i> Review</h3>
                               <p class="card-category"> {{ __('Review and submit the proposal') }}</p>
                               <div class="ripple-container"></div>
@@ -313,6 +313,10 @@
                         </div>
                      </div>
                      <!-- End of Budgetary Requirements -->
+                     <button class='btn btn-default float-middle' style="margin-left:40%"  onclick="goTop();">
+                        <strong>BACK TO TOP</strong>
+                     </button>
+
                      <button class='btn btn-success float-right' style="margin-right:2%" id="btnNext">
                         <strong>PROCEED TO FORM B </strong>
                         <span class="material-icons" style="font-size:25px;">chevron_right</span>
@@ -433,6 +437,19 @@
                   <!-- End of Time Frame -->
                   <!-- End of Program/Project/Activity Profile -->
                   <!-- END OF FORM B -->
+                  <button class='btn btn-success' id="btnPrev">
+                     <span class="material-icons" style="font-size:25px;">chevron_left</span>
+                     <strong> GO BACK TO FORM A</strong>
+                  </button>
+
+                  <button class='btn btn-default float-middle' style="margin-left:22%" onclick="goTop();">
+                     <strong>BACK TO TOP</strong>
+                  </button>
+
+                  <button class='btn btn-success float-right' id="btnReview">
+                     <strong>REVIEW DETAILS AND SUBMIT </strong>
+                     <span class="material-icons" style="font-size:25px;">chevron_right</span>
+                  </button>
                </div>
                <div class="tab-pane" id="form-review">
                   <h1>basin form C diay ni</h1>
@@ -546,10 +563,23 @@
          });
 
          $('#btnNext').click(function(){
-            $('#formb').trigger('click');
-            console.log("good!");
-            // window.scrollTo(0, 0);
+            $('#formb').trigger('click');        
+            document.location.href = "#topPage";
          });
+
+         $('#btnPrev').click(function(){
+            $('#forma').trigger('click');        
+            document.location.href = "#topPage";
+         });
+
+         $('#btnReview').click(function(){
+            $('#formreview').trigger('click');        
+            document.location.href = "#topPage";
+         });
+
+         function goTop(){
+            document.location.href = "#topPage";
+         }
 
       </script>
    </div>
