@@ -18,7 +18,7 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <div class="alert alert-success ml-3" role="alert">
+      <div class="alert alert-{{ $activePage == 'profile' ? 'warning' : 'success' }} ml-3" role="alert">
         <a href="{{ route('profile.edit') }}" class="alert-link">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a><br>
         {{$result->name}}
       </div>
