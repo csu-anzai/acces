@@ -1346,7 +1346,7 @@
                         <div class="card">
                             <div class="card-header card-header-text card-header-success">
                               <div class="card-text">
-                                <h5 class="card-title"><strong>B. Productivity Dimension: please check/tick the appropriate item if the P/P/A involves technology:</strong></h5>
+                                <h5 class="card-title"><strong>C. Economic Dimension: please check/tick the appropriate item if the P/P/A has economic implications:</strong></h5>
                                 <p class="card-category"> {{ __('Please check the appropriate item.') }}</p>
                               </div>
                             </div> 
