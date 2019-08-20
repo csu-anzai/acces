@@ -750,10 +750,105 @@
                             </table>
                             <!--end of nature of the program table-->
                           </div>
+                          
                       </div>
+                      
                 </div>
+                <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header card-header-text card-header-success">
+                            <div class="card-text">
+                              <h5 class="card-title"><strong>E. Program Area </strong></h5>
+                              <p class="card-category"> {{ __('Please check the appropriate item.') }}</p>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                          <!-- program area table-->
+                            <table class="table">                   
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="productivity">
+                                        <label class="custom-control-label" for="productivity" style="color:#484a49 !important; font:Roboto !important;">Productivity-Oriented Initiatives</label>
+                                    </div>
+                                  </td>
+                                  <td>   
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="healthAdvocacy">
+                                        <label class="custom-control-label" for="healthAdvocacy" style="color:#484a49 !important; font:Roboto !important;">Health Advocacy and Wellness Promotion</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="literacyVal">
+                                        <label class="custom-control-label" for="literacyVal" style="color:#484a49 !important; font:Roboto !important;">Literacy, Values Formation and Life-long Learning</label>
+                                    </div>
+                                  </td>
+                                  <td>   
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="buildingChristianCom">
+                                        <label class="custom-control-label" for="buildingChristianCom" style="color:#484a49 !important; font:Roboto !important;">Building Christian Communities</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="socialWelfare">
+                                        <label class="custom-control-label" for="socialWelfare" style="color:#484a49 !important; font:Roboto !important;">Social Welfare Services</label>
+                                    </div>
+                                  </td>
+                                  <td>   
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="informationSharing">
+                                        <label class="custom-control-label" for="informationSharing" style="color:#484a49 !important; font:Roboto !important;">Information Sharing</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="environmental">
+                                        <label class="custom-control-label" for="environmental" style="color:#484a49 !important; font:Roboto !important;">Environmental Sustainability</label>
+                                    </div>
+                                  </td>
+                                  <td>   
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="heritageConservation">
+                                        <label class="custom-control-label" for="heritageConservation" style="color:#484a49 !important; font:Roboto !important;">Heritage Conservation</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="issue">
+                                        <label class="custom-control-label" for="issue" style="color:#484a49 !important; font:Roboto !important;">Issue Advocacy and Rights Promotion</label>
+                                    </div>
+                                  </td>
+                                  <td>   
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="ruralandurbandevelopment">
+                                        <label class="custom-control-label" for="ruralandurbandevelopment" style="color:#484a49 !important; font:Roboto !important;">Rural and Urban Development</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <!--end of nature of the program table-->
+                          </div>
+                          
             </div>
+
+            
+
           </div>
+
+          
+
           <!-- End of Program/Project/Activity Profile -->
 
 
@@ -965,76 +1060,76 @@
                 </div>
                 <!-- end of mini navbar C -->
                 <!-- mini navbar D--> 
-                <div style="width:95%; margin:auto;">
-                  <nav class="navbar navbar-light" style="background-color: #dfede3 !important; margin:auto;">
-                  <span class="navbar-brand mb-0 h1">D. Nature of the Program/Project/Activity (please check/tick the appropriate item) </span>
-                  </nav>
-                  <!--nature of program table-->
-                  <table class="table">                   
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="trainingprog">
-                              <label class="custom-control-label" for="trainingprog" style="color:#484a49 !important; font:Roboto !important;">Training Program (non-degree and non-credited courses offered to the community)</label>
-                          </div>
-                        </td>
-                        <td>   
-                          <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="commout">
-                              <label class="custom-control-label" for="commout" style="color:#484a49 !important; font:Roboto !important;">Community Outreach (community-based and charity driven social services)</label>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>  
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="techas">
-                              <label class="custom-control-label" for="techas" style="color:#484a49 !important; font:Roboto !important;">Technical Assistance (for agencies, organization, civic groups)</label>
-                          </div>
-                        </td>
-                        <td>   
-                          <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="techtrans">
-                              <label class="custom-control-label" for="techtrans" style="color:#484a49 !important; font:Roboto !important;">Technology transfer and utilization (process of circulating, promoting and marketing or technologies to potential users)</label>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>  
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="advserv">
-                              <label class="custom-control-label" for="advserv" style="color:#484a49 !important; font:Roboto !important;">Advisory Services (for agencies, organization, civic groups)</label>
-                          </div>
-                        </td>
-                        <td>   
-                          <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="infoserv">
-                              <label class="custom-control-label" for="infoserv" style="color:#484a49 !important; font:Roboto !important;">Information Services (dissemination of knowledge/information through various means)</label>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div>
+                  <div style="width:95%; margin:auto;">
+                    <nav class="navbar navbar-light" style="background-color: #dfede3 !important; margin:auto;">
+                    <span class="navbar-brand mb-0 h1">D. Nature of the Program/Project/Activity (please check/tick the appropriate item) </span>
+                    </nav>
+                    <!--nature of program table-->
+                    <table class="table">                   
+                      <tbody>
+                        <tr>
+                          <td>
                             <div class="custom-control custom-checkbox">
-                               <input type="checkbox" class="custom-control-input" id="others">
-                                <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
+                              <input type="checkbox" class="custom-control-input" id="trainingprog">
+                                <label class="custom-control-label" for="trainingprog" style="color:#484a49 !important; font:Roboto !important;">Training Program (non-degree and non-credited courses offered to the community)</label>
                             </div>
+                          </td>
+                          <td>   
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="commout">
+                                <label class="custom-control-label" for="commout" style="color:#484a49 !important; font:Roboto !important;">Community Outreach (community-based and charity driven social services)</label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>  
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="techas">
+                                <label class="custom-control-label" for="techas" style="color:#484a49 !important; font:Roboto !important;">Technical Assistance (for agencies, organization, civic groups)</label>
+                            </div>
+                          </td>
+                          <td>   
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="techtrans">
+                                <label class="custom-control-label" for="techtrans" style="color:#484a49 !important; font:Roboto !important;">Technology transfer and utilization (process of circulating, promoting and marketing or technologies to potential users)</label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>  
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="advserv">
+                                <label class="custom-control-label" for="advserv" style="color:#484a49 !important; font:Roboto !important;">Advisory Services (for agencies, organization, civic groups)</label>
+                            </div>
+                          </td>
+                          <td>   
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="infoserv">
+                                <label class="custom-control-label" for="infoserv" style="color:#484a49 !important; font:Roboto !important;">Information Services (dissemination of knowledge/information through various means)</label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
                             <div>
-                               <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="others">
+                                  <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
+                              </div>
+                              <div>
+                                <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                              </div>
+                            </div> 
+                          </td>
+                          <td>
+                            <div>
                             </div>
-                          </div> 
-                        </td>
-                        <td>
-                          <div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table> 
-                  <!-- nature of program table-->  
-                </div>  
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table> 
+                    <!-- nature of program table-->  
+                  </div>  
                 <!-- end of mini navbar D -->
                 <!-- mini navbar E-->
                 <div style="width:95%; margin:auto;">
