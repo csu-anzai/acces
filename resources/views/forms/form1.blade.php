@@ -599,6 +599,7 @@
                             </div>
                           </div>
                           <div class="card-body">
+                          <!--Locus and leadership table-->
                             <table class="table">                   
                               <tbody>
                                 <tr>
@@ -668,6 +669,7 @@
                                 </tr>                            
                               </tbody>
                              </table>
+                             <!--end of locus and leadership table-->
                           </div>
                       </div>
                 </div>
@@ -682,13 +684,85 @@
                             </div>
                           </div>
                           <div class="card-body">
+                          <!--nature of the program table-->
+                            <table class="table">                   
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="trainingprog">
+                                        <label class="custom-control-label" for="trainingprog" style="color:#484a49 !important; font:Roboto !important;">Training Program (non-degree and non-credited courses offered to the community)</label>
+                                    </div>
+                                  </td>
+                                  <td>   
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="commout">
+                                        <label class="custom-control-label" for="commout" style="color:#484a49 !important; font:Roboto !important;">Community Outreach (community-based and charity driven social services)</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>  
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="techas">
+                                        <label class="custom-control-label" for="techas" style="color:#484a49 !important; font:Roboto !important;">Technical Assistance (for agencies, organization, civic groups)</label>
+                                    </div>
+                                  </td>
+                                  <td>   
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="techtrans">
+                                        <label class="custom-control-label" for="techtrans" style="color:#484a49 !important; font:Roboto !important;">Technology transfer and utilization (process of circulating, promoting and marketing or technologies to potential users)</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>  
+                                  <td>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="advserv">
+                                        <label class="custom-control-label" for="advserv" style="color:#484a49 !important; font:Roboto !important;">Advisory Services (for agencies, organization, civic groups)</label>
+                                    </div>
+                                  </td>
+                                  <td>   
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="infoserv">
+                                        <label class="custom-control-label" for="infoserv" style="color:#484a49 !important; font:Roboto !important;">Information Services (dissemination of knowledge/information through various means)</label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div>
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="others">
+                                          <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
+                                      </div>
+                                      <div>
+                                        <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                      </div>
+                                    </div> 
+                                  </td>
+                                  <td>
+                                    <div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <!--end of nature of the program table-->
                           </div>
                       </div>
-              </div>
+                </div>
             </div>
           </div>
           <!-- End of Program/Project/Activity Profile -->
-          
+
+
+
+
+
+
+
+
     </div>
           
           <!-- start of textareas and other things--> 
@@ -900,13 +974,13 @@
                     <tbody>
                       <tr>
                         <td>
-                          <div class="custom-control custom-checkbox" style="margin:10px;">
+                          <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="trainingprog">
                               <label class="custom-control-label" for="trainingprog" style="color:#484a49 !important; font:Roboto !important;">Training Program (non-degree and non-credited courses offered to the community)</label>
                           </div>
                         </td>
                         <td>   
-                          <div class="custom-control custom-checkbox" style="margin:10px;">
+                          <div class="custom-control custom-checkbox">
                               <input type="checkbox" class="custom-control-input" id="commout">
                               <label class="custom-control-label" for="commout" style="color:#484a49 !important; font:Roboto !important;">Community Outreach (community-based and charity driven social services)</label>
                           </div>
@@ -914,13 +988,13 @@
                       </tr>
                       <tr>  
                         <td>
-                          <div class="custom-control custom-checkbox" style="margin:10px;">
+                          <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="techas">
                               <label class="custom-control-label" for="techas" style="color:#484a49 !important; font:Roboto !important;">Technical Assistance (for agencies, organization, civic groups)</label>
                           </div>
                         </td>
                         <td>   
-                          <div class="custom-control custom-checkbox" style="margin:10px;">
+                          <div class="custom-control custom-checkbox">
                               <input type="checkbox" class="custom-control-input" id="techtrans">
                               <label class="custom-control-label" for="techtrans" style="color:#484a49 !important; font:Roboto !important;">Technology transfer and utilization (process of circulating, promoting and marketing or technologies to potential users)</label>
                           </div>
@@ -928,13 +1002,13 @@
                       </tr>
                       <tr>  
                         <td>
-                          <div class="custom-control custom-checkbox" style="margin:10px;">
+                          <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="advserv">
                               <label class="custom-control-label" for="advserv" style="color:#484a49 !important; font:Roboto !important;">Advisory Services (for agencies, organization, civic groups)</label>
                           </div>
                         </td>
                         <td>   
-                          <div class="custom-control custom-checkbox" style="margin:10px;">
+                          <div class="custom-control custom-checkbox">
                               <input type="checkbox" class="custom-control-input" id="infoserv">
                               <label class="custom-control-label" for="infoserv" style="color:#484a49 !important; font:Roboto !important;">Information Services (dissemination of knowledge/information through various means)</label>
                           </div>
@@ -942,7 +1016,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <div style="padding: 3px 0; margin:10px;">
+                          <div>
                             <div class="custom-control custom-checkbox">
                                <input type="checkbox" class="custom-control-input" id="others">
                                 <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
