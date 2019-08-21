@@ -301,6 +301,14 @@
           <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
           <script>
             $('document').ready(function() {
+              //function to hide all the select tags under time frame
+              $('.termSelect').hide();
+
+              $('.termToggle').click(function(){
+                $('.termSelect').hide();
+                $(this).parent().next().children().show();
+              });
+
               //function to add new table row
               $('.activities_add').click(function() {
                   //long string because having escape characters won't make it work
@@ -399,6 +407,8 @@
 
               calcuGrandTotal();
             });
+
+            
 
             //time frame toggle
             $(document).ready(function(){
@@ -572,9 +582,39 @@
                             <table class="table">
                               <thead>
                                 <tr>
-                                  <th>Short Term</th>
-                                  <th>Medium Term</th>
-                                  <th>Long Term</th>
+                                  <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" name="termRadio" class="custom-control-input termToggle" id="shortTerm">
+                                        <label class="custom-control-label" for="shortTerm" style="color:#484a49 !important; font:Roboto !important;">Short Term</label>
+                                    </div>
+                                    <div class="form-group">
+                                      <select class="browser-default custom-select termSelect">
+                                        <option selected value="Program Based">Select Unit</option>
+                                      </select>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" name="termRadio" class="custom-control-input termToggle" id="mediumTerm">
+                                        <label class="custom-control-label" for="mediumTerm" style="color:#484a49 !important; font:Roboto !important;">Medium Term</label>
+                                    </div>
+                                    <div class="form-group">
+                                      <select class="browser-default custom-select termSelect">
+                                        <option selected value="Program Based">Select Unit</option>
+                                      </select>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" name="termRadio" class="custom-control-input termToggle" id="longTerm">
+                                        <label class="custom-control-label" for="longTerm" style="color:#484a49 !important; font:Roboto !important;">Long Term</label>
+                                    </div>
+                                    <div class="form-group">
+                                      <select class="browser-default custom-select termSelect">
+                                        <option selected value="Program Based">Select Unit</option>
+                                      </select>
+                                    </div>
+                                  </td>
                                 </tr>                  
                               </thead>
                               <tr>
@@ -582,7 +622,7 @@
                                 
                                 </td>
                               </tr>
-                            </table>                                  
+                              </table>                                  
                           </div>      
                       </div>
                 </div>
