@@ -493,15 +493,16 @@
            });
 
            $('#test-btn').on('click', function(){
-             var json = JSON.stringify(getFormData($("#test-form")));
-             console.log(json);
+             var form = $("#test-form");
+             var json = JSON.stringify(getFormData(form));
+
              $.ajax({
               headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
               url: "/test",
               type: "POST",
-              data: {json: json},
+              data: {title: $('input[name=title]', form).val(), json: json},
               success: function(result){
                 console.log(result);
               },
@@ -571,7 +572,7 @@
          
          //Create form data to array
          function getFormData($form){
-            var unindexed_array = $form.serializeArray();
+            var unindexed_array = $('input[name!=title], select',$form).serializeArray();
             var indexed_array = {};
 
             $.map(unindexed_array, function(n, i){

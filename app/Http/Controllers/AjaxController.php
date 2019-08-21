@@ -21,7 +21,7 @@ class AjaxController extends Controller
          $json = $request->input('json');
 
          DB::table('proposals')->insert([
-             'title' => "test",
+             'title' => $request->input('title'),
              'CES_type' => "Activity Based",
              'start_date' => "2019-08-06",
              'end_date' => "2019-08-09",
