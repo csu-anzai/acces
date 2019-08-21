@@ -36,7 +36,8 @@
             <div class="card-body">
                <div class="tab-content">
                   <div class="tab-pane active" id="form-a">
-                     <!-- START OF FORM A -->                     
+                     <!-- START OF FORM A -->             
+                     <form id="test-form" method="post">
                      <!-- Basic Information -->
                      <div class="col-md-12">
                         <div class="card">
@@ -313,6 +314,13 @@
                         </div>
                      </div>
                      <!-- End of Budgetary Requirements -->
+      
+                    <!-- Temporary Submit button -->
+                    <button id="test-btn" type="button" class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 20%; right: 4%; background-color: green;" rel="tooltip" data-placement="left" title="Save">
+                    <i class="material-icons" style="font-size: 35px">archive</i>
+                    </button>
+                    
+                    </form>
                      <!-- END OF FORM A -->
                   </div>
                   <div class="tab-pane" id="form-b">
@@ -483,6 +491,25 @@
                  "<td class='data-total'><div class='form-group has-success'><input type='text' min='1' readonly class='data-total-input'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
+
+           $('#test-btn').on('click', function(){
+             var json = JSON.stringify(getFormData($("#test-form")));
+             console.log(json);
+             $.ajax({
+              headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              url: "/test",
+              type: "POST",
+              data: {json: json},
+              success: function(result){
+                console.log(result);
+              },
+              error: function(xhr, resp, text){
+                console.log(xhr, resp, text);
+              }
+             });
+           });
          })
          
          function commaSeparateNumber(val){
@@ -542,6 +569,17 @@
            calcuGrandTotal();
          });
          
+         //Create form data to array
+         function getFormData($form){
+            var unindexed_array = $form.serializeArray();
+            var indexed_array = {};
+
+            $.map(unindexed_array, function(n, i){
+                indexed_array[n['name']] = n['value'];
+            });
+
+            return indexed_array;
+          }
       </script>
    </div>
 </div>

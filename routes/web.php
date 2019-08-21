@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::post('/getDepartments','AjaxController@getDepartments');
+Route::post('getDepartments','AjaxController@getDepartments');
+Route::post('test','AjaxController@test');
 
 Auth::routes();
 
