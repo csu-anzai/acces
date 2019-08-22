@@ -179,7 +179,7 @@
                 <!-- Department -->
                 <div class="form-group">
                   <select id="department_dropbox" name="department" class="browser-default custom-select" required>
-                    <option disabled selected value="">Deparment</option>                       
+                    <option disabled selected value="">Department</option>                       
                   </select>
                 </div>
 
