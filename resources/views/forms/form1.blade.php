@@ -526,7 +526,7 @@
            if(decimal === undefined){
              decimal = "00"
            }
-           $('#grand-total').html(commaSeparateNumber(splitString[0]) + '.' + decimal.substring(0,2));
+           $('#grand-total').html('₱ ' + commaSeparateNumber(splitString[0]) + '.' + decimal.substring(0,2));
          }
          
          //function to delete row containing selected button
@@ -538,7 +538,7 @@
            calcuGrandTotal();
          }
          
-         $(document).on('keyup', 'input.data-input', function(){
+         $(document).on('change', 'input.data-input', function(){
            //Subtotal
            var siblings = $(this).parent().parent().siblings('.data-table');
            var total = $(this).val();
