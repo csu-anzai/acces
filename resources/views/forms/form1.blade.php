@@ -1454,98 +1454,140 @@
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="households">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="households">
                                           <label class="custom-control-label" for="households" style="color:#484a49 !important; font:Roboto !important;">households</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-households" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="youthMale">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="youthMale">
                                           <label class="custom-control-label" for="youthMale" style="color:#484a49 !important; font:Roboto !important;">youth (male) [13 to 30 years old]</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-youth-male" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="localGov">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="localGov">
                                           <label class="custom-control-label" for="localGov" style="color:#484a49 !important; font:Roboto !important;">Local Government Units</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-LGU" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="youthFemale">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="youthFemale">
                                           <label class="custom-control-label" for="youthFemale" style="color:#484a49 !important; font:Roboto !important;">youth (female) [13 to 30 years old]</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-youth-female" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="organizations">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="organizations">
                                           <label class="custom-control-label" for="organizations" style="color:#484a49 !important; font:Roboto !important;">Organizations/Associations</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-org" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="childrenBoy">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="childrenBoy">
                                           <label class="custom-control-label" for="childrenBoy" style="color:#484a49 !important; font:Roboto !important;">children (boy) [6 to 12 years old]</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-children-boy" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="seniorMale">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="seniorMale">
                                           <label class="custom-control-label" for="seniorMale" style="color:#484a49 !important; font:Roboto !important;">senior citizens (male) [at least 60 years old]</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-senior-male" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="childrenGirl">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="childrenGirl">
                                           <label class="custom-control-label" for="childrenGirl" style="color:#484a49 !important; font:Roboto !important;">children (girl) [6 to 12 years old]</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-children-girl" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="seniorFemale">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="seniorFemale">
                                           <label class="custom-control-label" for="seniorFemale" style="color:#484a49 !important; font:Roboto !important;">senior citizens (female) [at least 60 years old]</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-senior-female" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="infantsBoy">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="infantsBoy">
                                           <label class="custom-control-label" for="infantsBoy" style="color:#484a49 !important; font:Roboto !important;">infants (boy) [0 to 5 years old]</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-infants-boy" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="adultsMale">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="adultsMale">
                                           <label class="custom-control-label" for="adultsMale" style="color:#484a49 !important; font:Roboto !important;">adults (male) [31 to 59 years old]</label>
                                       </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-adults-male" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="infantsGirl">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="infantsGirl">
                                           <label class="custom-control-label" for="infantsGirl" style="color:#484a49 !important; font:Roboto !important;">infants (girl) [0 to 5 years old]</label>
+                                      </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-infants-girl" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="adultsFemale">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="adultsFemale">
                                           <label class="custom-control-label" for="adultsFemale" style="color:#484a49 !important; font:Roboto !important;">adults (female) [31 to 59 years old]</label>
+                                      </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-adults-female" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="otherSocialDimension">
+                                        <input type="checkbox" class="custom-control-input selecttoggle" id="otherSocialDimension">
                                           <label class="custom-control-label" for="otherSocialDimension" style="color:#484a49 !important; font:Roboto !important;">others</label>
+                                      </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-other-social-dimension" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
