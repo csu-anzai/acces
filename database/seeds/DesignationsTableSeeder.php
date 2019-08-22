@@ -21,7 +21,7 @@ class DesignationsTableSeeder extends Seeder
             ['name' => 'School Dean'],
             ['name' => 'CES Director'],
             ['name' => 'VPAA'],
-            ['name' => 'Super Admin']
+            ['name' => 'Super Administrator']
         ];
         
         DB::table('designations')->insert($designations);

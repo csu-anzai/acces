@@ -18,7 +18,7 @@
           </a>
         </li>
         <li class="nav-item{{ $activePage == 'register' ? ' active' : '' }}">
-          <a href="{{ route('register') }}" class="nav-link">
+          <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="material-icons">person_add</i> {{ __('Register') }}
           </a>
         </li>

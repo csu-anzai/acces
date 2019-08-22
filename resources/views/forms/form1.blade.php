@@ -36,6 +36,7 @@
             <div class="card-body">
                <div class="tab-content">
                   <div class="tab-pane active" id="form-a">
+                     
                      <!-- START OF FORM A -->                     
                      <!-- Basic Information -->
                      <div class="col-md-12">
