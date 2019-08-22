@@ -1587,7 +1587,10 @@
                                           <label class="custom-control-label" for="otherSocialDimension" style="color:#484a49 !important; font:Roboto !important;">others</label>
                                       </div>
                                       <div class="form-group selectdiv">
-                                        <input class="form-control" name="title" id="input-other-social-dimension" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input class="form-control" name="title" id="input-other-social-dimension-name" type="text" placeholder="{{ __('Type here') }}" required="true" aria-required="true"/>
+                                      </div>
+                                      <div class="form-group selectdiv">
+                                        <input class="form-control" name="title" id="input-other-social-dimension-quantity" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
