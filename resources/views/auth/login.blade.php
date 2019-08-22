@@ -116,10 +116,43 @@
             <small>Don't have an account?</small>
           </a>
         </div>
-
       </div>
     </div>
   </div>
+  <!-- <div class="row text-center">
+    <div class="col-md-12" style="margin-top:15%">
+      <h1>What is <strong>Community Extension Service</strong>?</h1>
+      <hr style="background-color:white"/>
+      <h4><strong>Community Extension Service (CES)</strong> is one of the three core functions of the
+      <strong>University of San Carlos (USC)</strong> as a Higher Education Institution along with 
+      <strong>Teaching-Learning</strong> and  <strong>Research</strong>. Hence, Carolinians experience integral 
+      development by advancing their academic competencies highly motivated by their active engagements with 
+      university partner communities, institutions, and organizations. All Community Extension Service programs, 
+      projects, and activities are undertaken by students, faculty, and staff with a three-fold mandate: 
+      first, to voluntarily extend one’s professional and academic expertise; second, to engage into prophetic 
+      dialogue with the world guided by the Missionary charisma of Societas Verbi Divini (SVD) Spirituality; 
+      and third, to empower peoples and communities for social change through a 
+      transformatory or liberational approach.</h4>
+      <hr/>      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header card-header-text card-header-success">
+              <div class="card-text">
+                <h4 class="card-title">Goals</h4>
+              </div>
+            </div>
+            <div class="card-body">
+            For USC to contribute to nation building by providing highly specialized curricular programs with 
+            extension services that allow students, faculty, and staff to apply the new knowledge they generate
+             by empowering communities, organizations, and institutions through a transformatory approach in addressing 
+             specific social development problems.
+            </div>
+        </div>
+    </div>
+  </div> -->
 </div>
 @endsection
 
