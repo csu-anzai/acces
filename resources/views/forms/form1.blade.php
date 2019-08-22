@@ -1635,42 +1635,70 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="riverManagement">
-                              <label class="custom-control-label" for="riverManagement" style="color:#484a49 !important; font:Roboto !important;">River Management</label>
+                            <input type="checkbox" class="custom-control-input" id="networkingWithLGU">
+                              <label class="custom-control-label" for="networkingWithLGU" style="color:#484a49 !important; font:Roboto !important;">networking with Local Government Units and community leaders</label>
                           </div>
                         </td>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="greeningInitiatives">
-                              <label class="custom-control-label" for="greeningInitiatives" style="color:#484a49 !important; font:Roboto !important;">Greening Initiatives (e.g. Tree Panting, forestation, etc.)</label>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="mangrovePlanting">
-                              <label class="custom-control-label" for="mangrovePlanting" style="color:#484a49 !important; font:Roboto !important;">Mangrove Planting</label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="cleanUpDrives">
-                              <label class="custom-control-label" for="cleanUpDrives" style="color:#484a49 !important; font:Roboto !important;">Clean-up Drives (coastal, river, drainage, sewage, etc.</label>
+                            <input type="checkbox" class="custom-control-input" id="fundingSupportFromLGU">
+                              <label class="custom-control-label" for="fundingSupportFromLGU" style="color:#484a49 !important; font:Roboto !important;">funding support from Local Government Units</label>
                           </div>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="beautificationActivities">
-                              <label class="custom-control-label" for="beautificationActivities" style="color:#484a49 !important; font:Roboto !important;">Beautification Activities</label>
+                            <input type="checkbox" class="custom-control-input" id="fundingSupportFromOther">
+                              <label class="custom-control-label" for="fundingSupportFromOther" style="color:#484a49 !important; font:Roboto !important;">funding support from other partners</label>
                           </div>
                         </td>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="otherEnvironmentalDivision">
-                              <label class="custom-control-label" for="otherEnvironmentalDivision" style="color:#484a49 !important; font:Roboto !important;">Others</label>
+                            <input type="checkbox" class="custom-control-input" id="establishedCounterpartsFromLGU">
+                              <label class="custom-control-label" for="establishedCounterpartsFromLGU" style="color:#484a49 !important; font:Roboto !important;">established counterparts from Local Government Units</label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="establishedCounterpartsFromOther">
+                              <label class="custom-control-label" for="establishedCounterpartsFromOther" style="color:#484a49 !important; font:Roboto !important;">established counterparts from other partners</label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="MOAWithLGU">
+                              <label class="custom-control-label" for="MOAWithLGU" style="color:#484a49 !important; font:Roboto !important;">Memorandum of Agreement or Memorandum of Understanding with Local Government Units</label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="MOAWithOther">
+                              <label class="custom-control-label" for="MOAWithOther" style="color:#484a49 !important; font:Roboto !important;">Memorandum of Agreement or Memorandum of Understanding with other partners</label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="policyByUSC">
+                              <label class="custom-control-label" for="policyByUSC" style="color:#484a49 !important; font:Roboto !important;">policy advocacy by USC faculty/students/staff</label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="policyChangeByLGU">
+                              <label class="custom-control-label" for="policyChangeByLGU" style="color:#484a49 !important; font:Roboto !important;">policy change initiatives by Local Government Units</label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="otherGovernanceDivision">
+                              <label class="custom-control-label" for="otherGovernanceDivision" style="color:#484a49 !important; font:Roboto !important;">Others</label>
                           </div>
                         </td>
                       </tr>
