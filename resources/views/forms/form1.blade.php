@@ -476,8 +476,8 @@
                  "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
                  "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
                  "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
-                 "<td class='data-total'><div class='form-group has-success'><input type='text' min='1' readonly class='data-total-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
+                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' min='1' readonly class='data-total-input'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          
@@ -488,8 +488,8 @@
                  "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
                  "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
                  "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
-                 "<td class='data-total'><div class='form-group has-success'><input type='text' min='1' readonly class='data-total-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
+                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' min='1' readonly class='data-total-input'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          
@@ -500,8 +500,8 @@
                  "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
                  "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
                  "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
-                 "<td class='data-total'><div class='form-group has-success'><input type='text' min='1' readonly class='data-total-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
+                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' min='1' readonly class='data-total-input'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          })
@@ -519,14 +519,19 @@
            $('.data-total-input').each(function(){
              grand += parseFloat($(this).val().replace(/\,/g, ''));
            });
-         
+
            var splitString = grand.toString().split('.');
            var decimal = splitString[1];
-         
+
            if(decimal === undefined){
-             decimal = "00"
+            decimal = "00";
            }
-           $('#grand-total').html('₱ ' + commaSeparateNumber(splitString[0]) + '.' + decimal.substring(0,2));
+
+           if(decimal.length <= 3){
+            decimal = decimal.substring(0,2);
+           }
+
+           $('#grand-total').html('₱ ' + commaSeparateNumber(splitString[0]) + '.' + decimal);
          }
          
          //function to delete row containing selected button
@@ -544,7 +549,7 @@
            var total = $(this).val();
          
            siblings.each(function(){
-             total *= $(this).children(':first').children(':first').val();
+             total *= $(this).children(':first').children('.data-input').val();
            });
          
            var splitString = total.toString().split('.');
@@ -557,7 +562,7 @@
          
            $(this).parent().parent().
              siblings('.data-total:first').children(':first')
-             .children(':first').val(commaSeparateNumber(splitString[0]) + '.' + decimal.substring(0,2));     
+             .children('.data-total-input').val(commaSeparateNumber(splitString[0]) + '.' + decimal.substring(0,2));     
          
            calcuGrandTotal();
          });
