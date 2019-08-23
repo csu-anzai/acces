@@ -292,14 +292,14 @@
                 <h4 style="margin-top:3%" id="proposal-modal-venue"></h4>
                 <h4 id="proposal-modal-date"></h4>
               </div>
-              <div class="card">
+              <div class="card" style="margin-top:10%">
                 <div class="card-header card-header-text card-header-success">
                   <div class="card-text">
                       <h5 class="card-title"><strong>I. Rationale and Contextualization</strong></h5>
                   </div>
                 </div>
-                <div class="card-body" style="margin-top:3%">
-                  asdsadsadsadsadsadsad
+                <div class="card-body" id="proposal-modal-rationale">
+                  
                 </div>
               </div>  
               <div class="card">
@@ -308,8 +308,8 @@
                       <h5 class="card-title"><strong>II. Goal, Objectives, and Outcomes</strong></h5>
                   </div>
                 </div>
-                <div class="card-body" style="margin-top:3%">
-                  asdsadsadsadsadsadsad
+                <div class="card-body" id="proposal-modal-goals">
+                  
                 </div>
               </div>   
               <div class="card">
@@ -318,10 +318,30 @@
                       <h5 class="card-title"><strong>III. Participants, Partners and Beneficiaries</strong></h5>
                   </div>
                 </div>
-                <div class="card-body" style="margin-top:3%">
-                  asdsadsadsadsadsadsad
+                <div class="card-body" id="proposal-modal-participants">
+                  
                 </div>
-              </div>             
+              </div>
+              <div class="card">
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                      <h5 class="card-title"><strong>IV. Outline of Activities</strong></h5>
+                  </div>
+                </div>
+                <div class="card-body">
+
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                      <h5 class="card-title"><strong>V. Budgetary Requirements</strong></h5>
+                  </div>
+                </div>
+                <div class="card-body">
+                  
+                </div>
+              </div>                                    
             </div>
   
       </form>
@@ -357,6 +377,7 @@ $(".proposal-titles").click(function(){
   function reviewProposal(proposal){
     var startDate = new Date(proposal.start_date);
     var endDate = new Date(proposal.end_date);
+    var json = JSON.parse(proposal.proposal_json);
 
     var dateString = "";
     var cesType = (proposal.CES_type === "Program Based")? "Program - Based CES" : "Activity - Based CES";
@@ -371,6 +392,9 @@ $(".proposal-titles").click(function(){
     $('#proposal-modal-cestype').html(cesType);
     $('#proposal-modal-venue').html(proposal.venue);
     $('#proposal-modal-date').html(dateString);
+    $('#proposal-modal-rationale').html(json['a-rationale']);
+    $('#proposal-modal-goals').html(json['a-goals']);
+    $('#proposal-modal-participants').html(json['a-participants']);
     
   }
 
