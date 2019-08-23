@@ -16,4 +16,17 @@ class AjaxController extends Controller
 
         return response()->json(array('departments'=> $departments), 200);
      }
+
+     public function insertProposal(Request $request){
+        $json = $request->input('json');
+        DB::table('proposals')->insert([
+            'title' => $request->input('title'),
+            'CES_type' => $request->input('CEStype'),
+            'start_date' => $request->input('startDate'),
+            'end_date' => $request->input('endDate'),
+            'venue' => $request->input('venue'),
+            'proposal_json' => $json
+       ]);
+        return response()->json($json, 200);
+    }
 }
