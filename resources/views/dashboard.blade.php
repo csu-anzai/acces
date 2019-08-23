@@ -44,6 +44,7 @@
           <div class="card-body">
             <div class="tab-content">
               <div class="tab-pane active" id="profile">
+              @if(!$proposals->isEmpty())                 
                 <table class="table" id="proposal_table">
                   <thead>
                     <th><strong>#</strong></th>
@@ -62,6 +63,10 @@
                   @endforeach
                   </tbody>
                 </table>
+                @else
+                <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+                <h3 class="text-center text-muted mb-5">Unfortunately, you do not possess any proposals.</h3>
+                @endif
               </div>
               <div class="tab-pane" id="messages">
                 <table class="table">
@@ -451,6 +456,7 @@
       </form>
     </div>
   </div>
+</div>
 </div>
 </div>
 
