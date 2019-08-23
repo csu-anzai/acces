@@ -310,6 +310,22 @@
                 $(this).parent().next().children().show();
               });
 
+              //function to hide table under nature of linkage
+              $('.toggle-table').hide();
+
+              $('.hidden-table').hide();
+
+              $('.table-toggle').click(function(){
+                $('.toggle-table').hide();
+                
+                $id = $(this).attr("id");
+                if($id == "with-MOA"){
+                  $('#moa-table').show();    
+                } else {
+                  $('#without-moa-table').show();
+                }
+              });
+
               //function to add new table row
               $('.activities_add').click(function() {
                   //long string because having escape characters won't make it work
@@ -1846,20 +1862,77 @@
                 <tr>
                   <td>
                     <div class="custom-control custom-radio">
-                      <input type="radio" class="custom-control-input" name="nature-of-linkage-radio" id="with-MOA">
+                      <input type="radio" class="custom-control-input table-toggle" name="nature-of-linkage-radio" id="with-MOA">
                       <label class="custom-control-label" style="color:black !important;" for="with-MOA">with Memorandum of Understanding / Memorandum of Agreement</label>                           
-                    </div>
-                    <div class="">
-                      
                     </div>
                   </td>
                   <td>
                     <div class="custom-control custom-radio">
-                      <input type="radio" class="custom-control-input" name="nature-of-linkage-radio" id="without-MOA">
+                      <input type="radio" class="custom-control-input table-toggle" name="nature-of-linkage-radio" id="without-MOA">
                       <label class="custom-control-label" style="color:black !important;" for="without-MOA">without Memorandum of Understanding / Memorandum of Agreement</label>                           
                     </div>
                   </td>
                 </tr>
+                
+                <!-- table under with-MOA -->
+                <tr>
+                  <table class="table toggle-table" id="moa-table">
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label for="date-signed"> Date signed: </label>
+                          <input type="date" id="date-signed" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label for="signatories-for-usc"> Signatories for USC: </label>
+                          <input type="text" id="signatories-for-usc" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label for="signatories-for-partner"> Signatories for Partner: </label>
+                          <input type="text" id="signatories-for-partner" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- end of table under with MOA-->
+                  <!-- table under without MOA-->
+                  <table class="table toggle-table" id="without-moa-table">
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label for="linkage-date"> Since when is the linkage: </label>
+                          <input type="date" id="linkage-date" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label for="linkage-initiator"> Who initiated the linkage: </label>
+                          <input type="text" id="linkage-initiator" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label for="activities-done"> Enumerate the activities already done: </label>
+                          <textarea id="activities-done" class="form-control" rows="3"></textarea>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </tr> 
+                <!-- end of table under without MOA-->
+
               </table>
               <table class="table">
                 <tr>
