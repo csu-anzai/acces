@@ -286,11 +286,19 @@
 
           <div class="container">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-8">
                 <h3 style='font-family: "Roboto Black";'><strong id="proposal-modal-title"></strong></h3>
                 <h4 id="proposal-modal-cestype"></h4>
                 <h4 style="margin-top:3%" id="proposal-modal-venue"></h4>
                 <h4 id="proposal-modal-date"></h4>
+              </div>
+              <div class="col-md-4 mt-5">
+              <button class="btn btn-default btn-lg btn-fab ml-2" rel="tooltip" data-placement="bottom" title="Add Comment.">
+                <i class="material-icons" style="font-size: 30px">add_comment</i>
+              </button>
+              <button class="btn btn-success  btn-lg btn-fab ml-3" rel="tooltip" data-placement="bottom" title="Generate PDF.">
+                <i class="material-icons" style="font-size: 30px">picture_as_pdf</i>
+              </button>
               </div>
               <div class="card" style="margin-top:10%">
                 <div class="card-header card-header-text card-header-success">
@@ -324,29 +332,126 @@
               </div>
               <div class="card">
                 <div class="card-header card-header-text card-header-success">
-                  <div class="card-text">
-                      <h5 class="card-title"><strong>IV. Outline of Activities</strong></h5>
-                  </div>
+                    <div class="card-text">
+                    <h4 class="card-title">IV. Outline of Activities</h4>
+                    </div>
                 </div>
                 <div class="card-body">
-
+                    <div class="table-responsive">
+                      <table class="table">
+                          <thead>
+                            <th>
+                                Tentative date
+                            </th>
+                            <th>
+                                Activities
+                            </th>
+                            <th>
+                                Participants needed
+                            </th>
+                            <th>
+                                Person/s In-charge
+                            </th>
+                          </thead>
+                          <tbody id="proposal-modal-outline">
+                          </tbody>
+                      </table>
+                    </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header card-header-text card-header-success">
-                  <div class="card-text">
-                      <h5 class="card-title"><strong>V. Budgetary Requirements</strong></h5>
-                  </div>
+                    <div class="card-text">
+                    <h4 class="card-title">V. Budgetary Requirements</h4>
+                    </div>
                 </div>
                 <div class="card-body">
-                  
+                    <div class="table-responsive">
+                      <table class="table">
+                          <thead class=" text-primary" style='color:black !important;'>
+                            <th>
+                                Particulars
+                            </th>
+                            <th>
+                                Frequency
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Amount 
+                            </th>
+                            <th>
+                                Subtotal
+                            </th>
+                          </thead>
+                          <thead class="text-primary" style='color:black !important;'>
+                            <th>
+                                A. Meals / Snacks 
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                          </thead>
+                          <tbody id="proposal-modal-meals">
+                          </tbody>
+                          <thead class=" text-primary" style='color:black !important;'>
+                            <th>
+                                B. Transportations
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                          </thead>
+                          <tbody id="proposal-modal-transportations">
+                          </tbody>
+                          <thead class=" text-primary" style='color:black !important;'>
+                            <th>
+                                C. Materials
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                          </thead>
+                          <tbody id="proposal-modal-materials">
+                          </tbody>
+                          <thead class=" text-primary" style='color:black !important;'>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th><strong> Grand Total: </strong>
+                            </th>
+                            <th id="proposal-modal-grand-total">
+                            </th>
+                            <th></th>
+                          </thead>
+                      </table>
+                    </div>
                 </div>
-              </div>                                    
-            </div>
+              </div>
   
       </form>
     </div>
   </div>
+</div>
 </div>
 
 <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
@@ -364,6 +469,7 @@ $(".proposal-titles").click(function(){
     type: "POST",
     data: { id: proposal_id},
     success: function(result){
+        clearModal();
         reviewProposal(result);
         $('#proposal-modal').modal(focus);
         console.log(result);
@@ -372,6 +478,77 @@ $(".proposal-titles").click(function(){
         console.log(xhr, resp, text);
     }
   });
+
+  function makeArray(data){
+    var temp;
+
+    temp = data;
+    data = [];
+    data.push(temp);
+
+    return data;
+  }
+
+  function checkAndMakeArray(data){
+    return (Array.isArray(data) === false)? makeArray(data) : data;
+  }
+
+  function checkAndMakeAllRelatedArray(json, string, type){
+    if(type === "Budgetary"){
+        if(Array.isArray(json['a-' + string + '-particular']) === false){
+          json['a-' + string + '-particular'] = makeArray (json['a-' + string + '-particular']);
+          json['a-' + string + '-frequency'] = makeArray (json['a-' + string + '-frequency']);
+          json['a-' + string + '-quantity'] = makeArray (json['a-' + string + '-quantity']);
+          json['a-' + string + '-amount'] = makeArray (json['a-' + string + '-amount']);
+          json['a-' + string + '-subtotal'] = makeArray (json['a-' + string + '-subtotal']);
+        }
+    }else{
+        if(Array.isArray(json['a-' + string + '-date']) === false){
+          json['a-' + string + '-date'] = makeArray (json['a-' + string + '-date']);
+          json['a-' + string + '-activity'] = makeArray (json['a-' + string + '-activity']);
+          json['a-' + string + '-participants'] = makeArray (json['a-' + string + '-participants']);
+          json['a-' + string + '-charge'] = makeArray (json['a-' + string + '-charge']);
+        }
+    }
+
+    return json;
+  }
+
+  function addRowInTable(json, string, type, index){
+    if(type === "Budgetary"){
+        $('#proposal-modal-' + string).append(
+          "<tr><td>" + json['a-' + string + '-particular'][index] + "</td>" +
+          "<td>" + json['a-' + string + '-frequency'][index] + "</td>" +
+          "<td>" + json['a-' + string + '-quantity'][index] + "</td>" +
+          "<td><div class='input-group-text'>₱" + json['a-' + string + '-amount'][index] + "</div></td>" +
+          "<td><div class='input-group-text'>₱" + json['a-' + string + '-subtotal'][index] + "</div></td></tr>" 
+        );
+    }else{
+        $('#proposal-modal-' + string).append(
+          "<tr><td>" + json['a-' + string + '-date'][index] + "</td>" +
+          "<td>" + json['a-' + string + '-activity'][index] + "</td>" +
+          "<td>" + json['a-' + string + '-participants'][index] + "</td>" +
+          "<td>" + json['a-' + string + '-charge'][index] + "</td></tr>" 
+        );
+    }
+  }
+
+  function addAllDataInRow(json, string, type){
+    var temp = (type === "Budgetary")? "-particular" : "-date" ;
+    var length;
+
+    if(json['a-' + string + temp] !== undefined){
+        json = checkAndMakeAllRelatedArray(json, string, type);
+        length = json['a-' + string + temp].length;
+        console.log(string + ' ' + temp + ' ' +  length);
+        
+        for(var x=0; x < length; x++){
+          addRowInTable(json, string, type, x);
+        }
+    }
+
+    return json;
+  }
 
   //Review Proposal
   function reviewProposal(proposal){
@@ -382,11 +559,9 @@ $(".proposal-titles").click(function(){
     var dateString = "";
     var cesType = (proposal.CES_type === "Program Based")? "Program - Based CES" : "Activity - Based CES";
 
-    dateString += "<strong>";
     dateString += getFormattedDate(startDate);
-    dateString += "</strong> to <strong>";
+    dateString += " to ";
     dateString += getFormattedDate(endDate);
-    dateString += "</strong>";
 
     $('#proposal-modal-title').html(proposal.title);
     $('#proposal-modal-cestype').html(cesType);
@@ -395,7 +570,13 @@ $(".proposal-titles").click(function(){
     $('#proposal-modal-rationale').html(json['a-rationale']);
     $('#proposal-modal-goals').html(json['a-goals']);
     $('#proposal-modal-participants').html(json['a-participants']);
-    
+
+    addAllDataInRow(json, "outline", "Outline");
+    addAllDataInRow(json, "meals", "Budgetary");
+    addAllDataInRow(json, "transportations", "Budgetary");
+    addAllDataInRow(json, "materials", "Budgetary");
+
+    $('#proposal-modal-grand-total').html("₱ " + json['a-grand-total']);
   }
 
   const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -417,6 +598,13 @@ $(".proposal-titles").click(function(){
     ret += ", " + d.getFullYear();
 
     return ret;
+  }
+
+  function clearModal(){
+    $('#proposal-modal-outline').html("");
+    $('#proposal-modal-meals').html("");
+    $('#proposal-modal-transportations').html("");
+    $('#proposal-modal-materials').html("");
   }
 
 
