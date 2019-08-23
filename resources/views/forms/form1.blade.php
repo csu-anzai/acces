@@ -543,10 +543,22 @@
 
                               </div>
                            </div>
-                           <!-- End of Budgetary Requirements -->
-                           
+                           <!-- End of Budgetary Requirements -->                           
                         </div>
                      </div>
+                     <button class='btn btn-success' id="btnB">
+                        <span class="material-icons" style="font-size:25px;">chevron_left</span>
+                        <strong> GO BACK TO FORM B</strong>
+                     </button>
+
+                     <button class='btn btn-default float-middle' style="margin-left:22%" onclick="goTop();">
+                        <strong>BACK TO TOP</strong>
+                     </button>
+
+                     <button class='btn btn-success float-right' id="btnReview">
+                        <strong>SUBMIT PROPOSAL </strong>
+                        <span class="material-icons">check</span>
+                     </button>
                   </div>
                </div>
             </div>
@@ -741,6 +753,12 @@
          });
 
          $('#btnNext').click(function(){
+          submitDetails();
+            $('#formb').trigger('click');        
+            document.location.href = "#topPage";
+         });
+
+         $('#btnB').click(function(){
           submitDetails();
             $('#formb').trigger('click');        
             document.location.href = "#topPage";
