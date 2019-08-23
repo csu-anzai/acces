@@ -1,7 +1,9 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 @section('content')
+
 <div class="content">
    <div class="container-fluid">
+    <form id="proposal-form" method="post">
       <div class="row" style="margin-top:-3%" id="topPage">
          <div class="card">
             <div class="card-header card-header-tabs card-header-success">
@@ -36,8 +38,7 @@
             <div class="card-body">
                <div class="tab-content">
                   <div class="tab-pane active" id="form-a">
-                     
-                     <!-- START OF FORM A -->                     
+                     <!-- START OF FORM A -->                
                      <!-- Basic Information -->
                      <div class="col-md-12">
                         <div class="card">
@@ -51,7 +52,7 @@
                                  <label class="col-sm-2 col-form-label" style="color:black">{{ __('Title:') }}</label>
                                  <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('title') ? ' has-danger' : ' has-success' }}">
-                                       <input class="form-control" name="title" id="input-title" type="text" placeholder="{{ __('Name of the Program/Project/Activity') }}" required="true" aria-required="true"/>
+                                       <input class="form-control no-include" name="a-title" id="input-title" type="text" placeholder="{{ __('Name of the Program/Project/Activity') }}" required="true" aria-required="true"/>
                                     </div>
                                  </div>
                               </div>
@@ -59,7 +60,7 @@
                                  <label class="col-sm-2 col-form-label" style="color:black">{{ __('CES Type:') }}</label>
                                  <div class="col-sm-7">
                                     <div class="form-group">
-                                       <select name="cestype" class="browser-default custom-select" required>
+                                       <select name="a-ces-type" id="input-ces-type" class="browser-default custom-select no-include" required>
                                           <option selected value="Program Based">Program Based</option>
                                           <option value="Activity Based">Activity Based</option>
                                        </select>
@@ -72,7 +73,7 @@
                                  </div>
                                  <div class="col-sm-2">
                                     <div class="form-group has-success">
-                                       <input class="form-control" type="date" required>
+                                       <input class="form-control no-include" id='input-start-date' type="date" name="a-start-date" required>
                                        <small>Start of Activity</small>
                                     </div>
                                  </div>
@@ -81,7 +82,7 @@
                                  </div>
                                  <div class="col-sm-2">
                                     <div class="form-group has-success">
-                                       <input class="form-control" type="date" required>
+                                       <input class="form-control no-include" id='input-end-date' type="date" name="a-end-date" required>
                                        <small>End of Activity</small>
                                     </div>
                                  </div>
@@ -90,7 +91,7 @@
                                  <label class="col-sm-2 col-form-label" style="color:black">{{ __('Venue:') }}</label>
                                  <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('venue') ? ' has-danger' : ' has-success' }}">
-                                       <input class="form-control" name="venue" id="input-title" type="text" placeholder="{{ __('Where will the activity take place?') }}" value="" required="true" aria-required="true"/>
+                                       <input class="form-control no-include" name="a-venue" id="input-venue" type="text" placeholder="{{ __('Where will the activity take place?') }}" value="" required="true" aria-required="true"/>
                                     </div>
                                  </div>
                               </div>
@@ -108,7 +109,7 @@
                            </div>
                            <div class="card-body">
                               <div class="form-group has-success">
-                                 <textarea id="form1" class="md-textarea form-control text-left" rows="9"
+                                 <textarea id="form1" name="a-rationale" class="md-textarea form-control text-left" rows="9"
                                     placeholder="This portion will serve as the justification for your proposal.&#10;Please provide the following minimum information for the rationale and introduction of your program/project/activity: 
                                     &#10;1. Current condition of the community.&#10;2. Problem/need identified by the unit that you intend to address.&#10;3. Data source as well as the process underwent to generate the data.&#10;4. How will the unit respond to the condition?&#10;What expertise and competencies from the unit or in collaboration with others will be useful to address the identified condition?"
                                     ></textarea>
@@ -127,7 +128,7 @@
                            </div>
                            <div class="card-body">
                               <div class="form-group has-success">
-                                 <textarea id="form1" class="md-textarea form-control" rows="6"
+                                 <textarea id="form1" name="a-goals" class="md-textarea form-control" rows="6"
                                     placeholder="This section must enumerate the following items: 
                                     &#10;1. Over-all goal of the proposed program/project/activity.&#10;2. The specific objectives that will be useful in achieving the goal (be sure they are SMART).&#10;3. What are the expected outcomes after implementing the program/project/activity?"
                                     ></textarea>
@@ -146,7 +147,7 @@
                            </div>
                            <div class="card-body">
                               <div class="form-group has-success">
-                                 <textarea id="form1" class="md-textarea form-control" rows="6"
+                                 <textarea id="form1" name="a-participants" class="md-textarea form-control" rows="6"
                                     placeholder="This part must explicitly provide the specific roles/responsibilities or deliverables as well as benefits of the following:&#10;&#10;1. Implementing team from USC/Unit.&#10;2. Internal and external partners.&#10;3. Beneficiaries and/or partner community/organization/institutions."
                                     ></textarea>
                               </div>
@@ -186,22 +187,22 @@
                                        <tr>
                                           <td>
                                              <div class="form-group has-success">
-                                                <input type='date' class='form-control'>
+                                                <input type='date' name="a-outline-date" class='form-control'>
                                              </div>
                                           </td>
                                           <td>
                                              <div class="form-group has-success">
-                                                <input type='text' class='form-control'>
+                                                <input type='text' name="a-outline-activity" class='form-control'>
                                              </div>
                                           </td>
                                           <td>
                                              <div class="form-group has-success">
-                                                <input type='number' min='1' class='form-control'>
+                                                <input type='number' name="a-outline-participants" min='1' class='form-control'>
                                              </div>
                                           </td>
                                           <td>
                                              <div class="form-group has-success">
-                                                <input type='text' class='form-control'>
+                                                <input type='text' name="a-outline-charge" class='form-control'>
                                              </div>
                                           </td>
                                           <td>                            
@@ -313,12 +314,14 @@
                            </div>
                         </div>
                      </div>
+                     <input id="input-grand-total" name="a-grand-total" type="hidden" />
+                     
                      <!-- End of Budgetary Requirements -->
                      <button class='btn btn-default float-middle' style="margin-left:40%"  onclick="goTop();">
                         <strong>BACK TO TOP</strong>
                      </button>
 
-                     <button class='btn btn-success float-right' style="margin-right:2%" id="btnNext">
+                     <button class='btn btn-success float-right' type="button" style="margin-right:2%" id="btnNext">
                         <strong>PROCEED TO FORM B </strong>
                         <span class="material-icons" style="font-size:25px;">chevron_right</span>
                      </button>
@@ -458,6 +461,7 @@
             </div>
          </div>
       </div>
+      </form>
       <!-- Floating Action Buttons -->
       <button class="btn btn-default btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;" rel="tooltip" data-placement="left" title="Save as Draft">
       <i class="material-icons" style="font-size: 35px">archive</i>
@@ -465,20 +469,26 @@
       <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
       <script>
          $('document').ready(function() {
+          $('button').attr('type', 'button');
+          
            //function to add new table row
            $('.activities_add').click(function() {
                //long string because having escape characters won't make it work
-               $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='date' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td><div class='form-group has-success'><input type='number' min='1' class='form-control'></div></td><td><div class='form-group has-success'><input type='text' class='form-control'></div></td><td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
+               $(".activities_table").append("<tr><td><div class='form-group has-success'><input type='date' name='a-outline-date' class='form-control'></div></td>" +
+               "<td><div class='form-group has-success'><input type='text' name='a-outline-activity' class='form-control'></div></td>"+
+               "<td><div class='form-group has-success'><input type='number' name='a-outline-participants' min='1' class='form-control'></div></td>"+
+               "<td><div class='form-group has-success'><input type='text' name='a-outline-charge' class='form-control'></div></td>"+
+               "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
            //function to add Meals and Snacks row
            $('.meals-add').click(function() {
                //long string because having escape characters won't make it work
                $(".meals-row").append(
-                 "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
-                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' min='1' readonly class='data-total-input'></div></td>" +
+                 "<tr><td><div class='form-group has-success'><input type='text' name='a-meal-particular' class='form-control'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='text' name='a-meal-frequenct' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='number' name='a-meal-quantity' min='1' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' name='a-meal-amount' min='1' step='.01' class='form-control data-input'></div></td>" +
+                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' name='a-meal-subtotal' min='1' readonly class='data-total-input'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          
@@ -486,11 +496,11 @@
            $('.transportations-add').click(function() {
                //long string because having escape characters won't make it work
                $(".transportations-row").append(
-                 "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
-                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' min='1' readonly class='data-total-input'></div></td>" +
+                 "<tr><td><div class='form-group has-success'><input type='text' name='a-transportation-particular' class='form-control'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='text' name='a-transportation-frequency' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='number' name='a-transportation-quantity' min='1' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' name='a-transportation-amount' min='1' step='.01' class='form-control data-input'></div></td>" +
+                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' name='a-transportation-subtotal' min='1' readonly class='data-total-input'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          
@@ -498,15 +508,64 @@
            $('.materials-add').click(function() {
                //long string because having escape characters won't make it work
                $(".materials-row").append(
-                 "<tr><td><div class='form-group has-success'><input type='text' class='form-control'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' min='1' step='.01' class='form-control data-input'></div></td>" +
-                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' min='1' readonly class='data-total-input'></div></td>" +
+                 "<tr><td><div class='form-group has-success'><input type='text' name='a-materials-particular' class='form-control'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='text' name='a-materials-frequency' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='number' name='a-materials-quantity' min='1' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' name='a-materials-amount' min='1' step='.01' class='form-control data-input'></div></td>" +
+                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' name='a-materials-subtotal' min='1' readonly class='data-total-input'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
-         })
-         
+         });
+           //function to submit form
+           function submitDetails(){
+            var form = $("#proposal-form [name]");
+            var json = JSON.stringify(getFormData(form));
+          
+            form = $("#proposal-form");
+
+            $.ajax({
+              headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              url: "/sendForm",
+              type: "POST",
+              data: {
+                title: $('#input-title').val(), 
+                CEStype: $('#input-ces-type').val(), 
+                startDate: $('#input-start-date').val(), 
+                endDate: $('#input-end-date').val(), 
+                venue: $('#input-venue').val(), 
+                json: json
+              },
+              success: function(result){
+                console.table(result);
+              },
+              error: function(xhr, resp, text){
+                console.log(xhr, resp, text);
+              }
+             });
+           }
+
+         //Create form data to array
+         function getFormData($form){
+            var unindexed_array = $form.not('.no-include').serializeArray();
+            var indexed_array = {};
+            var anyNumber = 0;
+            $.map(unindexed_array, function(n, i){
+               if(indexed_array[n['name']] === undefined){
+                  indexed_array[n['name']] = []
+               }
+
+               indexed_array[n['name']].push(n['value']);
+            //   if(indexed_array[n['name']] !== undefined){
+            //     indexed_array[n['name'] + anyNumber++] = n['value'];
+            //   }else{
+            //     indexed_array[n['name']] = n['value'];
+            //   }
+            });
+            return indexed_array;
+          }
+
          function commaSeparateNumber(val){
            while (/(\d+)(\d{3})/.test(val.toString())){
              val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
@@ -516,6 +575,7 @@
          
          function calcuGrandTotal(){
            var grand = 0;
+           var grandString ="";
          
            $('.data-total-input').each(function(){
              grand += parseFloat($(this).val().replace(/\,/g, ''));
@@ -531,8 +591,11 @@
            if(decimal.length <= 3){
             decimal = decimal.substring(0,2);
            }
+           
+           grandString = commaSeparateNumber(splitString[0]) + '.' + decimal;
 
-           $('#grand-total').html('₱ ' + commaSeparateNumber(splitString[0]) + '.' + decimal);
+           $("#input-grand-total").val(grandString);
+           $('#grand-total').html('₱ ' + grandString);
          }
          
          //function to delete row containing selected button
@@ -569,6 +632,7 @@
          });
 
          $('#btnNext').click(function(){
+          submitDetails();
             $('#formb').trigger('click');        
             document.location.href = "#topPage";
          });
@@ -579,7 +643,7 @@
          });
 
          $('#btnReview').click(function(){
-            $('#formreview').trigger('click');        
+            $('#formreview').trigger('click');    
             document.location.href = "#topPage";
          });
 
