@@ -456,7 +456,36 @@
                   </button>
                </div>
                <div class="tab-pane" id="form-review">
-                  <h1>basin form C diay ni</h1>
+                  <!-- Basic Information -->
+                  <div class="col-md-12">
+                        <div class="card">
+                           <div class="card-header card-header-text card-header-success">
+                              <div class="card-text">
+                                 <h5 class="card-title"><strong>Basic Information</strong></h5>
+                              </div>
+                           </div>
+                           <div class="card-body">
+                              <div class="row">
+                                 <h3>Title:</h3>
+                              </div>
+                              <div class="row">
+                                 <h3>CES Type:</h3>
+                              </div>
+                              <div class="row">
+                                 <h3>Start of Activity:</h3>
+                              </div>
+                              <div class="row">
+                                 <label class="col-sm-2 col-form-label" style="color:black">{{ __('Venue:') }}</label>
+                                 <div class="col-sm-7">
+                                    <div class="form-group{{ $errors->has('venue') ? ' has-danger' : ' has-success' }}">
+                                       <input class="form-control no-include" name="a-venue" id="input-venue" type="text" placeholder="{{ __('Where will the activity take place?') }}" value="" required="true" aria-required="true"/>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Basic Information -->
                </div>
             </div>
          </div>
