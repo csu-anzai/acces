@@ -104,7 +104,7 @@
                         <div class="card">
                            <div class="card-header card-header-text card-header-success">
                               <div class="card-text">
-                                 <h5 class="card-title"><strong>Rationale and Contextualization</strong></h5>
+                                 <h5 class="card-title"><strong>I. Rationale and Contextualization</strong></h5>
                               </div>
                            </div>
                            <div class="card-body">
@@ -123,7 +123,7 @@
                         <div class="card">
                            <div class="card-header card-header-text card-header-success">
                               <div class="card-text">
-                                 <h5 class="card-title"><strong>Goals, Objectives, and Outcomes</strong></h5>
+                                 <h5 class="card-title"><strong>II. Goals, Objectives, and Outcomes</strong></h5>
                               </div>
                            </div>
                            <div class="card-body">
@@ -142,7 +142,7 @@
                         <div class="card">
                            <div class="card-header card-header-text card-header-success">
                               <div class="card-text">
-                                 <h5 class="card-title"><strong>Participants, Partners, and Beneficiaries</strong></h5>
+                                 <h5 class="card-title"><strong>III. Participants, Partners, and Beneficiaries</strong></h5>
                               </div>
                            </div>
                            <div class="card-body">
@@ -160,7 +160,7 @@
                         <div class="card">
                            <div class="card-header card-header-text card-header-success">
                               <div class="card-text">
-                                 <h5 class="card-title"><strong>Outline of Activites</strong></h5>
+                                 <h5 class="card-title"><strong>IV. Outline of Activites</strong></h5>
                               </div>
                            </div>
                            <div class="card-body">
@@ -220,7 +220,7 @@
                         <div class="card">
                            <div class="card-header card-header-text card-header-success">
                               <div class="card-text">
-                                 <h5 class="card-title"><strong>Budgetary Requirements</strong></h5>
+                                 <h5 class="card-title"><strong>V. Budgetary Requirements</strong></h5>
                               </div>
                            </div>
                            <div class="card-body">
@@ -528,7 +528,38 @@
                                  </div>
                               </div>
                               <div class="card-body">
-
+                                 <div class="table-responsive">
+                                    <table class="table activities_table">
+                                       <thead>
+                                          <th>
+                                             Tentative date
+                                          </th>
+                                          <th>
+                                             Activities
+                                          </th>
+                                          <th>
+                                             Participants needed
+                                          </th>
+                                          <th>
+                                             Person/s In-charge
+                                          </th>
+                                       </thead>
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                             </td>
+                                             <td>
+                                             </td>
+                                             <td>
+                                             </td>
+                                             <td>
+                                             </td>
+                                             <td>                            
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
                               </div>
                            </div>
                            <!-- End of Outline of Activites -->
@@ -540,7 +571,85 @@
                                  </div>
                               </div>
                               <div class="card-body">
-
+                                 <div class="table-responsive">
+                                    <table class="table">
+                                       <thead class=" text-primary" style='color:black !important;'>
+                                          <th>
+                                             Particulars
+                                          </th>
+                                          <th>
+                                             Frequency
+                                          </th>
+                                          <th>
+                                             Quantity
+                                          </th>
+                                          <th>
+                                             Amount 
+                                          </th>
+                                          <th>
+                                             Subtotal
+                                          </th>
+                                       </thead>
+                                       <thead class="text-primary" style='color:black !important;'>
+                                          <th>
+                                             A. Meals / Snacks 
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                       </thead>
+                                       <tbody>
+                                       </tbody>
+                                       <thead class=" text-primary" style='color:black !important;'>
+                                          <th>
+                                             B. Transportation
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                       </thead>
+                                       <tbody class="transportations-row">
+                                       </tbody>
+                                       <thead class=" text-primary" style='color:black !important;'>
+                                          <th>
+                                             C. Materials
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                       </thead>
+                                       <tbody>
+                                       </tbody>
+                                       <thead class=" text-primary" style='color:black !important;'>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th><strong> Grand Total: </strong>
+                                          </th>
+                                          <th>
+                                          </th>
+                                          <th></th>
+                                       </thead>
+                                    </table>
+                                 </div>
                               </div>
                            </div>
                            <!-- End of Budgetary Requirements -->                           
