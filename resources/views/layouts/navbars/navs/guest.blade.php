@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
+<nav class="navbar navbar-expand-lg fixed-top" style="background-color: forestgreen !important;">
   <div class="container">
     <div class="navbar-wrapper">
       <div class="navbar-brand">
@@ -27,12 +27,12 @@
           </a>
         </li>
         <li class="nav-item{{ $activePage == 'about' ? ' active' : '' }}">
-          <a href="{{ route('login') }}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="material-icons">info</i> {{ __('About') }}
           </a>
         </li>
         <li class="nav-item ">
-          <a href="{{ route('profile.edit') }}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="material-icons">phone</i> {{ __('Contact') }}
           </a>
         </li>

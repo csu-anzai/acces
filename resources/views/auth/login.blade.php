@@ -37,7 +37,7 @@
 <title>ACCES - Welcome!</title>
 
 <div class="container" style="height: auto;">
-  <div class="row align-items-center">
+  <div class="row align-items-center" style="margin-top:5%">
     <div class="col-md-7 ml-auto mr-auto">
       <img src="images/logo_main.png" style="width: 100%; max-width: 550px; height: auto;">
     </div>
@@ -119,10 +119,11 @@
       </div>
     </div>
   </div>
-  <!-- <div class="row text-center">
-    <div class="col-md-12" style="margin-top:15%">
-      <h1>What is <strong>Community Extension Service</strong>?</h1>
-      <hr style="background-color:white"/>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mt-6">
+      <h2>What is <strong style="font-family: 'Roboto Black'">Community Extension Service</strong>?</h2>
       <h4><strong>Community Extension Service (CES)</strong> is one of the three core functions of the
       <strong>University of San Carlos (USC)</strong> as a Higher Education Institution along with 
       <strong>Teaching-Learning</strong> and  <strong>Research</strong>. Hence, Carolinians experience integral 
@@ -133,27 +134,10 @@
       dialogue with the world guided by the Missionary charisma of Societas Verbi Divini (SVD) Spirituality; 
       and third, to empower peoples and communities for social change through a 
       transformatory or liberational approach.</h4>
-      <hr/>      
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header card-header-text card-header-success">
-              <div class="card-text">
-                <h4 class="card-title">Goals</h4>
-              </div>
-            </div>
-            <div class="card-body">
-            For USC to contribute to nation building by providing highly specialized curricular programs with 
-            extension services that allow students, faculty, and staff to apply the new knowledge they generate
-             by empowering communities, organizations, and institutions through a transformatory approach in addressing 
-             specific social development problems.
-            </div>
-        </div>
-    </div>
-  </div> -->
 </div>
+
 @endsection
 
 <!-- Registration Modal -->
