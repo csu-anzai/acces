@@ -22,6 +22,11 @@ class CreateProposalsTable extends Migration
             $table->string('venue');
             $table->json('proposal_json');
             $table->timestamps();
+
+            //Foreign Key
+            $table->unsignedInteger('user_id');
+            
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
