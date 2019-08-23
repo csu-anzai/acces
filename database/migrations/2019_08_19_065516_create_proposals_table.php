@@ -21,7 +21,9 @@ class CreateProposalsTable extends Migration
             $table->date('end_date');
             $table->string('venue');
             $table->json('proposal_json');
-            $table->timestamps();
+            $table->enum('status', array('Draft', 'Submitted'));
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
 
             //Foreign Key
             $table->unsignedInteger('user_id');
