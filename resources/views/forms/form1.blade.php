@@ -467,19 +467,19 @@
                               <tbody>
                                  <tr>
                                     <td>Title:</td>
-                                    <td><h2><strong id="review-title">Strive 5E: Umapad/Bankal Tutorial</strong></h2></td>
+                                    <td><h2><strong id="review-title"></strong></h2></td>
                                  </tr>
                                  <tr>
                                     <td>CES Type:</td>
-                                    <td><h3><strong id="review-ces-type">Program-based CES</strong></h3></td>
+                                    <td><h3><strong id="review-ces-type"></strong></h3></td>
                                  </tr>
                                  <tr>
                                     <td>Venue:</td>
-                                    <td><h4><strong id="review-venue">Umapad, Mandaue City and Bankal, Lapulapu City</strong></h4></td>
+                                    <td><h4><strong id="review-venue"></strong></h4></td>
                                  </tr>
                                  <tr>
                                     <td>Date:</td>
-                                    <td><h4><strong id="review-date">July 25th, 2018 to July 25th, 2018</strong></h4></td>
+                                    <td><h4><strong id="review-date"></strong></h4></td>
                                  </tr>
                               </tbody>
                            </table>
@@ -492,7 +492,6 @@
                                  </div>
                               </div>
                               <div id="review-rationale" class="card-body">
-                                 The tutorial service provided to scholars of Umapad Dumpsite and Bankal Jansenville Village cover mathematics, physics and chemistry. This was initiated by SMED as part of their practice teaching program. The program has helped the students of these communities in their studies and wants the program to continue. JPIC-IDC community organizers have requested to have the tutorial service revive since the students specially in the K11 and K12 are having difficulty in the advance course of mathe and science.
                               </div>
                            </div>
                            <!-- End of Rationale and Contextualization -->
@@ -504,7 +503,7 @@
                                  </div>
                               </div>
                               <div id="review-goals" class="card-body">
-                               To provide tutorial services to students of Umapad Dumpsite and Bankal Jansenville Village to cover mathematics, physics and chemistry.
+                               
                               </div>
                            </div>
                            <!-- End of Goals, Objectives, and Outcomes -->
@@ -516,8 +515,8 @@
                                  </div>
                               </div>
                               <div id="review-participants" class="card-body">
-                                 a. Implementing team from USC/Unit - To provide student volunteers in implementing the tutorial services - To provide faculty volunteers in assisting students in implementing the program. b. Beneficiaries and/or partner community/organization/institution - To closely monitor students in their community are regularly attending the tutorial activities - To provide the venue for the tutorial classes -To cover the cost of providing snacks to their students
-                               </div>
+                                 
+                              </div>
                            </div>
                            <!-- End of Participants, Partners, and Beneficiaries -->
                            <!-- Outline of Activites -->
@@ -529,7 +528,7 @@
                               </div>
                               <div class="card-body">
                                  <div class="table-responsive">
-                                    <table class="table activities_table">
+                                    <table class="table">
                                        <thead>
                                           <th>
                                              Tentative date
@@ -606,7 +605,7 @@
                                           <th>
                                           </th>
                                        </thead>
-                                       <tbody id="review-transportations" class="transportations-row">
+                                       <tbody id="review-transportations">
                                        </tbody>
                                        <thead class=" text-primary" style='color:black !important;'>
                                           <th>
@@ -879,7 +878,7 @@
             $('#review-date').html(dateString);
             $('#review-rationale').html(json['a-rationale']);
             $('#review-goals').html(json['a-goals']);
-            $('#review-participants').html(json['a-participant']);
+            $('#review-participants').html(json['a-participants']);
 
             addAllDataInRow(json, "outline", "Outline");
             addAllDataInRow(json, "meals", "Budgetary");
