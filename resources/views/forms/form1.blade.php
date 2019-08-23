@@ -565,7 +565,8 @@
                 startDate: $('#input-start-date').val(), 
                 endDate: $('#input-end-date').val(), 
                 venue: $('#input-venue').val(), 
-                json: json
+                json: json,
+                userId: {{ Auth::user()->id}}
               },
               success: function(result){
                 var proposal_id = result;

@@ -26,7 +26,8 @@ class AjaxController extends Controller
             'start_date' => $request->input('startDate'),
             'end_date' => $request->input('endDate'),
             'venue' => $request->input('venue'),
-            'proposal_json' => $json
+            'proposal_json' => $json,
+            'user_id' => $request->input('userId')
        ]);
        
         return response()->json($id, 200);
