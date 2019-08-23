@@ -44,20 +44,21 @@
           <div class="card-body">
             <div class="tab-content">
               <div class="tab-pane active" id="profile">
-                <table class="table">
+                <table class="table" id="proposal_table">
+                  <thead>
+                    <th><strong>#</strong></th>
+                    <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                    <th><strong>Date Created</strong></th>
+                    <th><strong>Remarks</strong></th>
+                  </thead>
                   <tbody>
                   @foreach($proposals as $proposal)
+                    <tr>
                       <td>{{$proposal->id}}</td>
-                      <td>{{$proposal->title}}</td>
-                      <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                          <i class="material-icons">edit</i>
-                        </button>
-                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                          <i class="material-icons">close</i>
-                        </button>
-                      </td>
-                    </td>
+                      <td><a href="#" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                      <td>Date here</td>
+                      <td>Approved?</td>
+                    </tr>
                   @endforeach
                   </tbody>
                 </table>
@@ -273,6 +274,139 @@
     </div>
   </div>
 </div>
+
+<!-- View Proposal Modal -->
+<div class="modal fade" id="proposal-modal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <form class="border border-light p-5">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <i class="material-icons" style="font-size: 35px">clear</i>
+          </button>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 style='font-family: "Roboto Black";'><strong id="proposal-modal-title"></strong></h3>
+                <h4 id="proposal-modal-cestype"></h4>
+                <h4 style="margin-top:3%" id="proposal-modal-venue"></h4>
+                <h4 id="proposal-modal-date"></h4>
+              </div>
+              <div class="card">
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                      <h5 class="card-title"><strong>I. Rationale and Contextualization</strong></h5>
+                  </div>
+                </div>
+                <div class="card-body" style="margin-top:3%">
+                  asdsadsadsadsadsadsad
+                </div>
+              </div>  
+              <div class="card">
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                      <h5 class="card-title"><strong>II. Goal, Objectives, and Outcomes</strong></h5>
+                  </div>
+                </div>
+                <div class="card-body" style="margin-top:3%">
+                  asdsadsadsadsadsadsad
+                </div>
+              </div>   
+              <div class="card">
+                <div class="card-header card-header-text card-header-success">
+                  <div class="card-text">
+                      <h5 class="card-title"><strong>III. Participants, Partners and Beneficiaries</strong></h5>
+                  </div>
+                </div>
+                <div class="card-body" style="margin-top:3%">
+                  asdsadsadsadsadsadsad
+                </div>
+              </div>             
+            </div>
+  
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
+<script>
+
+$(".proposal-titles").click(function(){
+
+  var proposal_id = $(this).attr('value')  
+
+  $.ajax({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    url: "/getProposal",
+    type: "POST",
+    data: { id: proposal_id},
+    success: function(result){
+        reviewProposal(result);
+        $('#proposal-modal').modal(focus);
+        console.log(result);
+    },
+    error: function(xhr, resp, text){
+        console.log(xhr, resp, text);
+    }
+  });
+
+  //Review Proposal
+  function reviewProposal(proposal){
+    var startDate = new Date(proposal.start_date);
+    var endDate = new Date(proposal.end_date);
+
+    var dateString = "";
+    var cesType = (proposal.CES_type === "Program Based")? "Program - Based CES" : "Activity - Based CES";
+
+    dateString += "<strong>";
+    dateString += getFormattedDate(startDate);
+    dateString += "</strong> to <strong>";
+    dateString += getFormattedDate(endDate);
+    dateString += "</strong>";
+
+    $('#proposal-modal-title').html(proposal.title);
+    $('#proposal-modal-cestype').html(cesType);
+    $('#proposal-modal-venue').html(proposal.venue);
+    $('#proposal-modal-date').html(dateString);
+    
+  }
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+
+  function getFormattedDate(d){
+    var ret = "";
+    var temp = "";
+
+    switch(d.getDate() % 10){
+        case 1 : temp = "st";break;
+        case 2 : temp = "nd";break;
+        case 3 : temp = "rd";break;
+        default : temp = "th";
+    }
+    ret += monthNames[d.getMonth()];
+    ret += " " + d.getDate() + temp;
+    ret += ", " + d.getFullYear();
+
+    return ret;
+  }
+
+
+
+});
+
+
+
+
+
+// $(document).ready(function() {
+//     $('#proposal_table').DataTable();
+// } );
+</script>
 
     <!-- End of Modal Area -->
     </div>
