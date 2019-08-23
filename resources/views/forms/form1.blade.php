@@ -1849,7 +1849,9 @@
                       <input type="radio" class="custom-control-input" name="nature-of-linkage-radio" id="with-MOA">
                       <label class="custom-control-label" style="color:black !important;" for="with-MOA">with Memorandum of Understanding / Memorandum of Agreement</label>                           
                     </div>
-                    
+                    <div class="">
+                      
+                    </div>
                   </td>
                   <td>
                     <div class="custom-control custom-radio">
