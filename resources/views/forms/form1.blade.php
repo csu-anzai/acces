@@ -686,13 +686,14 @@
             var endDate = new Date(proposal.end_date);
 
             var dateString = "";
+            var cesType = (proposal.CES_type === "Program Based")? "Program - Based CES" : "Activity - Based CES";
 
             dateString += getFormattedDate(startDate);
             dateString += " to ";
             dateString += getFormattedDate(endDate);
 
             $('#review-title').html(proposal.title);
-            $('#review-ces-type').html(proposal.CES_type);
+            $('#review-ces-type').html(cesType);
             $('#review-venue').html(proposal.venue);
             $('#review-date').html(dateString);
             
