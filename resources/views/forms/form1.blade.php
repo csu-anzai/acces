@@ -529,7 +529,7 @@
                               </div>
                               <div class="card-body">
                                  <div class="table-responsive">
-                                    <table class="table activities_table">
+                                    <table class="table">
                                        <thead>
                                           <th>
                                              Tentative date
