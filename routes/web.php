@@ -12,14 +12,14 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::post('getDepartments','AjaxController@getDepartments');
 
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-
-	Route::post('getDepartments','AjaxController@getDepartments');
+	
 	Route::post('sendForm','AjaxController@insertProposal');
 	Route::post('getProposal','AjaxController@getProposal');
 	
