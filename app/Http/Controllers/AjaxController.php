@@ -19,7 +19,8 @@ class AjaxController extends Controller
 
      public function insertProposal(Request $request){
         $json = $request->input('json');
-        DB::table('proposals')->insert([
+        
+        $id = DB::table('proposals')->insertGetId([
             'title' => $request->input('title'),
             'CES_type' => $request->input('CEStype'),
             'start_date' => $request->input('startDate'),
@@ -27,6 +28,16 @@ class AjaxController extends Controller
             'venue' => $request->input('venue'),
             'proposal_json' => $json
        ]);
-        return response()->json($json, 200);
+       
+        return response()->json($id, 200);
+    }
+
+    public function getProposal(Request $request){
+        $id = $request->input('id');
+        $proposal = DB::table('proposals')
+            ->where('id', $request->input('id'))
+            ->first();
+
+        return response()->json($proposal, 200);
     }
 }

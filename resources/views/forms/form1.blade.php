@@ -466,7 +466,7 @@
                            </div>
                            <div class="card-body">
                               <div class="row">
-                                 <h3>Title:</h3>
+                                 <h3>Title:</h3> <h3 id="display-title"></h3>
                               </div>
                               <div class="row">
                                  <h3>CES Type:</h3>
@@ -545,6 +545,7 @@
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          });
+         
            //function to submit form
            function submitDetails(){
             var form = $("#proposal-form [name]");
@@ -567,7 +568,23 @@
                 json: json
               },
               success: function(result){
-                console.table(result);
+                var proposal_id = result;
+                //Get proposal data when success
+                $.ajax({
+                  headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  },
+                  url: "/getProposal",
+                  type: "POST",
+                  data: { id: proposal_id},
+                  success: function(result){
+                     console.log(result);
+                     // $('#display-id').html(result.title);
+                  },
+                  error: function(xhr, resp, text){
+                     console.log(xhr, resp, text);
+                  }
+                  });
               },
               error: function(xhr, resp, text){
                 console.log(xhr, resp, text);
