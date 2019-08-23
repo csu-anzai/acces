@@ -2,6 +2,12 @@
 
 @section('content')
 
+<style>
+  .number-width-limit{
+    width:20%;  
+  }
+</style>
+
 <div class="content">
   <div class="container-fluid">
     <div class="row" style="margin-top:-3%">
@@ -1791,8 +1797,135 @@
               </div>
             </div> 
             <div class="card-body">
-              <table class="table">
-                
+              <table class="table" style="margin-top:-30%">
+                <tbody>
+                  <tr>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="man-hours-preparation" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of man hours needed to prepare the P/P/A </p>
+                      </td>
+                    </div>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="man-hours-completion" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of man hours needed to complete the P/P/A </p>
+                      </td>
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="faculty-involed" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of faculty members who will be involved </p>
+                      </td>
+                    </div>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="course-based-involved" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of course-based students who will be involved </p>
+                      </td>
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="student-orgs-involed" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of Student Organization members who will be involved </p>
+                      </td>
+                    </div>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="staff-involved" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of staff who will be involved </p>
+                      </td>
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="education-materials-produced" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of Information and Education Campaign materials to be produced </p>
+                      </td>
+                    </div>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="education-materials-improved" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of Information and Education Campaign materials to be improved/enhanced </p>
+                      </td>
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="curricular-programs-developed" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of curricular programs to be developed </p>
+                      </td>
+                    </div>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="curricular-programs-improved" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of curricular programs to be improved/enhanced </p>
+                      </td>
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="proposals-developed" class="form-control">  
+                      </td>
+                      <td>
+                        <p> 	No. of proposals to be developed </p>
+                      </td>
+                    </div>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="proposals-presented" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of papers to be presented </p>
+                      </td>
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="papers-published" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of papers to be published </p>
+                      </td>
+                    </div>
+                    <div class="form-group">
+                      <td class="number-width-limit">
+                        <input type="number" id="policies-advocated" class="form-control">  
+                      </td>
+                      <td>
+                        <p> No. of policies to be advocated </p>
+                      </td>
+                    </div>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -1813,8 +1946,8 @@
               <table class="table">    
                 <tr>
                   <td></td>
-                  <td>Faculty Members</td>
-                  <td>Students</td>
+                  <td><strong>Faculty Members</strong></td>
+                  <td><strong>Students</strong></td>
                 </tr>
                 <tr>
                   <td>Expertise and/or specialization needed	</td>
