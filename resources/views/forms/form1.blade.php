@@ -1,6 +1,7 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 
 @section('content')
+
 <div class="content">
   <div class="container-fluid">
     <div class="row" style="margin-top:-3%">
@@ -1753,8 +1754,132 @@
             </div>
       <div> 
       <!--end of governance dimension-->
+      </div>
+      </div>
+      </div>
+      <!-- implications card -->
+      <div class="card">
+        <div class="card-header card-header-text card-header-success">
+          <div class="card-text">
+            <h5 class="card-title"><strong>Implications to Work hours, Academic Program, and Research</strong></h5>
+            <p class="card-category"> {{ __('The following variables are identified as essentials in order to determine that your program/project/activities are aligned to your unit’s program offerings and research priorities. Please provide the required preliminary data. Also, do take note that these will be verified after the completion of the program/project/activity.') }}</p>
+          </div>
+        </div> 
+        <div class="card-body">
+          <!-- practical counts -->
+          <div class='card'>
+            <div class="card-header card-header-text card-header-success">
+              <div class="card-text">
+                <h5 class="card-title"><strong>A. Practical Counts:</strong></h5>
+                <p class="card-category"> {{ __('please provide below your estimated count per item:') }}</p>
+              </div>
+            </div> 
+            <div class="card-body">
+              <table class="table">
+                
+              </table>
+            </div>
+          </div>
+          <!-- end of practical counts -->
 
-          
+          <!-- human resource -->
+          <div class="card">
+            <div class="card-header card-header-text card-header-success">
+              <div class="card-text">
+                <h5 class="card-title"><strong>Human Resource Implications: </strong></h5>
+                <p class="card-category"> {{ __('please provide the specifics:') }}</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <p style="text-align:center">
+                <strong>PREPARATION OF THE PPA</strong>
+              </p>
+              <table class="table">    
+                <tr>
+                  <td></td>
+                  <td>Faculty Members</td>
+                  <td>Students</td>
+                </tr>
+                <tr>
+                  <td>Expertise and/or specialization needed	</td>
+                  <td>
+                    <textarea class="md-textarea form-control" rows="2"></textarea>
+                  </td>
+                  <td>
+                    <textarea class="md-textarea form-control" rows="2"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Roles/tasks</td>
+                  <td>
+                    <textarea class="md-textarea form-control" rows="2"></textarea>
+                  </td>
+                  <td>
+                    <textarea class="md-textarea form-control" rows="2"></textarea>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- end of human resource -->
+        </div>
+      </div>
+      <!-- end of implications card -->
+      <!-- linkage profile -->
+      <div class="card">
+        <div class="card-header card-header-text card-header-success">
+          <div class="card-text">
+            <h5 class="card-title"><strong>Linkage Profile </strong></h5>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Nature of Linkage/Partnership: -->
+          <div class="card">
+            <div class="card-header card-header-text card-header-success">
+              <div class="card-text">
+                <h5 class="card-title"><strong>Nature of Linkage/Partnership:</strong></h5>
+                <p class="card-category"> {{ __('please specify:') }}</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <tr>
+                  <td>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input" name="nature-of-linkage-radio" id="with-MOA">
+                      <label class="custom-control-label" style="color:black !important;" for="with-MOA">with Memorandum of Understanding / Memorandum of Agreement</label>                           
+                    </div>
+                    
+                  </td>
+                  <td>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input" name="nature-of-linkage-radio" id="without-MOA">
+                      <label class="custom-control-label" style="color:black !important;" for="without-MOA">without Memorandum of Understanding / Memorandum of Agreement</label>                           
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <table class="table">
+                <tr>
+                  <p><strong> Enumerate the opportunities identified: </strong></p>
+                </tr>
+                <tr>
+                  <textarea class="md-textarea form-control" rows="4"></textarea>
+                </tr>
+                <tr>
+                  <p> <strong> Enumerate the challenges/problems encountered: </strong></p>
+                </tr>
+                <tr>
+                  <textarea class="md-textarea form-control" rows="4"></textarea>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- end of Nature of Linkage/Partnership: -->
+        </div>
+      </div>
+      <!-- end of linkage profile -->
+
           <!-- start of textareas and other things--> 
           <!-- first navbar -->
           <div> 
@@ -2326,6 +2451,7 @@
                 <span class="navbar-brand mb-0 h1">Implications to Work hours, Academic Program, and Research</span>
               </nav>
             </div>
+
           </div>
           <div> 
             <div>
