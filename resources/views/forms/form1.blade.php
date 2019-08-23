@@ -606,7 +606,7 @@
                                           <th>
                                           </th>
                                        </thead>
-                                       <tbody id="review-transportations" class="transportations-row">
+                                       <tbody id="review-transportations">
                                        </tbody>
                                        <thead class=" text-primary" style='color:black !important;'>
                                           <th>
