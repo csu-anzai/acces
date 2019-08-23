@@ -264,7 +264,7 @@
                                     </tbody>
                                     <thead class=" text-primary" style='color:black !important;'>
                                        <th>
-                                          B. Transportation
+                                          B. Transportations
                                        </th>
                                        <th>
                                        </th>
@@ -544,19 +544,7 @@
                                              Person/s In-charge
                                           </th>
                                        </thead>
-                                       <tbody>
-                                          <tr>
-                                             <td>
-                                             </td>
-                                             <td>
-                                             </td>
-                                             <td>
-                                             </td>
-                                             <td>
-                                             </td>
-                                             <td>                            
-                                             </td>
-                                          </tr>
+                                       <tbody id="review-outline">
                                        </tbody>
                                     </table>
                                  </div>
@@ -603,11 +591,11 @@
                                           <th>
                                           </th>
                                        </thead>
-                                       <tbody>
+                                       <tbody id="review-meals">
                                        </tbody>
                                        <thead class=" text-primary" style='color:black !important;'>
                                           <th>
-                                             B. Transportation
+                                             B. Transportations
                                           </th>
                                           <th>
                                           </th>
@@ -618,7 +606,7 @@
                                           <th>
                                           </th>
                                        </thead>
-                                       <tbody class="transportations-row">
+                                       <tbody id="review-transportations" class="transportations-row">
                                        </tbody>
                                        <thead class=" text-primary" style='color:black !important;'>
                                           <th>
@@ -633,7 +621,7 @@
                                           <th>
                                           </th>
                                        </thead>
-                                       <tbody>
+                                       <tbody id="review-materials">
                                        </tbody>
                                        <thead class=" text-primary" style='color:black !important;'>
                                           <th>
@@ -644,7 +632,7 @@
                                           </th>
                                           <th><strong> Grand Total: </strong>
                                           </th>
-                                          <th>
+                                          <th id="review-grand-total">
                                           </th>
                                           <th></th>
                                        </thead>
@@ -702,27 +690,27 @@
            $('.meals-add').click(function() {
                //long string because having escape characters won't make it work
                $(".meals-row").append(
-                 "<tr><td><div class='form-group has-success'><input type='text' name='a-meal-particular' class='form-control'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='text' name='a-meal-frequenct' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' name='a-meal-quantity' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' name='a-meal-amount' min='1' step='.01' class='form-control data-input'></div></td>" +
-                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' name='a-meal-subtotal' min='1' readonly class='data-total-input'></div></td>" +
+                 "<tr><td><div class='form-group has-success'><input type='text' name='a-meals-particular' class='form-control'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='text' name='a-meals-frequency' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='number' name='a-meals-quantity' min='1' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' name='a-meals-amount' min='1' step='.01' class='form-control data-input'></div></td>" +
+                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' name='a-meals-subtotal' min='1' readonly class='data-total-input' value='0.00'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          
-           //function to add Transportation row
+           //function to add Transportations row
            $('.transportations-add').click(function() {
                //long string because having escape characters won't make it work
                $(".transportations-row").append(
-                 "<tr><td><div class='form-group has-success'><input type='text' name='a-transportation-particular' class='form-control'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='text' name='a-transportation-frequency' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success'><input type='number' name='a-transportation-quantity' min='1' class='form-control data-input'></div></td>" +
-                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' name='a-transportation-amount' min='1' step='.01' class='form-control data-input'></div></td>" +
-                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' name='a-transportation-subtotal' min='1' readonly class='data-total-input'></div></td>" +
+                 "<tr><td><div class='form-group has-success'><input type='text' name='a-transportations-particular' class='form-control'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='text' name='a-transportations-frequency' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success'><input type='number' name='a-transportations-quantity' min='1' class='form-control data-input'></div></td>" +
+                 "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' name='a-transportations-amount' min='1' step='.01' class='form-control data-input'></div></td>" +
+                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' name='a-transportations-subtotal' min='1' readonly class='data-total-input' value='0.00'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          
-           //function to add Transportation row
+           //function to add Transportations row
            $('.materials-add').click(function() {
                //long string because having escape characters won't make it work
                $(".materials-row").append(
@@ -730,7 +718,7 @@
                  "<td class='data-table'><div class='form-group has-success'><input type='text' name='a-materials-frequency' class='form-control data-input'></div></td>" +
                  "<td class='data-table'><div class='form-group has-success'><input type='number' name='a-materials-quantity' min='1' class='form-control data-input'></div></td>" +
                  "<td class='data-table'><div class='form-group has-success input-group-prepend'><div class='input-group-text'>₱</div><input type='number' name='a-materials-amount' min='1' step='.01' class='form-control data-input'></div></td>" +
-                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' name='a-materials-subtotal' min='1' readonly class='data-total-input'></div></td>" +
+                 "<td class='data-total'><div class='form-group has-success input-group-prepend'><div class='input-group-text' style='margin-right:5%'>₱</div><input type='text' name='a-materials-subtotal' min='1' readonly class='data-total-input' value='0.00'></div></td>" +
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          });
@@ -801,10 +789,82 @@
             return ret;
          }
 
+         function makeArray(data){
+            var temp;
+
+            temp = data;
+            data = [];
+            data.push(temp);
+
+            return data;
+         }
+
+         function checkAndMakeArray(data){
+            return (Array.isArray(data) === false)? makeArray(data) : data;
+         }
+
+         function checkAndMakeAllRelatedArray(json, string, type){
+            if(type === "Budgetary"){
+               if(Array.isArray(json['a-' + string + '-particular']) === false){
+                  json['a-' + string + '-particular'] = makeArray (json['a-' + string + '-particular']);
+                  json['a-' + string + '-frequency'] = makeArray (json['a-' + string + '-frequency']);
+                  json['a-' + string + '-quantity'] = makeArray (json['a-' + string + '-quantity']);
+                  json['a-' + string + '-amount'] = makeArray (json['a-' + string + '-amount']);
+                  json['a-' + string + '-subtotal'] = makeArray (json['a-' + string + '-subtotal']);
+               }
+            }else{
+               if(Array.isArray(json['a-' + string + '-date']) === false){
+                  json['a-' + string + '-date'] = makeArray (json['a-' + string + '-date']);
+                  json['a-' + string + '-activity'] = makeArray (json['a-' + string + '-activity']);
+                  json['a-' + string + '-participants'] = makeArray (json['a-' + string + '-participants']);
+                  json['a-' + string + '-charge'] = makeArray (json['a-' + string + '-charge']);
+               }
+            }
+
+            return json;
+         }
+
+         function addRowInTable(json, string, type, index){
+            if(type === "Budgetary"){
+               $('#review-' + string).append(
+                  "<tr><td>" + json['a-' + string + '-particular'][index] + "</td>" +
+                  "<td>" + json['a-' + string + '-frequency'][index] + "</td>" +
+                  "<td>" + json['a-' + string + '-quantity'][index] + "</td>" +
+                  "<td><div class='input-group-text'>₱" + json['a-' + string + '-amount'][index] + "</div></td>" +
+                  "<td><div class='input-group-text'>₱" + json['a-' + string + '-subtotal'][index] + "</div></td></tr>" 
+               );
+            }else{
+               $('#review-' + string).append(
+                  "<tr><td>" + json['a-' + string + '-date'][index] + "</td>" +
+                  "<td>" + json['a-' + string + '-activity'][index] + "</td>" +
+                  "<td>" + json['a-' + string + '-participants'][index] + "</td>" +
+                  "<td>" + json['a-' + string + '-charge'][index] + "</td></tr>" 
+               );
+            }
+         }
+
+         function addAllDataInRow(json, string, type){
+            var temp = (type === "Budgetary")? "-particular" : "-date" ;
+            var length;
+
+            if(json['a-' + string + temp] !== undefined){
+               json = checkAndMakeAllRelatedArray(json, string, type);
+               length = json['a-' + string + temp].length;
+               console.log(string + ' ' + temp + ' ' +  length);
+               
+               for(var x=0; x < length; x++){
+                  addRowInTable(json, string, type, x);
+               }
+            }
+
+            return json;
+         }
+
          //Review Proposal
          function reviewProposal(proposal){
             var startDate = new Date(proposal.start_date);
             var endDate = new Date(proposal.end_date);
+            var json = JSON.parse(proposal.proposal_json);
 
             var dateString = "";
             var cesType = (proposal.CES_type === "Program Based")? "Program - Based CES" : "Activity - Based CES";
@@ -817,26 +877,32 @@
             $('#review-ces-type').html(cesType);
             $('#review-venue').html(proposal.venue);
             $('#review-date').html(dateString);
-            
+            $('#review-rationale').html(json['a-rationale']);
+            $('#review-goals').html(json['a-goals']);
+            $('#review-participants').html(json['a-participant']);
+
+            addAllDataInRow(json, "outline", "Outline");
+            addAllDataInRow(json, "meals", "Budgetary");
+            addAllDataInRow(json, "transportations", "Budgetary");
+            addAllDataInRow(json, "materials", "Budgetary");
+
+            $('#review-grand-total').html("₱ " + json['a-grand-total']);
          }
 
          //Create form data to array
          function getFormData($form){
             var unindexed_array = $form.not('.no-include').serializeArray();
             var indexed_array = {};
-            var anyNumber = 0;
-            $.map(unindexed_array, function(n, i){
-               if(indexed_array[n['name']] === undefined){
-                  indexed_array[n['name']] = []
-               }
 
-               indexed_array[n['name']].push(n['value']);
-            //   if(indexed_array[n['name']] !== undefined){
-            //     indexed_array[n['name'] + anyNumber++] = n['value'];
-            //   }else{
-            //     indexed_array[n['name']] = n['value'];
-            //   }
+            $.map(unindexed_array, function(n, i){
+               if(indexed_array[n['name']] !== undefined){
+                  indexed_array[n['name']] = checkAndMakeArray(indexed_array[n['name']]);
+                  indexed_array[n['name']].push(n['value']);
+               }else{
+                  temp = indexed_array[n['name']] = n['value'];
+               }
             });
+
             return indexed_array;
           }
 
@@ -933,9 +999,9 @@
             $('#input-start-date').val("2019-08-22");
             $('#input-end-date').val("2019-08-23");
             $('#input-end-date').val("2019-08-23");
-            $('#input-rationale').val("My Rationale");
-            $('#input-goals').val("My Goals");
-            $('#input-participants').val("My Participants");
+            $('#input-rationale').val("The tutorial service provided to scholars of Umapad Dumpsite and Bankal Jansenville Village cover mathematics, physics and chemistry. This was initiated by SMED as part of their practice teaching program. The program has helped the students of these communities in their studies and wants the program to continue. JPIC-IDC community organizers have requested to have the tutorial service revive since the students specially in the K11 and K12 are having difficulty in the advance course of mathe and science.");
+            $('#input-goals').val("To provide tutorial services to students of Umapad Dumpsite and Bankal Jansenville Village to cover mathematics, physics and chemistry.");
+            $('#input-participants').val("a. Implementing team from USC/Unit - To provide student volunteers in implementing the tutorial services - To provide faculty volunteers in assisting students in implementing the program. b. Beneficiaries and/or partner community/organization/institution - To closely monitor students in their community are regularly attending the tutorial activities - To provide the venue for the tutorial classes -To cover the cost of providing snacks to their students");
             $('#input-outline-date').val("2019-08-22");
             $('#input-outline-activity').val("Plant Tree");
             $('#input-outline-participants').val(2);
