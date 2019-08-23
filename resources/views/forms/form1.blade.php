@@ -456,36 +456,98 @@
                   </button>
                </div>
                <div class="tab-pane" id="form-review">
-                  <!-- Basic Information -->
-                  <div class="col-md-12">
-                        <div class="card">
-                           <div class="card-header card-header-text card-header-success">
-                              <div class="card-text">
-                                 <h5 class="card-title"><strong>Basic Information</strong></h5>
-                              </div>
-                           </div>
-                           <div class="card-body">
-                              <div class="row">
-                                 <h3>Title:</h3> <h3 id="display-title"></h3>
-                              </div>
-                              <div class="row">
-                                 <h3>CES Type:</h3>
-                              </div>
-                              <div class="row">
-                                 <h3>Start of Activity:</h3>
-                              </div>
-                              <div class="row">
-                                 <label class="col-sm-2 col-form-label" style="color:black">{{ __('Venue:') }}</label>
-                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('venue') ? ' has-danger' : ' has-success' }}">
-                                       <input class="form-control no-include" name="a-venue" id="input-venue" type="text" placeholder="{{ __('Where will the activity take place?') }}" value="" required="true" aria-required="true"/>
-                                    </div>
+               <div class="col-md-12">
+                     <div class="card">
+                        <div class="card-header card-header-success">
+                              <h4 class="card-title text-center"><strong>FORM A</strong></h4>
+                        </div>
+                        <div class="card-body">
+                           <!-- Basic Information -->
+                           <table class="table">
+                              <tbody>
+                                 <tr>
+                                    <td>Title:</td>
+                                    <td><h2><strong>Strive 5E: Umapad/Bankal Tutorial</strong></h2></td>
+                                 </tr>
+                                 <tr>
+                                    <td>CES Type:</td>
+                                    <td><h3><strong>Program-based CES</strong></h3></td>
+                                 </tr>
+                                 <tr>
+                                    <td>Venue:</td>
+                                    <td><h4><strong>Umapad, Mandaue City and Bankal, Lapulapu City</strong></h4></td>
+                                 </tr>
+                                 <tr>
+                                    <td>Date:</td>
+                                    <td><h4><strong>July 25th, 2018 to July 25th, 2018</strong></h4></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                           <!-- Basic Information -->
+                           <!-- Rationale and Contextualization -->
+                           <div class="card">
+                              <div class="card-header card-header-text card-header-success">
+                                 <div class="card-text">
+                                 <h4 class="card-title">I. Rationale and Contextualization</h4>
                                  </div>
                               </div>
+                              <div class="card-body">
+                                 The tutorial service provided to scholars of Umapad Dumpsite and Bankal Jansenville Village cover mathematics, physics and chemistry. This was initiated by SMED as part of their practice teaching program. The program has helped the students of these communities in their studies and wants the program to continue. JPIC-IDC community organizers have requested to have the tutorial service revive since the students specially in the K11 and K12 are having difficulty in the advance course of mathe and science.
+                              </div>
                            </div>
+                           <!-- End of Rationale and Contextualization -->
+                           <!-- Goals, Objectives, and Outcomes -->
+                           <div class="card">
+                              <div class="card-header card-header-text card-header-success">
+                                 <div class="card-text">
+                                 <h4 class="card-title">II. Goals, Objectives, and Outcomes</h4>
+                                 </div>
+                              </div>
+                              <div class="card-body">
+                               To provide tutorial services to students of Umapad Dumpsite and Bankal Jansenville Village to cover mathematics, physics and chemistry.
+                              </div>
+                           </div>
+                           <!-- End of Goals, Objectives, and Outcomes -->
+                           <!-- Participants, Partners, and Beneficiaries -->
+                           <div class="card">
+                              <div class="card-header card-header-text card-header-success">
+                                 <div class="card-text">
+                                 <h4 class="card-title">III. Participants, Partners and Beneficiaries</h4>
+                                 </div>
+                              </div>
+                              <div class="card-body">
+                                 a. Implementing team from USC/Unit - To provide student volunteers in implementing the tutorial services - To provide faculty volunteers in assisting students in implementing the program. b. Beneficiaries and/or partner community/organization/institution - To closely monitor students in their community are regularly attending the tutorial activities - To provide the venue for the tutorial classes -To cover the cost of providing snacks to their students
+                               </div>
+                           </div>
+                           <!-- End of Participants, Partners, and Beneficiaries -->
+                           <!-- Outline of Activites -->
+                           <div class="card">
+                              <div class="card-header card-header-text card-header-success">
+                                 <div class="card-text">
+                                 <h4 class="card-title">IV. Outline of Activities</h4>
+                                 </div>
+                              </div>
+                              <div class="card-body">
+
+                              </div>
+                           </div>
+                           <!-- End of Outline of Activites -->
+                           <!-- Budgetary Requirements -->
+                           <div class="card">
+                              <div class="card-header card-header-text card-header-success">
+                                 <div class="card-text">
+                                 <h4 class="card-title">V. Budgetary Requirements</h4>
+                                 </div>
+                              </div>
+                              <div class="card-body">
+
+                              </div>
+                           </div>
+                           <!-- End of Budgetary Requirements -->
+                           
                         </div>
                      </div>
-                     <!-- Basic Information -->
+                  </div>
                </div>
             </div>
          </div>
