@@ -109,7 +109,7 @@
                            </div>
                            <div class="card-body">
                               <div class="form-group has-success">
-                                 <textarea id="form1" name="a-rationale" class="md-textarea form-control text-left" rows="9"
+                                 <textarea id="input-rationale" name="a-rationale" class="md-textarea form-control text-left" rows="9"
                                     placeholder="This portion will serve as the justification for your proposal.&#10;Please provide the following minimum information for the rationale and introduction of your program/project/activity: 
                                     &#10;1. Current condition of the community.&#10;2. Problem/need identified by the unit that you intend to address.&#10;3. Data source as well as the process underwent to generate the data.&#10;4. How will the unit respond to the condition?&#10;What expertise and competencies from the unit or in collaboration with others will be useful to address the identified condition?"
                                     ></textarea>
@@ -128,7 +128,7 @@
                            </div>
                            <div class="card-body">
                               <div class="form-group has-success">
-                                 <textarea id="form1" name="a-goals" class="md-textarea form-control" rows="6"
+                                 <textarea id="input-goals" name="a-goals" class="md-textarea form-control" rows="6"
                                     placeholder="This section must enumerate the following items: 
                                     &#10;1. Over-all goal of the proposed program/project/activity.&#10;2. The specific objectives that will be useful in achieving the goal (be sure they are SMART).&#10;3. What are the expected outcomes after implementing the program/project/activity?"
                                     ></textarea>
@@ -147,7 +147,7 @@
                            </div>
                            <div class="card-body">
                               <div class="form-group has-success">
-                                 <textarea id="form1" name="a-participants" class="md-textarea form-control" rows="6"
+                                 <textarea id="input-participants" name="a-participants" class="md-textarea form-control" rows="6"
                                     placeholder="This part must explicitly provide the specific roles/responsibilities or deliverables as well as benefits of the following:&#10;&#10;1. Implementing team from USC/Unit.&#10;2. Internal and external partners.&#10;3. Beneficiaries and/or partner community/organization/institutions."
                                     ></textarea>
                               </div>
@@ -187,22 +187,22 @@
                                        <tr>
                                           <td>
                                              <div class="form-group has-success">
-                                                <input type='date' name="a-outline-date" class='form-control'>
+                                                <input id="input-outline-date" type='date' name="a-outline-date" class='form-control'>
                                              </div>
                                           </td>
                                           <td>
                                              <div class="form-group has-success">
-                                                <input type='text' name="a-outline-activity" class='form-control'>
+                                                <input id="input-outline-activity" type='text' name="a-outline-activity" class='form-control'>
                                              </div>
                                           </td>
                                           <td>
                                              <div class="form-group has-success">
-                                                <input type='number' name="a-outline-participants" min='1' class='form-control'>
+                                                <input id="input-outline-participants" type='number' name="a-outline-participants" min='1' class='form-control'>
                                              </div>
                                           </td>
                                           <td>
                                              <div class="form-group has-success">
-                                                <input type='text' name="a-outline-charge" class='form-control'>
+                                                <input id="input-outline-charge" type='text' name="a-outline-charge" class='form-control'>
                                              </div>
                                           </td>
                                           <td>                            
@@ -467,19 +467,19 @@
                               <tbody>
                                  <tr>
                                     <td>Title:</td>
-                                    <td><h2><strong>Strive 5E: Umapad/Bankal Tutorial</strong></h2></td>
+                                    <td><h2><strong id="review-title">Strive 5E: Umapad/Bankal Tutorial</strong></h2></td>
                                  </tr>
                                  <tr>
                                     <td>CES Type:</td>
-                                    <td><h3><strong>Program-based CES</strong></h3></td>
+                                    <td><h3><strong id="review-ces-type">Program-based CES</strong></h3></td>
                                  </tr>
                                  <tr>
                                     <td>Venue:</td>
-                                    <td><h4><strong>Umapad, Mandaue City and Bankal, Lapulapu City</strong></h4></td>
+                                    <td><h4><strong id="review-venue">Umapad, Mandaue City and Bankal, Lapulapu City</strong></h4></td>
                                  </tr>
                                  <tr>
                                     <td>Date:</td>
-                                    <td><h4><strong>July 25th, 2018 to July 25th, 2018</strong></h4></td>
+                                    <td><h4><strong id="review-date">July 25th, 2018 to July 25th, 2018</strong></h4></td>
                                  </tr>
                               </tbody>
                            </table>
@@ -491,7 +491,7 @@
                                  <h4 class="card-title">I. Rationale and Contextualization</h4>
                                  </div>
                               </div>
-                              <div class="card-body">
+                              <div id="review-rationale" class="card-body">
                                  The tutorial service provided to scholars of Umapad Dumpsite and Bankal Jansenville Village cover mathematics, physics and chemistry. This was initiated by SMED as part of their practice teaching program. The program has helped the students of these communities in their studies and wants the program to continue. JPIC-IDC community organizers have requested to have the tutorial service revive since the students specially in the K11 and K12 are having difficulty in the advance course of mathe and science.
                               </div>
                            </div>
@@ -503,7 +503,7 @@
                                  <h4 class="card-title">II. Goals, Objectives, and Outcomes</h4>
                                  </div>
                               </div>
-                              <div class="card-body">
+                              <div id="review-goals" class="card-body">
                                To provide tutorial services to students of Umapad Dumpsite and Bankal Jansenville Village to cover mathematics, physics and chemistry.
                               </div>
                            </div>
@@ -515,7 +515,7 @@
                                  <h4 class="card-title">III. Participants, Partners and Beneficiaries</h4>
                                  </div>
                               </div>
-                              <div class="card-body">
+                              <div id="review-participants" class="card-body">
                                  a. Implementing team from USC/Unit - To provide student volunteers in implementing the tutorial services - To provide faculty volunteers in assisting students in implementing the program. b. Beneficiaries and/or partner community/organization/institution - To closely monitor students in their community are regularly attending the tutorial activities - To provide the venue for the tutorial classes -To cover the cost of providing snacks to their students
                                </div>
                            </div>
@@ -675,6 +675,12 @@
       </div>
       </form>
       <!-- Floating Action Buttons -->
+
+      <!--For Debug-->
+      <button id="btn-debug" class="btn btn-danger btn-round btn-lg btn-fab" style="position: fixed; bottom: 20%; right: 4%;">
+      <i class="material-icons" style="font-size: 35px">bug_report</i>
+      </button>
+
       <button class="btn btn-default btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;" rel="tooltip" data-placement="left" title="Save as Draft">
       <i class="material-icons" style="font-size: 35px">archive</i>
       </button>
@@ -728,7 +734,10 @@
                  "<td> <button class='btn btn-danger btn-fab btn-fab-mini btn-round activities_add' onclick='DeleteRow(this)'> <span class='material-icons' style='font-size: 25px'>remove</span></button></td></tr>");
            });
          });
-         
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+            ];
+
            //function to submit form
            function submitDetails(){
             var form = $("#proposal-form [name]");
@@ -762,8 +771,7 @@
                   type: "POST",
                   data: { id: proposal_id},
                   success: function(result){
-                     console.log(result);
-                     // $('#display-id').html(result.title);
+                     reviewProposal(result);
                   },
                   error: function(xhr, resp, text){
                      console.log(xhr, resp, text);
@@ -775,6 +783,42 @@
               }
              });
            }
+
+         function getFormattedDate(d){
+            var ret = "";
+            var temp = "";
+
+            switch(d.getDate() % 10){
+               case 1 : temp = "st";break;
+               case 2 : temp = "nd";break;
+               case 3 : temp = "rd";break;
+               default : temp = "th";
+            }
+            ret += monthNames[d.getMonth()];
+            ret += " " + d.getDate() + temp;
+            ret += ", " + d.getFullYear();
+
+            return ret;
+         }
+
+         //Review Proposal
+         function reviewProposal(proposal){
+            var startDate = new Date(proposal.start_date);
+            var endDate = new Date(proposal.end_date);
+
+            var dateString = "";
+            var cesType = (proposal.CES_type === "Program Based")? "Program - Based CES" : "Activity - Based CES";
+
+            dateString += getFormattedDate(startDate);
+            dateString += " to ";
+            dateString += getFormattedDate(endDate);
+
+            $('#review-title').html(proposal.title);
+            $('#review-ces-type').html(cesType);
+            $('#review-venue').html(proposal.venue);
+            $('#review-date').html(dateString);
+            
+         }
 
          //Create form data to array
          function getFormData($form){
@@ -881,6 +925,21 @@
          $('#btnReview').click(function(){
             $('#formreview').trigger('click');    
             document.location.href = "#topPage";
+         });
+
+         $('#btn-debug').click(function(){
+            $('#input-title').val("Planting Tree");
+            $('#input-venue').val("University of San Carlos Talamban Campus");
+            $('#input-start-date').val("2019-08-22");
+            $('#input-end-date').val("2019-08-23");
+            $('#input-end-date').val("2019-08-23");
+            $('#input-rationale').val("My Rationale");
+            $('#input-goals').val("My Goals");
+            $('#input-participants').val("My Participants");
+            $('#input-outline-date').val("2019-08-22");
+            $('#input-outline-activity').val("Plant Tree");
+            $('#input-outline-participants').val(2);
+            $('#input-outline-charge').val("Logan");
          });
 
          function goTop(){
