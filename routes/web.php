@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('getDepartments','AjaxController@getDepartments');
 	Route::post('sendForm','AjaxController@insertProposal');
+	Route::post('getProposal','AjaxController@getProposal');
 	
 	Route::get('form1', function () {
 		return view('forms.form1');
