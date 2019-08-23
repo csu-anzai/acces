@@ -120,23 +120,6 @@
     </div>
   </div>
 </div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 mt-6">
-      <h2>What is <strong style="font-family: 'Roboto Black'">Community Extension Service</strong>?</h2>
-      <h4><strong>Community Extension Service (CES)</strong> is one of the three core functions of the
-      <strong>University of San Carlos (USC)</strong> as a Higher Education Institution along with 
-      <strong>Teaching-Learning</strong> and  <strong>Research</strong>. Hence, Carolinians experience integral 
-      development by advancing their academic competencies highly motivated by their active engagements with 
-      university partner communities, institutions, and organizations. All Community Extension Service programs, 
-      projects, and activities are undertaken by students, faculty, and staff with a three-fold mandate: 
-      first, to voluntarily extend one’s professional and academic expertise; second, to engage into prophetic 
-      dialogue with the world guided by the Missionary charisma of Societas Verbi Divini (SVD) Spirituality; 
-      and third, to empower peoples and communities for social change through a 
-      transformatory or liberational approach.</h4>
-    </div>
-  </div>
-</div>
 
 @endsection
 

@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top" style="background-color: forestgreen !important;">
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
   <div class="container">
     <div class="navbar-wrapper">
       <div class="navbar-brand">
