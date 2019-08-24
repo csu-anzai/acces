@@ -378,7 +378,7 @@
                                                 <div class="form-group selectdiv">
                                                    <select name="b-sas-department" class="browser-default custom-select">
                                                       <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 1)->get();?>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 2)->get();?>
                                                       @foreach($departments as $department)
                                                       <option value="{{$department->id}}">{{$department->name}}</option>
                                                       @endforeach
@@ -393,7 +393,7 @@
                                                 <div class="form-group selectdiv">
                                                    <select name="b-safad-department" class="browser-default custom-select">
                                                       <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 2)->get();?>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 1)->get();?>
                                                       @foreach($departments as $department)
                                                       <option value="{{$department->id}}">{{$department->name}}</option>
                                                       @endforeach
@@ -425,7 +425,7 @@
                                                 <div class="form-group selectdiv">
                                                    <select name="b-soe-department" class="browser-default custom-select">
                                                       <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 4)->get();?>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 7)->get();?>
                                                       @foreach($departments as $department)
                                                       <option value="{{$department->id}}">{{$department->name}}</option>
                                                       @endforeach
@@ -440,7 +440,7 @@
                                                 <div class="form-group selectdiv">
                                                    <select name="b-sbe-department" class="browser-default custom-select">
                                                       <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 5)->get();?>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 6)->get();?>
                                                       @foreach($departments as $department)
                                                       <option value="{{$department->id}}">{{$department->name}}</option>
                                                       @endforeach
@@ -472,7 +472,7 @@
                                                 <div class="form-group selectdiv">
                                                    <select name="b-slg-department" class="browser-default custom-select">
                                                       <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 7)->get();?>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 5)->get();?>
                                                       @foreach($departments as $department)
                                                       <option value="{{$department->id}}">{{$department->name}}</option>
                                                       @endforeach
