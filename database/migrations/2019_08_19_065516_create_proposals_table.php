@@ -20,7 +20,8 @@ class CreateProposalsTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('venue');
-            $table->json('proposal_json');
+            $table->json('proposal_json_A');
+            $table->json('proposal_json_B');
             $table->enum('status', array('Draft', 'Submitted'));
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
