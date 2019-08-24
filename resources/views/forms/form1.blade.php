@@ -1,6 +1,12 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 @section('content')
 
+<style>
+  .number-width-limit{
+    width:20%;  
+  }
+</style>
+
 <div class="content">
    <div class="container-fluid">
     <form id="proposal-form" method="post">
@@ -328,118 +334,449 @@
                      <!-- END OF FORM A -->
                   </div>
                   <div class="tab-pane" id="form-b">
-                     <!-- START OF FORM B -->
-                     <!-- Program/Project/Activity Profile -->
-                     <h5 class="alert alert-success text-center"><strong>Program/Project/Activity Profile</strong></h5>
-                     <!-- College/School/Department/Unit Responsible -->
+                  <!-- START OF FORM B -->
+
+                  <!-- Program/Project/Activity Profile -->
                      <div class="col-md-12">
-                        <div class="card">
-                           <div class="card-header card-header-text card-header-success">
-                              <div class="card-text">
-                                 <h5 class="card-title"><strong>A. College/School/Department/Unit Responsible</strong></h5>
-                                 <p class="card-category"> {{ __('Please select all that apply.') }}</p>
-                              </div>
-                           </div>
-                           <div class="card-body">
-                              <!-- dept check buttons table -->
-                              <table class="table">
-                                 <tbody>
-                                    <tr>
-                                       <td>
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="cesoffice">
-                                             <label class="custom-control-label" for="cesoffice" style="color:#484a49 !important; font:Roboto !important;">CES Office</label>
-                                          </div>
-                                       </td>
-                                       <td>
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="sas">
-                                             <label class="custom-control-label" for="sas" style="color:#484a49 !important; font:Roboto !important;">School of Arts and Sciences</label>
-                                          </div>
-                                       </td>
-                                       <td>
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="safad">
-                                             <label class="custom-control-label" for="safad" style="color:#484a49 !important; font:Roboto !important;">School of Architecture, Fine Arts and Design</label>
-                                          </div>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="sed">
-                                             <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
-                                          </div>
-                                       </td>
-                                       <td>
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="soe">
-                                             <label class="custom-control-label" for="soe" style="color:#484a49 !important; font:Roboto !important;">School of Engineering</label>
-                                          </div>
-                                       </td>
-                                       <td>
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="sbe">
-                                             <label class="custom-control-label" for="sbe" style="color:#484a49 !important; font:Roboto !important;">School of Business and Economics</label>
-                                          </div>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="shcp">
-                                             <label class="custom-control-label" for="shcp" style="color:#484a49 !important; font:Roboto !important;">School of Health Care Profession</label>
-                                          </div>
-                                       </td>
-                                       <td>
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="slg">
-                                             <label class="custom-control-label" for="slg" style="color:#484a49 !important; font:Roboto !important;">School of Law and Governance</label>
-                                          </div>
-                                       </td>
-                                       <td>
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="supp">
-                                             <label class="custom-control-label" for="supp" style="color:#484a49 !important; font:Roboto !important;">Support Unit</label>
-                                          </div>
-                                       </td>
-                                    </tr>
-                                 </tbody>
-                              </table>
-                              <!-- end of check buttons table -->  
-                           </div>
+                     <div class="card">
+                        <div class="card-header card-header-success">
+                           <h5 class="card-title"><strong>Program/Project/Activity Profile</strong></h5>
                         </div>
-                     </div>
-                     <!-- End of College/School/Department/Unit Responsible -->
-                     <!-- Time Frame -->
-                     <div class="col-md-12">
-                        <div class="card">
-                           <div class="card-header card-header-text card-header-success">
-                              <div class="card-text">
-                                 <h5 class="card-title"><strong>B. Time Frame</strong></h5>
-                                 <p class="card-category"> {{ __('Please select all that apply.') }}</p>
+                        <div class="card-body">
+                           <!-- College/School/Department/Unit Responsible -->
+                           <div class="col-md-12">
+                              <div class="card">
+                                 <div class="card-header card-header-text card-header-success">
+                                    <div class="card-text">
+                                       <h5 class="card-title"><strong>A. College/School/Department/Unit Responsible</strong></h5>
+                                       <p class="card-category"> {{ __('Please select all that apply.') }}</p>
+                                    </div>
+                                 </div>
+                                 <div class="card-body">
+                                    <!-- dept check buttons table -->
+                                    <table class="table">
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="cesoffice">
+                                                   <label class="custom-control-label" for="cesoffice" style="color:#484a49 !important; font:Roboto !important;">CES Office</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <!--look here-->
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="sas">
+                                                   <label class="custom-control-label" for="sas" style="color:#484a49 !important; font:Roboto !important;">School of Arts and Sciences</label>
+                                                </div>
+                                                <div class="form-group selectdiv">
+                                                   <select class="browser-default custom-select">
+                                                      <option selected value="Program Based">Select Department</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="safad">
+                                                   <label class="custom-control-label" for="safad" style="color:#484a49 !important; font:Roboto !important;">School of Architecture, Fine Arts and Design</label>
+                                                </div>
+                                                <div class="form-group selectdiv">
+                                                   <select class="browser-default custom-select">
+                                                      <option selected value="Program Based">Select Department</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="sed">
+                                                   <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
+                                                </div>
+                                                <div class="form-group selectdiv">
+                                                   <select class="browser-default custom-select">
+                                                      <option selected value="Program Based">Select Department</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="soe">
+                                                   <label class="custom-control-label" for="soe" style="color:#484a49 !important; font:Roboto !important;">School of Engineering</label>
+                                                </div>
+                                                <div class="form-group selectdiv">
+                                                   <select class="browser-default custom-select">
+                                                      <option selected value="Program Based">Select Department</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="sbe">
+                                                   <label class="custom-control-label" for="sbe" style="color:#484a49 !important; font:Roboto !important;">School of Business and Economics</label>
+                                                </div>
+                                                <div class="form-group selectdiv">
+                                                   <select class="browser-default custom-select">
+                                                      <option selected value="Program Based">Select Department</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="shcp">
+                                                   <label class="custom-control-label" for="shcp" style="color:#484a49 !important; font:Roboto !important;">School of Health Care Profession</label>
+                                                </div>
+                                                <div class="form-group selectdiv">
+                                                   <select class="browser-default custom-select">
+                                                      <option selected value="Program Based">Select Department</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="slg">
+                                                   <label class="custom-control-label" for="slg" style="color:#484a49 !important; font:Roboto !important;">School of Law and Governance</label>
+                                                </div>
+                                                <div class="form-group selectdiv">
+                                                   <select class="browser-default custom-select">
+                                                      <option selected value="Program Based">Select Department</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="supp">
+                                                   <label class="custom-control-label" for="supp" style="color:#484a49 !important; font:Roboto !important;">Support Unit</label>
+                                                </div>
+                                                <div class="form-group selectdiv">
+                                                   <select class="browser-default custom-select">
+                                                      <option selected value="Program Based">Select Unit</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <!-- end of check buttons table -->  
+                                 </div>
                               </div>
                            </div>
-                           <div class="card-body">
-                              <table class="table">
-                                 <thead>
-                                    <tr>
-                                       <th>Short Term</th>
-                                       <th>Medium Term</th>
-                                       <th>Long Term</th>
-                                    </tr>
-                                 </thead>
-                                 <tr>
-                                    <td>
-                                    </td>
-                                 </tr>
+                           <!-- End of College/School/Department/Unit Responsible -->
+                           <!-- Time Frame -->
+                           <div class="col-md-12">
+                              <div class="card">
+                                 <div class="card-header card-header-text card-header-success">
+                                    <div class="card-text">
+                                       <h5 class="card-title"><strong>B. Time Frame</strong></h5>
+                                       <p class="card-category"> {{ __('Please select all that apply.') }}</p>
+                                    </div>
+                                 </div>
+                                 <div class="card-body">
+                                    <table class="table">
+                                       <thead>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-radio">
+                                                   <input type="radio" name="termRadio" class="custom-control-input termToggle" id="shortTerm">
+                                                   <label class="custom-control-label" for="shortTerm" style="color:#484a49 !important; font:Roboto !important;">Short Term</label>
+                                                </div>
+                                                <div class="form-group">
+                                                   <select class="browser-default custom-select termSelect">
+                                                      <option selected value="Program Based">Select Unit</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-radio">
+                                                   <input type="radio" name="termRadio" class="custom-control-input termToggle" id="mediumTerm">
+                                                   <label class="custom-control-label" for="mediumTerm" style="color:#484a49 !important; font:Roboto !important;">Medium Term</label>
+                                                </div>
+                                                <div class="form-group">
+                                                   <select class="browser-default custom-select termSelect">
+                                                      <option selected value="Program Based">Select Unit</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-radio">
+                                                   <input type="radio" name="termRadio" class="custom-control-input termToggle" id="longTerm">
+                                                   <label class="custom-control-label" for="longTerm" style="color:#484a49 !important; font:Roboto !important;">Long Term</label>
+                                                </div>
+                                                <div class="form-group">
+                                                   <select class="browser-default custom-select termSelect">
+                                                      <option selected value="Program Based">Select Unit</option>
+                                                   </select>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                       </thead>
+                                       <tr>
+                                          <td>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
                            </div>
-                           </table>
+                           <!-- End of Time Frame -->
+                           <!-- Locus and Leadership -->
+                           <div class="col-md-12">
+                              <div class="card">
+                                 <div class="card-header card-header-text card-header-success">
+                                    <div class="card-text">
+                                       <h5 class="card-title"><strong>C. Locus and Leadership</strong></h5>
+                                       <p class="card-category"> {{ __('Please select all that apply.') }}</p>
+                                    </div>
+                                 </div>
+                                 <div class="card-body">
+                                    <!--Locus and leadership table-->
+                                    <table class="table">
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="undergrad">
+                                                   <label class="custom-control-label" for="undergrad" style="color:#484a49 !important; font:Roboto !important;">Course-based (undergraduate)</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="grad">
+                                                   <label class="custom-control-label" for="grad" style="color:#484a49 !important; font:Roboto !important;">Course-based (graduate)</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="studorg">
+                                                   <label class="custom-control-label" for="studorg" style="color:#484a49 !important; font:Roboto !important;">Student Organization-led</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="deptled">
+                                                   <label class="custom-control-label" for="deptled" style="color:#484a49 !important; font:Roboto !important;">Department-led</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="schoolwide">
+                                                   <label class="custom-control-label" for="schoolwide" style="color:#484a49 !important; font:Roboto !important;">School-wide</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="alumniled">
+                                                   <label class="custom-control-label" for="alumniled" style="color:#484a49 !important; font:Roboto !important;">Alumni-led</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="suppled">
+                                                   <label class="custom-control-label" for="suppled" style="color:#484a49 !important; font:Roboto !important;">Support-unit led</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="svdled">
+                                                   <label class="custom-control-label" for="svdled" style="color:#484a49 !important; font:Roboto !important;">SVD-Led</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div>
+                                                   <div class="custom-control custom-checkbox">
+                                                      <input type="checkbox" class="custom-control-input" id="others">
+                                                      <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
+                                                   </div>
+                                                   <div>
+                                                      <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                   </div>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <!--end of locus and leadership table-->
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- End of Locus and Leadership -->
+                           <!--D. Nature of the Program/Project/Activity-->
+                           <div class="col-md-12">
+                              <div class="card">
+                                 <div class="card-header card-header-text card-header-success">
+                                    <div class="card-text">
+                                       <h5 class="card-title"><strong>D. Nature of the Program/Project/Activity</strong></h5>
+                                       <p class="card-category"> {{ __('Please select all that apply.') }}</p>
+                                    </div>
+                                 </div>
+                                 <div class="card-body">
+                                    <!--nature of the program table-->
+                                    <table class="table">
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="trainingprog">
+                                                   <label class="custom-control-label" for="trainingprog" style="color:#484a49 !important; font:Roboto !important;">Training Program (non-degree and non-credited courses offered to the community)</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="commout">
+                                                   <label class="custom-control-label" for="commout" style="color:#484a49 !important; font:Roboto !important;">Community Outreach (community-based and charity driven social services)</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="techas">
+                                                   <label class="custom-control-label" for="techas" style="color:#484a49 !important; font:Roboto !important;">Technical Assistance (for agencies, organization, civic groups)</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="techtrans">
+                                                   <label class="custom-control-label" for="techtrans" style="color:#484a49 !important; font:Roboto !important;">Technology transfer and utilization (process of circulating, promoting and marketing or technologies to potential users)</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="advserv">
+                                                   <label class="custom-control-label" for="advserv" style="color:#484a49 !important; font:Roboto !important;">Advisory Services (for agencies, organization, civic groups)</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="infoserv">
+                                                   <label class="custom-control-label" for="infoserv" style="color:#484a49 !important; font:Roboto !important;">Information Services (dissemination of knowledge/information through various means)</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div>
+                                                   <div class="custom-control custom-checkbox">
+                                                      <input type="checkbox" class="custom-control-input" id="others">
+                                                      <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
+                                                   </div>
+                                                   <div>
+                                                      <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                   </div>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <!--end of nature of the program table-->
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-12">
+                              <div class="card">
+                                 <div class="card-header card-header-text card-header-success">
+                                    <div class="card-text">
+                                       <h5 class="card-title"><strong>E. Program Area </strong></h5>
+                                       <p class="card-category"> {{ __('Please check the appropriate item.') }}</p>
+                                    </div>
+                                 </div>
+                                 <div class="card-body">
+                                    <!-- program area table-->
+                                    <table class="table">
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="productivity">
+                                                   <label class="custom-control-label" for="productivity" style="color:#484a49 !important; font:Roboto !important;">Productivity-Oriented Initiatives</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="healthAdvocacy">
+                                                   <label class="custom-control-label" for="healthAdvocacy" style="color:#484a49 !important; font:Roboto !important;">Health Advocacy and Wellness Promotion</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="literacyVal">
+                                                   <label class="custom-control-label" for="literacyVal" style="color:#484a49 !important; font:Roboto !important;">Literacy, Values Formation and Life-long Learning</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="buildingChristianCom">
+                                                   <label class="custom-control-label" for="buildingChristianCom" style="color:#484a49 !important; font:Roboto !important;">Building Christian Communities</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="socialWelfare">
+                                                   <label class="custom-control-label" for="socialWelfare" style="color:#484a49 !important; font:Roboto !important;">Social Welfare Services</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="informationSharing">
+                                                   <label class="custom-control-label" for="informationSharing" style="color:#484a49 !important; font:Roboto !important;">Information Sharing</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="environmental">
+                                                   <label class="custom-control-label" for="environmental" style="color:#484a49 !important; font:Roboto !important;">Environmental Sustainability</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="heritageConservation">
+                                                   <label class="custom-control-label" for="heritageConservation" style="color:#484a49 !important; font:Roboto !important;">Heritage Conservation</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="issue">
+                                                   <label class="custom-control-label" for="issue" style="color:#484a49 !important; font:Roboto !important;">Issue Advocacy and Rights Promotion</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-checkbox">
+                                                   <input type="checkbox" class="custom-control-input" id="ruralandurbandevelopment">
+                                                   <label class="custom-control-label" for="ruralandurbandevelopment" style="color:#484a49 !important; font:Roboto !important;">Rural and Urban Development</label>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <!--end of nature of the program table-->
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
-                  <!-- End of Time Frame -->
-                  <!-- End of Program/Project/Activity Profile -->
+                     <!-- End of Program/Project/Activity Profile -->
+                     
                   <!-- END OF FORM B -->
                   <button class='btn btn-success' id="btnPrev">
                      <span class="material-icons" style="font-size:25px;">chevron_left</span>
@@ -674,6 +1011,12 @@
       <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
       <script>
          $('document').ready(function() {
+            
+            $(".selectdiv").hide();
+            $(".selecttoggle").click(function(){
+                $(this).parent().next().toggle();
+            });
+
           $('button').attr('type', 'button');
           
            //function to add new table row
