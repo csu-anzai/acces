@@ -530,19 +530,19 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem1" name="timeframe">
+                                                   <input name="b-time-frame" value="1" type="radio" class="custom-control-input" id="sem1" name="timeframe">
                                                    <label class="custom-control-label" for="sem1" style="color:#484a49 !important; font:Roboto !important;">1 Semester</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem3" name="timeframe">
+                                                   <input name="b-time-frame" value="3" type="radio" class="custom-control-input" id="sem3" name="timeframe">
                                                    <label class="custom-control-label" for="sem3" style="color:#484a49 !important; font:Roboto !important;">3 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem5" name="timeframe">
+                                                   <input name="b-time-frame" value="5" type="radio" class="custom-control-input" id="sem5" name="timeframe">
                                                    <label class="custom-control-label" for="sem5" style="color:#484a49 !important; font:Roboto !important;">5 Semesters</label>
                                                 </div>
                                              </td>
@@ -556,19 +556,19 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem2" name="timeframe">
+                                                   <input name="b-time-frame" value="2" type="radio" class="custom-control-input" id="sem2" name="timeframe">
                                                    <label class="custom-control-label" for="sem2" style="color:#484a49 !important; font:Roboto !important;">2 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem4" name="timeframe">
+                                                   <input name="b-time-frame" value="4" type="radio" class="custom-control-input" id="sem4" name="timeframe">
                                                    <label class="custom-control-label" for="sem4" style="color:#484a49 !important; font:Roboto !important;">4 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem6" name="timeframe">
+                                                   <input name="b-time-frame" value="6" type="radio" class="custom-control-input" id="sem6" name="timeframe">
                                                    <label class="custom-control-label" for="sem6" style="color:#484a49 !important; font:Roboto !important;">6 Semesters</label>
                                                 </div>
                                              </td>
@@ -600,19 +600,19 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="undergrad">
+                                                   <input name="b-locus-leadership" value="Course-based(undergraduate)" type="checkbox" class="custom-control-input" id="undergrad">
                                                    <label class="custom-control-label" for="undergrad" style="color:#484a49 !important; font:Roboto !important;">Course-based (undergraduate)</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="grad">
+                                                   <input name="b-locus-leadership" value="Course-based(graduate)" type="checkbox" class="custom-control-input" id="grad">
                                                    <label class="custom-control-label" for="grad" style="color:#484a49 !important; font:Roboto !important;">Course-based (graduate)</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="studorg">
+                                                   <input name="b-locus-leadership" value="Student Organization-led" type="checkbox" class="custom-control-input" id="studorg">
                                                    <label class="custom-control-label" for="studorg" style="color:#484a49 !important; font:Roboto !important;">Student Organization-led</label>
                                                 </div>
                                              </td>
@@ -620,19 +620,19 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="deptled">
+                                                   <input name="b-locus-leadership" value="Department-led" type="checkbox" class="custom-control-input" id="deptled">
                                                    <label class="custom-control-label" for="deptled" style="color:#484a49 !important; font:Roboto !important;">Department-led</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="schoolwide">
+                                                   <input name="b-locus-leadership" value="School-wide" type="checkbox" class="custom-control-input" id="schoolwide">
                                                    <label class="custom-control-label" for="schoolwide" style="color:#484a49 !important; font:Roboto !important;">School-wide</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="alumniled">
+                                                   <input name="b-locus-leadership" value="Alumni-led" type="checkbox" class="custom-control-input" id="alumniled">
                                                    <label class="custom-control-label" for="alumniled" style="color:#484a49 !important; font:Roboto !important;">Alumni-led</label>
                                                 </div>
                                              </td>
@@ -640,13 +640,13 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="suppled">
+                                                   <input name="b-locus-leadership" value="Support-unit led" type="checkbox" class="custom-control-input" id="suppled">
                                                    <label class="custom-control-label" for="suppled" style="color:#484a49 !important; font:Roboto !important;">Support-unit led</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="svdled">
+                                                   <input name="b-locus-leadership" value="SVD-Led" type="checkbox" class="custom-control-input" id="svdled">
                                                    <label class="custom-control-label" for="svdled" style="color:#484a49 !important; font:Roboto !important;">SVD-Led</label>
                                                 </div>
                                              </td>
@@ -654,7 +654,7 @@
                                                 <div>                                                   
                                                    <label style="color:#484a49 !important; font:Roboto !important;">Others:</label>
                                                    <div class="form-group bmd-form-group has-success" style="margin-top:-5%">
-                                                      <input type="text" class="form-control" placeholder="Type here.">
+                                                      <input name="b-locus-leadership" value="" type="text" class="form-control" placeholder="Type here.">
                                                    </div>
                                                 </div>
                                              </td>
@@ -682,13 +682,13 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="trainingprog">
+                                                   <input name="b-nature" value="Training Program" type="checkbox" class="custom-control-input" id="trainingprog">
                                                    <label class="custom-control-label" for="trainingprog" style="color:#484a49 !important; font:Roboto !important;">Training Program (non-degree and non-credited courses offered to the community)</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="commout">
+                                                   <input name="b-nature" value="Community Outreach" type="checkbox" class="custom-control-input" id="commout">
                                                    <label class="custom-control-label" for="commout" style="color:#484a49 !important; font:Roboto !important;">Community Outreach (community-based and charity driven social services)</label>
                                                 </div>
                                              </td>
@@ -696,13 +696,13 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="techas">
+                                                   <input name="b-nature" value="Technical Assistance" type="checkbox" class="custom-control-input" id="techas">
                                                    <label class="custom-control-label" for="techas" style="color:#484a49 !important; font:Roboto !important;">Technical Assistance (for agencies, organization, civic groups)</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="techtrans">
+                                                   <input name="b-nature" value="Technology transfer and utilization type="checkbox" class="custom-control-input" id="techtrans">
                                                    <label class="custom-control-label" for="techtrans" style="color:#484a49 !important; font:Roboto !important;">Technology transfer and utilization (process of circulating, promoting and marketing or technologies to potential users)</label>
                                                 </div>
                                              </td>
@@ -710,13 +710,13 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="advserv">
+                                                   <input name="b-nature" value="Advisory Services" type="checkbox" class="custom-control-input" id="advserv">
                                                    <label class="custom-control-label" for="advserv" style="color:#484a49 !important; font:Roboto !important;">Advisory Services (for agencies, organization, civic groups)</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="infoserv">
+                                                   <input name="b-nature" value="Information Services" type="checkbox" class="custom-control-input" id="infoserv">
                                                    <label class="custom-control-label" for="infoserv" style="color:#484a49 !important; font:Roboto !important;">Information Services (dissemination of knowledge/information through various means)</label>
                                                 </div>
                                              </td>
@@ -729,7 +729,7 @@
                                                       <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
                                                    </div>
                                                    <div>
-                                                      <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                      <input name="b-nature" class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
                                                    </div>
                                                 </div>
                                              </td>
@@ -759,13 +759,13 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="productivity">
+                                                   <input name="b-program-area" value="Productivity-Oriented Initiatives" type="checkbox" class="custom-control-input" id="productivity">
                                                    <label class="custom-control-label" for="productivity" style="color:#484a49 !important; font:Roboto !important;">Productivity-Oriented Initiatives</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="healthAdvocacy">
+                                                   <input name="b-program-area" value="Health Advocacy and Wellness Promotion" type="checkbox" class="custom-control-input" id="healthAdvocacy">
                                                    <label class="custom-control-label" for="healthAdvocacy" style="color:#484a49 !important; font:Roboto !important;">Health Advocacy and Wellness Promotion</label>
                                                 </div>
                                              </td>
@@ -773,13 +773,13 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="literacyVal">
+                                                   <input name="b-program-area" value="Literacy, Values Formation and Life-long Learning" type="checkbox" class="custom-control-input" id="literacyVal">
                                                    <label class="custom-control-label" for="literacyVal" style="color:#484a49 !important; font:Roboto !important;">Literacy, Values Formation and Life-long Learning</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="buildingChristianCom">
+                                                   <input name="b-program-area" value="Building Christian Communities" type="checkbox" class="custom-control-input" id="buildingChristianCom">
                                                    <label class="custom-control-label" for="buildingChristianCom" style="color:#484a49 !important; font:Roboto !important;">Building Christian Communities</label>
                                                 </div>
                                              </td>
@@ -787,13 +787,13 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="socialWelfare">
+                                                   <input name="b-program-area" value="Social Welfare Services" type="checkbox" class="custom-control-input" id="socialWelfare">
                                                    <label class="custom-control-label" for="socialWelfare" style="color:#484a49 !important; font:Roboto !important;">Social Welfare Services</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="informationSharing">
+                                                   <input  name="b-program-area" value="Information Sharing"type="checkbox" class="custom-control-input" id="informationSharing">
                                                    <label class="custom-control-label" for="informationSharing" style="color:#484a49 !important; font:Roboto !important;">Information Sharing</label>
                                                 </div>
                                              </td>
@@ -801,13 +801,13 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="environmental">
+                                                   <input name="b-program-area" value="Environmental Sustainability" type="checkbox" class="custom-control-input" id="environmental">
                                                    <label class="custom-control-label" for="environmental" style="color:#484a49 !important; font:Roboto !important;">Environmental Sustainability</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="heritageConservation">
+                                                   <input name="b-program-area" value="Heritage Conservation" type="checkbox" class="custom-control-input" id="heritageConservation">
                                                    <label class="custom-control-label" for="heritageConservation" style="color:#484a49 !important; font:Roboto !important;">Heritage Conservation</label>
                                                 </div>
                                              </td>
@@ -815,13 +815,13 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="issue">
+                                                   <input name="b-program-area" value="Issue Advocacy and Rights Promotion" type="checkbox" class="custom-control-input" id="issue">
                                                    <label class="custom-control-label" for="issue" style="color:#484a49 !important; font:Roboto !important;">Issue Advocacy and Rights Promotion</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="ruralandurbandevelopment">
+                                                   <input name="b-program-area" value="Rural and Urban Development" type="checkbox" class="custom-control-input" id="ruralandurbandevelopment">
                                                    <label class="custom-control-label" for="ruralandurbandevelopment" style="color:#484a49 !important; font:Roboto !important;">Rural and Urban Development</label>
                                                 </div>
                                              </td>
@@ -1081,9 +1081,11 @@
             $("input:radio").change(function () {
                if ($("#timeframe_others").is(":checked")) {
                   $("#countSemester").slideDown();
+                  $("#countSemester").attr('name', 'b-time-frame');
                }
                else {
                   $("#countSemester").slideUp();
+                  $("#countSemester").removeAttr("name");
                }
             });
 
@@ -1314,11 +1316,13 @@
             var indexed_array = {};
 
             $.map(unindexed_array, function(n, i){
-               if(indexed_array[n['name']] !== undefined){
-                  indexed_array[n['name']] = checkAndMakeArray(indexed_array[n['name']]);
-                  indexed_array[n['name']].push(n['value']);
-               }else{
-                  temp = indexed_array[n['name']] = n['value'];
+               if(n['value'] != ""){
+                  if(indexed_array[n['name']] !== undefined){
+                     indexed_array[n['name']] = checkAndMakeArray(indexed_array[n['name']]);
+                     indexed_array[n['name']].push(n['value']);
+                  }else{
+                     temp = indexed_array[n['name']] = n['value'];
+                  }
                }
             });
 
