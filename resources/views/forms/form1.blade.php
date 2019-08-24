@@ -530,19 +530,19 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem1" name="timeframe">
+                                                   <input name="b-time-frame" value="1" type="radio" class="custom-control-input" id="sem1" name="timeframe">
                                                    <label class="custom-control-label" for="sem1" style="color:#484a49 !important; font:Roboto !important;">1 Semester</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem3" name="timeframe">
+                                                   <input name="b-time-frame" value="3" type="radio" class="custom-control-input" id="sem3" name="timeframe">
                                                    <label class="custom-control-label" for="sem3" style="color:#484a49 !important; font:Roboto !important;">3 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem5" name="timeframe">
+                                                   <input name="b-time-frame" value="5" type="radio" class="custom-control-input" id="sem5" name="timeframe">
                                                    <label class="custom-control-label" for="sem5" style="color:#484a49 !important; font:Roboto !important;">5 Semesters</label>
                                                 </div>
                                              </td>
@@ -556,19 +556,19 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem2" name="timeframe">
+                                                   <input name="b-time-frame" value="2" type="radio" class="custom-control-input" id="sem2" name="timeframe">
                                                    <label class="custom-control-label" for="sem2" style="color:#484a49 !important; font:Roboto !important;">2 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem4" name="timeframe">
+                                                   <input name="b-time-frame" value="4" type="radio" class="custom-control-input" id="sem4" name="timeframe">
                                                    <label class="custom-control-label" for="sem4" style="color:#484a49 !important; font:Roboto !important;">4 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="sem6" name="timeframe">
+                                                   <input name="b-time-frame" value="6" type="radio" class="custom-control-input" id="sem6" name="timeframe">
                                                    <label class="custom-control-label" for="sem6" style="color:#484a49 !important; font:Roboto !important;">6 Semesters</label>
                                                 </div>
                                              </td>
@@ -1084,9 +1084,11 @@
             $("input:radio").change(function () {
                if ($("#timeframe_others").is(":checked")) {
                   $("#countSemester").slideDown();
+                  $("#countSemester").attr('name', 'b-time-frame');
                }
                else {
                   $("#countSemester").slideUp();
+                  $("#countSemester").removeAttr("name");
                }
             });
 
