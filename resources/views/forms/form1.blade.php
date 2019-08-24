@@ -371,7 +371,11 @@
                                                 </div>
                                                 <div class="form-group selectdiv">
                                                    <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 1)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -382,7 +386,11 @@
                                                 </div>
                                                 <div class="form-group selectdiv">
                                                    <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 2)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -395,7 +403,11 @@
                                                 </div>
                                                 <div class="form-group selectdiv">
                                                    <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 3)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -406,7 +418,11 @@
                                                 </div>
                                                 <div class="form-group selectdiv">
                                                    <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 4)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -417,7 +433,11 @@
                                                 </div>
                                                 <div class="form-group selectdiv">
                                                    <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 5)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -430,7 +450,11 @@
                                                 </div>
                                                 <div class="form-group selectdiv">
                                                    <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 6)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -441,7 +465,11 @@
                                                 </div>
                                                 <div class="form-group selectdiv">
                                                    <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 7)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -452,7 +480,16 @@
                                                 </div>
                                                 <div class="form-group selectdiv">
                                                    <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Unit</option>
+                                                      <option disabled selected value="">Select Unit</option>
+                                                      <option value="Athletics Office">Athletics Office</option>
+                                                      <option value="Campus Ministry, Talamban">Campus Ministry, Talamban</option>
+                                                      <option value="Guidance Center">Guidance Center</option>
+                                                      <option value="Director of Library">Director of Library</option>
+                                                      <option value="OSA Downtown">OSA Downtown</option>
+                                                      <option value="OSA Talamban">OSA Talamban</option>
+                                                      <option value="Club Mega">Club Mega</option>
+                                                      <option value="Pathways">Pathways</option>
+                                                      <option value="USC-Supreme Student Council">USC-Supreme Student Council</option>
                                                    </select>
                                                 </div>
                                              </td>
