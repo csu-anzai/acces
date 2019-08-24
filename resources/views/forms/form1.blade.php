@@ -13,7 +13,6 @@
 
 <div class="content">
    <div class="container-fluid">
-    <form id="proposal-form" method="post">
       <div class="row" style="margin-top:-3%" id="topPage">
          <div class="card">
             <div class="card-header card-header-tabs card-header-success">
@@ -35,7 +34,7 @@
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" id="formreview" href="#form-review" data-toggle="tab">
+                           <a class="nav-link" id="formreview" href="#form-review" data-toggle="tab" onclick="submitDetails();">
                               <h3 class="card-title" style='font-family: "Roboto Black";'><i class="material-icons" style="font-size: 35px">looks_3</i> Review</h3>
                               <p class="card-category"> {{ __('Review and submit the proposal') }}</p>
                               <div class="ripple-container"></div>
@@ -48,7 +47,8 @@
             <div class="card-body">
                <div class="tab-content">
                   <div class="tab-pane active" id="form-a">
-                     <!-- START OF FORM A -->                
+                     <!-- START OF FORM A -->          
+                     <form id="a-proposal-form" method="post">      
                      <!-- Basic Information -->
                      <div class="col-md-12">
                         <div class="card">
@@ -335,11 +335,13 @@
                         <strong>PROCEED TO FORM B </strong>
                         <span class="material-icons" style="font-size:25px;">chevron_right</span>
                      </button>
+
+                     </form>
                      <!-- END OF FORM A -->
                   </div>
                   <div class="tab-pane" id="form-b">
                   <!-- START OF FORM B -->
-
+                  <form id="b-proposal-form" method="post">
                   <!-- Program/Project/Activity Profile -->
                      <div class="col-md-12">
                      <div class="card">
@@ -374,8 +376,12 @@
                                                    <label class="custom-control-label" for="sas" style="color:#484a49 !important; font:Roboto !important;">School of Arts and Sciences</label>
                                                 </div>
                                                 <div class="form-group selectdiv">
-                                                   <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                   <select name="b-sas-department" class="browser-default custom-select">
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 1)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -385,8 +391,12 @@
                                                    <label class="custom-control-label" for="safad" style="color:#484a49 !important; font:Roboto !important;">School of Architecture, Fine Arts and Design</label>
                                                 </div>
                                                 <div class="form-group selectdiv">
-                                                   <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                   <select name="b-safad-department" class="browser-default custom-select">
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 2)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -398,8 +408,12 @@
                                                    <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
                                                 </div>
                                                 <div class="form-group selectdiv">
-                                                   <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                   <select name="b-sed-department" class="browser-default custom-select">
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 3)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -409,8 +423,12 @@
                                                    <label class="custom-control-label" for="soe" style="color:#484a49 !important; font:Roboto !important;">School of Engineering</label>
                                                 </div>
                                                 <div class="form-group selectdiv">
-                                                   <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                   <select name="b-soe-department" class="browser-default custom-select">
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 4)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -420,8 +438,12 @@
                                                    <label class="custom-control-label" for="sbe" style="color:#484a49 !important; font:Roboto !important;">School of Business and Economics</label>
                                                 </div>
                                                 <div class="form-group selectdiv">
-                                                   <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                   <select name="b-sbe-department" class="browser-default custom-select">
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 5)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -433,8 +455,12 @@
                                                    <label class="custom-control-label" for="shcp" style="color:#484a49 !important; font:Roboto !important;">School of Health Care Profession</label>
                                                 </div>
                                                 <div class="form-group selectdiv">
-                                                   <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                   <select name="b-shcp-department" class="browser-default custom-select">
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 6)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -444,8 +470,12 @@
                                                    <label class="custom-control-label" for="slg" style="color:#484a49 !important; font:Roboto !important;">School of Law and Governance</label>
                                                 </div>
                                                 <div class="form-group selectdiv">
-                                                   <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Department</option>
+                                                   <select name="b-slg-department" class="browser-default custom-select">
+                                                      <option disabled selected value="">Select Department</option>
+                                                      <?php $departments = DB::table('departments')->where('school_id', 7)->get();?>
+                                                      @foreach($departments as $department)
+                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                      @endforeach
                                                    </select>
                                                 </div>
                                              </td>
@@ -455,8 +485,17 @@
                                                    <label class="custom-control-label" for="supp" style="color:#484a49 !important; font:Roboto !important;">Support Unit</label>
                                                 </div>
                                                 <div class="form-group selectdiv">
-                                                   <select class="browser-default custom-select">
-                                                      <option selected value="Program Based">Select Unit</option>
+                                                   <select name="b-supp-unit" class="browser-default custom-select">
+                                                      <option disabled selected value="">Select Unit</option>
+                                                      <option value="Athletics Office">Athletics Office</option>
+                                                      <option value="Campus Ministry, Talamban">Campus Ministry, Talamban</option>
+                                                      <option value="Guidance Center">Guidance Center</option>
+                                                      <option value="Director of Library">Director of Library</option>
+                                                      <option value="OSA Downtown">OSA Downtown</option>
+                                                      <option value="OSA Talamban">OSA Talamban</option>
+                                                      <option value="Club Mega">Club Mega</option>
+                                                      <option value="Pathways">Pathways</option>
+                                                      <option value="USC-Supreme Student Council">USC-Supreme Student Council</option>
                                                    </select>
                                                 </div>
                                              </td>
@@ -801,6 +840,7 @@
                   </div>
                      <!-- End of Program/Project/Activity Profile -->
                      
+                  </form>
                   <!-- END OF FORM B -->
                   <button class='btn btn-success' id="btnPrev">
                      <span class="material-icons" style="font-size:25px;">chevron_left</span>
@@ -1021,7 +1061,6 @@
             </div>
          </div>
       </div>
-      </form>
       <!-- Floating Action Buttons -->
 
       <!--For Debug-->
@@ -1105,10 +1144,13 @@
 
            //function to submit form
            function submitDetails(){
-            var form = $("#proposal-form [name]");
-            var json = JSON.stringify(getFormData(form));
+            var form_A = $("#a-proposal-form [name]");
+            var form_B = $("#b-proposal-form");
+
+            var json_A = JSON.stringify(getFormData(form_A));
+            var json_B = JSON.stringify(getFormData(form_B));
           
-            form = $("#proposal-form");
+            form_A = $("#a-proposal-form");
 
             $.ajax({
               headers: {
@@ -1122,10 +1164,13 @@
                 startDate: $('#input-start-date').val(), 
                 endDate: $('#input-end-date').val(), 
                 venue: $('#input-venue').val(), 
-                json: json,
+                status: "Draft",
+                json_A: json_A,
+                json_B: json_B,
                 userId: {{ Auth::user()->id}}
               },
               success: function(result){
+                 console.log(json_A, json_B);
                 var proposal_id = result;
                 //Get proposal data when success
                 $.ajax({
@@ -1241,7 +1286,7 @@
          function reviewProposal(proposal){
             var startDate = new Date(proposal.start_date);
             var endDate = new Date(proposal.end_date);
-            var json = JSON.parse(proposal.proposal_json);
+            var json = JSON.parse(proposal.proposal_json_A);
 
             var dateString = "";
             var cesType = (proposal.CES_type === "Program Based")? "Program - Based CES" : "Activity - Based CES";
@@ -1349,7 +1394,6 @@
          });
 
          $('#btnNext').click(function(){
-          submitDetails();
             $('#formb').trigger('click');        
             document.location.href = "#topPage";
          });
