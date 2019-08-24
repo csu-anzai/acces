@@ -5,6 +5,10 @@
   .number-width-limit{
     width:20%;  
   }
+  .table-borderless td,
+  .table-borderless th {
+    border: 0;
+   }
 </style>
 
 <div class="content">
@@ -357,7 +361,7 @@
                                     <table class="table">
                                        <tbody>
                                           <tr>
-                                             <td>
+                                             <td style="height:120px;">
                                                 <div class="custom-control custom-checkbox">
                                                    <input type="checkbox" class="custom-control-input" id="cesoffice">
                                                    <label class="custom-control-label" for="cesoffice" style="color:#484a49 !important; font:Roboto !important;">CES Office</label>
@@ -388,7 +392,7 @@
                                              </td>
                                           </tr>
                                           <tr>
-                                             <td>
+                                             <td style="height:120px;">
                                                 <div class="custom-control custom-checkbox">
                                                    <input type="checkbox" class="custom-control-input selecttoggle" id="sed">
                                                    <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
@@ -423,7 +427,7 @@
                                              </td>
                                           </tr>
                                           <tr>
-                                             <td>
+                                             <td style="height:120px;">
                                                 <div class="custom-control custom-checkbox">
                                                    <input type="checkbox" class="custom-control-input selecttoggle" id="shcp">
                                                    <label class="custom-control-label" for="shcp" style="color:#484a49 !important; font:Roboto !important;">School of Health Care Profession</label>
@@ -474,48 +478,68 @@
                                     </div>
                                  </div>
                                  <div class="card-body">
-                                    <table class="table">
-                                       <thead>
+                                    <table class="table table-borderless">
+                                       <thead>                                          
+                                          <tr>
+                                             <th>Short Term</th>
+                                             <th>Medium Term</th>
+                                             <th>Long Term</th>
+                                             <th>Others</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" name="termRadio" class="custom-control-input termToggle" id="shortTerm">
-                                                   <label class="custom-control-label" for="shortTerm" style="color:#484a49 !important; font:Roboto !important;">Short Term</label>
-                                                </div>
-                                                <div class="form-group">
-                                                   <select class="browser-default custom-select termSelect">
-                                                      <option selected value="Program Based">Select Unit</option>
-                                                   </select>
+                                                   <input type="radio" class="custom-control-input" id="sem1" name="timeframe">
+                                                   <label class="custom-control-label" for="sem1" style="color:#484a49 !important; font:Roboto !important;">1 Semester</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" name="termRadio" class="custom-control-input termToggle" id="mediumTerm">
-                                                   <label class="custom-control-label" for="mediumTerm" style="color:#484a49 !important; font:Roboto !important;">Medium Term</label>
-                                                </div>
-                                                <div class="form-group">
-                                                   <select class="browser-default custom-select termSelect">
-                                                      <option selected value="Program Based">Select Unit</option>
-                                                   </select>
+                                                   <input type="radio" class="custom-control-input" id="sem3" name="timeframe">
+                                                   <label class="custom-control-label" for="sem3" style="color:#484a49 !important; font:Roboto !important;">3 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" name="termRadio" class="custom-control-input termToggle" id="longTerm">
-                                                   <label class="custom-control-label" for="longTerm" style="color:#484a49 !important; font:Roboto !important;">Long Term</label>
+                                                   <input type="radio" class="custom-control-input" id="sem5" name="timeframe">
+                                                   <label class="custom-control-label" for="sem5" style="color:#484a49 !important; font:Roboto !important;">5 Semesters</label>
                                                 </div>
-                                                <div class="form-group">
-                                                   <select class="browser-default custom-select termSelect">
-                                                      <option selected value="Program Based">Select Unit</option>
-                                                   </select>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-radio">
+                                                   <input type="radio" class="custom-control-input" id="timeframe_others" name="timeframe">
+                                                   <label class="custom-control-label" for="timeframe_others" style="color:#484a49 !important; font:Roboto !important;" id="countBySemester">Count by Semesters</label>
                                                 </div>
                                              </td>
                                           </tr>
-                                       </thead>
-                                       <tr>
-                                          <td>
-                                          </td>
-                                       </tr>
+                                          <tr>
+                                             <td>
+                                                <div class="custom-control custom-radio">
+                                                   <input type="radio" class="custom-control-input" id="sem2" name="timeframe">
+                                                   <label class="custom-control-label" for="sem2" style="color:#484a49 !important; font:Roboto !important;">2 Semesters</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-radio">
+                                                   <input type="radio" class="custom-control-input" id="sem4" name="timeframe">
+                                                   <label class="custom-control-label" for="sem4" style="color:#484a49 !important; font:Roboto !important;">4 Semesters</label>
+                                                </div>
+                                             </td>
+                                             <td>
+                                                <div class="custom-control custom-radio">
+                                                   <input type="radio" class="custom-control-input" id="sem6" name="timeframe">
+                                                   <label class="custom-control-label" for="sem6" style="color:#484a49 !important; font:Roboto !important;">6 Semesters</label>
+                                                </div>
+                                             </td>
+                                             <td>                                                
+                                                <div class="form-group bmd-form-group has-success">
+                                                   <input type="number" name="timeframe" class="form-control selectdiv" id="countSemester" placeholder="Value of 7 or above." style="width:60%" min="7">
+                                                </div>
+                                             </td>
+                                          </tr>
+                                       </tbody>
                                     </table>
                                  </div>
                               </div>
@@ -1013,11 +1037,22 @@
          $('document').ready(function() {
             
             $(".selectdiv").hide();
+
             $(".selecttoggle").click(function(){
-                $(this).parent().next().toggle();
+                $(this).parent().next().slideToggle();
+            });
+
+            $("input:radio").change(function () {
+               if ($("#timeframe_others").is(":checked")) {
+                  $("#countSemester").slideDown();
+               }
+               else {
+                  $("#countSemester").slideUp();
+               }
             });
 
           $('button').attr('type', 'button');
+          
           
            //function to add new table row
            $('.activities_add').click(function() {
