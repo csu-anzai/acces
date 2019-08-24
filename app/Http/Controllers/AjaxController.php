@@ -18,15 +18,15 @@ class AjaxController extends Controller
      }
 
      public function insertProposal(Request $request){
-        $json = $request->input('json');
-        
         $id = DB::table('proposals')->insertGetId([
             'title' => $request->input('title'),
             'CES_type' => $request->input('CEStype'),
             'start_date' => $request->input('startDate'),
             'end_date' => $request->input('endDate'),
             'venue' => $request->input('venue'),
-            'proposal_json' => $json,
+            'status' => $request->input('status'),
+            'proposal_json_A' => $request->input('json_A'),
+            'proposal_json_B' => $request->input('json_B'),
             'user_id' => $request->input('userId')
        ]);
        
