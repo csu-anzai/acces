@@ -513,7 +513,7 @@
                                  <div class="card-header card-header-text card-header-success">
                                     <div class="card-text">
                                        <h5 class="card-title"><strong>B. Time Frame</strong></h5>
-                                       <p class="card-category"> {{ __('Please select all that apply.') }}</p>
+                                       <p class="card-category"> {{ __('Please check the appropriate item.') }}</p>
                                     </div>
                                  </div>
                                  <div class="card-body">
@@ -651,13 +651,10 @@
                                                 </div>
                                              </td>
                                              <td>
-                                                <div>
-                                                   <div class="custom-control custom-checkbox">
-                                                      <input type="checkbox" class="custom-control-input" id="others">
-                                                      <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
-                                                   </div>
-                                                   <div>
-                                                      <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                <div>                                                   
+                                                   <label style="color:#484a49 !important; font:Roboto !important;">Others:</label>
+                                                   <div class="form-group bmd-form-group has-success" style="margin-top:-5%">
+                                                      <input type="text" class="form-control" placeholder="Type here.">
                                                    </div>
                                                 </div>
                                              </td>
