@@ -611,7 +611,7 @@ $temp = 0;
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-checkbox">
-                                                   <input name="b-nature" value="Technology transfer and utilization type="checkbox" class="custom-control-input" id="techtrans">
+                                                   <input name="b-nature" value="Technology transfer and utilization" type="checkbox" class="custom-control-input" id="techtrans">
                                                    <label class="custom-control-label" for="techtrans" style="color:#484a49 !important; font:Roboto !important;">Technology transfer and utilization (process of circulating, promoting and marketing or technologies to potential users)</label>
                                                 </div>
                                              </td>
@@ -1491,8 +1491,8 @@ $temp = 0;
                         </td>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input name="b-environmental" value="Clean-up Drives (coastal, river, drainage, sewage, etc." type="checkbox" class="custom-control-input" id="cleanUpDrives">
-                              <label class="custom-control-label" for="cleanUpDrives" style="color:#484a49 !important; font:Roboto !important;">Clean-up Drives (coastal, river, drainage, sewage, etc.</label>
+                            <input name="b-environmental" value="Clean-up Drives (coastal, river, drainage, sewage, etc.)" type="checkbox" class="custom-control-input" id="cleanUpDrives">
+                              <label class="custom-control-label" for="cleanUpDrives" style="color:#484a49 !important; font:Roboto !important;">Clean-up Drives (coastal, river, drainage, sewage, etc.)</label>
                           </div>
                         </td>
                       </tr>
