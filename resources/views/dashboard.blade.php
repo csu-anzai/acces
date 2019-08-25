@@ -53,8 +53,8 @@
                         <tr>
                            <td>{{$proposal->id}}</td>
                            <td><a href="#" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                           <td>Date here</td>
-                           <td>Approved?</td>
+                           <td>{{$proposal->created_at}}</td>
+                           <td>{{$proposal->status}}</td>
                         </tr>
                         @endforeach
                      </tbody>

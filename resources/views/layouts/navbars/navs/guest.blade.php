@@ -21,18 +21,23 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav">
+        <li class="nav-item{{ $activePage == 'about' ? ' active' : '' }}">
+          <a href="#login" class="nav-link">
+            {{ __('Login') }}
+          </a>
+        </li>
         <li class="nav-item{{ $activePage == 'register' ? ' active' : '' }}">
           <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="material-icons">person_add</i> {{ __('Register') }}
           </a>
         </li>
         <li class="nav-item{{ $activePage == 'about' ? ' active' : '' }}">
-          <a href="#" class="nav-link">
+          <a href="#about" class="nav-link">
             <i class="material-icons">info</i> {{ __('About') }}
           </a>
         </li>
         <li class="nav-item ">
-          <a href="#" class="nav-link">
+          <a href="#contact" class="nav-link">
             <i class="material-icons">phone</i> {{ __('Contact') }}
           </a>
         </li>

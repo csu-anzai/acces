@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -62,6 +63,8 @@
         <script src="{{ asset('material') }}/js/plugins/chartist.min.js"></script>
         <!--  Notifications Plugin    -->
         <script src="{{ asset('material') }}/js/plugins/bootstrap-notify.js"></script>
+        <!-- Animate on Scroll Plugin -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="{{ asset('material') }}/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
