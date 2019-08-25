@@ -1,6 +1,14 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 @section('content')
 
+<?php
+$schools = DB::table('schools')
+   ->where('id', '!=', 8)
+   ->get();
+
+$ctr = 3;
+$temp = 0;
+?>
 <style>
   .number-width-limit{
     width:20%;  
@@ -362,144 +370,45 @@
                                     <!-- dept check buttons table -->
                                     <table class="table">
                                        <tbody>
+                                       @foreach($schools as $school)
+                                       @if($ctr % 3 == 0 && $temp < $ctr)
                                           <tr>
-                                             <td style="height:120px;">
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="cesoffice">
-                                                   <label class="custom-control-label" for="cesoffice" style="color:#484a49 !important; font:Roboto !important;">CES Office</label>
-                                                </div>
-                                             </td>
+                                          <?php $temp = $ctr ?>
+                                       @endif
+                                             <?php $departments = DB::table('departments')->where('school_id', $school->id)->get();?>
                                              <td>
                                                 <!--look here-->
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="sas">
-                                                   <label class="custom-control-label" for="sas" style="color:#484a49 !important; font:Roboto !important;">School of Arts and Sciences</label>
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="b-school-{{$school->id}}">
+                                                   <label class="custom-control-label" for="b-school-{{$school->id}}" style="color:#484a49 !important; font:Roboto !important;">{{$school->name}}</label>
                                                 </div>
+
+                                                @if($school->id == 9)
+                                                   @foreach($departments as $department)
+                                                   <input type="hidden" name="b-department" value="{{$department->id}}" />
+                                                   @endforeach
+                                                @else
                                                 <div class="form-group selectdiv">
-                                                   <select name="b-sas-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 2)->get();?>
+                                                   <select name="b-department" class="browser-default custom-select">
+
+                                                      @if($school->id == 10)
+                                                      <option disabled selected value="" selected>Select Unit</option>
+                                                      @else
+                                                      <option disabled selected value="" selected>Select Department</option>
+                                                      @endif
+                                                      
                                                       @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                         <option value="{{$department->id}}">{{$department->name}}</option>
                                                       @endforeach
                                                    </select>
                                                 </div>
+                                                @endif
                                              </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="safad">
-                                                   <label class="custom-control-label" for="safad" style="color:#484a49 !important; font:Roboto !important;">School of Architecture, Fine Arts and Design</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-safad-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 1)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
+                                          <?php $ctr++; ?>
+                                       @if($ctr % 3 == 0 && $temp < $ctr)
                                           </tr>
-                                          <tr>
-                                             <td style="height:120px;">
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="sed">
-                                                   <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-sed-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 3)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="soe">
-                                                   <label class="custom-control-label" for="soe" style="color:#484a49 !important; font:Roboto !important;">School of Engineering</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-soe-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 7)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="sbe">
-                                                   <label class="custom-control-label" for="sbe" style="color:#484a49 !important; font:Roboto !important;">School of Business and Economics</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-sbe-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 6)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td style="height:120px;">
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="shcp">
-                                                   <label class="custom-control-label" for="shcp" style="color:#484a49 !important; font:Roboto !important;">School of Health Care Profession</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-shcp-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 4)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="slg">
-                                                   <label class="custom-control-label" for="slg" style="color:#484a49 !important; font:Roboto !important;">School of Law and Governance</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-slg-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 5)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="supp">
-                                                   <label class="custom-control-label" for="supp" style="color:#484a49 !important; font:Roboto !important;">Support Unit</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-supp-unit" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Unit</option>
-                                                      <option value="Athletics Office">Athletics Office</option>
-                                                      <option value="Campus Ministry, Talamban">Campus Ministry, Talamban</option>
-                                                      <option value="Guidance Center">Guidance Center</option>
-                                                      <option value="Director of Library">Director of Library</option>
-                                                      <option value="OSA Downtown">OSA Downtown</option>
-                                                      <option value="OSA Talamban">OSA Talamban</option>
-                                                      <option value="Club Mega">Club Mega</option>
-                                                      <option value="Pathways">Pathways</option>
-                                                      <option value="USC-Supreme Student Council">USC-Supreme Student Council</option>
-                                                   </select>
-                                                </div>
-                                             </td>
-                                          </tr>
+                                       @endif
+                                       @endforeach
                                        </tbody>
                                     </table>
                                     <!-- end of check buttons table -->  

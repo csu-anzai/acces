@@ -19,7 +19,9 @@ class SchoolsTableSeeder extends Seeder
             ['name' => 'School of Law and Governance'],
             ['name' => 'School of Business and Economics'],
             ['name' => 'School of Engineering'],
-            ['name' => 'Extra-Curricular']
+            ['name' => 'Extra-Curricular'],
+            ['name' => 'CES Office'],
+            ['name' => 'Support Unit']
         ];
         
         DB::table('schools')->insert($schools);
