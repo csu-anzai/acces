@@ -544,7 +544,7 @@
         function reviewProposal(proposal){
           var startDate = new Date(proposal.start_date);
           var endDate = new Date(proposal.end_date);
-          var json = JSON.parse(proposal.proposal_json);
+          var json = JSON.parse(proposal.proposal_json_A);
       
           var dateString = "";
           var cesType = (proposal.CES_type === "Program Based")? "Program - Based CES" : "Activity - Based CES";
