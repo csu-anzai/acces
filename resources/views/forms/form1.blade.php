@@ -1,6 +1,14 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 @section('content')
 
+<?php
+$schools = DB::table('schools')
+   ->where('id', '!=', 8)
+   ->get();
+
+$ctr = 3;
+$temp = 0;
+?>
 <style>
   .number-width-limit{
     width:20%;  
@@ -101,7 +109,7 @@
                                  <label class="col-sm-2 col-form-label" style="color:black">{{ __('Venue:') }}</label>
                                  <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('venue') ? ' has-danger' : ' has-success' }}">
-                                       <input class="form-control no-include" name="a-venue" id="input-venue" type="text" placeholder="{{ __('Where will the activity take place?') }}" value="" required="true" aria-required="true"/>
+                                       <input class="form-control no-include" name="a-venue" id="input-venue" type="text" placeholder="{{ __('Where will the activity take place?') }}" required="true" aria-required="true"/>
                                     </div>
                                  </div>
                               </div>
@@ -362,144 +370,45 @@
                                     <!-- dept check buttons table -->
                                     <table class="table">
                                        <tbody>
+                                       @foreach($schools as $school)
+                                       @if($ctr % 3 == 0 && $temp < $ctr)
                                           <tr>
-                                             <td style="height:120px;">
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="cesoffice">
-                                                   <label class="custom-control-label" for="cesoffice" style="color:#484a49 !important; font:Roboto !important;">CES Office</label>
-                                                </div>
-                                             </td>
+                                          <?php $temp = $ctr ?>
+                                       @endif
+                                             <?php $departments = DB::table('departments')->where('school_id', $school->id)->get();?>
                                              <td>
                                                 <!--look here-->
                                                 <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="sas">
-                                                   <label class="custom-control-label" for="sas" style="color:#484a49 !important; font:Roboto !important;">School of Arts and Sciences</label>
+                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="b-school-{{$school->id}}">
+                                                   <label class="custom-control-label" for="b-school-{{$school->id}}" style="color:#484a49 !important; font:Roboto !important;">{{$school->name}}</label>
                                                 </div>
+
+                                                @if($school->id == 9)
+                                                   @foreach($departments as $department)
+                                                   <input type="hidden" name="b-department" value="{{$department->id}}" />
+                                                   @endforeach
+                                                @else
                                                 <div class="form-group selectdiv">
-                                                   <select name="b-sas-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 2)->get();?>
+                                                   <select name="b-department" class="browser-default custom-select">
+
+                                                      @if($school->id == 10)
+                                                      <option disabled selected value="" selected>Select Unit</option>
+                                                      @else
+                                                      <option disabled selected value="" selected>Select Department</option>
+                                                      @endif
+                                                      
                                                       @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
+                                                         <option value="{{$department->id}}">{{$department->name}}</option>
                                                       @endforeach
                                                    </select>
                                                 </div>
+                                                @endif
                                              </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="safad">
-                                                   <label class="custom-control-label" for="safad" style="color:#484a49 !important; font:Roboto !important;">School of Architecture, Fine Arts and Design</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-safad-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 1)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
+                                          <?php $ctr++; ?>
+                                       @if($ctr % 3 == 0 && $temp < $ctr)
                                           </tr>
-                                          <tr>
-                                             <td style="height:120px;">
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="sed">
-                                                   <label class="custom-control-label" for="sed" style="color:#484a49 !important; font:Roboto !important;">School of Education</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-sed-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 3)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="soe">
-                                                   <label class="custom-control-label" for="soe" style="color:#484a49 !important; font:Roboto !important;">School of Engineering</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-soe-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 7)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="sbe">
-                                                   <label class="custom-control-label" for="sbe" style="color:#484a49 !important; font:Roboto !important;">School of Business and Economics</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-sbe-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 6)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td style="height:120px;">
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="shcp">
-                                                   <label class="custom-control-label" for="shcp" style="color:#484a49 !important; font:Roboto !important;">School of Health Care Profession</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-shcp-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 4)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="slg">
-                                                   <label class="custom-control-label" for="slg" style="color:#484a49 !important; font:Roboto !important;">School of Law and Governance</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-slg-department" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Department</option>
-                                                      <?php $departments = DB::table('departments')->where('school_id', 5)->get();?>
-                                                      @foreach($departments as $department)
-                                                      <option value="{{$department->id}}">{{$department->name}}</option>
-                                                      @endforeach
-                                                   </select>
-                                                </div>
-                                             </td>
-                                             <td>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input selecttoggle" id="supp">
-                                                   <label class="custom-control-label" for="supp" style="color:#484a49 !important; font:Roboto !important;">Support Unit</label>
-                                                </div>
-                                                <div class="form-group selectdiv">
-                                                   <select name="b-supp-unit" class="browser-default custom-select">
-                                                      <option disabled selected value="">Select Unit</option>
-                                                      <option value="Athletics Office">Athletics Office</option>
-                                                      <option value="Campus Ministry, Talamban">Campus Ministry, Talamban</option>
-                                                      <option value="Guidance Center">Guidance Center</option>
-                                                      <option value="Director of Library">Director of Library</option>
-                                                      <option value="OSA Downtown">OSA Downtown</option>
-                                                      <option value="OSA Talamban">OSA Talamban</option>
-                                                      <option value="Club Mega">Club Mega</option>
-                                                      <option value="Pathways">Pathways</option>
-                                                      <option value="USC-Supreme Student Council">USC-Supreme Student Council</option>
-                                                   </select>
-                                                </div>
-                                             </td>
-                                          </tr>
+                                       @endif
+                                       @endforeach
                                        </tbody>
                                     </table>
                                     <!-- end of check buttons table -->  
@@ -530,25 +439,25 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input name="b-time-frame" value="1" type="radio" class="custom-control-input" id="sem1" name="timeframe">
+                                                   <input name="b-time-frame" value="1" type="radio" class="custom-control-input" id="sem1" >
                                                    <label class="custom-control-label" for="sem1" style="color:#484a49 !important; font:Roboto !important;">1 Semester</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input name="b-time-frame" value="3" type="radio" class="custom-control-input" id="sem3" name="timeframe">
+                                                   <input name="b-time-frame" value="3" type="radio" class="custom-control-input" id="sem3" >
                                                    <label class="custom-control-label" for="sem3" style="color:#484a49 !important; font:Roboto !important;">3 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input name="b-time-frame" value="5" type="radio" class="custom-control-input" id="sem5" name="timeframe">
+                                                   <input name="b-time-frame" value="5" type="radio" class="custom-control-input" id="sem5" >
                                                    <label class="custom-control-label" for="sem5" style="color:#484a49 !important; font:Roboto !important;">5 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input type="radio" class="custom-control-input" id="timeframe_others" name="timeframe">
+                                                   <input name="b-time-frame" type="radio" class="custom-control-input" id="timeframe_others" >
                                                    <label class="custom-control-label" for="timeframe_others" style="color:#484a49 !important; font:Roboto !important;" id="countBySemester">Count by Semesters</label>
                                                 </div>
                                              </td>
@@ -556,25 +465,25 @@
                                           <tr>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input name="b-time-frame" value="2" type="radio" class="custom-control-input" id="sem2" name="timeframe">
+                                                   <input name="b-time-frame" value="2" type="radio" class="custom-control-input" id="sem2" >
                                                    <label class="custom-control-label" for="sem2" style="color:#484a49 !important; font:Roboto !important;">2 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input name="b-time-frame" value="4" type="radio" class="custom-control-input" id="sem4" name="timeframe">
+                                                   <input name="b-time-frame" value="4" type="radio" class="custom-control-input" id="sem4" >
                                                    <label class="custom-control-label" for="sem4" style="color:#484a49 !important; font:Roboto !important;">4 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>
                                                 <div class="custom-control custom-radio">
-                                                   <input name="b-time-frame" value="6" type="radio" class="custom-control-input" id="sem6" name="timeframe">
+                                                   <input name="b-time-frame" value="6" type="radio" class="custom-control-input" id="sem6" >
                                                    <label class="custom-control-label" for="sem6" style="color:#484a49 !important; font:Roboto !important;">6 Semesters</label>
                                                 </div>
                                              </td>
                                              <td>                                                
                                                 <div class="form-group bmd-form-group has-success">
-                                                   <input type="number" name="timeframe" class="form-control selectdiv" id="countSemester" placeholder="Value of 7 or above." style="width:60%" min="7">
+                                                   <input type="number"  class="form-control selectdiv" id="countSemester" placeholder="Value of 7 or above." style="width:60%" min="7">
                                                 </div>
                                              </td>
                                           </tr>
@@ -653,8 +562,8 @@
                                              <td>
                                                 <div>                                                   
                                                    <label style="color:#484a49 !important; font:Roboto !important;">Others</label>
-                                                   <div class="form-group bmd-form-group has-success" style="margin-top:-5%">
-                                                      <input name="b-locus-leadership" value="" type="text" class="form-control" placeholder="Type Here">
+                                                   <div class="form-group bmd-form-group has-success" style="margin-top:-3%">
+                                                      <input name="b-locus-leadership" type="text" class="form-control" placeholder="Type Here">
                                                    </div>
                                                 </div>
                                              </td>
@@ -723,13 +632,10 @@
                                           </tr>
                                           <tr>
                                              <td>
-                                                <div>
-                                                   <div class="custom-control custom-checkbox">
-                                                      <input type="checkbox" class="custom-control-input" id="others">
-                                                      <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
-                                                   </div>
-                                                   <div class="form-group bmd-form-group has-success">
-                                                      <input name="b-nature" class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                 <div>                                                   
+                                                   <label style="color:#484a49 !important; font:Roboto !important;">Others</label>
+                                                   <div class="form-group bmd-form-group has-success" style="margin-top:-3%">
+                                                      <input name="b-nature" type="text" class="form-control" placeholder="Type Here">
                                                    </div>
                                                 </div>
                                              </td>
@@ -858,13 +764,13 @@
                                           <tr>
                                              <td>
                                              <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input selecttoggle" id="doneassess" name="defaultExampleRadios">
+                                                <input type="radio" value="doneassess" class="custom-control-input" id="doneassess" name="b-contextual">
                                                 <label class="custom-control-label" for="doneassess" style="color:black !important;">unit has done preliminary needs assessment </label>
                                                                            
                                              </div>
 
                                              <!--unit has done preliminary needs assessment table--> 
-                                             <div class="selectdiv">
+                                             <div class="selectdiv" id="doneassess-contextual">
                                                    <table class="table" style="background-color:white !important">
                                                    <thead> 
                                                       <tr>
@@ -874,13 +780,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id=facultyuser>
+                                                         <input name="b-contextual-unit-personnel" value="Faculty members" type="checkbox" class="custom-control-input" id=facultyuser>
                                                          <label class="custom-control-label" for="facultyuser" style="color:#484a49 !important; font:Roboto !important;">Faculty members</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id=studentorg>
+                                                         <input name="b-contextual-unit-personnel" value="Student org./majors" type="checkbox" class="custom-control-input" id=studentorg>
                                                          <label class="custom-control-label" for="studentorg" style="color:#484a49 !important; font:Roboto !important;">Student org./majors</label>
                                                          </div>
                                                       </td>
@@ -888,13 +794,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id=classinstructor>
+                                                         <input name="b-contextual-unit-personnel" value="Class instructor" type="checkbox" class="custom-control-input" id=classinstructor>
                                                          <label class="custom-control-label" for="classinstructor" style="color:#484a49 !important; font:Roboto !important;">Class instructor</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id=coursenrollees>
+                                                         <input name="b-contextual-unit-personnel" value="Course enrollees" type="checkbox" class="custom-control-input" id=coursenrollees>
                                                          <label class="custom-control-label" for="coursenrollees" style="color:#484a49 !important; font:Roboto !important;">Course enrollees</label>
                                                          </div>
                                                       </td>
@@ -902,13 +808,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id=staff>
+                                                         <input name="b-contextual-unit-personnel" value="Staff" type="checkbox" class="custom-control-input" id=staff>
                                                          <label class="custom-control-label" for="staff" style="color:#484a49 !important; font:Roboto !important;">Staff</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id=studentvolunteers>
+                                                         <input name="b-contextual-unit-personnel" value="Student volunteers" type="checkbox" class="custom-control-input" id=studentvolunteers>
                                                          <label class="custom-control-label" for="studentvolunteers" style="color:#484a49 !important; font:Roboto !important;">Student volunteers</label>
                                                          </div>
                                                       </td>
@@ -916,13 +822,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id=commorgmembers>
+                                                         <input name="b-contextual-unit-personnel" value="Community/Org members" type="checkbox" class="custom-control-input" id=commorgmembers>
                                                          <label class="custom-control-label" for="commorgmembers" style="color:#484a49 !important; font:Roboto !important;">Community/Org members</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id=employedenumerators>
+                                                         <input name="b-contextual-unit-personnel" value="Employed enumerators" type="checkbox" class="custom-control-input" id=employedenumerators>
                                                          <label class="custom-control-label" for="employedenumerators" style="color:#484a49 !important; font:Roboto !important;">Employed enumerators</label>
                                                          </div>
                                                       </td>
@@ -930,12 +836,9 @@
                                                    <tr>
                                                       <td>
                                                          <div>
-                                                         <div class="custom-control custom-checkbox">
-                                                               <input type="checkbox" class="custom-control-input" id="context-others">
-                                                               <label class="custom-control-label" for="context-others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
-                                                         </div>
-                                                         <div class="form-group bmd-form-group has-success">
-                                                            <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                         <label style="color:#484a49 !important; font:Roboto !important;">Others</label> 
+                                                         <div class="form-group bmd-form-group has-success" style="margin-top:-3%">
+                                                            <input name="b-contextual-unit-personnel" class="form-control" type="text" placeholder="Type Here"/>
                                                          </div>
                                                          </div>
                                                       </td>
@@ -946,7 +849,7 @@
                                              </td>
                                              <td>
                                              <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="notdoneassess" name="defaultExampleRadios">
+                                                <input type="radio" value="notdoneassess" class="custom-control-input" id="notdoneassess" name="b-contextual">
                                                 <label class="custom-control-label" for="notdoneassess" style="color:black !important;">unit has not done preliminary needs assessment</label>
                                              </div>
                                              </td>
@@ -954,11 +857,11 @@
                                           <tr>
                                              <td>
                                              <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input selecttoggle" id="withdata" name="defaultExampleRadios">
+                                                <input type="radio" value="withdata" class="custom-control-input" id="withdata" name="b-contextual">
                                                 <label class="custom-control-label" for="withdata" style="color:black !important;">with existing verifiable data from the field</label>
                                              </div>
                                              <!--with existing verifiable data from the field table-->
-                                             <div class="selectdiv">
+                                             <div class="selectdiv" id="withdata-contextual">
                                                    <table class="table" style="background-color:white !important">
                                                    <thead> 
                                                       <tr>
@@ -968,13 +871,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="researchfacstu">
+                                                         <input name="b-contextual-data-source" value="Research(faculty/student)" type="checkbox" class="custom-control-input" id="researchfacstu">
                                                          <label class="custom-control-label" for="researchfacstu" style="color:#484a49 !important; font:Roboto !important;">Research(faculty/student)</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="provided">
+                                                         <input name="b-contextual-data-source" value="Provided/expressed by the partner" type="checkbox" class="custom-control-input" id="provided">
                                                          <label class="custom-control-label" for="provided" style="color:#484a49 !important; font:Roboto !important;">Provided/expressed by the partner</label>
                                                          </div>
                                                       </td>
@@ -982,13 +885,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="thesis">
+                                                         <input name="b-contextual-data-source" value="Thesis/dissertation" type="checkbox" class="custom-control-input" id="thesis">
                                                          <label class="custom-control-label" for="thesis" style="color:#484a49 !important; font:Roboto !important;">Thesis/dissertation</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="recommendedfac">
+                                                         <input name="b-contextual-data-source" value="Recommended by faculty/student/class" type="checkbox" class="custom-control-input" id="recommendedfac">
                                                          <label class="custom-control-label" for="recommendedfac" style="color:#484a49 !important; font:Roboto !important;">Recommended by faculty/student/class</label>
                                                          </div>
                                                       </td>
@@ -996,13 +899,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="cesdatagathering">
+                                                         <input name="b-contextual-data-source" value="CES data gathering initiatives" type="checkbox" class="custom-control-input" id="cesdatagathering">
                                                          <label class="custom-control-label" for="cesdatagathering" style="color:#484a49 !important; font:Roboto !important;">CES data gathering initiatives</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="fromgov">
+                                                         <input name="b-contextual-data-source" value="From Government agency" type="checkbox" class="custom-control-input" id="fromgov">
                                                          <label class="custom-control-label" for="fromgov" style="color:#484a49 !important; font:Roboto !important;">From Government agency</label>
                                                          </div>
                                                       </td>
@@ -1010,13 +913,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="communitymeetings">
+                                                         <input name="b-contextual-data-source" value="Community meetings" type="checkbox" class="custom-control-input" id="communitymeetings">
                                                          <label class="custom-control-label" for="communitymeetings" style="color:#484a49 !important; font:Roboto !important;">Community meetings</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="reflectionnotes">
+                                                         <input name="b-contextual-data-source" value="Reflection notes/paper" type="checkbox" class="custom-control-input" id="reflectionnotes">
                                                          <label class="custom-control-label" for="reflectionnotes" style="color:#484a49 !important; font:Roboto !important;">Reflection notes/papers</label>
                                                          </div>
                                                       </td>
@@ -1024,18 +927,15 @@
                                                    <tr>
                                                       <td>
                                                       <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="secondarysources">
+                                                         <input name="b-contextual-data-source" value="From secondary sources" type="checkbox" class="custom-control-input" id="secondarysources">
                                                          <label class="custom-control-label" for="secondarysources" style="color:#484a49 !important; font:Roboto !important;">From secondary sources</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div>
-                                                         <div class="custom-control custom-checkbox">
-                                                               <input type="checkbox" class="custom-control-input" id="existing-others">
-                                                               <label class="custom-control-label" for="existing-others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
-                                                         </div>
-                                                         <div class="form-group bmd-form-group has-success">
-                                                            <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                         <label style="color:#484a49 !important; font:Roboto !important;">Others</label> 
+                                                         <div class="form-group bmd-form-group has-success" style="margin-top:-3%">
+                                                            <input name="b-contextual-data-source" class="form-control" type="text" placeholder="Type Here"/>
                                                          </div>
                                                          </div>
                                                       </td>
@@ -1048,13 +948,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="survey">
+                                                         <input name="b-contextual-tool-used" value="Survey/questionnaire" type="checkbox" class="custom-control-input" id="survey">
                                                          <label class="custom-control-label" for="survey" style="color:#484a49 !important; font:Roboto !important;">Survey/questionnaire</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="exposure">
+                                                         <input name="b-contextual-tool-used" value="Exposure/immersions" type="checkbox" class="custom-control-input" id="exposure">
                                                          <label class="custom-control-label" for="exposure" style="color:#484a49 !important; font:Roboto !important;">Exposure/immersions</label>
                                                          </div>
                                                       </td>
@@ -1062,13 +962,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="kiifgds">
+                                                         <input name="b-contextual-tool-used" value="KII/FGDs" type="checkbox" class="custom-control-input" id="kiifgds">
                                                          <label class="custom-control-label" for="kiifgds" style="color:#484a49 !important; font:Roboto !important;">KII/FGDs</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="validationsessions">
+                                                         <input name="b-contextual-tool-used" value="Validation sessions" type="checkbox" class="custom-control-input" id="validationsessions">
                                                          <label class="custom-control-label" for="validationsessions" style="color:#484a49 !important; font:Roboto !important;">Validation sessions</label>
                                                          </div>
                                                       </td>
@@ -1076,13 +976,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="ocularvisit">
+                                                         <input name="b-contextual-tool-used" value="Ocular visit" type="checkbox" class="custom-control-input" id="ocularvisit">
                                                          <label class="custom-control-label" for="ocularvisit" style="color:#484a49 !important; font:Roboto !important;">Ocular visit</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="documentsreview">
+                                                         <input name="b-contextual-tool-used" value="Documents review" type="checkbox" class="custom-control-input" id="documentsreview">
                                                          <label class="custom-control-label" for="documentsreview" style="color:#484a49 !important; font:Roboto !important;">Documents review</label>
                                                          </div>
                                                       </td>
@@ -1090,18 +990,15 @@
                                                    <tr>
                                                       <td>
                                                       <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="community_meetings">
+                                                         <input name="b-contextual-tool-used" value="Community meetings" type="checkbox" class="custom-control-input" id="community_meetings">
                                                          <label class="custom-control-label" for="community_meetings" style="color:#484a49 !important; font:Roboto !important;">Community meetings</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div>
-                                                         <div class="custom-control custom-checkbox">
-                                                               <input type="checkbox" class="custom-control-input" id="tools-others">
-                                                               <label class="custom-control-label" for="tools-others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
-                                                         </div>
-                                                         <div class="form-group bmd-form-group has-success">
-                                                            <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                         <label style="color:#484a49 !important; font:Roboto !important;">Others</label> 
+                                                         <div class="form-group bmd-form-group has-success" style="margin-top:-3%">
+                                                            <input name="b-contextual-tool-used"class="form-control" type="text" placeholder="Type Here"/>
                                                          </div>
                                                          </div>
                                                       </td>
@@ -1114,13 +1011,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="means_survey">
+                                                         <input name="b-contextual-means-employed" value="Survey/questionnaire" type="checkbox" class="custom-control-input" id="means_survey">
                                                          <label class="custom-control-label" for="means_survey" style="color:#484a49 !important; font:Roboto !important;">Survey/questionnaire</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="means_exposure">
+                                                         <input name="b-contextual-means-employed" value="Exposure/immersions" type="checkbox" class="custom-control-input" id="means_exposure">
                                                          <label class="custom-control-label" for="means_exposure" style="color:#484a49 !important; font:Roboto !important;">Exposure/immersions</label>
                                                          </div>
                                                       </td>
@@ -1128,13 +1025,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="means_kiifgds">
+                                                         <input name="b-contextual-means-employed" value="KII/FGDs" type="checkbox" class="custom-control-input" id="means_kiifgds">
                                                          <label class="custom-control-label" for="means_kiifgds" style="color:#484a49 !important; font:Roboto !important;">KII/FGDs</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="means_validationsessions">
+                                                         <input name="b-contextual-means-employed" value="Validation sessions" type="checkbox" class="custom-control-input" id="means_validationsessions">
                                                          <label class="custom-control-label" for="means_validationsessions" style="color:#484a49 !important; font:Roboto !important;">Validation sessions</label>
                                                          </div>
                                                       </td>
@@ -1142,13 +1039,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="means_ocularvisit">
+                                                         <input name="b-contextual-means-employed" value="Ocular visit" type="checkbox" class="custom-control-input" id="means_ocularvisit">
                                                          <label class="custom-control-label" for="means_ocularvisit" style="color:#484a49 !important; font:Roboto !important;">Ocular visit</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="means_documentsreview">
+                                                         <input name="b-contextual-means-employed" value="Documents review<" type="checkbox" class="custom-control-input" id="means_documentsreview">
                                                          <label class="custom-control-label" for="means_documentsreview" style="color:#484a49 !important; font:Roboto !important;">Documents review</label>
                                                          </div>
                                                       </td>
@@ -1156,18 +1053,15 @@
                                                    <tr>
                                                       <td>
                                                       <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="means_community_meetings">
+                                                         <input name="b-contextual-means-employed" value="Community meetings" type="checkbox" class="custom-control-input" id="means_community_meetings">
                                                          <label class="custom-control-label" for="means_community_meetings" style="color:#484a49 !important; font:Roboto !important;">Community meetings</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div>
-                                                         <div class="custom-control custom-checkbox">
-                                                               <input type="checkbox" class="custom-control-input" id="means_context-others">
-                                                               <label class="custom-control-label" for="means_context-others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
-                                                         </div>
-                                                         <div class="form-group bmd-form-group has-success">
-                                                            <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                         <label style="color:#484a49 !important; font:Roboto !important;">Others</label> 
+                                                         <div class="form-group bmd-form-group has-success" style="margin-top:-3%">
+                                                            <input name="b-contextual-means-employed" class="form-control" type="text" placeholder="Type Here"/>
                                                          </div>
                                                          </div>
                                                       </td>
@@ -1180,13 +1074,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="tablefaculty">
+                                                         <input name="b-contextual-who-collected" value="Faculty" type="checkbox" class="custom-control-input" id="tablefaculty">
                                                          <label class="custom-control-label" for="tablefaculty" style="color:#484a49 !important; font:Roboto !important;">Faculty</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="govagency">
+                                                         <input name="b-contextual-who-collected" value="Government agency" type="checkbox" class="custom-control-input" id="govagency">
                                                          <label class="custom-control-label" for="govagency" style="color:#484a49 !important; font:Roboto !important;">Government agency</label>
                                                          </div>
                                                       </td>
@@ -1194,13 +1088,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="undergradstudents">
+                                                         <input name="b-contextual-who-collected" value="Undergraduate students" type="checkbox" class="custom-control-input" id="undergradstudents">
                                                          <label class="custom-control-label" for="undergradstudents" style="color:#484a49 !important; font:Roboto !important;">Undergraduate students</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="partnercomm">
+                                                         <input name="b-contextual-who-collected" value="Partner community/org./institution" type="checkbox" class="custom-control-input" id="partnercomm">
                                                          <label class="custom-control-label" for="partnercomm" style="color:#484a49 !important; font:Roboto !important;">Partner community/org./institution</label>
                                                          </div>
                                                       </td>
@@ -1208,13 +1102,13 @@
                                                    <tr>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id="graduatestudents">
+                                                         <input name="b-contextual-who-collected" value="Graduate students" type="checkbox" class="custom-control-input" id="graduatestudents">
                                                          <label class="custom-control-label" for="graduatestudents" style="color:#484a49 !important; font:Roboto !important;">Graduate students</label>
                                                          </div>
                                                       </td>
                                                       <td>
                                                          <div class="custom-control custom-checkbox">
-                                                         <input type="checkbox" class="custom-control-input" id=deloadedresearcher>
+                                                         <input name="b-contextual-who-collected" value="Deloaded researcher" type="checkbox" class="custom-control-input" id=deloadedresearcher>
                                                          <label class="custom-control-label" for="deloadedresearcher" style="color:#484a49 !important; font:Roboto !important;">Deloaded researcher</label>
                                                          </div>
                                                       </td>
@@ -1222,12 +1116,9 @@
                                                    <tr>
                                                    <td>
                                                          <div>
-                                                         <div class="custom-control custom-checkbox">
-                                                               <input type="checkbox" class="custom-control-input" id="collected-context-others">
-                                                               <label class="custom-control-label" for="collected-context-others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
-                                                         </div>
-                                                         <div class="form-group bmd-form-group has-success">
-                                                            <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                         <label style="color:#484a49 !important; font:Roboto !important;">Others</label> 
+                                                         <div class="form-group bmd-form-group has-success" style="margin-top:-3%">
+                                                            <input name="b-contextual-who-collected" class="form-control" type="text" placeholder="Type Here"/>
                                                          </div>
                                                          </div>
                                                       </td>
@@ -1240,8 +1131,38 @@
                                              </td>
                                              <td>
                                              <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="withoutdata" name="defaultExampleRadios">
+                                                <input type="radio" value="withoutdara" class="custom-control-input" id="withoutdata" name="b-contextual">
                                                 <label class="custom-control-label" for="withoutdata" style="color:black !important;">without data from the field</label>
+                                             </div>
+                                             <div class="selectdiv" id="withoutdata-contextual">
+                                                <!--without existing verifiable data from the field table-->
+                                                <table class="table" style="background-color:white !important">
+                                                <thead> 
+                                                   <tr>
+                                                      <th class="col-md-12" style="font-size: 100%;"> Enumerate bases for proposing the P/P/A:</th>                                   
+                                                   </tr>                  
+                                                </thead>
+                                                <tr>
+                                                   <td>
+                                                   <div class="form-group has-success">
+                                                      <textarea name="b-contextual-withoutdata" class="md-textarea form-control" rows="8"></textarea>
+                                                   </div>
+                                                   </td>
+                                                </tr>
+                                                <thead> 
+                                                   <tr>
+                                                      <th class="col-md-12" style="font-size: 100%;"> What are the means employed to ensure the responsiveness of the P/P/A to the local condition?</th>                                   
+                                                   </tr>                  
+                                                </thead>
+                                                <tr>
+                                                   <td>
+                                                   <div class="form-group has-success">
+                                                      <textarea name="b-contextual-withoutdata" class="md-textarea form-control" rows="8"></textarea>
+                                                   </div>
+                                                   </td>
+                                                </tr>
+                                                </table>
+                                                <!--end of without existing verifiable data from the field--> 
                                              </div>
                                              </td>
                                           </tr>
@@ -1269,13 +1190,13 @@
                                           <tr>
                                              <td>
                                              <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="newtech">
+                                                <input name="b-productive" value="Production of new technology" type="checkbox" class="custom-control-input" id="newtech">
                                                    <label class="custom-control-label" for="newtech" style="color:#484a49 !important; font:Roboto !important;">Production of new technology</label>
                                              </div>
                                              </td>
                                              <td>   
                                              <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="techtransfer">
+                                                   <input name="b-productive" value="Transfer of existing technology" type="checkbox" class="custom-control-input" id="techtransfer">
                                                    <label class="custom-control-label" for="techtransfer" style="color:#484a49 !important; font:Roboto !important;">Transfer of existing technology</label>
                                              </div>
                                              </td>
@@ -1283,13 +1204,13 @@
                                           <tr>
                                              <td>
                                              <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="utilexistingtech">
+                                                <input name="b-productive" value="Utilization of existing technology" type="checkbox" class="custom-control-input" id="utilexistingtech">
                                                    <label class="custom-control-label" for="utilexistingtech" style="color:#484a49 !important; font:Roboto !important;">Utilization of existing technology</label>
                                              </div>
                                              </td>
                                              <td>   
                                              <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="refinement">
+                                                   <input name="b-productive" value="Refinement/modification of existing technologys" type="checkbox" class="custom-control-input" id="refinement">
                                                    <label class="custom-control-label" for="refinement" style="color:#484a49 !important; font:Roboto !important;">Refinement/modification of existing technologys</label>
                                              </div>
                                              </td>
@@ -1297,18 +1218,15 @@
                                           <tr>
                                              <td>
                                              <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="training">
+                                                <input name="b-productive" value="Training or capacity-building for the use of technology" type="checkbox" class="custom-control-input" id="training">
                                                    <label class="custom-control-label" for="training" style="color:#484a49 !important; font:Roboto !important;">Training or capacity-building for the use of technology</label>
                                              </div>
                                              </td>
                                              <td>
                                              <div>
-                                                <div class="custom-control custom-checkbox">
-                                                   <input type="checkbox" class="custom-control-input" id="others">
-                                                   <label class="custom-control-label" for="others" style="color:#484a49 !important; font:Roboto !important;">Others</label>  
-                                                </div>
-                                                <div>
-                                                   <input class="form-control" id="others-txt" type="text" placeholder="Type Here"/>
+                                                <label style="color:#484a49 !important; font:Roboto !important;">Others</label> 
+                                                <div class="form-group bmd-form-group has-success" style="margin-top:-1%">
+                                                   <input name="b-productive" class="form-control" type="text" placeholder="Type Here"/>
                                                 </div>
                                              </div>  
                                              </td>
@@ -1334,37 +1252,41 @@
                                           <tr>
                                              <td>
                                              <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="generationOfLivelihood">
+                                                <input name="b-economic" value="generation of new livelihood projects/opportunities" type="checkbox" class="custom-control-input" id="generationOfLivelihood">
                                                    <label class="custom-control-label" for="generationOfLivelihood" style="color:#484a49 !important; font:Roboto !important;">generation of new livelihood projects/opportunities</label>
                                              </div>
                                              </td>
                                              <td>
                                              <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="enhancementOfPartners">
+                                                <input name="b-economic" value="enhancement of partner’s current livelihood" type="checkbox" class="custom-control-input" id="enhancementOfPartners">
                                                    <label class="custom-control-label" for="enhancementOfPartners" style="color:#484a49 !important; font:Roboto !important;">enhancement of partner’s current livelihood</label>
                                              </div>
                                              </td>
                                           </tr>
                                           <tr>
                                              <td>
-                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="employabilityOfPartners">
-                                                   <label class="custom-control-label" for="employabilityOfPartners" style="color:#484a49 !important; font:Roboto !important;">employability of partners at</label>
-                                             </div>
+                                                <div>
+                                                   <label style="color:#484a49 !important; font:Roboto !important;">employability of partners at</label> 
+                                                   <div class="form-group bmd-form-group has-success" style="margin-top:-1%"> 
+                                                      <input id="b-employability" name="b-economic" class="form-control" type="text" placeholder="Type Here"/>
+                                                   </div>
+                                                </div>   
                                              </td>
                                              <td>
                                              <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="measurableIncrease">
+                                                <input name="b-economic" value="measurable increase in the income of partners" type="checkbox" class="custom-control-input" id="measurableIncrease">
                                                    <label class="custom-control-label" for="measurableIncrease" style="color:#484a49 !important; font:Roboto !important;">measurable increase in the income of partners</label>
                                              </div>
                                              </td>
                                           </tr>
                                           <tr>
                                              <td>
-                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="otherEconomicDimension">
-                                                   <label class="custom-control-label" for="otherEconomicDimension" style="color:#484a49 !important; font:Roboto !important;">others</label>
-                                             </div>
+                                                <div>
+                                                   <label style="color:#484a49 !important; font:Roboto !important;">Others</label> 
+                                                   <div class="form-group bmd-form-group has-success" style="margin-top:-1%"> 
+                                                      <input name="b-economic" class="form-control" type="text" placeholder="Type Here"/>
+                                                   </div>
+                                                </div>
                                              </td>
                                           </tr>
                                        </tbody>
@@ -1389,143 +1311,142 @@
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="households">
+                                        <input name="b-social-group" value="households" type="checkbox" class="custom-control-input selecttoggle" id="households">
                                           <label class="custom-control-label" for="households" style="color:#484a49 !important; font:Roboto !important;">households</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-households" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-households" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="youthMale">
+                                        <input name="b-social-group" value="youth (male) [13 to 30 years old]" type="checkbox" class="custom-control-input selecttoggle" id="youthMale">
                                           <label class="custom-control-label" for="youthMale" style="color:#484a49 !important; font:Roboto !important;">youth (male) [13 to 30 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-youth-male" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-youth-male" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="localGov">
+                                        <input name="b-social-group" value="Local Government Units" type="checkbox" class="custom-control-input selecttoggle" id="localGov">
                                           <label class="custom-control-label" for="localGov" style="color:#484a49 !important; font:Roboto !important;">Local Government Units</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-LGU" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-LGU" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="youthFemale">
+                                        <input name="b-social-group" value="youth (female) [13 to 30 years old]" type="checkbox" class="custom-control-input selecttoggle" id="youthFemale">
                                           <label class="custom-control-label" for="youthFemale" style="color:#484a49 !important; font:Roboto !important;">youth (female) [13 to 30 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-youth-female" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-youth-female" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="organizations">
+                                        <input name="b-social-group" value="Organizations/Associations" type="checkbox" class="custom-control-input selecttoggle" id="organizations">
                                           <label class="custom-control-label" for="organizations" style="color:#484a49 !important; font:Roboto !important;">Organizations/Associations</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-org" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-org" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="childrenBoy">
+                                        <input name="b-social-group" value="children (boy) [6 to 12 years old]" type="checkbox" class="custom-control-input selecttoggle" id="childrenBoy">
                                           <label class="custom-control-label" for="childrenBoy" style="color:#484a49 !important; font:Roboto !important;">children (boy) [6 to 12 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-children-boy" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-children-boy" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="seniorMale">
+                                        <input name="b-social-group" value="senior citizens (male) [at least 60 years old]" type="checkbox" class="custom-control-input selecttoggle" id="seniorMale">
                                           <label class="custom-control-label" for="seniorMale" style="color:#484a49 !important; font:Roboto !important;">senior citizens (male) [at least 60 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-senior-male" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-senior-male" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="childrenGirl">
+                                        <input name="b-social-group" value="children (girl) [6 to 12 years old]" type="checkbox" class="custom-control-input selecttoggle" id="childrenGirl">
                                           <label class="custom-control-label" for="childrenGirl" style="color:#484a49 !important; font:Roboto !important;">children (girl) [6 to 12 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-children-girl" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-children-girl" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="seniorFemale">
+                                        <input name="b-social-group" value="senior citizens (female) [at least 60 years old]" type="checkbox" class="custom-control-input selecttoggle" id="seniorFemale">
                                           <label class="custom-control-label" for="seniorFemale" style="color:#484a49 !important; font:Roboto !important;">senior citizens (female) [at least 60 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-senior-female" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-senior-female" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="infantsBoy">
+                                        <input name="b-social-group" value="infants (boy) [0 to 5 years old]" type="checkbox" class="custom-control-input selecttoggle" id="infantsBoy">
                                           <label class="custom-control-label" for="infantsBoy" style="color:#484a49 !important; font:Roboto !important;">infants (boy) [0 to 5 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-infants-boy" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-infants-boy" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="adultsMale">
+                                        <input name="b-social-group" value="adults (male) [31 to 59 years old]" type="checkbox" class="custom-control-input selecttoggle" id="adultsMale">
                                           <label class="custom-control-label" for="adultsMale" style="color:#484a49 !important; font:Roboto !important;">adults (male) [31 to 59 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-adults-male" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-adults-male" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="infantsGirl">
+                                        <input name="b-social-group" value="infants (girl) [0 to 5 years old]" type="checkbox" class="custom-control-input selecttoggle" id="infantsGirl">
                                           <label class="custom-control-label" for="infantsGirl" style="color:#484a49 !important; font:Roboto !important;">infants (girl) [0 to 5 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-infants-girl" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-infants-girl" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="adultsFemale">
+                                        <input name="b-social-group" value="adults (female) [31 to 59 years old]" type="checkbox" class="custom-control-input selecttoggle" id="adultsFemale">
                                           <label class="custom-control-label" for="adultsFemale" style="color:#484a49 !important; font:Roboto !important;">adults (female) [31 to 59 years old]</label>
                                       </div>
                                       <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-adults-female" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-adults-female" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                     <td>
-                                      <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input selecttoggle" id="otherSocialDimension">
-                                          <label class="custom-control-label" for="otherSocialDimension" style="color:#484a49 !important; font:Roboto !important;">others</label>
+                                       <div>                                                   
+                                          <label style="color:#484a49 !important; font:Roboto !important;">Others</label>
+                                       </div>
+                                      <div class="form-group bmd-form-group has-success">
+                                        <input name="b-social-group" class="form-control" name="title" id="input-other-social-dimension-name" type="text" placeholder="{{ __('Type here') }}" required="true" aria-required="true"/>
                                       </div>
-                                      <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-other-social-dimension-name" type="text" placeholder="{{ __('Type here') }}" required="true" aria-required="true"/>
-                                      </div>
-                                      <div class="form-group selectdiv bmd-form-group has-success">
-                                        <input class="form-control" name="title" id="input-other-social-dimension-quantity" type="text" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
+                                      <div class="form-group bmd-form-group has-success">
+                                        <input name="b-social-number" min="1" class="form-control" name="title" id="input-other-social-dimension-quantity" type="number" placeholder="{{ __('How many?') }}" required="true" aria-required="true"/>
                                       </div>
                                     </td>
                                   </tr>
@@ -1550,13 +1471,13 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="riverManagement">
+                            <input name="b-environmental" value="River Management" type="checkbox" class="custom-control-input" id="riverManagement">
                               <label class="custom-control-label" for="riverManagement" style="color:#484a49 !important; font:Roboto !important;">River Management</label>
                           </div>
                         </td>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="greeningInitiatives">
+                            <input name="b-environmental" value="Greening Initiatives (e.g. Tree Panting, forestation, etc.)" type="checkbox" class="custom-control-input" id="greeningInitiatives">
                               <label class="custom-control-label" for="greeningInitiatives" style="color:#484a49 !important; font:Roboto !important;">Greening Initiatives (e.g. Tree Panting, forestation, etc.)</label>
                           </div>
                         </td>
@@ -1564,13 +1485,13 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="mangrovePlanting">
+                            <input name="b-environmental" value="Mangrove Planting" type="checkbox" class="custom-control-input" id="mangrovePlanting">
                               <label class="custom-control-label" for="mangrovePlanting" style="color:#484a49 !important; font:Roboto !important;">Mangrove Planting</label>
                           </div>
                         </td>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="cleanUpDrives">
+                            <input name="b-environmental" value="Clean-up Drives (coastal, river, drainage, sewage, etc." type="checkbox" class="custom-control-input" id="cleanUpDrives">
                               <label class="custom-control-label" for="cleanUpDrives" style="color:#484a49 !important; font:Roboto !important;">Clean-up Drives (coastal, river, drainage, sewage, etc.</label>
                           </div>
                         </td>
@@ -1578,15 +1499,17 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="beautificationActivities">
+                            <input name="b-environmental" value="Beautification Activities" type="checkbox" class="custom-control-input" id="beautificationActivities">
                               <label class="custom-control-label" for="beautificationActivities" style="color:#484a49 !important; font:Roboto !important;">Beautification Activities</label>
                           </div>
                         </td>
                         <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="otherEnvironmentalDivision">
-                              <label class="custom-control-label" for="otherEnvironmentalDivision" style="color:#484a49 !important; font:Roboto !important;">Others</label>
-                          </div>
+                           <div>
+                              <label style="color:#484a49 !important; font:Roboto !important;">Others</label> 
+                              <div class="form-group bmd-form-group has-success" style="margin-top:-1%">
+                                 <input name="b-environmental" class="form-control" type="text" placeholder="Type Here"/>
+                              </div>
+                           </div>
                         </td>
                       </tr>
                     </tbody>
@@ -1612,13 +1535,13 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="networkingWithLGU">
+                            <input name="b-governance" value="networking with Local Government Units and community leaders" type="checkbox" class="custom-control-input" id="networkingWithLGU">
                               <label class="custom-control-label" for="networkingWithLGU" style="color:#484a49 !important; font:Roboto !important;">networking with Local Government Units and community leaders</label>
                           </div>
                         </td>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="fundingSupportFromLGU">
+                            <input name="b-governance" value="unding support from Local Government Units" type="checkbox" class="custom-control-input" id="fundingSupportFromLGU">
                               <label class="custom-control-label" for="fundingSupportFromLGU" style="color:#484a49 !important; font:Roboto !important;">funding support from Local Government Units</label>
                           </div>
                         </td>
@@ -1626,13 +1549,13 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="fundingSupportFromOther">
+                            <input name="b-governance" value="funding support from other partners" type="checkbox" class="custom-control-input" id="fundingSupportFromOther">
                               <label class="custom-control-label" for="fundingSupportFromOther" style="color:#484a49 !important; font:Roboto !important;">funding support from other partners</label>
                           </div>
                         </td>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="establishedCounterpartsFromLGU">
+                            <input name="b-governance" value="established counterparts from Local Government Units" type="checkbox" class="custom-control-input" id="establishedCounterpartsFromLGU">
                               <label class="custom-control-label" for="establishedCounterpartsFromLGU" style="color:#484a49 !important; font:Roboto !important;">established counterparts from Local Government Units</label>
                           </div>
                         </td>
@@ -1640,13 +1563,13 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="establishedCounterpartsFromOther">
+                            <input name="b-governance" value="established counterparts from other partners" type="checkbox" class="custom-control-input" id="establishedCounterpartsFromOther">
                               <label class="custom-control-label" for="establishedCounterpartsFromOther" style="color:#484a49 !important; font:Roboto !important;">established counterparts from other partners</label>
                           </div>
                         </td>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="MOAWithLGU">
+                            <input name="b-governance" value="Memorandum of Agreement or Memorandum of Understanding with Local Government Units" type="checkbox" class="custom-control-input" id="MOAWithLGU">
                               <label class="custom-control-label" for="MOAWithLGU" style="color:#484a49 !important; font:Roboto !important;">Memorandum of Agreement or Memorandum of Understanding with Local Government Units</label>
                           </div>
                         </td>
@@ -1654,13 +1577,13 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="MOAWithOther">
+                            <input name="b-governance" value="Memorandum of Agreement or Memorandum of Understanding with other partners" type="checkbox" class="custom-control-input" id="MOAWithOther">
                               <label class="custom-control-label" for="MOAWithOther" style="color:#484a49 !important; font:Roboto !important;">Memorandum of Agreement or Memorandum of Understanding with other partners</label>
                           </div>
                         </td>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="policyByUSC">
+                            <input name="b-governance" value="policy advocacy by USC faculty/students/staff" type="checkbox" class="custom-control-input" id="policyByUSC">
                               <label class="custom-control-label" for="policyByUSC" style="color:#484a49 !important; font:Roboto !important;">policy advocacy by USC faculty/students/staff</label>
                           </div>
                         </td>
@@ -1668,31 +1591,29 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="policyChangeByLGU">
+                            <input name="b-governance" value="policy change initiatives by Local Government Units" type="checkbox" class="custom-control-input" id="policyChangeByLGU">
                               <label class="custom-control-label" for="policyChangeByLGU" style="color:#484a49 !important; font:Roboto !important;">policy change initiatives by Local Government Units</label>
                           </div>
                         </td>
                         <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="otherGovernanceDivision">
-                              <label class="custom-control-label" for="otherGovernanceDivision" style="color:#484a49 !important; font:Roboto !important;">Others</label>
-                          </div>
+                           <div>                                                   
+                              <label style="color:#484a49 !important; font:Roboto !important;">Others</label>
+                              <div class="form-group bmd-form-group has-success" style="margin-top:-1%">
+                                 <input name="b-governance" type="text" class="form-control" placeholder="Type Here">
+                              </div>
+                           </div>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>      
             </div>
-                                    </div> 
+          </div> 
       <!--end of governance dimension-->
-      
+         </div>
+      </div>
 
-                  
-    
-                               
-            </div>
-                                    </div>
-                                    <!-- implications card -->
+      <!-- implications card -->
       <div class="card">
         <div class="card-header card-header-text card-header-success">
           <div class="card-text">
@@ -1715,7 +1636,7 @@
                   <tr>
                      <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="man-hours-preparation" class="form-control">                       
+                           <input name="b-particular" min="0" value="0" type="number" id="man-hours-preparation" class="form-control">                       
                         </div>
                       </td>
                       <td>
@@ -1723,7 +1644,7 @@
                      </td>                    
                      <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="man-hours-completion" class="form-control">                          
+                           <input name="b-particular" min="0" value="0" type="number" id="man-hours-completion" class="form-control">                          
                         </div>
                      </td>
                      <td>
@@ -1733,7 +1654,7 @@
                   <tr>
                      <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">                      
-                           <input type="number" id="faculty-involed" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="faculty-involed" class="form-control">  
                         </div>
                      </td>
                      <td>
@@ -1741,7 +1662,7 @@
                      </td>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="course-based-involved" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="course-based-involved" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1751,7 +1672,7 @@
                   <tr>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="student-orgs-involed" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="student-orgs-involed" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1759,7 +1680,7 @@
                       </td>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="staff-involved" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="staff-involved" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1769,7 +1690,7 @@
                   <tr>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="education-materials-produced" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="education-materials-produced" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1777,7 +1698,7 @@
                       </td>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="education-materials-improved" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="education-materials-improved" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1787,7 +1708,7 @@
                   <tr>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="curricular-programs-developed" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="curricular-programs-developed" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1795,7 +1716,7 @@
                       </td>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="curricular-programs-improved" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="curricular-programs-improved" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1805,7 +1726,7 @@
                   <tr>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="proposals-developed" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="proposals-developed" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1813,7 +1734,7 @@
                       </td>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="proposals-presented" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="proposals-presented" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1823,7 +1744,7 @@
                   <tr>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="papers-published" class="form-control"> 
+                           <input name="b-particular" min="0" value="0" type="number" id="papers-published" class="form-control"> 
                         </div> 
                       </td>
                       <td>
@@ -1831,7 +1752,7 @@
                       </td>
                       <td class="number-width-limit">
                         <div class="form-group bmd-form-group has-success">
-                           <input type="number" id="policies-advocated" class="form-control">  
+                           <input name="b-particular" min="0" value="0" type="number" id="policies-advocated" class="form-control">  
                         </div>
                       </td>
                       <td>
@@ -1866,12 +1787,12 @@
                   <td>Expertise and/or specialization needed	</td>
                   <td>
                      <div class="form-group bmd-form-group has-success">
-                        <textarea class="md-textarea form-control" rows="2"></textarea>
+                        <textarea name="b-human-expertise" class="md-textarea form-control" rows="2"></textarea>
                      </div>
                   </td>
                   <td>
                      <div class="form-group bmd-form-group has-success">
-                        <textarea class="md-textarea form-control" rows="2"></textarea>
+                        <textarea name="b-human-expertise" class="md-textarea form-control" rows="2"></textarea>
                      </div>
                   </td>
                 </tr>
@@ -1879,12 +1800,12 @@
                   <td>Roles/tasks</td>
                   <td>
                      <div class="form-group bmd-form-group has-success">
-                         <textarea class="md-textarea form-control" rows="2"></textarea>
+                         <textarea name="b-human-role" class="md-textarea form-control" rows="2"></textarea>
                      </div>
                   </td>
                   <td>
                      <div class="form-group bmd-form-group has-success">
-                        <textarea class="md-textarea form-control" rows="2"></textarea>
+                        <textarea name="b-human-role" class="md-textarea form-control" rows="2"></textarea>
                      </div>
                   </td>
                 </tr>
@@ -1916,13 +1837,13 @@
                 <tr>
                   <td>
                     <div class="custom-control custom-radio">
-                      <input type="radio" class="custom-control-input table-toggle" name="nature-of-linkage-radio" id="with-MOA">
+                      <input name="b-linkage-nature" value="with Memorandum of Understanding / Memorandum of Agreement" type="radio" class="custom-control-input table-toggle" id="with-MOA">
                       <label class="custom-control-label" style="color:black !important;" for="with-MOA">with Memorandum of Understanding / Memorandum of Agreement</label>                           
                     </div>
                   </td>
                   <td>
                     <div class="custom-control custom-radio">
-                      <input type="radio" class="custom-control-input table-toggle" name="nature-of-linkage-radio" id="without-MOA">
+                      <input name="b-linkage-nature" value="without Memorandum of Understanding / Memorandum of Agreement" type="radio" class="custom-control-input table-toggle" id="without-MOA">
                       <label class="custom-control-label" style="color:black !important;" for="without-MOA">without Memorandum of Understanding / Memorandum of Agreement</label>                           
                     </div>
                   </td>
@@ -1935,7 +1856,7 @@
                       <td>
                         <label for="date-signed"> Date signed: </label>
                         <div class="form-group bmd-form-group has-success">
-                           <input type="date" id="date-signed" class="form-control">
+                           <input name="b-linkage-nature-with" type="date" id="date-signed" class="form-control">
                         </div>
                       </td>
                     </tr>
@@ -1943,7 +1864,7 @@
                       <td>                        
                         <label for="signatories-for-usc"> Signatories for USC: </label>
                         <div class="form-group has-success">
-                           <input type="text" id="signatories-for-usc" class="form-control">
+                           <input name="b-linkage-nature-with" type="text" id="signatories-for-usc" class="form-control">
                         </div>
                       </td>
                     </tr>
@@ -1951,7 +1872,7 @@
                       <td>
                         <label for="signatories-for-partner"> Signatories for Partner: </label>
                         <div class="form-group has-success">
-                           <input type="text" id="signatories-for-partner" class="form-control">
+                           <input name="b-linkage-nature-with" type="text" id="signatories-for-partner" class="form-control">
                         </div>
                       </td>
                     </tr>
@@ -1963,7 +1884,7 @@
                       <td>
                         <label for="linkage-date"> Since when is the linkage: </label>
                         <div class="form-group has-success">
-                           <input type="date" id="linkage-date" class="form-control">
+                           <input name="b-linkage-nature-without" type="date" id="linkage-date" class="form-control">
                         </div>
                       </td>
                     </tr>
@@ -1971,7 +1892,7 @@
                       <td>
                         <label for="linkage-initiator"> Who initiated the linkage: </label>
                         <div class="form-group has-success">
-                           <input type="text" id="linkage-initiator" class="form-control">
+                           <input name="b-linkage-nature-without" type="text" id="linkage-initiator" class="form-control">
                         </div>
                       </td>
                     </tr>
@@ -1979,7 +1900,7 @@
                       <td>
                           <label for="activities-done"> Enumerate the activities already done: </label>
                           <div class="form-group has-success">
-                           <textarea id="activities-done" class="form-control" rows="3"></textarea>
+                           <textarea name="b-linkage-nature-without" id="activities-done" class="form-control" rows="3"></textarea>
                         </div>
                       </td>
                     </tr>
@@ -1993,17 +1914,17 @@
                   <p><strong> Enumerate the opportunities identified: </strong></p>
                 </tr>
                 <tr>
-                <div class="form-group has-success">
-                  <textarea class="md-textarea form-control" rows="4"></textarea>
-                                    </div>
+                  <div class="form-group has-success">
+                     <textarea name="b-linkage-nature-textarea" class="md-textarea form-control" rows="4"></textarea>
+                  </div>
                 </tr>
                 <tr>
                   <p> <strong> Enumerate the challenges/problems encountered: </strong></p>
                 </tr>
                 <tr>
-                <div class="form-group has-success">
-                  <textarea class="md-textarea form-control" rows="4"></textarea>
-                                    </div>
+                  <div class="form-group has-success">
+                     <textarea name="b-linkage-nature-textarea" class="md-textarea form-control" rows="4"></textarea>
+                  </div>
                 </tr>
               </table>
             </div>
@@ -2226,7 +2147,7 @@
                         <strong>BACK TO TOP</strong>
                      </button>
 
-                     <button class='btn btn-success float-right' id="btnReview">
+                     <button class='btn btn-success float-right' id="submitReview">
                         <strong>SUBMIT PROPOSAL </strong>
                         <span class="material-icons">check</span>
                      </button>
@@ -2248,14 +2169,38 @@
       <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
       <script>
          $('document').ready(function() {
-            
             $(".selectdiv").hide();
 
             $(".selecttoggle").click(function(){
+               if( $(this).parent().next().find("select").val() !== null ){
+                  $(this).parent().next().find("select, input").val(null);
+               }
+
                 $(this).parent().next().slideToggle();
             });
 
-            $("input:radio").change(function () {
+            $("input[name='b-contextual']").change(function () {
+               if ($("#doneassess").is(":checked")) {
+                  $("#doneassess-contextual").slideDown();
+                  slideUpAndReset("withdata");
+                  slideUpAndReset("withoutdata");
+               }
+               else if($("#withdata").is(":checked")) {
+                  $("#withdata-contextual").slideDown();
+                  slideUpAndReset("doneassess");
+                  slideUpAndReset("withoutdata");
+               }else if($("#withoutdata").is(":checked")){
+                  $("#withoutdata-contextual").slideDown();
+                  slideUpAndReset("doneassess");
+                  slideUpAndReset("withdata");
+               }else{
+                  slideUpAndReset("withdata");
+                  slideUpAndReset("doneassess");
+                  slideUpAndReset("withoutdata");
+               }
+            });
+
+            $("input[name='b-time-frame']").change(function () {
                if ($("#timeframe_others").is(":checked")) {
                   $("#countSemester").slideDown();
                   $("#countSemester").attr('name', 'b-time-frame');
@@ -2277,8 +2222,10 @@
             $id = $(this).attr("id");
             if($id == "with-MOA"){
                $('#moa-table').show();    
+               $('#moa-table').find('input, textarea').val(null);
             } else {
                $('#without-moa-table').show();
+               $('#without-moa-table').find('input, textarea').val(null);
             }
             });
 
@@ -2334,11 +2281,25 @@
             "July", "August", "September", "October", "November", "December"
             ];
 
+           function slideUpAndReset(string){
+            $("#" + string + "-contextual").slideUp();
+            $("#" + string + "-contextual").find('input, textarea').val(null);
+            $("#" + string + "-contextual").find('input:checkbox').each(function(){
+               this.checked = false;
+            });
+           }
+
            //function to submit form
            function submitDetails(){
+            var empTemp = $('#b-employability').val();
+            
+            if(empTemp != null && empTemp != ""){
+               $('#b-employability').val("employability of partners at" + empTemp);
+            }
+
             var form_A = $("#a-proposal-form [name]");
             var form_B = $("#b-proposal-form");
-
+            
             var json_A = JSON.stringify(getFormData(form_A));
             var json_B = JSON.stringify(getFormData(form_B));
           
@@ -2488,6 +2449,7 @@
             dateString += getFormattedDate(endDate);
 
             $('#review-title').html(proposal.title);
+            $('#review-title').val(proposal.id);
             $('#review-ces-type').html(cesType);
             $('#review-venue').html(proposal.venue);
             $('#review-date').html(dateString);
@@ -2509,7 +2471,7 @@
             var indexed_array = {};
 
             $.map(unindexed_array, function(n, i){
-               if(n['value'] != ""){
+               if(n['value'] != null && n['value'] != ""){
                   if(indexed_array[n['name']] !== undefined){
                      indexed_array[n['name']] = checkAndMakeArray(indexed_array[n['name']]);
                      indexed_array[n['name']].push(n['value']);
@@ -2593,7 +2555,6 @@
          });
 
          $('#btnB').click(function(){
-          submitDetails();
             $('#formb').trigger('click');        
             document.location.href = "#topPage";
          });
@@ -2606,6 +2567,26 @@
          $('#btnReview').click(function(){
             $('#formreview').trigger('click');    
             document.location.href = "#topPage";
+         });
+
+         $('#submitReview').click(function(){
+            $.ajax({
+              headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              url: "/updateForm",
+              type: "POST",
+              data: {
+               id: $('#review-title').val(),
+               status: "Submitted"
+              },
+              success: function(result){
+                 console.log(result);
+              },
+              error: function(xhr, resp, text){
+                console.log(xhr, resp, text);
+              }
+             });
          });
 
          $('#btn-debug').click(function(){
@@ -2621,6 +2602,20 @@
             $('#input-outline-activity').val("Plant Tree");
             $('#input-outline-participants').val(2);
             $('#input-outline-charge').val("Logan");
+
+            var checkbox = $('input:checkbox').length;
+            var radio = $('input:radio').length;
+            
+            var check_i = Math.floor(Math.random() * checkbox);
+            var radio_i = Math.floor(Math.random() * radio);
+
+            for(var x = check_i; x < checkbox; x++ ){
+               $('input:checkbox')[Math.floor(Math.random() * checkbox)].click();
+            }
+
+            for(var x = radio_i; x < radio; x++ ){
+               $('input:radio')[Math.floor(Math.random() * radio)].click();
+            }
          });
 
          function goTop(){

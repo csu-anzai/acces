@@ -41,7 +41,17 @@ class DepartmentsTableSeeder extends Seeder
             ['name' => 'Electronics and Communications Engineering', 'school_id' => '7'],
             ['name' => 'Industrial Engineering', 'school_id' => '7'],
             ['name' => 'Mechanical Engineering', 'school_id' => '7'],
-            ['name' => 'Extra Curricular', 'school_id' => '8'] 
+            ['name' => 'Extra Curricular', 'school_id' => '8'],
+            ['name' => 'CES Office', 'school_id' => '9'],
+            ['name' => 'Athletics Office', 'school_id' => '10'],
+            ['name' => 'Campus Ministry Talamban', 'school_id' => '10'],
+            ['name' => 'Guidance Center', 'school_id' => '10'],
+            ['name' => 'Director of Library', 'school_id' => '10'],
+            ['name' => 'OSA Downtown', 'school_id' => '10'],
+            ['name' => 'OSA Talamban', 'school_id' => '10'],
+            ['name' => 'Club Mega', 'school_id' => '10'],
+            ['name' => 'Pathways', 'school_id' => '10'],
+            ['name' => 'USC-Supreme Student Council', 'school_id' => '10']
         ];
 
         DB::table('departments')->insert($departments);
