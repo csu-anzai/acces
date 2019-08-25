@@ -33,6 +33,16 @@ class AjaxController extends Controller
         return response()->json($id, 200);
     }
 
+    public function updateProposal(Request $request){
+        DB::table('proposals')
+            ->where('id', $request->input('id'))
+            ->update([
+                'status' => $request->input('status')
+            ]);
+       
+        return response("Update Successful", 200);
+    }
+
     public function getProposal(Request $request){
         $id = $request->input('id');
         $proposal = DB::table('proposals')
