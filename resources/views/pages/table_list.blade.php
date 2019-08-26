@@ -517,7 +517,7 @@
                 <strong> Person/s In-charge </strong>
               </td>
               <td>
-                
+
               </td>
             </thead>
             <tbody>
@@ -527,6 +527,7 @@
         </div>
       </div>
       <!-- End of Outline of Activities -->
+      
       <!-- end of form c-->
     </div>
   </div>
