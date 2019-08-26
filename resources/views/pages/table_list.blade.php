@@ -334,17 +334,199 @@
                 </p>
               </div>
               <div class="card-body">
-                  <table class="table">
-                    
-                  </table>
+                <table class="table">
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="product-oriented-initiatives" name="product-oriented-initiatives">
+                        <label for="product-oriented-initiatives" class="custom-control-label black-text"> 
+                            Productivity-Oriented Initiatives 
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="health-advocacy" name="health-advocacy">
+                        <label for="health-advocacy" class="custom-control-label black-text"> 
+                            Health Advocacy and Wellness Promotion
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="literacy" name="literacy">
+                        <label for="literacy" class="custom-control-label black-text"> 
+                            Literacy, Values Formation and Life-long Learning 
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="building-christian-communities" name="building-christian-communities">
+                        <label for="building-christian-communities" class="custom-control-label black-text"> 
+                            Building Christian Communities
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="social-welfare" name="social-welfare">
+                        <label for="social-welfare" class="custom-control-label black-text"> 
+                            Social Welfare Services 
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="information-sharing" name="information-sharing">
+                        <label for="information-sharing" class="custom-control-label black-text"> 
+                            Information Sharing
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="environmental-sustainability" name="environmental-sustainability">
+                        <label for="environmental-sustainability" class="custom-control-label black-text"> 
+                            Environmental Sustainability 
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="heritage-conservation" name="heritage-conservation">
+                        <label for="heritage-conservation" class="custom-control-label black-text"> 
+                            Heritage Conservation
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="issue-advocacy" name="issue-advocacy">
+                        <label for="issue-advocacy" class="custom-control-label black-text"> 
+                            Issue Advocacy and Rights Promotion 
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rural-and-urban" name="rural-and-urban">
+                        <label for="rural-and-urban" class="custom-control-label black-text"> 
+                            Rural and Urban Development
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
               </div>
             </div>
             <!-- End of Program Area-->
+
           </div>
         </div>
       </div>
       <!-- end of Program/Project/Activity Profile -->
       
+      <!-- Rationale and Contextualization -->
+      <div class="row">
+        <div class="card">
+          <div class="card-header card-header-text card-header-success">
+            <div class="card-text">
+              <h3>
+              <strong> Rationale and Contextualization </strong>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-group has-success">
+              <textarea class="md-textarea form-control" id="rationale" name="rationale" rows="6" placeholder="Type here"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Rationale and Contextualization -->
+
+      <!-- Goal, Objectives, and Outcomes -->
+      <div class="row">
+        <div class="card">
+          <div class="card-header card-header-text card-header-success">
+            <div class="card-text">
+              <h3>
+              <strong> Goal, Objectives, and Outcomes </strong>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-group has-success">
+              <textarea class="md-textarea form-control" id="goal" name="goal" rows="6" placeholder="Type here"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Goal, Objectives, and Outcomes -->
+
+      <!--  Participants, Partners and Beneficiaries -->
+      <div class="row">
+        <div class="card">
+          <div class="card-header card-header-text card-header-success">
+            <div class="card-text">
+              <h3>
+              <strong> Participants, Partners and Beneficiaries </strong>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-group has-success">
+              <textarea class="md-textarea form-control" id="participants" name="participants" rows="6" placeholder="Type here"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of  Participants, Partners and Beneficiaries -->
+
+      <!-- Outline of Activities -->
+      <div class="card">
+        <div class="card-header card-header-text card-header-success">
+          <div class="card-text">
+            <h3>
+            <strong> Outline of Activities </strong>
+            </h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <td>
+                <strong> Tentative Date </strong>
+              </td>
+              <td>
+                <strong> Activities	</strong>
+              </td>
+              <td>
+                <strong> Participants Needed </strong>
+              </td>
+              <td>
+                <strong> Person/s In-charge </strong>
+              </td>
+              <td>
+                
+              </td>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- End of Outline of Activities -->
       <!-- end of form c-->
     </div>
   </div>
