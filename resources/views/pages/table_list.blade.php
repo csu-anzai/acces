@@ -493,42 +493,84 @@
       <!-- End of  Participants, Partners and Beneficiaries -->
 
       <!-- Outline of Activities -->
-      <div class="card">
-        <div class="card-header card-header-text card-header-success">
-          <div class="card-text">
-            <h3>
-            <strong> Outline of Activities </strong>
-            </h3>
+      <div class="row">
+        <div class="card">
+          <div class="card-header card-header-text card-header-success">
+            <div class="card-text">
+              <h3>
+              <strong> Outline of Activities </strong>
+              </h3>
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <td>
-                <strong> Tentative Date </strong>
-              </td>
-              <td>
-                <strong> Activities	</strong>
-              </td>
-              <td>
-                <strong> Participants Needed </strong>
-              </td>
-              <td>
-                <strong> Person/s In-charge </strong>
-              </td>
-              <td>
-
-              </td>
-            </thead>
-            <tbody>
-
-            </tbody>
-          </table>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <th>
+                  <strong> Tentative Date </strong>
+                </th>
+                <th>
+                  <strong> Activities	</strong>
+                </th>
+                <th>
+                  <strong> Participants Needed </strong>
+                </th>
+                <th>
+                  <strong> Person/s In-charge </strong>
+                </th>
+                <th>
+                  <button class='btn btn-success add-row'>  <span class="material-icons" style="font-size: 25px">add</span>Add row</button>
+                </th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="form-group has-success">
+                      <input type="date" class="form-control" id="outline-tentative-date" name="outline-tentative-date">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group has-success">
+                      <input type="text" class="form-control" id="activities" name="activities"> 
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group has-success">
+                      <input type="number" class="form-control" id="participants-needed" name="participants-needed"> 
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group has-success">
+                      <input type="text" class="form-control" id="in-charge" name="in-charge"> 
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <!-- End of Outline of Activities -->
-      
-      <!-- end of form c-->
+
+      <!-- Budgetary Requirements -->
+      <div class="row">
+        <div class="card">
+          <div class="card-header card-header-text card-header-success">
+            <div class="card-text">
+              <h3>
+              <strong> Budgetary Requirements </strong>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body">
+            <table class="table">
+
+            </table>    
+          </div>
+        </div>
+      </div>
+      <!-- End of Budgetary Requirements-->
+
+      <!-- End of form c-->
     </div>
   </div>
 </div>
@@ -542,6 +584,7 @@
       $target = $(this).parent().parent().next();
       $target.slideToggle();
     });
+
   });
 </script>
 @endsection
