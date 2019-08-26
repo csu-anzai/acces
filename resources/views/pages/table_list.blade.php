@@ -99,13 +99,14 @@
                     <strong> A. Requester </strong>
                   </h3>
                   <p class="card-category"> 
-                    (please check/tick the appropriate item and include </br> the specific name of partner or requester) 
+                    (please check/tick the appropriate item and include </br> 
+                    the specific name of partner or requester) 
                   </p>
                 </div>
               </div>
               <div class="card-body">
                 <div class="row">
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input toggle" id="community" name="community">
                       <label for="community" class="custom-control-label black-text"> Community </label>
@@ -120,7 +121,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input toggle" id="organization" name="organization">
                       <label for="organization" class="custom-control-label black-text"> Organization </label>
@@ -135,16 +136,31 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input toggle" id="organization" name="organization">
-                      <label for="organization" class="custom-control-label black-text"> Organization </label>
+                      <input type="checkbox" class="custom-control-input toggle" id="institution" name="institution">
+                      <label for="institution" class="custom-control-label black-text"> Institution </label>
                     </div>
                   </div>
                   <div class="col-sm-7 toggle-target">
                     <div class="form-group">
                       <div class="form-group has-success">
-                        <input type="text" class="form-control" name="organization-input" id="organization-input" placeholder="Please specify">
+                        <input type="text" class="form-control" name="institution-input" id="institution-input" placeholder="Please specify">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input toggle" id="usc-unit" name="usc-unit">
+                      <label for="usc-unit" class="custom-control-label black-text"> Unit/s within USC, please specify </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-7 toggle-target">
+                    <div class="form-group">
+                      <div class="form-group has-success">
+                        <input type="text" class="form-control" name="usc-unit-input" id="usc-unit-input" placeholder="Please specify">
                       </div>
                     </div>
                   </div>
@@ -153,6 +169,27 @@
               
             </div>
             <!-- end of Requester card -->
+
+            <!-- Mode of request -->
+            <div class="card">
+              <div class="card-header card-header-text card-header-success">
+                <div class="card-text">
+                  <h3>
+                    <strong> Mode of request </strong>
+                  </h3>
+                  <p class="card-category">
+                    (please check/tick the appropriate item and attach </br>
+                    said communication to this proposal)
+                  </p>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  
+                </div>
+              </div>
+            </div>
+            <!-- End of Mode of request -->
           </div>
         </div>
       </div>
