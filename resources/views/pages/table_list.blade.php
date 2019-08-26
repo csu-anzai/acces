@@ -175,7 +175,7 @@
               <div class="card-header card-header-text card-header-success">
                 <div class="card-text">
                   <h3>
-                    <strong> Mode of request </strong>
+                    <strong> B. Mode of request </strong>
                   </h3>
                   <p class="card-category">
                     (please check/tick the appropriate item and attach </br>
@@ -185,11 +185,161 @@
               </div>
               <div class="card-body">
                 <div class="row">
-                  
+                  <div class="col-sm-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="letter" name="letter">
+                      <label for="letter" class="custom-control-label black-text"> letter </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="email" name="email">
+                      <label for="email" class="custom-control-label black-text"> email </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="verbal" name="verbal">
+                      <label for="verbal" class="custom-control-label black-text"> verbal </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="sms" name="sms">
+                      <label for="sms" class="custom-control-label black-text"> SMS </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="other-modeofrequest" name="other-modeofrequest">
+                      <label for="other-modeofrequest" class="custom-control-label black-text"> Others </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-7">
+                    <div class="form-group">
+                      <div class="form-group has-success">
+                        <input type="text" class="form-control" name="other-request-input" id="other-request-input" placeholder="Please specify">
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <!-- End of Mode of request -->
+
+            <!-- Nature of the Program/Project/Activity -->
+            <div class="card">
+              <div class="card-header card-header-text card-header-success">
+                <div class="card-text">
+                  <h3>
+                    <strong> C. Nature of the Program/Project/Activity </strong>
+                  </h3>
+                </div>
+                <p class="card-category">
+                  (please check/tick the appropriate item)
+                </p>
+              </div>
+              <div class="card-body">
+                <table class="table">
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="trainingprogram" name="trainingprogram">
+                        <label for="trainingprogram" class="custom-control-label black-text"> 
+                          Traning Program <small>(non-degree and non-credited courses offered to the community)</small> 
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="communityoutreach" name="communityoutreach">
+                        <label for="communityoutreach" class="custom-control-label black-text"> 
+                          Community Outreach <small>(community-based and charity driven social services)</small> 
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="technical assistance" name="technical assistance">
+                        <label for="technical assistance" class="custom-control-label black-text"> 
+                          Technical Assistance <small>(for agencies, organization, civic groups)</small> 
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="technologytransfer" name="technologytransfer">
+                        <label for="technologytransfer" class="custom-control-label black-text"> 
+                          Technology transfer and utilization <small>(process of circulating, promoting and marketing or technologies to potential users)</small> 
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="advisory-services" name="advisory-services">
+                        <label for="advisory-services" class="custom-control-label black-text"> 
+                          Advisory Services <small>(for agencies, organization, civic groups)</small> 
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="other-nature-of-program" name="other-nature-of-program">
+                        <label for="other-nature-of-program" class="custom-control-label black-text"> 
+                          Others  
+                        </label>
+                        <div class="form-group has-success">
+                          <textarea class="md-textarea form-control" rows="3" placeholder="Please specify"></textarea>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="information-services" name="information-services">
+                        <label for="information-services" class="custom-control-label black-text"> 
+                          Information Services <small>(dissemination of knowledge/information through various means)</small> 
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!-- End of Nature of the Program/Project/Activity -->
+
+            <!-- Program Area-->
+            <div class="card">
+              <div class="card-header card-header-text card-header-success">
+                <div class="card-text">
+                  <h3>
+                  <strong> D. Program Area </strong>
+                  </h3>
+                </div>
+                <p class="card-category">
+                  (please check/tick the appropriate item)
+                </p>
+              </div>
+              <div class="card-body">
+                  <table class="table">
+                    
+                  </table>
+              </div>
+            </div>
+            <!-- End of Program Area-->
           </div>
         </div>
       </div>
