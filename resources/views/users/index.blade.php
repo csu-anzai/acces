@@ -83,12 +83,7 @@
                                             cancelButtonColor: '#5cb85c',
                                             confirmButtonText: 'Delete'
                                             }).then((result) => {
-                                              if (result.value) {
-                                                Swal.fire(
-                                                  'Deleted!',
-                                                  'Your file has been deleted.',
-                                                  'success'
-                                                );                                                
+                                              if (result.value) {                                           
                                                 this.parentElement.submit();
                                                }
                                              })
