@@ -45,6 +45,22 @@ class UsersTableSeeder extends Seeder
             'designation_id' => '1',
             'organization_id' => '2'
         ]);
-        
+     
+        DB::table('users')->insert([
+            'username' => 'extra',
+            'firstname' => 'Bryl',
+            'lastname' => 'Lim',
+            'contact' => '09123456789',
+            'email' => 'bryllim@acces.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            //Foreign Key
+            'department_id' => '1',
+            'designation_id' => '2',
+            'organization_id' => '2'
+        ]);
     }
 }

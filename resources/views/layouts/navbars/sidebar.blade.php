@@ -3,6 +3,7 @@
     ->join('designations', 'designations.id', '=', 'designation_id')
     ->where('users.id', auth()->user()->id)
     ->first();
+
 ?>
 
 <div class="sidebar bg-success" data-color="orange" data-background-color="black">
@@ -30,6 +31,23 @@
       </li>
       <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
         <a class="nav-link" href="#">
+          <i class="material-icons">description</i>
+          <p>{{ __('Reports') }}</p>
+        </a>
+      </li>
+
+      @if(Auth::user()->designation_id == 10)
+      <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('user.index') }}">
+          <i class="material-icons">people</i>
+          <p>{{ __('User Management') }}</p>
+        </a>
+      </li>
+      @endif
+
+      <!-- Unused for NOW -->
+      <!-- <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
           <span class="sidebar-mini"><i class="material-icons">assignment_turned_in</i></span>
           <span class="sidebar-normal">{{ __('Approved Proposals') }} </span>
         </a>
@@ -39,19 +57,7 @@
           <span class="sidebar-mini"><i class="material-icons">assignment_returned</i></span>
           <span class="sidebar-normal"> {{ __('Pending Proposals') }} </span>
         </a>
-      </li>
-      <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">description</i>
-          <p>{{ __('Reports') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('user.index') }}">
-          <i class="material-icons">people</i>
-          <p>{{ __('User Management') }}</p>
-        </a>
-      </li>
+      </li> 
       <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('table') }}">
           <i class="material-icons">content_paste</i>
@@ -63,7 +69,7 @@
           <i class="material-icons">notifications</i>
           <p>{{ __('Notifications') }}</p>
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>
