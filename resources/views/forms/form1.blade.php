@@ -324,6 +324,7 @@ $temp = 0;
                                        <th><strong> Grand Total: </strong>
                                        </th>
                                        <th id="grand-total">
+                                       ₱ 0.00
                                        </th>
                                        <th></th>
                                     </thead>
@@ -332,7 +333,7 @@ $temp = 0;
                            </div>
                         </div>
                      </div>
-                     <input id="input-grand-total" name="a-grand-total" type="hidden" />
+                     <input id="input-grand-total" name="a-grand-total" type="hidden" value="0.00"/>
                      
                      <!-- End of Budgetary Requirements -->
                      <button class='btn btn-default float-middle' style="margin-left:40%"  onclick="goTop();">
