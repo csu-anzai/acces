@@ -1,10 +1,14 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 @section('content')
-<?php
-   $proposals = DB::table('proposals')
-     ->where('user_id', Auth::user()->id)
-     ->get();
-   ?>
+<?php 
+$proposals = DB::table('proposals')
+   ->where('user_id', Auth::user()->id)
+   ->get();
+
+$curricular_ids = [1, 2];
+$curricular_status = ['Draft', 'Returned', 'Submitted', 'Approved'];
+
+?>
 <title>ACCES - Home</title>
 <div class="content">
 <div class="container-fluid">
@@ -15,174 +19,69 @@
             <div class="nav-tabs-navigation">
                <div class="nav-tabs-wrapper">
                   <ul class="nav nav-tabs" data-tabs="tabs">
+                  @if(in_array(Auth::user()->designation_id, $curricular_ids))
                      <li class="nav-item">
-                        <a class="nav-link active" href="#profile" data-toggle="tab">
-                           <i class="material-icons">assignment</i> My Proposals
+                        <a class="nav-link active" href="#draft" data-toggle="tab">
+                           <i class="material-icons">assignment</i> Drafts
                            <div class="ripple-container"></div>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#messages" data-toggle="tab">
-                           <i class="material-icons">assignment_late</i> For Review
+                        <a class="nav-link" href="#returned" data-toggle="tab">
+                           <i class="material-icons">assignment</i> Returned
                            <div class="ripple-container"></div>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#settings" data-toggle="tab">
-                           <i class="material-icons">assignment_ind</i> Recommendation
+                        <a class="nav-link" href="#submitted" data-toggle="tab">
+                           <i class="material-icons">assignment</i> Submitted
                            <div class="ripple-container"></div>
                         </a>
                      </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#approved" data-toggle="tab">
+                           <i class="material-icons">assignment</i> Approved
+                           <div class="ripple-container"></div>
+                        </a>
+                     </li>
+                  @endif
                   </ul>
                </div>
             </div>
          </div>
          <div class="card-body">
-            <div class="tab-content">
-               <div class="tab-pane active" id="profile">
-                  @if(!$proposals->isEmpty())                 
-                  <table class="table" id="proposal_table">
-                     <thead>
-                        <th><strong>#</strong></th>
-                        <th><strong>Title of Project/Program/Activity Proposal</strong></th>
-                        <th><strong>Date Created</strong></th>
-                        <th><strong>Remarks</strong></th>
-                     </thead>
-                     <tbody>
-                        @foreach($proposals as $proposal)
-                        <tr>
-                           <td>{{$proposal->id}}</td>
-                           <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                           <td>{{\Carbon\Carbon::parse($proposal->created_at)->diffForHumans()}}</td>
-                           <td>{{$proposal->status}}</td>
-                        </tr>
-                        @endforeach
-                     </tbody>
-                  </table>
-                  @else
-                  <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
-                  <h3 class="text-center text-muted mb-5">Unfortunately, you do not possess any proposals.</h3>
-                  @endif
-               </div>
-               <div class="tab-pane" id="messages">
-                  <table class="table">
-                     <tbody>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="" checked>
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                           </td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="">
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Sign contract for "What are conference organizers afraid of?"</td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
-               <div class="tab-pane" id="settings">
-                  <table class="table">
-                     <tbody>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="">
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="" checked>
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                           </td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="" checked>
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Sign contract for "What are conference organizers afraid of?"</td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
+         
+         <div class="tab-content">
+         @if(in_array(Auth::user()->designation_id, $curricular_ids))
+            @foreach($curricular_status as $tab)
+            <div class="tab-pane {{ $tab == $curricular_status[0] ? ' active' : '' }}" id="{{strToLower($tab)}}">
+            
+            @if(!$proposals->isEmpty())                 
+               <table class="table">
+                  <thead>
+                     <th><strong>#</strong></th>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Date Created</strong></th>
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     @if($proposal->status == $tab)
+                     <tr>
+                        <td>{{$proposal->id}}</td>
+                        <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                        <td>{{\Carbon\Carbon::parse($proposal->created_at)->diffForHumans()}}</td>
+                     </tr>
+                     @endif
+                     @endforeach
+                  </tbody>
+               </table>
+            @else
+               <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+               <h3 class="text-center text-muted mb-5">Unfortunately, you do not possess any proposals.</h3>
+            @endif
+            </div>
+            @endforeach
+         @endif
                <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal" rel="tooltip" data-placement="left" title="Create New Proposal">
                <i class="material-icons" style="font-size: 35px">add</i>
                </button>
