@@ -2338,7 +2338,7 @@ $temp = 0;
                   data: { id: proposal_id},
                   success: function(result){
                      $('#loader').fadeOut();
-                     $('#loader_review').animate({ opacity: 1 }, 1200);                     
+                     $('#loader_review').animate({ opacity: 1 }, 3000);                     
                      reviewProposal(result);
                   },
                   error: function(xhr, resp, text){
@@ -2585,11 +2585,21 @@ $temp = 0;
                id: $('#review-title').val(),
                status: "Submitted"
               },
-              success: function(result){
-                 console.log(result);
+              success: function(result){               
+                  Swal.fire({
+                  type: 'success',
+                  title: 'Proposal successfully created.',
+                  text: 'Click OK to continue.'
+                  }).then(function() {
+                     window.location.href = "{{URL::to('home')}}"
+                  });
               },
               error: function(xhr, resp, text){
-                console.log(xhr, resp, text);
+               Swal.fire({
+                  type: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong!'
+                  })
               }
              });
          });
