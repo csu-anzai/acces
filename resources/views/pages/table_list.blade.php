@@ -164,13 +164,126 @@
                             <label for="usc-unit" class="custom-control-label black-text"> Unit/s within USC, please specify </label>
                           </div>
                         </div>
-                        <div class="col-sm-7 toggle-target">
-                          <div class="form-group">
-                            <div class="form-group has-success">
-                              <input type="text" class="form-control" name="usc-unit-input" id="usc-unit-input" placeholder="Please specify">
-                            </div>
-                          </div>
-                        </div>
+                      </div>
+                      <div class="row toggle-target">
+                        <table class="table">
+                          <tr>
+                            <td>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="ces-office" name="ces-office">
+                                <label for="ces-office" class="custom-control-label black-text"> CES Office </label>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input toggle" id="sas" name="sas">
+                                  <label for="sas" class="custom-control-label black-text"> School of Arts and Sciences </label>
+                                </div>
+                              </div>
+                              <div class="form-group has-success toggle-target">
+                                <select class="form-control" name="sas-select" id="sas-select">
+                                  <option> select department </option>
+                                </select>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input toggle" id="safad" name="safad">
+                                  <label for="safad" class="custom-control-label black-text"> School of Architecture, Fine Arts and Design </label>
+                                </div>
+                              </div>
+                              <div class="form-group has-success toggle-target">
+                                <select class="form-control" name="safad-select" id="safad-select">
+                                  <option> select department </option>
+                                </select>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input toggle" id="sed" name="sed">
+                                  <label for="sed" class="custom-control-label black-text"> School of Education </label>
+                                </div>
+                              </div>
+                              <div class="form-group has-success toggle-target">
+                                <select class="form-control" name="sed-select" id="sed-select">
+                                  <option> select department </option>
+                                </select>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input toggle" id="soe" name="soe">
+                                  <label for="soe" class="custom-control-label black-text"> School of Engineering </label>
+                                </div>
+                              </div>
+                              <div class="form-group has-success toggle-target">
+                                <select class="form-control" name="soe-select" id="soe-select">
+                                  <option> select department </option>
+                                </select>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input toggle" id="sbe" name="sbe">
+                                  <label for="sbe" class="custom-control-label black-text"> School of Business and Economics </label>
+                                </div>
+                              </div>
+                              <div class="form-group has-success toggle-target">
+                                <select class="form-control" name="sbe-select" id="sbe-select">
+                                  <option> select department </option>
+                                </select>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input toggle" id="shcp" name="shcp">
+                                  <label for="shcp" class="custom-control-label black-text"> School of Health Care Profession </label>
+                                </div>
+                              </div>
+                              <div class="form-group has-success toggle-target">
+                                <select class="form-control" name="shcp-select" id="shcp-select">
+                                  <option> select department </option>
+                                </select>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input toggle" id="slg" name="slg">
+                                  <label for="slg" class="custom-control-label black-text"> School of Law and Governance </label>
+                                </div>
+                              </div>
+                              <div class="form-group has-success toggle-target">
+                                <select class="form-control" name="slg-select" id="slg-select">
+                                  <option> select department </option>
+                                </select>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input toggle" id="support-unit" name="support-unit">
+                                  <label for="support-unit" class="custom-control-label black-text"> Support Unit </label>
+                                </div>
+                              </div>
+                              <div class="form-group has-success toggle-target">
+                                <select class="form-control" name="support-unit-select" id="support-unit-select">
+                                  <option> select option </option>
+                                </select>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
                       </div>
                     </div>
                     
@@ -650,7 +763,11 @@
 
     //function to show/hide selected target
     $('.toggle').click(function(){
-      $target = $(this).parent().parent().next();
+      if($(this).attr("id")=="usc-unit"){
+        $target = $(this).parent().parent().parent().next();
+      } else {
+        $target = $(this).parent().parent().next();
+      }
       $target.slideToggle();
     });
 
