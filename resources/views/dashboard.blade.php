@@ -52,7 +52,7 @@
                         @foreach($proposals as $proposal)
                         <tr>
                            <td>{{$proposal->id}}</td>
-                           <td><a href="#none" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                           <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
                            <td>{{\Carbon\Carbon::parse($proposal->created_at)->diffForHumans()}}</td>
                            <td>{{$proposal->status}}</td>
                         </tr>
