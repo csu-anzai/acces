@@ -1952,7 +1952,10 @@ $temp = 0;
                   </button>
                </div>
                <div class="tab-pane" id="form-review">
-               <div class="col-md-12">
+                  <div class="text-center" id="loader">
+                     <img src="images/gradient.gif">
+                  </div>
+               <div class="col-md-12" style="opacity:0;" id="loader_review">
                      <div class="card">
                         <div class="card-header card-header-success">
                               <h4 class="card-title text-center"><strong>FORM A</strong></h4>
@@ -2334,6 +2337,8 @@ $temp = 0;
                   type: "POST",
                   data: { id: proposal_id},
                   success: function(result){
+                     $('#loader').fadeOut();
+                     $('#loader_review').animate({ opacity: 1 }, 1200);                     
                      reviewProposal(result);
                   },
                   error: function(xhr, resp, text){
