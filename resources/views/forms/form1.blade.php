@@ -2584,7 +2584,7 @@ $temp = 0;
               type: "POST",
               data: {
                id: $('#review-title').val(),
-               status: "Submitted"
+               status: "Pending"
               },
               success: function(result){               
                   Swal.fire({

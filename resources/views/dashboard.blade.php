@@ -1,14 +1,13 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 @section('content')
 <?php 
-$proposals = DB::table('proposals')
-   ->where('user_id', Auth::user()->id)
-   ->get();
+$first_stage_ids = [1, 2, 3, 5];
+$first_stage_status = ['Draft', 'Returned', 'Pending'];
 
-$curricular_ids = [1, 2];
-$curricular_status = ['Draft', 'Returned', 'Submitted', 'Approved'];
-
+$chair_ids = [6];
+$dean_ids = [7];
 ?>
+
 <title>ACCES - Home</title>
 <div class="content">
 <div class="container-fluid">
@@ -19,28 +18,39 @@ $curricular_status = ['Draft', 'Returned', 'Submitted', 'Approved'];
             <div class="nav-tabs-navigation">
                <div class="nav-tabs-wrapper">
                   <ul class="nav nav-tabs" data-tabs="tabs">
-                  @if(in_array(Auth::user()->designation_id, $curricular_ids))
+                  <!-- Co, Extra Curricular, Faculty, CES Representative -->
+                  @if(in_array(Auth::user()->designation_id, $first_stage_ids))
                      <li class="nav-item">
                         <a class="nav-link active" href="#draft" data-toggle="tab">
-                           <i class="material-icons">assignment</i> Drafts
+                           <i class="material-icons">library_books</i> Drafts
                            <div class="ripple-container"></div>
                         </a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#returned" data-toggle="tab">
-                           <i class="material-icons">assignment</i> Returned
+                           <i class="material-icons">assignment_return</i> Returned
                            <div class="ripple-container"></div>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#submitted" data-toggle="tab">
-                           <i class="material-icons">assignment</i> Submitted
+                        <a class="nav-link" href="#pending" data-toggle="tab">
+                           <i class="material-icons">assignment_turned_in</i> Submitted
                            <div class="ripple-container"></div>
                         </a>
                      </li>
+
+                  <!-- Department Chair -->
+                  @elseif(in_array(Auth::user()->designation_id, $chair_ids))
                      <li class="nav-item">
-                        <a class="nav-link" href="#approved" data-toggle="tab">
-                           <i class="material-icons">assignment</i> Approved
+                        <a class="nav-link active" href="#to-be-noted" data-toggle="tab">
+                           <i class="material-icons">assignment_ind</i> To be Noted
+                           <div class="ripple-container"></div>
+                        </a>
+                     </li>                  
+                  @elseif(in_array(Auth::user()->designation_id, $dean_ids))
+                     <li class="nav-item">
+                        <a class="nav-link active" href="#for-dean-endorsement" data-toggle="tab">
+                           <i class="material-icons">assignment_ind</i> For Endorsement
                            <div class="ripple-container"></div>
                         </a>
                      </li>
@@ -52,39 +62,137 @@ $curricular_status = ['Draft', 'Returned', 'Submitted', 'Approved'];
          <div class="card-body">
          
          <div class="tab-content">
-         @if(in_array(Auth::user()->designation_id, $curricular_ids))
-            @foreach($curricular_status as $tab)
-            <div class="tab-pane {{ $tab == $curricular_status[0] ? ' active' : '' }}" id="{{strToLower($tab)}}">
-            
+
+         <!-- For Co, Extra curricular, Faculty -->
+         @if(in_array(Auth::user()->designation_id, $first_stage_ids))
+            <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal" rel="tooltip" data-placement="left" title="Create New Proposal">
+            <i class="material-icons" style="font-size: 35px">add</i>
+            </button>
+            @foreach($first_stage_status as $status)
+            <div class="tab-pane {{ $status == $first_stage_status[0] ? ' active' : '' }}" id="{{strToLower($status)}}">
+            <?php
+               $proposals = DB::table('proposals')
+               ->leftJoin('processes', 'processes.proposal_id', 'proposals.id')
+               ->where([
+                  ['creator_id', Auth::user()->id],
+                  ['proposals.status', $status]
+               ])
+               ->select('processes.status as status', 'proposals.id as id', 'title', 'proposals.created_at as created_at')
+               ->get();
+            ?>
             @if(!$proposals->isEmpty())                 
                <table class="table">
                   <thead>
                      <th><strong>#</strong></th>
                      <th><strong>Title of Project/Program/Activity Proposal</strong></th>
                      <th><strong>Date Created</strong></th>
+                     @if($status == 'Pending')
+                     <th><strong>Status</strong></th>
+                     @endif
                   </thead>
                   <tbody>
                      @foreach($proposals as $proposal)
-                     @if($proposal->status == $tab)
                      <tr>
                         <td>{{$proposal->id}}</td>
                         <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
                         <td>{{\Carbon\Carbon::parse($proposal->created_at)->diffForHumans()}}</td>
+                        @if($status == 'Pending')
+                        <td>{{$proposal->status}}</td>
+                        @endif
                      </tr>
-                     @endif
                      @endforeach
                   </tbody>
                </table>
             @else
                <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
-               <h3 class="text-center text-muted mb-5">Unfortunately, you do not possess any proposals.</h3>
+               <h3 class="text-center text-muted mb-5">No records found.</h3>
             @endif
             </div>
             @endforeach
+         
+         <!-- For Department Chair -->
+         @elseif(in_array(Auth::user()->designation_id, $chair_ids))
+            <div class="tab-pane active" id="to-be-noted">
+
+            <?php 
+            $proposals = DB::table('proposals')
+                  ->join('users', 'users.id', '=', 'proposals.creator_id')
+                  ->join('processes', 'processes.proposal_id', '=', 'proposals.id')
+                  ->where([
+                     ['processes.status', 'For Department Chair Endorsement'],
+                     ['department_id', Auth::user()->department_id]
+                  ])
+                  ->select('proposals.id as id', 'title', 'proposals.updated_at as updated_at', 'users.firstname', 'users.lastname')
+                  ->get();
+            ?>
+
+            @if(!$proposals->isEmpty())                 
+               <table class="table">
+                  <thead>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Submitted By</strong></th>
+                     <th><strong>Date Created</strong></th>
+                     <th></th>
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     <tr>
+                     <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                        <td>{{$proposal->firstname}} {{$proposal->lastname}}</td>
+                        <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
+                        <td><a href="#" class="text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
+                     </tr>
+                     @endforeach
+                  </tbody>
+               </table>
+            @else
+               <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+               <h3 class="text-center text-muted mb-5">No records found.</h3>
+            @endif
+            </div>
+
+         <!-- For Dean -->
+         @elseif(in_array(Auth::user()->designation_id, $dean_ids))
+            <div class="tab-pane active" id="for-dean-endorsement">
+
+            <?php 
+            $department = DB::table('departments')->where('id', Auth::user()->department_id)->first();
+            $proposals = DB::table('proposals')
+                  ->join('processes', 'processes.proposal_id', '=', 'proposals.id')
+                  ->join('users', 'users.id', '=', 'processes.pending_id')
+                  ->join('departments', 'departments.id', '=', 'users.department_id')
+                  ->where([
+                     ['status', 'Pending'],
+                     ['school_id', $department->school_id]
+                  ])
+                  ->select('proposals.title as title', 'proposals.updated_at as updated_at')
+                  ->get();
+            ?>
+
+            @if(!$proposals->isEmpty())                 
+               <table class="table">
+                  <thead>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Submitted By</strong></th>
+                     <th><strong>Date Submitted</strong></th>
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     <tr>
+                        <td>{{$proposal->title}}</td>
+                        <td>{{$proposal->title}}</td>
+                        <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
+                     </tr>
+                     @endforeach
+                  </tbody>
+               </table>
+            @else
+               <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+               <h3 class="text-center text-muted mb-5">No records found.</h3>
+            @endif
+            </div>
          @endif
-               <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal" rel="tooltip" data-placement="left" title="Create New Proposal">
-               <i class="material-icons" style="font-size: 35px">add</i>
-               </button>
+
             </div>
          </div>
       </div>
