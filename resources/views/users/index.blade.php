@@ -30,7 +30,9 @@
                   <table class="table" id="testdatatable">
                     <thead class=" text-success">
                       <th>
+                        <div class="row" style="padding:10px 0; margin:auto;">
                           {{ __('Name') }}
+                        </div>  
                       </th>
                       <th>
                         {{ __('Designation') }}
