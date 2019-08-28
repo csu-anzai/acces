@@ -38,7 +38,7 @@
                       <th>
                         {{ __('School') }}
                       </th>
-                      <th class="text-right">
+                      <th>
                         {{ __('Actions') }}
                       </th>
                     </thead>
@@ -100,7 +100,7 @@
                               </form>
                             @else
                               <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('profile.edit') }}" data-original-title="" title="">
-                                <i class="material-icons">edit</i>
+                                <i class="material-icons" style="margin:auto">edit</i>
                                 <div class="ripple-container"></div>
                               </a>
                             @endif
