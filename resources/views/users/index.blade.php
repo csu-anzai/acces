@@ -71,7 +71,7 @@
                                   @method('delete')
                               
                                   <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('user.edit', $user) }}" data-original-title="" title="">
-                                    <i class="material-icons">edit</i>
+                                    <i class="material-icons" style="margin:auto">edit</i>
                                     <div class="ripple-container"></div>
                                   </a>
                                   <button type="button" class="btn btn-danger btn-link" data-original-title="" title=""
@@ -94,7 +94,7 @@
                                                }
                                              })
                                     ">
-                                      <i class="material-icons">close</i>
+                                      <i class="material-icons" style="margin:auto">close</i>
                                       <div class="ripple-container"></div>
                                   </button>
                               </form>
