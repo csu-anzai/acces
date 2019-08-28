@@ -25,16 +25,19 @@ class CreateProposalsTable extends Migration
             $table->enum('status', array(
                 'Draft', 
                 'Returned',
-                'Submitted',
+                'Pending',
+                'Approved with Minor Revisions',
+                'Approved with Major Revisions',
+                'Disapproved',
                 'Approved'
             ));
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 
             //Foreign Key
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('creator_id');
             
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

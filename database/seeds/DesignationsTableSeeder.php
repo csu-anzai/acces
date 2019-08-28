@@ -18,6 +18,7 @@ class DesignationsTableSeeder extends Seeder
             ['name' => 'Student Organization Adviser'],
             ['name' => 'CES Representative'],
             ['name' => 'Department Chair'],
+            ['name' => 'CES Coordinator'],
             ['name' => 'School Dean'],
             ['name' => 'CES Director'],
             ['name' => 'VPAA'],

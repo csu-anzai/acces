@@ -4,6 +4,7 @@
     ->where('users.id', auth()->user()->id)
     ->first();
 
+  $pending_ids = [1, 2, 3, 4, 5]
 ?>
 
 <div class="sidebar bg-success" data-color="orange" data-background-color="black">
@@ -35,6 +36,21 @@
           <p>{{ __('Reports') }}</p>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <span class="sidebar-mini"><i class="material-icons">assignment_turned_in</i></span>
+          <span class="sidebar-normal">{{ __('Approved Proposals') }} </span>
+        </a>
+      </li>
+
+      @if(in_array(Auth::user()->id, $pending_ids) == false)
+      <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <span class="sidebar-mini"><i class="material-icons">assignment_returned</i></span>
+          <span class="sidebar-normal"> {{ __('Pending Proposals') }} </span>
+        </a>
+      </li> 
+      @endif
 
       @if(Auth::user()->designation_id == 10)
       <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
@@ -45,19 +61,7 @@
       </li>
       @endif
 
-      <!-- Unused for NOW -->
-      <!-- <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <span class="sidebar-mini"><i class="material-icons">assignment_turned_in</i></span>
-          <span class="sidebar-normal">{{ __('Approved Proposals') }} </span>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <span class="sidebar-mini"><i class="material-icons">assignment_returned</i></span>
-          <span class="sidebar-normal"> {{ __('Pending Proposals') }} </span>
-        </a>
-      </li> 
+      <!--
       <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('table') }}">
           <i class="material-icons">content_paste</i>
