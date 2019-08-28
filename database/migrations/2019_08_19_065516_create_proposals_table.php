@@ -22,14 +22,22 @@ class CreateProposalsTable extends Migration
             $table->string('venue');
             $table->json('proposal_json_A');
             $table->json('proposal_json_B');
-            $table->enum('status', array('Draft', 'Submitted'));
+            $table->enum('status', array(
+                'Draft', 
+                'Returned',
+                'Pending',
+                'Approved with Minor Revisions',
+                'Approved with Major Revisions',
+                'Disapproved',
+                'Approved'
+            ));
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 
             //Foreign Key
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('creator_id');
             
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

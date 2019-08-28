@@ -1,10 +1,13 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 @section('content')
-<?php
-   $proposals = DB::table('proposals')
-     ->where('user_id', Auth::user()->id)
-     ->get();
-   ?>
+<?php 
+$first_stage_ids = [1, 2, 3, 5];
+$first_stage_status = ['Draft', 'Returned', 'Pending'];
+
+$chair_ids = [6];
+$dean_ids = [7];
+?>
+
 <title>ACCES - Home</title>
 <div class="content">
 <div class="container-fluid">
@@ -15,177 +18,181 @@
             <div class="nav-tabs-navigation">
                <div class="nav-tabs-wrapper">
                   <ul class="nav nav-tabs" data-tabs="tabs">
+                  <!-- Co, Extra Curricular, Faculty, CES Representative -->
+                  @if(in_array(Auth::user()->designation_id, $first_stage_ids))
                      <li class="nav-item">
-                        <a class="nav-link active" href="#profile" data-toggle="tab">
-                           <i class="material-icons">assignment</i> My Proposals
+                        <a class="nav-link active" href="#draft" data-toggle="tab">
+                           <i class="material-icons">library_books</i> Drafts
                            <div class="ripple-container"></div>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#messages" data-toggle="tab">
-                           <i class="material-icons">assignment_late</i> For Review
+                        <a class="nav-link" href="#returned" data-toggle="tab">
+                           <i class="material-icons">assignment_return</i> Returned
                            <div class="ripple-container"></div>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#settings" data-toggle="tab">
-                           <i class="material-icons">assignment_ind</i> Recommendation
+                        <a class="nav-link" href="#pending" data-toggle="tab">
+                           <i class="material-icons">assignment_turned_in</i> Submitted
                            <div class="ripple-container"></div>
                         </a>
                      </li>
+
+                  <!-- Department Chair -->
+                  @elseif(in_array(Auth::user()->designation_id, $chair_ids))
+                     <li class="nav-item">
+                        <a class="nav-link active" href="#to-be-noted" data-toggle="tab">
+                           <i class="material-icons">assignment_ind</i> To be Noted
+                           <div class="ripple-container"></div>
+                        </a>
+                     </li>                  
+                  @elseif(in_array(Auth::user()->designation_id, $dean_ids))
+                     <li class="nav-item">
+                        <a class="nav-link active" href="#for-dean-endorsement" data-toggle="tab">
+                           <i class="material-icons">assignment_ind</i> For Endorsement
+                           <div class="ripple-container"></div>
+                        </a>
+                     </li>
+                  @endif
                   </ul>
                </div>
             </div>
          </div>
          <div class="card-body">
-            <div class="tab-content">
-               <div class="tab-pane active" id="profile">
-                  @if(!$proposals->isEmpty())                 
-                  <table class="table" id="proposal_table">
-                     <thead>
-                        <th><strong>#</strong></th>
-                        <th><strong>Title of Project/Program/Activity Proposal</strong></th>
-                        <th><strong>Date Created</strong></th>
-                        <th><strong>Remarks</strong></th>
-                     </thead>
-                     <tbody>
-                        @foreach($proposals as $proposal)
-                        <tr>
-                           <td>{{$proposal->id}}</td>
-                           <td><a href="#" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                           <td>{{$proposal->created_at}}</td>
-                           <td>{{$proposal->status}}</td>
-                        </tr>
-                        @endforeach
-                     </tbody>
-                  </table>
-                  @else
-                  <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
-                  <h3 class="text-center text-muted mb-5">Unfortunately, you do not possess any proposals.</h3>
-                  @endif
-               </div>
-               <div class="tab-pane" id="messages">
-                  <table class="table">
-                     <tbody>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="" checked>
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                           </td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="">
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Sign contract for "What are conference organizers afraid of?"</td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
-               <div class="tab-pane" id="settings">
-                  <table class="table">
-                     <tbody>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="">
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="" checked>
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                           </td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div class="form-check">
-                                 <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" value="" checked>
-                                 <span class="form-check-sign">
-                                 <span class="check"></span>
-                                 </span>
-                                 </label>
-                              </div>
-                           </td>
-                           <td>Sign contract for "What are conference organizers afraid of?"</td>
-                           <td class="td-actions text-right">
-                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                              </button>
-                              <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                              </button>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
-               <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal" rel="tooltip" data-placement="left" title="Create New Proposal">
-               <i class="material-icons" style="font-size: 35px">add</i>
-               </button>
+         
+         <div class="tab-content">
+
+         <!-- For Co, Extra curricular, Faculty -->
+         @if(in_array(Auth::user()->designation_id, $first_stage_ids))
+            <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal" rel="tooltip" data-placement="left" title="Create New Proposal">
+            <i class="material-icons" style="font-size: 35px">add</i>
+            </button>
+            @foreach($first_stage_status as $status)
+            <div class="tab-pane {{ $status == $first_stage_status[0] ? ' active' : '' }}" id="{{strToLower($status)}}">
+            <?php
+               $proposals = DB::table('proposals')
+               ->leftJoin('processes', 'processes.proposal_id', 'proposals.id')
+               ->where([
+                  ['creator_id', Auth::user()->id],
+                  ['proposals.status', $status]
+               ])
+               ->select('processes.status as status', 'proposals.id as id', 'title', 'proposals.created_at as created_at')
+               ->get();
+            ?>
+            @if(!$proposals->isEmpty())                 
+               <table class="table">
+                  <thead>
+                     <th><strong>#</strong></th>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Date Created</strong></th>
+                     @if($status == 'Pending')
+                     <th><strong>Status</strong></th>
+                     @endif
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     <tr>
+                        <td>{{$proposal->id}}</td>
+                        <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                        <td>{{\Carbon\Carbon::parse($proposal->created_at)->diffForHumans()}}</td>
+                        @if($status == 'Pending')
+                        <td>{{$proposal->status}}</td>
+                        @endif
+                     </tr>
+                     @endforeach
+                  </tbody>
+               </table>
+            @else
+               <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+               <h3 class="text-center text-muted mb-5">No records found.</h3>
+            @endif
+            </div>
+            @endforeach
+         
+         <!-- For Department Chair -->
+         @elseif(in_array(Auth::user()->designation_id, $chair_ids))
+            <div class="tab-pane active" id="to-be-noted">
+
+            <?php 
+            $proposals = DB::table('proposals')
+                  ->join('users', 'users.id', '=', 'proposals.creator_id')
+                  ->join('processes', 'processes.proposal_id', '=', 'proposals.id')
+                  ->where([
+                     ['processes.status', 'For Department Chair Endorsement'],
+                     ['department_id', Auth::user()->department_id]
+                  ])
+                  ->select('proposals.id as id', 'title', 'proposals.updated_at as updated_at', 'users.firstname', 'users.lastname')
+                  ->get();
+            ?>
+
+            @if(!$proposals->isEmpty())                 
+               <table class="table">
+                  <thead>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Submitted By</strong></th>
+                     <th><strong>Date Created</strong></th>
+                     <th></th>
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     <tr>
+                     <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                        <td>{{$proposal->firstname}} {{$proposal->lastname}}</td>
+                        <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
+                        <td><a href="#" class="text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
+                     </tr>
+                     @endforeach
+                  </tbody>
+               </table>
+            @else
+               <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+               <h3 class="text-center text-muted mb-5">No records found.</h3>
+            @endif
+            </div>
+
+         <!-- For Dean -->
+         @elseif(in_array(Auth::user()->designation_id, $dean_ids))
+            <div class="tab-pane active" id="for-dean-endorsement">
+
+            <?php 
+            $department = DB::table('departments')->where('id', Auth::user()->department_id)->first();
+            $proposals = DB::table('proposals')
+                  ->join('processes', 'processes.proposal_id', '=', 'proposals.id')
+                  ->join('users', 'users.id', '=', 'processes.pending_id')
+                  ->join('departments', 'departments.id', '=', 'users.department_id')
+                  ->where([
+                     ['status', 'Pending'],
+                     ['school_id', $department->school_id]
+                  ])
+                  ->select('proposals.title as title', 'proposals.updated_at as updated_at')
+                  ->get();
+            ?>
+
+            @if(!$proposals->isEmpty())                 
+               <table class="table">
+                  <thead>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Submitted By</strong></th>
+                     <th><strong>Date Submitted</strong></th>
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     <tr>
+                        <td>{{$proposal->title}}</td>
+                        <td>{{$proposal->title}}</td>
+                        <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
+                     </tr>
+                     @endforeach
+                  </tbody>
+               </table>
+            @else
+               <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+               <h3 class="text-center text-muted mb-5">No records found.</h3>
+            @endif
+            </div>
+         @endif
+
             </div>
          </div>
       </div>

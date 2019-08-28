@@ -27,7 +27,7 @@ class AjaxController extends Controller
             'status' => $request->input('status'),
             'proposal_json_A' => $request->input('json_A'),
             'proposal_json_B' => $request->input('json_B'),
-            'user_id' => $request->input('userId')
+            'creator_id' => $request->input('userId')
        ]);
        
         return response()->json($id, 200);
@@ -39,7 +39,17 @@ class AjaxController extends Controller
             ->update([
                 'status' => $request->input('status')
             ]);
-       
+        
+            $proposal = DB::table('proposals')
+                ->where('id', $request->input('id'))
+                ->first();
+
+        DB::table('processes')
+            ->insert([
+                'proposal_id' => $proposal->id,
+                'status' => 'For Department Chair Endorsement'
+            ]);
+
         return response("Update Successful", 200);
     }
 

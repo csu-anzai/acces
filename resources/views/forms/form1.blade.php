@@ -324,6 +324,7 @@ $temp = 0;
                                        <th><strong> Grand Total: </strong>
                                        </th>
                                        <th id="grand-total">
+                                       ₱ 0.00
                                        </th>
                                        <th></th>
                                     </thead>
@@ -332,7 +333,7 @@ $temp = 0;
                            </div>
                         </div>
                      </div>
-                     <input id="input-grand-total" name="a-grand-total" type="hidden" />
+                     <input id="input-grand-total" name="a-grand-total" type="hidden" value="0.00"/>
                      
                      <!-- End of Budgetary Requirements -->
                      <button class='btn btn-default float-middle' style="margin-left:40%"  onclick="goTop();">
@@ -2338,7 +2339,7 @@ $temp = 0;
                   data: { id: proposal_id},
                   success: function(result){
                      $('#loader').fadeOut();
-                     $('#loader_review').animate({ opacity: 1 }, 1200);                     
+                     $('#loader_review').animate({ opacity: 1 }, 3000);                     
                      reviewProposal(result);
                   },
                   error: function(xhr, resp, text){
@@ -2583,13 +2584,23 @@ $temp = 0;
               type: "POST",
               data: {
                id: $('#review-title').val(),
-               status: "Submitted"
+               status: "Pending"
               },
-              success: function(result){
-                 console.log(result);
+              success: function(result){               
+                  Swal.fire({
+                  type: 'success',
+                  title: 'Proposal successfully created.',
+                  text: 'Click OK to continue.'
+                  }).then(function() {
+                     window.location.href = "{{URL::to('home')}}"
+                  });
               },
               error: function(xhr, resp, text){
-                console.log(xhr, resp, text);
+               Swal.fire({
+                  type: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong!'
+                  })
               }
              });
          });
