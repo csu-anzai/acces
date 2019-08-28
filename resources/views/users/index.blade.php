@@ -110,7 +110,7 @@
                                           </div>
                                        </div>
                                     </td>
-                                    <td>{{$user->contact}}
+                                    <td><small>{{$user->contact}}</small>
                                     </td>
                                     <td>
                                        {{$designation->name}}
