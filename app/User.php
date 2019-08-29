@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 
 class User extends Authenticatable
 {
@@ -38,6 +39,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function insertOrUpdate(Request $request)
+    {
+        $department = \App\Department::find($request->input('department_id'));
+        $organization = \App\Organization::find($request->input('organization_id'));
+        $designation = \App\Designation::find($request->input('designation_id'));
+
+        $this->fill($request->all());
+        $this->department()->associate($department);
+        $this->organization()->associate($organization);
+        $this->designation()->associate($designation);
+        
+        $this->save();
+
+        return $this;
+    }
 
     public function proposals()
     {
