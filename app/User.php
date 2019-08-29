@@ -17,9 +17,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'firstname', 'lastname',
-        'department_id', 'contact', 'username', 
-        'email', 'password', 'organization_id',
-        'designation_id',
+        'contact', 'username', 
+        'email', 'password'
     ];
 
     /**
@@ -39,4 +38,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function proposals()
+    {
+        return $this->hasMany('App\Proposal');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
+    }
+
+    public function designation()
+    {
+        return $this->belongsTo('App\Designation');
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo('App\Organization');
+    }
 }

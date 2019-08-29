@@ -1,12 +1,14 @@
 <?php
   $result = DB::table('users')
     ->join('designations', 'designations.id', '=', 'designation_id')
-    ->where('users.id', auth()->user()->id)
+    ->join('departments', 'departments.id', '=', 'department_id')
+    ->join('schools', 'schools.id', '=', 'school_id')
+    ->where('users.id', Auth::user()->id)
+    ->select('designations.name as designation_name', 'schools.name as school_name')
     ->first();
 
   $pending_ids = [1, 2, 3, 4, 5]
 ?>
-
 <div class="sidebar bg-success" data-color="orange" data-background-color="black">
   <div class="logo">
     <img src="../../images/logo_main.png" style="
@@ -21,8 +23,11 @@
   <div class="sidebar-wrapper">
     <ul class="nav">
       <div class="alert alert-{{ $activePage == 'profile' ? 'warning' : 'success' }} ml-3" role="alert">
-        <a href="{{ route('profile.edit') }}" class="alert-link">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a><br>
-        {{$result->name}}
+        <a href="{{ route('profile.edit') }}" class="alert-link mb-3">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a>
+        <div>{{$result->designation_name}}</div>
+      <div class="mt-1" style="margin-bottom: -4%">
+      <div class="badge badge-warning badge-warning-alt"  style="background-color:orange !important; color:white !important">{{$result->school_name}}</div>
+      </div>     
       </div>
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
