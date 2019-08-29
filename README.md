@@ -13,7 +13,7 @@ by Bryl, Miko, Ethan, and Logan.
 ### Installation
 
 ```sh
-$ php artisan migrate:refresh --seed
+$ php artisan migrate:fresh --seed
 $ composer update
 $ php artisan serve
 ```

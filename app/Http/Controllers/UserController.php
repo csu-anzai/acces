@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Alert;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        return view('users.index', ['users' => $model->all()]);
     }
 
     /**
@@ -40,7 +41,8 @@ class UserController extends Controller
     {
         $user->insertOrUpdate($request);
 
-        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
+        Alert::success(' ', 'User successfully created!');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -65,7 +67,12 @@ class UserController extends Controller
     {
         $user->insertOrUpdate($request);
 
+<<<<<<< HEAD
         return redirect()->route('user.index')->withStatus(__('User successfully updated.')); 
+=======
+        Alert::success(' ', 'User successfully updated!');
+        return redirect()->route('user.index');
+>>>>>>> 478334451821a718239847ba1c2cbb470a79b959
     }
 
     /**
@@ -78,6 +85,7 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+        Alert::success(' ', 'User successfully deleted!');
+        return redirect()->route('user.index');
     }
 }
