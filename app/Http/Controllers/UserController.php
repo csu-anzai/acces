@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Alert;
 
 class UserController extends Controller
 {
@@ -40,7 +41,8 @@ class UserController extends Controller
     {
         $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
 
-        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
+        Alert::success(' ', 'User successfully created!');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -68,7 +70,8 @@ class UserController extends Controller
                 ->except([$request->get('password') ? '' : 'password']
         ));
 
-        return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
+        Alert::success(' ', 'User successfully updated!');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -81,6 +84,7 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+        Alert::success(' ', 'User successfully deleted!');
+        return redirect()->route('user.index');
     }
 }
