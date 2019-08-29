@@ -67,12 +67,8 @@ class UserController extends Controller
     {
         $user->insertOrUpdate($request);
 
-<<<<<<< HEAD
-        return redirect()->route('user.index')->withStatus(__('User successfully updated.')); 
-=======
         Alert::success(' ', 'User successfully updated!');
         return redirect()->route('user.index');
->>>>>>> 478334451821a718239847ba1c2cbb470a79b959
     }
 
     /**
