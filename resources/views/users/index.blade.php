@@ -6,7 +6,7 @@
    background-color: white;
    background-position: 10px 10px; 
    background-repeat: no-repeat;
-   padding: 12px 25px 12px 5px;
+   padding: 12px 5px 12px 5px;
    }
    .pagination > li > a, .pagination > li > span{
    background-color: white !important;
@@ -83,7 +83,7 @@
                                     <th>
                                        <div style="padding:9px 0">Name</div>
                                     </th>
-                                    <th>Phone Number</th>
+                                    <th>Phone</th>
                                     <th>Designation</th>
                                     <th>Office/School</th>
                                     <th class="text-right"></th>
@@ -195,18 +195,20 @@
 <!--Datatable function-->
 <script>
    $(document).ready(function() {
-   $("#example").DataTable({
-   "language": {
-   "lengthMenu": '<div class="mt-3">Display <select class="custom-select" style="height:23px; padding-top:0px; padding-bottom:0px">'+
-     '<option value="5">5</option>'+
-     '<option value="10">10</option>'+
-     '<option value="20">20</option>'+
-     '<option value="30">30</option>'+
-     '<option value="40">40</option>'+
-     '<option value="50">50</option>'+
-     '<option value="-1">All</option>'+
-     '</select> records.</div>'
-     }
-   });
+
+      $("#example").DataTable({
+         "language": {
+         "lengthMenu": '<div class="mt-3">Display <select class="custom-select" style="height:23px; padding-top:0px; padding-bottom:0px">'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="20">20</option>'+
+            '<option value="30">30</option>'+
+            '<option value="40">40</option>'+
+            '<option value="50">50</option>'+
+            '<option value="-1">All</option>'+
+            '</select> records.</div>'
+            }
+      });
+
    });
 </script>

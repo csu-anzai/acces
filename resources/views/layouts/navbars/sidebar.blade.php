@@ -52,7 +52,7 @@
       </li> 
       @endif
 
-      @if(Auth::user()->designation_id == 10)
+      @if(Auth::user()->designation_id == 11)
       <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('user.index') }}">
           <i class="material-icons">people</i>
