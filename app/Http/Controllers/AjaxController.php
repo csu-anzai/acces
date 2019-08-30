@@ -39,17 +39,18 @@ class AjaxController extends Controller
         $process->proposal()->associate($proposal);
         $process->save();
 
-        $history = [];
-        $history['submitted_by'] = $request->input('submitted_by');
-        $history['submitted_at'] = (string)$process->updated_at;
-        $json = json_encode($history);
+        $history = $process->history;
 
-        if(is_null($process->history) == false){
-            //Not Sure if this line will work
-            $json = $process->history + ", " + $json;
+        if(is_null($history)){
+            $history = [];
+            $history['submitted_by'] = [];
+            $history['submitted_at'] = [];
         }
 
-        $process->history = $json;
+        array_push($history['submitted_by'], $request->input('submitted_by'));
+        array_push($history['submitted_at'], (string)$process->updated_at);
+        
+        $process->history = $history;
         $process->save();
 
         return response("Update Successful", 200);
