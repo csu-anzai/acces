@@ -37,6 +37,19 @@ $organizations = DB::table('organizations')->get();
   html{
     scroll-behavior: smooth;
   }
+
+  .roboto-text{
+    font-weight: 900;
+  }  
+
+  .margin-top{
+    margin-top:5%;
+  }
+
+  .forestgreen-text{
+    color:forestgreen;
+  }
+
 </style>
 
 @extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('ACCES')])
@@ -142,7 +155,7 @@ $organizations = DB::table('organizations')->get();
         ">
       </div>
       <div data-aos="fade-up" data-aos-duration="2000">
-        <h1 class="text-dark" style='font-family: "Roboto Black"; margin-top: 1%'>What is <strong style="color:forestgreen">Community Extension Service</strong>?</h1>
+        <h1 class="text-dark roboto-text" style='margin-top: 1%'>What is <strong style="color:forestgreen">Community Extension Service</strong>?</h1>
       </div>
       <div class="ml-5 mr-5">
         <div data-aos="fade-up" data-aos-duration="2000">
@@ -165,7 +178,7 @@ $organizations = DB::table('organizations')->get();
 <div class="container">
   <div class="row">
     <div class="col-md-6" style="margin-top:8%; padding-left:15%" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-sine">
-      <h1 style='font-family: "Roboto Black"'>OBJECTIVES</h1>
+      <h1 class="roboto-text">OBJECTIVES</h1>
     </div>
     <div class="col-md-6 mt-5" data-aos="fade-left" data-aos-duration="1000" data-aos-easing="ease-in-sine">
       <h4><strong>&bull;</strong> Extension services are integral to the learning experience and research opportunities of students.</h4>
@@ -178,12 +191,12 @@ $organizations = DB::table('organizations')->get();
       <h4>For USC to contribute to nation building by providing highly specialized curricular programs with extension services that allow students, faculty, and staff to apply the new knowledge they generate by empowering communities, organizations, and institutions through a transformatory approach in addressing specific social development problems.</h4>
     </div>
     <div class="col-md-6" style="margin-top:8%; padding-right:15%" data-aos="fade-left" data-aos-duration="1000" data-aos-easing="ease-in-sine">
-      <h1 style='font-family: "Roboto Black"'>GOALS</h1>
+      <h1 class="roboto-text">GOALS</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6" style="margin-top:10%; padding-left:5%" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-sine">
-      <h1 style='font-family: "Roboto Black"'>KEY RESULT AREA</h1>
+      <h1 class="roboto-text">KEY RESULT AREA</h1>
     </div>
     <div class="col-md-6 mt-5" data-aos="fade-left" data-aos-duration="1000" data-aos-easing="ease-in-sine">
       <h4><strong>&bull;</strong> Context-responsive CES programs and projects.</h4>
@@ -202,7 +215,7 @@ $organizations = DB::table('organizations')->get();
         <h2 class="text-dark" style='margin-top: 5%'>Our Inspiration</h2>
       </div>
       <div data-aos="fade-up" data-aos-duration="2000">
-        <h1 class="text-warning" style='font-family: "Roboto Black"; margin-top: 1%'>SVD Charism and Congregational Directions</h1>
+        <h1 class="text-warning roboto-text" style='margin-top: 1%'>SVD Charism and Congregational Directions</h1>
       </div>
       <div class="ml-5 mr-5">
         <div data-aos="fade-up" data-aos-duration="2000">
@@ -243,11 +256,281 @@ $organizations = DB::table('organizations')->get();
   </div>
 </div>
 
+<!-- Congregational directions-->
+<div class="container-fluid">
+  <div class="row margin-top">
+    <div class="col-sm-12 text-center">
+      <h1 class="roboto-text">
+        CONGREGATIONAL DIRECTIONS
+      </h1>
+    </div>
+  </div>
+  <!-- AD INTRA -->
+  <div class="row justify-content-center">
+    <div class="col-sm-10">
+      <div class="card">
+        <div class="card-header card-header-success">
+          AD INTRA CONGREGATIONAL DIRECTIONS
+        </div>
+        <div class="card-body">
+          <div class="col-sm-10">
+            <div class="row">
+              <ul>
+                <h4>
+                  SPRITUALITY
+                </h4>
+                <li>
+                  Trinitarian and incarnational spirituality
+                </li>
+                <li>
+                  Sharing in this spirituality across cultural differences that helps promote unity
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <ul>
+                <h4>
+                  COMMUNITY
+                </h4>
+                <li>
+                  Inter-cultural communities need to be consciously created intentionally promoted, cared for and nurtured
+                </li>
+              </ul>
+            </div>              
+            <div class="row">
+              <ul>
+                <h4>
+                  LEADERSHIP
+                </h4>
+                <li>
+                  Commitment to serve that requires an attitude of solidarity, respect and love
+                </li>
+                <li>
+                  Participative leadership needs to be the hallmark of our community
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <ul>
+                <h4>
+                  FINANCE
+                </h4>
+                <li>
+                  Commitment to the vow of poverty and simple lifestyle and sharing of resources
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <ul>
+                <h4>
+                  FORMATION
+                </h4>
+                <li>
+                  As Divine Word missionaries, we participate in God's mission through personal growth in the spirit of inter-culturality
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of AD INTRA -->
+  <!-- AD EXTRA -->
+  <div class="row justify-content-center">
+    <div class="col-sm-10">
+      <div class="card">
+        <div class="card-header card-header-success">
+          AD EXTRA CONGREGATIONAL DIRECTIONS
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <ul>
+              <h4>
+                PRIMARY AND NEW EVANGELIZATION
+              </h4>
+              <li>
+                Faith seekers
+              </li>
+              <li>
+                People who are confused in life
+              </li>
+              <li>
+                Promote transformation of the whole community
+              </li>
+              <li>
+                Directed who do not know Christ and does not live in the Christian faith
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <h4>
+                ECUMENICAL AND INTERRELIGIOUS DIALOGUE
+              </h4>
+              <li>
+                Respect, mutual acceptance through ecumenical and interreligious dialogue
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <h4>
+                PROMOTION OF CULTURE AND LIFE
+              </h4>
+              <li>
+                Promote and defend the sanctity of human life
+              </li>
+              <li>
+                Promoting the culture of life vs. abortion, euthanasia, capital punishment
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <h4>
+                FAMILY AND YOUTH
+              </h4>
+              <li>
+                Promotion of family bonding
+              </li>
+              <li>
+                Care for the family and youth
+              </li>
+              <li>
+                Witnessing transformation in family structure
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <h4>
+                EDUCATION AND RESEARCH
+              </h4>
+              <li>
+                Promote research that enhances Catholic character of the institution, social justice and interculturality
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <h4>
+                INDIGENOUS AND ETHNIC COMMUNITIES
+              </h4>
+              <li>
+                Formulate and implement programs on pastoral responses, cultural identity, land rights advocacy, health care, bilingual education, human rights and affirmative action
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <h4>
+                MIGRATION
+              </h4>
+              <li>
+                Pastoral care for migrants (internal migration: students from other areas)
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <h4>
+                RECONCILIATION AND PEACE-BUILDING
+              </h4>
+              <li>
+                Work for justice and peace and for the progress of people
+              </li>
+              <li>
+                Eliminate instances of ethnic, religious, political and social conflicts
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <h4>
+                SOCIAL JUSTICE AND POVERTY ERADICATION
+              </h4>
+              <li>
+                Commitment to work for social justice and solidarity with the poor
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <h4>
+                INTEGRITY OF CREATION
+              </h4>
+              <li>
+                Promote and protect the environment as God's creation
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div> 
+  <!-- End of AD EXTRA -->
+</div>
+<!-- End of Congregational directions-->
+
+<!--GUIDING PRINCIPLES ON THE NATURE OF COMMUNITY EXTENSION SERVICES-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 bg-white">
+      <div class="row justify-content-center margin-top">
+          <div class="col-md-11">
+            <div class="row justify-content-center">
+              <h1 class="roboto-text forestgreen-text">
+                GUIDING PRINCIPLES ON THE NATURE OF <br/> COMMUNITY EXTENSION SERVICES
+              </h1>
+            </div>
+            <div class="row justify-content-center margin-top">
+              <h3 class="text-dark" align="justify">
+                As an HEI settled in a particular locale and community, USC recognizes that it has an undeniable role to its context. 
+                The needs of its context must be considered of primary importance in developing a CES Program and in organizing 
+                pertinent activities. Data and information must be gathered using valid and reliable tools to serve as bases for the
+                university, through its units, to offer appropriate and relevant response to community needs. All CES programs, projects, 
+                and activities must be context-responsive.
+              </h3>
+              <h3 class="text-dark" align="justify">
+                In creating a truly appropriate and relevant response, the discipline that can best provide the extension service be 
+                tapped and mobilized. This shall essentially provide faculty and students the opportunity to practice their profession in 
+                actual and real cases/situations. The competencies are ably executed while at the same time assisting the communities in 
+                their needs and problems. Hence, all CES programs, projects, and activities must be specialized-based.
+              </h3>
+              <h3 class="text-dark" align="justify">
+                Recognizing the multi-faceted character of socio-cultural, economic and political realities academic and 
+                administrative units will be tapped to work together in crafting comprehensive extension initiatives, multi and inter-disciplinary 
+                approaches will be used. Also, to ensure the responsiveness of all extension works communities, 
+                organizations, and institutions are treated not as beneficiaries only but as partners. The latter 
+                are believed to have the capacities essential for making CES programs work, there shall be no denying of their contributions to as
+                partners. Hence, all CES programs, projects, and activities must be collaborative and inclusive.
+              </h3>
+              <h3 class="text-dark" align="justify">
+                Since CES undertakings are intended to be programmatic, outputs and outcomes are both tangible and intangible 
+                results that must come out of the program, they are to be mmeasured and gauged. These outputs and outcomes serve as 
+                guideposts in determining whether interventions have impact to these lives of both partners. Moreover, it is essential to 
+                ensure that interventions don't have limited lifespans but one that can continue to serve the purpose as possible. Hence, all 
+                CES programs, projects, and activities must be sustainable and outcomes-based.
+              </h3>
+              <h3 class="text-dark" align="justify">
+                What is important to underlie all of the above guiding principles of CES is the value of voluntarism, one that defines 
+                the character of extension service.
+              </h3>
+              <img src="images/gp.png">
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of GUIDING PRINCIPLES ON THE NATURE OF COMMUNITY EXTENSION SERVICES-->
+
 <div class="container text-center" id="contact">
   <div class="row">
     <div class="col-md-12 text-center" style="margin-top:5%">
       <div data-aos="fade-down" data-aos-duration="2000">
-        <h1 style='font-family: "Roboto Black"'>Contact Us</h1>
+        <h1 class="roboto-text">Contact Us</h1>
       </div>
       <div class="ml-5 mr-5">
         <div data-aos="fade-down" data-aos-duration="2000">
