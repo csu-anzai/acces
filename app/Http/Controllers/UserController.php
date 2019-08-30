@@ -37,9 +37,9 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(UserRequest $request, User $model)
+    public function store(UserRequest $request, User $user)
     {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+        $user->insertOrUpdate($request);
 
         Alert::success(' ', 'User successfully created!');
         return redirect()->route('user.index');
@@ -65,10 +65,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User  $user)
     {
-        $user->update(
-            $request->merge(['password' => Hash::make($request->get('password'))])
-                ->except([$request->get('password') ? '' : 'password']
-        ));
+        $user->insertOrUpdate($request);
 
         Alert::success(' ', 'User successfully updated!');
         return redirect()->route('user.index');

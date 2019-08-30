@@ -36,8 +36,12 @@ class CreateProposalsTable extends Migration
 
             //Foreign Key
             $table->unsignedInteger('creator_id');
+            $table->unsignedInteger('reviewer_one_id')->nullable()->default(NULL);
+            $table->unsignedInteger('reviewer_two_id')->nullable()->default(NULL);
             
             $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('reviewer_one_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('reviewer_two_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

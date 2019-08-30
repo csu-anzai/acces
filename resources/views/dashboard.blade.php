@@ -119,6 +119,7 @@ $dean_ids = [7];
                   ->join('users', 'users.id', '=', 'proposals.creator_id')
                   ->join('processes', 'processes.proposal_id', '=', 'proposals.id')
                   ->where([
+                     ['proposals.status', 'Pending'],
                      ['processes.status', 'For Department Chair Endorsement'],
                      ['department_id', Auth::user()->department_id]
                   ])

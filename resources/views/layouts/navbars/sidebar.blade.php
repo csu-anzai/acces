@@ -1,9 +1,8 @@
 <?php
-  $result = DB::table('users')
-    ->join('designations', 'designations.id', '=', 'designation_id')
-    ->where('users.id', auth()->user()->id)
-    ->first();
+  $user = \App\User::find(Auth::user()->id);
 
+  $result = $user::with('designation')->first();
+  
   $pending_ids = [1, 2, 3, 4, 5]
 ?>
 
@@ -21,8 +20,8 @@
   <div class="sidebar-wrapper">
     <ul class="nav">
       <div class="alert alert-{{ $activePage == 'profile' ? 'warning' : 'success' }} ml-3" role="alert">
-        <a href="{{ route('profile.edit') }}" class="alert-link">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a><br>
-        {{$result->name}}
+        <a href="{{ route('profile.edit') }}" class="alert-link mb-3">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a>
+        <div>{{$result->designation->name}}</div>    
       </div>
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">

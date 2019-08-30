@@ -69,16 +69,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'department_id' => $data['department'],
-            'email' => $data['email'],
-            'contact' => $data['contact'],
-            'username' => $data['username'],
-            'password' => Hash::make($data['password']),
-            'organization_id' => $data['organization'],
-            'designation_id' => $data['designation'],
-        ]);
+        $user = new \App\User;
+
+        $department = \App\Department::find($data['department']);
+        $organization = \App\Organization::find($data['organization']);
+        $designation = \App\Designation::find($data['designation']);
+
+        $user->fill($data);
+        $user->password = Hash::make($data['password']);
+        $user->department()->associate($department);
+        $user->organization()->associate($organization);
+        $user->designation()->associate($designation);
+        
+        $user->save();
+        return $user;
     }
 }
