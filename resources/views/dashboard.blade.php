@@ -71,16 +71,10 @@ $dean_ids = [7];
             @foreach($first_stage_status as $status)
             <div class="tab-pane {{ $status == $first_stage_status[0] ? ' active' : '' }}" id="{{strToLower($status)}}">
             <?php
-               $proposals = DB::table('proposals')
-               ->leftJoin('processes', 'processes.proposal_id', 'proposals.id')
-               ->where([
-                  ['creator_id', Auth::user()->id],
-                  ['proposals.status', $status]
-               ])
-               ->select('processes.status as status', 'proposals.id as id', 'title', 'proposals.created_at as created_at')
-               ->get();
+               $user = \App\User::find(Auth::user()->id);
+               $proposals = $user->proposals->where('status', $status);
             ?>
-            @if(!$proposals->isEmpty())                 
+            @if(!$proposals->isEmpty())
                <table class="table">
                   <thead>
                      <th><strong>#</strong></th>

@@ -14,6 +14,6 @@ class Process extends Model
 
     public function proposal()
     {
-        return $this->hasOne('App\Proposal');
+        return $this->belongsTo('App\Proposal');
     }
 }
