@@ -7,7 +7,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-success">
-            <h3 class="card-title" style='font-family: "Roboto Black";'>Form A</h3>
+            <h3 class="card-title" style='font-weight: 900'>Form A</h3>
             <p class="card-category"> {{ __('CES Program/Project/Activity Proposal') }}</p>
           </div>
         <div class="card-body mt-4">

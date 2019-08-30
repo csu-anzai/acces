@@ -209,7 +209,7 @@ $dean_ids = [7];
                <div class="container">
                   <div class="row">
                      <div class="col-md-12 text-center mb-4">
-                        <h3 style='font-family: "Roboto Black"; margin-top: -3%'><strong>Create Proposal</strong></h3>
+                        <h3 style='font-weight: 900; margin-top: -3%'><strong>Create Proposal</strong></h3>
                         <h4>Types of CES Program/Project/Activity Proposals</h4>
                      </div>
                   </div>
@@ -290,7 +290,7 @@ $dean_ids = [7];
                <div class="container">
                   <div class="row">
                      <div class="col-md-8">
-                        <h3 style='font-family: "Roboto Black";'><strong id="proposal-modal-title"></strong></h3>
+                        <h3 style='font-weight: 900;'><strong id="proposal-modal-title"></strong></h3>
                         <h4 id="proposal-modal-cestype"></h4>
                         <h4 style="margin-top:3%" id="proposal-modal-venue"></h4>
                         <h4 id="proposal-modal-date"></h4>

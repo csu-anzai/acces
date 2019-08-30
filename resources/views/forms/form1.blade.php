@@ -29,21 +29,21 @@ $temp = 0;
                      <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                            <a class="nav-link active" id="forma" href="#form-a" data-toggle="tab">
-                              <h3 class="card-title" style='font-family: "Roboto Black";'><i class="material-icons" style="font-size: 35px">looks_one</i> Form A</h3>
+                              <h3 class="card-title" style='font-weight: 900'><i class="material-icons" style="font-size: 35px">looks_one</i> Form A</h3>
                               <p class="card-category"> {{ __('CES Program/Project/Activity Proposal (Concept Note)') }}</p>
                               <div class="ripple-container"></div>
                            </a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" id="formb" href="#form-b" data-toggle="tab">
-                              <h3 class="card-title" style='font-family: "Roboto Black";'><i class="material-icons" style="font-size: 35px">looks_two</i> Form B</h3>
+                              <h3 class="card-title" style='font-weight: 900'><i class="material-icons" style="font-size: 35px">looks_two</i> Form B</h3>
                               <p class="card-category"> {{ __('CES Program/Project/Activity Proposal (Details)') }}</p>
                               <div class="ripple-container"></div>
                            </a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" id="formreview" href="#form-review" data-toggle="tab" onclick="submitDetails();">
-                              <h3 class="card-title" style='font-family: "Roboto Black";'><i class="material-icons" style="font-size: 35px">looks_3</i> Review</h3>
+                              <h3 class="card-title" style='font-weight: 900'><i class="material-icons" style="font-size: 35px">looks_3</i> Review</h3>
                               <p class="card-category"> {{ __('Review and submit the proposal') }}</p>
                               <div class="ripple-container"></div>
                            </a>

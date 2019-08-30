@@ -142,7 +142,7 @@ $organizations = DB::table('organizations')->get();
         ">
       </div>
       <div data-aos="fade-up" data-aos-duration="2000">
-        <h1 class="text-dark" style='font-family: "Roboto Black"; margin-top: 1%'>What is <strong style="color:forestgreen">Community Extension Service</strong>?</h1>
+        <h1 class="text-dark" style='font-weight: 900; margin-top: 1%'>What is <strong style="color:forestgreen">Community Extension Service</strong>?</h1>
       </div>
       <div class="ml-5 mr-5">
         <div data-aos="fade-up" data-aos-duration="2000">
@@ -165,7 +165,7 @@ $organizations = DB::table('organizations')->get();
 <div class="container">
   <div class="row">
     <div class="col-md-6" style="margin-top:8%; padding-left:15%" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-sine">
-      <h1 style='font-family: "Roboto Black"'>OBJECTIVES</h1>
+      <h1 style='font-weight: 900'>OBJECTIVES</h1>
     </div>
     <div class="col-md-6 mt-5" data-aos="fade-left" data-aos-duration="1000" data-aos-easing="ease-in-sine">
       <h4><strong>&bull;</strong> Extension services are integral to the learning experience and research opportunities of students.</h4>
@@ -178,12 +178,12 @@ $organizations = DB::table('organizations')->get();
       <h4>For USC to contribute to nation building by providing highly specialized curricular programs with extension services that allow students, faculty, and staff to apply the new knowledge they generate by empowering communities, organizations, and institutions through a transformatory approach in addressing specific social development problems.</h4>
     </div>
     <div class="col-md-6" style="margin-top:8%; padding-right:15%" data-aos="fade-left" data-aos-duration="1000" data-aos-easing="ease-in-sine">
-      <h1 style='font-family: "Roboto Black"'>GOALS</h1>
+      <h1 style='font-weight: 900'>GOALS</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6" style="margin-top:10%; padding-left:5%" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-sine">
-      <h1 style='font-family: "Roboto Black"'>KEY RESULT AREA</h1>
+      <h1 style='font-weight: 900'>KEY RESULT AREA</h1>
     </div>
     <div class="col-md-6 mt-5" data-aos="fade-left" data-aos-duration="1000" data-aos-easing="ease-in-sine">
       <h4><strong>&bull;</strong> Context-responsive CES programs and projects.</h4>
@@ -202,7 +202,7 @@ $organizations = DB::table('organizations')->get();
         <h2 class="text-dark" style='margin-top: 5%'>Our Inspiration</h2>
       </div>
       <div data-aos="fade-up" data-aos-duration="2000">
-        <h1 class="text-warning" style='font-family: "Roboto Black"; margin-top: 1%'>SVD Charism and Congregational Directions</h1>
+        <h1 class="text-warning" style='font-weight: 900; margin-top: 1%'>SVD Charism and Congregational Directions</h1>
       </div>
       <div class="ml-5 mr-5">
         <div data-aos="fade-up" data-aos-duration="2000">
@@ -247,7 +247,7 @@ $organizations = DB::table('organizations')->get();
   <div class="row">
     <div class="col-md-12 text-center" style="margin-top:5%">
       <div data-aos="fade-down" data-aos-duration="2000">
-        <h1 style='font-family: "Roboto Black"'>Contact Us</h1>
+        <h1 style='font-weight: 900'>Contact Us</h1>
       </div>
       <div class="ml-5 mr-5">
         <div data-aos="fade-down" data-aos-duration="2000">
@@ -478,7 +478,8 @@ $organizations = DB::table('organizations')->get();
 <script>
   //Preloader
   window.onload = function() {
-    // loader on page load 
+    // loader on page load     
+    $(window).scrollTop(0);
     $('.loader').fadeOut();
   }
 
@@ -514,15 +515,6 @@ $organizations = DB::table('organizations')->get();
     });
   });
 
-  $("a[href^='#']").click(function(e) {
-    e.preventDefault();
-
-    var position = $($(this).attr("href")).offset().top;
-
-    $("body, html").animate({
-      scrollTop: position
-    } /* speed */ );
-  });
 
   //Dynamic department dropbox
   $("#school_dropbox").change(function() {
