@@ -37,7 +37,7 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(UserRequest $request, User $model)
+    public function store(UserRequest $request, User $user)
     {
         $user->insertOrUpdate($request);
 

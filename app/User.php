@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class User extends Authenticatable
@@ -51,6 +52,10 @@ class User extends Authenticatable
         $this->organization()->associate($organization);
         $this->designation()->associate($designation);
         
+        if($request->has('password')){
+            $this->password = Hash::make($request->input('password'));
+        }
+
         $this->save();
 
         return $this;
