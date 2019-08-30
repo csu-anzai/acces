@@ -63,7 +63,7 @@ class User extends Authenticatable
 
     public function proposals()
     {
-        return $this->hasMany('App\Proposal');
+        return $this->hasMany('App\Proposal', 'creator_id');
     }
 
     public function department()

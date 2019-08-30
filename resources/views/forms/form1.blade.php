@@ -2,9 +2,7 @@
 @section('content')
 
 <?php
-$schools = DB::table('schools')
-   ->where('id', '!=', 8)
-   ->get();
+$schools = App\School::all()->except(8);
 
 $ctr = 3;
 $temp = 0;
@@ -376,7 +374,7 @@ $temp = 0;
                                           <tr>
                                           <?php $temp = $ctr ?>
                                        @endif
-                                             <?php $departments = DB::table('departments')->where('school_id', $school->id)->get();?>
+                                             <?php $departments = $school->departments?>
                                              <td>
                                                 <!--look here-->
                                                 <div class="custom-control custom-checkbox">
@@ -2313,18 +2311,18 @@ $temp = 0;
               headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
-              url: "/sendForm",
+              url: "/sendProposal",
               type: "POST",
               data: {
                 title: $('#input-title').val(), 
-                CEStype: $('#input-ces-type').val(), 
-                startDate: $('#input-start-date').val(), 
-                endDate: $('#input-end-date').val(), 
+                CES_type: $('#input-ces-type').val(), 
+                start_date: $('#input-start-date').val(), 
+                end_date: $('#input-end-date').val(), 
                 venue: $('#input-venue').val(), 
                 status: "Draft",
-                json_A: json_A,
-                json_B: json_B,
-                userId: {{ Auth::user()->id}}
+                proposal_json_A: json_A,
+                proposal_json_B: json_B,
+                creator_id: {{ Auth::user()->id}}
               },
               success: function(result){
                  console.log(json_A, json_B);
@@ -2580,11 +2578,13 @@ $temp = 0;
               headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
-              url: "/updateForm",
+              url: "/updateProposal",
               type: "POST",
               data: {
                id: $('#review-title').val(),
-               status: "Pending"
+               proposal_status: "Pending",
+               process_status: "For Department Chair Endorsement",
+               submitted_by: {{Auth::user()->id}}
               },
               success: function(result){               
                   Swal.fire({

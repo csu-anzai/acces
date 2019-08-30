@@ -16,21 +16,21 @@ class Proposal extends Model
 
     public function creator()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function process()
     {
-        return $this->belongsTo('App\Process');
+        return $this->hasOne('App\Process');
     }
 
     public function reviewer_one()
     {
-        return $this->belongsTo('App\User')
+        return $this->belongsTo('App\User');
     }
 
     public function reviewer_two()
     {
-        return $this->belongsTo('App\User')
+        return $this->belongsTo('App\User');
     }
 }

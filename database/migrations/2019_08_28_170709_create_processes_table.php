@@ -23,11 +23,11 @@ class CreateProcessesTable extends Migration
                 'For Review Committee Assignment',
                 'For VPAA Approval'
             ));
-            $table->json('history');
+            $table->json('history')->nullable()->default(NULL);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 
-            //Foreign Keys
+            //Foreign Key
             $table->unsignedInteger('proposal_id');
 
             $table->foreign('proposal_id')->references('id')->on('proposals')->onDelete('cascade');

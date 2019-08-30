@@ -3,52 +3,54 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Proposal;
 use Illuminate\Http\Request;
 
 class AjaxController extends Controller
 {
     public function getDepartments(Request $request){
         $id = $request->input('id');
-        
-        $departments = DB::table('departments')
-            ->where('school_id', $id)
-            ->get();
+
+        $school = \App\School::find($id);
+
+        $departments = $school->departments;
 
         return response()->json(array('departments'=> $departments), 200);
      }
 
      public function insertProposal(Request $request){
-        $id = DB::table('proposals')->insertGetId([
-            'title' => $request->input('title'),
-            'CES_type' => $request->input('CEStype'),
-            'start_date' => $request->input('startDate'),
-            'end_date' => $request->input('endDate'),
-            'venue' => $request->input('venue'),
-            'status' => $request->input('status'),
-            'proposal_json_A' => $request->input('json_A'),
-            'proposal_json_B' => $request->input('json_B'),
-            'creator_id' => $request->input('userId')
-       ]);
+       $proposal = new \App\Proposal;
+       $user = \App\User::find($request->input('creator_id'));
+
+       $proposal->fill($request->all());
+       $proposal->creator()->associate($user);
+       $proposal->save();
        
-        return response()->json($id, 200);
+        return response()->json($proposal->id, 200);
     }
 
     public function updateProposal(Request $request){
-        DB::table('proposals')
-            ->where('id', $request->input('id'))
-            ->update([
-                'status' => $request->input('status')
-            ]);
-        
-            $proposal = DB::table('proposals')
-                ->where('id', $request->input('id'))
-                ->first();
+        $proposal = \App\Proposal::find($request->input('id'));
+        $proposal->status = $request->input('proposal_status');
+        $proposal->save();
 
-        DB::table('processes')
-            ->insert([
-                'proposal_id' => $proposal->id,
-                'status' => 'For Department Chair Endorsement'
-            ]);
+        $process = ($proposal->process()->exists())? $proposal->process() : new \App\Process ;
+        $process->status = $request->input('process_status');
+        $process->proposal()->associate($proposal);
+        $process->save();
+
+        $history = [];
+        $history['submitted_by'] = $request->input('submitted_by');
+        $history['submitted_at'] = (string)$process->updated_at;
+        $json = json_encode($history);
+
+        if(is_null($process->history) == false){
+            //Not Sure if this line will work
+            $json = $process->history + ", " + $json;
+        }
+
+        $process->history = $json;
+        $process->save();
 
         return response("Update Successful", 200);
     }
