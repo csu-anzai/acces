@@ -490,13 +490,13 @@ $organizations = DB::table('organizations')->get();
                 The needs of its context must be considered of primary importance in developing a CES Program and in organizing 
                 pertinent activities. Data and information must be gathered using valid and reliable tools to serve as bases for the
                 university, through its units, to offer appropriate and relevant response to community needs. All CES programs, projects, 
-                and activities must be context-responsive.
+                and activities must be <strong>context-responsive.</strong>
               </h3>
               <h3 class="text-dark" align="justify">
                 In creating a truly appropriate and relevant response, the discipline that can best provide the extension service be 
                 tapped and mobilized. This shall essentially provide faculty and students the opportunity to practice their profession in 
                 actual and real cases/situations. The competencies are ably executed while at the same time assisting the communities in 
-                their needs and problems. Hence, all CES programs, projects, and activities must be specialized-based.
+                their needs and problems. Hence, all CES programs, projects, and activities must be <strong>specialized-based.</strong>
               </h3>
               <h3 class="text-dark" align="justify">
                 Recognizing the multi-faceted character of socio-cultural, economic and political realities academic and 
@@ -504,17 +504,17 @@ $organizations = DB::table('organizations')->get();
                 approaches will be used. Also, to ensure the responsiveness of all extension works communities, 
                 organizations, and institutions are treated not as beneficiaries only but as partners. The latter 
                 are believed to have the capacities essential for making CES programs work, there shall be no denying of their contributions to as
-                partners. Hence, all CES programs, projects, and activities must be collaborative and inclusive.
+                partners. Hence, all CES programs, projects, and activities must be <strong>collaborative and inclusive.</strong>
               </h3>
               <h3 class="text-dark" align="justify">
                 Since CES undertakings are intended to be programmatic, outputs and outcomes are both tangible and intangible 
                 results that must come out of the program, they are to be mmeasured and gauged. These outputs and outcomes serve as 
                 guideposts in determining whether interventions have impact to these lives of both partners. Moreover, it is essential to 
                 ensure that interventions don't have limited lifespans but one that can continue to serve the purpose as possible. Hence, all 
-                CES programs, projects, and activities must be sustainable and outcomes-based.
+                CES programs, projects, and activities must be <strong>sustainable and outcomes-based.</strong>
               </h3>
               <h3 class="text-dark" align="justify">
-                What is important to underlie all of the above guiding principles of CES is the value of voluntarism, one that defines 
+                What is important to underlie all of the above guiding principles of CES is the value of <strong>voluntarism,</strong> one that defines 
                 the character of extension service.
               </h3>
               <img src="images/gp.png">
