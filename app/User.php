@@ -41,6 +41,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function proposals()
+    {
+        return $this->hasMany('App\Proposal', 'creator_id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
+    }
+
+    public function designation()
+    {
+        return $this->belongsTo('App\Designation');
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo('App\Organization');
+    }
+
     public function insertOrUpdate(Request $request)
     {
         $department = \App\Department::find($request->input('department_id'));
@@ -61,23 +81,7 @@ class User extends Authenticatable
         return $this;
     }
 
-    public function proposals()
-    {
-        return $this->hasMany('App\Proposal', 'creator_id');
-    }
-
-    public function department()
-    {
-        return $this->belongsTo('App\Department');
-    }
-
-    public function designation()
-    {
-        return $this->belongsTo('App\Designation');
-    }
-
-    public function organization()
-    {
-        return $this->belongsTo('App\Organization');
+    public function getFullName(){
+        return $this->firstname  ." ". $this->lastname;
     }
 }

@@ -1,9 +1,9 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Proposals')])
 @section('content')
 <?php 
-$first_stage_ids = [1, 2, 3, 5];
+$first_stage_ids = [1, 2, 3, 4, 5];
 $first_stage_status = ['Draft', 'Returned', 'Pending'];
-$coord_status = ['Draft', 'Returned', 'Pending', 'Review', 'Pending'];
+$coord_status = ['Draft', 'Returned', 'Pending', 'Review', 'Recommendation'];
 
 $chair_id = 6;
 $coord_id = 7;
@@ -48,7 +48,7 @@ $designation_id = Auth::user()->designation_id;
                      <!-- CES Coordinator -->
                      @if($designation_id == $coord_id)
                      <li class="nav-item">
-                        <a class="nav-link" href="#for-review" data-toggle="tab">
+                        <a class="nav-link" href="#review" data-toggle="tab">
                            <i class="material-icons">assignment_late</i> For Review
                            <div class="ripple-container"></div>
                         </a>
@@ -80,14 +80,14 @@ $designation_id = Auth::user()->designation_id;
                   <!-- CES Director -->
                   @elseif($designation_id == $director_id)
                      <li class="nav-item">
-                        <a class="nav-link active" href="#for-dean-endorsement" data-toggle="tab">
+                        <a class="nav-link active" href="#for-assignment-committee" data-toggle="tab">
                            <i class="material-icons">assignment_ind</i> For Assignment of Committee Review
                            <div class="ripple-container"></div>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#for-dean-endorsement" data-toggle="tab">
-                           <i class="material-icons">assignment_ind</i> Pending/For Endorsement
+                        <a class="nav-link" href="#for-pending-endorsement" data-toggle="tab">
+                           <i class="material-icons">assignment_ind</i> Pending / For Endorsement
                            <div class="ripple-container"></div>
                         </a>
                      </li>
@@ -121,10 +121,54 @@ $designation_id = Auth::user()->designation_id;
             <div class="tab-pane {{ $status == $first_stage_status[0] ? ' active' : '' }}" id="{{strToLower($status)}}">
             <?php
                $user = \App\User::find(Auth::user()->id);
-               $proposals = $user->proposals->where('status', $status);
+
+               if($designation_id == $coord_id && ($status == $coord_status[3] || $status == $coord_status[4])){
+
+                  //If For Approval
+                  if($status == $coord_status[4]){
+                     $proposals = \App\Proposal::getProposalBy(true, $user->department->school->id, 'For CES Coordinator Endorsement');
+                  }else{
+                     //If Review ( Temp )
+                     $proposals = $user->proposals->where('status', $status);
+                  }
+
+               }else{
+                  $proposals = $user->proposals->where('status', $status);
+               }
             ?>
             @if(!$proposals->isEmpty())
                <table class="table">
+
+               <!-- Table Content for CES Coordinator -->
+               @if($designation_id == $coord_id && ($status == $coord_status[3] || $status == $coord_status[4]))
+               <!-- If For approval -->
+               @if($status == $coord_status[4])
+                  <thead>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Submitted By</strong></th>
+                     <th><strong>Date Submitted</strong></th>
+                     <th></th>
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     <?php 
+                        $user = \App\User::find($proposal->process->getLatestSubmittedBy());
+                     ?>
+                     <tr>
+                        <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                        <td data-id="{{$user->id}}">{{$user->getFullName()}}</td>
+                        <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
+                        <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For School Dean Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
+                     </tr>
+                     @endforeach
+                  </tbody>
+               <!-- If For Review -->
+               @else
+
+               @endif
+
+               <!-- Table Content for Co, Extra Curricular, Faculty, CES Representative -->
+               @else
                   <thead>
                      <th><strong>#</strong></th>
                      <th><strong>Title of Project/Program/Activity Proposal</strong></th>
@@ -145,6 +189,7 @@ $designation_id = Auth::user()->designation_id;
                      </tr>
                      @endforeach
                   </tbody>
+               @endif
                </table>
             @else
                <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
@@ -158,16 +203,7 @@ $designation_id = Auth::user()->designation_id;
             <div class="tab-pane active" id="to-be-noted">
 
             <?php 
-            $proposals = DB::table('proposals')
-                  ->join('users', 'users.id', '=', 'proposals.creator_id')
-                  ->join('processes', 'processes.proposal_id', '=', 'proposals.id')
-                  ->where([
-                     ['proposals.status', 'Pending'],
-                     ['processes.status', 'For Department Chair Endorsement'],
-                     ['department_id', Auth::user()->department_id]
-                  ])
-                  ->select('proposals.id as id', 'title', 'proposals.updated_at as updated_at', 'users.firstname', 'users.lastname')
-                  ->get();
+               $proposals = \App\Proposal::getProposalBy(false, Auth::user()->department_id, 'For Department Chair Endorsement');
             ?>
 
             @if(!$proposals->isEmpty())                 
@@ -182,7 +218,7 @@ $designation_id = Auth::user()->designation_id;
                      @foreach($proposals as $proposal)
                      <tr>
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                        <td>{{$proposal->firstname}} {{$proposal->lastname}}</td>
+                        <td>{{$proposal->creator->getFullName()}}</td>
                         <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
                         <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For CES Coordinator Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
                      </tr>
@@ -200,38 +236,32 @@ $designation_id = Auth::user()->designation_id;
             <div class="tab-pane active" id="for-dean-endorsement">
 
             <?php 
-            $department = \App\Department::find(Auth::user()->department_id);
-
-            $proposals = DB::table('proposals')
-                  ->join('processes', 'processes.proposal_id', '=', 'proposals.id')
-                  ->join('users', 'users.id', '=', 'proposals.creator_id')
-                  ->join('departments', 'departments.id', '=', 'users.department_id')
-                  ->where([
-                     ['proposals.status', 'Pending'],
-                     ['processes.status', 'For School Dean Endorsement'],
-                     ['school_id', $department->school_id]
-                  ])
-                  ->select('proposals.title as title', 'proposals.updated_at as updated_at')
-                  ->get();
+               $user = \App\User::find(Auth::user()->id);
+               $proposals = \App\Proposal::getProposalBy(true, $user->department->school->id, 'For School Dean Endorsement');
             ?>
 
             @if(!$proposals->isEmpty())                 
-               <table class="table">
-                  <thead>
-                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
-                     <th><strong>Submitted By</strong></th>
-                     <th><strong>Date Submitted</strong></th>
-                  </thead>
-                  <tbody>
-                     @foreach($proposals as $proposal)
-                     <tr>
-                        <td>{{$proposal->title}}</td>
-                        <td>{{$proposal->title}}</td>
-                        <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
-                     </tr>
-                     @endforeach
-                  </tbody>
-               </table>
+            <table class="table">
+               <thead>
+                  <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                  <th><strong>Submitted By</strong></th>
+                  <th><strong>Date Submitted</strong></th>
+                  <th></th>
+               </thead>
+               <tbody>
+                  @foreach($proposals as $proposal)
+                  <?php 
+                     $user = \App\User::find($proposal->process->getLatestSubmittedBy());
+                  ?>
+                  <tr>
+                     <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                     <td data-id="{{$user->id}}">{{$user->getFullName()}}</td>
+                     <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
+                     <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For Review Committee Assignment" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
+                  </tr>
+                  @endforeach
+               </tbody>
+            </table>
             @else
                <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
                <h3 class="text-center text-muted mb-5">No records found.</h3>
@@ -239,38 +269,72 @@ $designation_id = Auth::user()->designation_id;
             </div>
          <!-- For CES Direcotr -->
          @elseif($designation_id == $director_id)
-            <div class="tab-pane active" id="for-approval">
+            <!-- Table for assigning review committee -->
+            <div class="tab-pane active" id="for-assignment-committee">
 
             <?php 
-            $department = \App\Department::find(Auth::user()->department_id);
-
-            $proposals = \App\Proposal::
-                  join('processes', 'processes.proposal_id', '=', 'proposals.id')
-                  ->where([
-                     ['proposals.status', 'Pending'],
-                     ['processes.status', 'For VPAA Approval']
-                  ])
-                  ->select('proposals.title as title', 'proposals.updated_at as updated_at')
-                  ->get();
+               $proposals = \App\Proposal::getProposalByStatus('For Review Committee Assignment');
             ?>
 
             @if(!$proposals->isEmpty())                 
-               <table class="table">
-                  <thead>
-                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
-                     <th><strong>Submitted By</strong></th>
-                     <th><strong>Date Submitted</strong></th>
-                  </thead>
-                  <tbody>
-                     @foreach($proposals as $proposal)
-                     <tr>
-                        <td>{{$proposal->title}}</td>
-                        <td>{{$proposal->title}}</td>
-                        <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
-                     </tr>
-                     @endforeach
-                  </tbody>
-               </table>
+            <table class="table">
+               <thead>
+                  <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                  <th><strong>Submitted By</strong></th>
+                  <th><strong>Date Submitted</strong></th>
+                  <th></th>
+               </thead>
+               <tbody>
+                  @foreach($proposals as $proposal)
+                  <?php 
+                     $user = \App\User::find($proposal->process->getLatestSubmittedBy());
+                  ?>
+                  <tr>
+                     <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                     <td data-id="{{$user->id}}">{{$user->getFullName()}}</td>
+                     <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
+                     <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" class="text-warning btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
+                  </tr>
+                  @endforeach
+               </tbody>
+            </table>
+            @else
+               <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+               <h3 class="text-center text-muted mb-5">No records found.</h3>
+            @endif
+            </div>
+
+            <!-- Table for Pending or Approval -->
+            <div class="tab-pane" id="for-pending-approval">
+            
+            <?php 
+               $proposals = collect();
+            ?>
+
+            @if(!$proposals->isEmpty())                 
+            <table class="table">
+               <thead>
+                  <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                  <th><strong>Submitted By</strong></th>
+                  <th><strong>Date Submitted</strong></th>
+                  <th><strong>Review Committee</strong></th>
+                  <th><strong>Date Submitted</strong></th>
+                  <th></th>
+               </thead>
+               <tbody>
+                  @foreach($proposals as $proposal)
+                  <?php 
+                     $user = \App\User::find($proposal->process->getLatestSubmittedBy());
+                  ?>
+                  <tr>
+                     <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                     <td data-id="{{$user->id}}">{{$user->getFullName()}}</td>
+                     <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
+                     <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For CES Director Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
+                  </tr>
+                  @endforeach
+               </tbody>
+            </table>
             @else
                <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
                <h3 class="text-center text-muted mb-5">No records found.</h3>

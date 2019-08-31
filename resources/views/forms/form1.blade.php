@@ -2574,6 +2574,9 @@ $temp = 0;
          });
 
          $('#submitReview').click(function(){
+            //If coordinator
+            var status = ({{Auth::user()->id}} == 7) ? "For School Dean Endorsement" : "For Department Chair Endorsement" ;
+
             $.ajax({
               headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2583,7 +2586,7 @@ $temp = 0;
               data: {
                id: $('#review-title').val(),
                proposal_status: "Pending",
-               process_status: "For Department Chair Endorsement",
+               process_status: status,
                submitted_by: {{Auth::user()->id}}
               },
               success: function(result){               

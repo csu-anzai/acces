@@ -35,4 +35,14 @@ class Process extends Model
 
         $this->save();
     }
+
+    public function getLatestSubmittedBy(){
+        $history = $this->history;
+        return end($history['submitted_by']);
+    }
+
+    public function getLatestSubmittedAt(){
+        $history = $this->history;
+        return end($history['submitted_at']);
+    }
 }
