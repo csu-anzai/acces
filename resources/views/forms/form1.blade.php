@@ -2311,7 +2311,7 @@ $temp = 0;
               headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
-              url: "/sendProposal",
+              url: "/createProposal",
               type: "POST",
               data: {
                 title: $('#input-title').val(), 
@@ -2578,7 +2578,7 @@ $temp = 0;
               headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
-              url: "/updateProposal",
+              url: "/submitProposal",
               type: "POST",
               data: {
                id: $('#review-title').val(),

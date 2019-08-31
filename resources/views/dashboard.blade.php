@@ -3,9 +3,15 @@
 <?php 
 $first_stage_ids = [1, 2, 3, 5];
 $first_stage_status = ['Draft', 'Returned', 'Pending'];
+$coord_status = ['Draft', 'Returned', 'Pending', 'Review', 'Pending'];
 
-$chair_ids = [6];
-$dean_ids = [7];
+$chair_id = 6;
+$coord_id = 7;
+$dean_id = 8;
+$director_id = 9;
+$vpaa_id = 10;
+
+$designation_id = Auth::user()->designation_id;
 ?>
 
 <title>ACCES - Home</title>
@@ -18,8 +24,8 @@ $dean_ids = [7];
             <div class="nav-tabs-navigation">
                <div class="nav-tabs-wrapper">
                   <ul class="nav nav-tabs" data-tabs="tabs">
-                  <!-- Co, Extra Curricular, Faculty, CES Representative -->
-                  @if(in_array(Auth::user()->designation_id, $first_stage_ids))
+                  <!-- Co, Extra Curricular, Faculty, CES Representative AND CES Coordinator-->
+                  @if(in_array($designation_id, $first_stage_ids) || $designation_id == $coord_id)
                      <li class="nav-item">
                         <a class="nav-link active" href="#draft" data-toggle="tab">
                            <i class="material-icons">library_books</i> Drafts
@@ -39,18 +45,57 @@ $dean_ids = [7];
                         </a>
                      </li>
 
+                     <!-- CES Coordinator -->
+                     @if($designation_id == $coord_id)
+                     <li class="nav-item">
+                        <a class="nav-link" href="#for-review" data-toggle="tab">
+                           <i class="material-icons">assignment_late</i> For Review
+                           <div class="ripple-container"></div>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#recommendation" data-toggle="tab">
+                           <i class="material-icons">assignment_ind</i> Recommendation
+                           <div class="ripple-container"></div>
+                        </a>
+                     </li>
+                     @endif
+
                   <!-- Department Chair -->
-                  @elseif(in_array(Auth::user()->designation_id, $chair_ids))
+                  @elseif($designation_id == $chair_id)
                      <li class="nav-item">
                         <a class="nav-link active" href="#to-be-noted" data-toggle="tab">
                            <i class="material-icons">assignment_ind</i> To be Noted
                            <div class="ripple-container"></div>
                         </a>
                      </li>                  
-                  @elseif(in_array(Auth::user()->designation_id, $dean_ids))
+                  <!-- Dean -->
+                  @elseif($designation_id == $dean_id)
                      <li class="nav-item">
                         <a class="nav-link active" href="#for-dean-endorsement" data-toggle="tab">
                            <i class="material-icons">assignment_ind</i> For Endorsement
+                           <div class="ripple-container"></div>
+                        </a>
+                     </li>
+                  <!-- CES Director -->
+                  @elseif($designation_id == $director_id)
+                     <li class="nav-item">
+                        <a class="nav-link active" href="#for-dean-endorsement" data-toggle="tab">
+                           <i class="material-icons">assignment_ind</i> For Assignment of Committee Review
+                           <div class="ripple-container"></div>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#for-dean-endorsement" data-toggle="tab">
+                           <i class="material-icons">assignment_ind</i> Pending/For Endorsement
+                           <div class="ripple-container"></div>
+                        </a>
+                     </li>
+                  <!-- VPAA -->
+                  @elseif($designation_id == $vpaa_id)
+                     <li class="nav-item">
+                        <a class="nav-link active" href="#for-approval" data-toggle="tab">
+                           <i class="material-icons">assignment_ind</i> For Approval
                            <div class="ripple-container"></div>
                         </a>
                      </li>
@@ -63,11 +108,15 @@ $dean_ids = [7];
          
          <div class="tab-content">
 
-         <!-- For Co, Extra curricular, Faculty -->
-         @if(in_array(Auth::user()->designation_id, $first_stage_ids))
+         <!-- For Co, Extra curricular, Faculty, CES Representative AND CES Coordinator-->
+         @if(in_array($designation_id, $first_stage_ids) || $designation_id == $coord_id)
             <button class="btn btn-success btn-round btn-lg btn-fab" style="position: fixed; bottom: 10%; right: 4%;"  data-toggle="modal" data-target="#formModal" rel="tooltip" data-placement="left" title="Create New Proposal">
             <i class="material-icons" style="font-size: 35px">add</i>
             </button>
+            @if($designation_id == $coord_id)
+            <?php $first_stage_status = $coord_status;?>
+            @endif
+
             @foreach($first_stage_status as $status)
             <div class="tab-pane {{ $status == $first_stage_status[0] ? ' active' : '' }}" id="{{strToLower($status)}}">
             <?php
@@ -105,7 +154,7 @@ $dean_ids = [7];
             @endforeach
          
          <!-- For Department Chair -->
-         @elseif(in_array(Auth::user()->designation_id, $chair_ids))
+         @elseif($designation_id == $chair_id)
             <div class="tab-pane active" id="to-be-noted">
 
             <?php 
@@ -135,7 +184,7 @@ $dean_ids = [7];
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
                         <td>{{$proposal->firstname}} {{$proposal->lastname}}</td>
                         <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
-                        <td><a href="#" class="text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
+                        <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For CES Coordinator Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
                      </tr>
                      @endforeach
                   </tbody>
@@ -147,18 +196,98 @@ $dean_ids = [7];
             </div>
 
          <!-- For Dean -->
-         @elseif(in_array(Auth::user()->designation_id, $dean_ids))
+         @elseif($designation_id == $dean_id)
             <div class="tab-pane active" id="for-dean-endorsement">
 
             <?php 
-            $department = DB::table('departments')->where('id', Auth::user()->department_id)->first();
+            $department = \App\Department::find(Auth::user()->department_id);
+
             $proposals = DB::table('proposals')
                   ->join('processes', 'processes.proposal_id', '=', 'proposals.id')
-                  ->join('users', 'users.id', '=', 'processes.pending_id')
+                  ->join('users', 'users.id', '=', 'proposals.creator_id')
                   ->join('departments', 'departments.id', '=', 'users.department_id')
                   ->where([
-                     ['status', 'Pending'],
+                     ['proposals.status', 'Pending'],
+                     ['processes.status', 'For School Dean Endorsement'],
                      ['school_id', $department->school_id]
+                  ])
+                  ->select('proposals.title as title', 'proposals.updated_at as updated_at')
+                  ->get();
+            ?>
+
+            @if(!$proposals->isEmpty())                 
+               <table class="table">
+                  <thead>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Submitted By</strong></th>
+                     <th><strong>Date Submitted</strong></th>
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     <tr>
+                        <td>{{$proposal->title}}</td>
+                        <td>{{$proposal->title}}</td>
+                        <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
+                     </tr>
+                     @endforeach
+                  </tbody>
+               </table>
+            @else
+               <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+               <h3 class="text-center text-muted mb-5">No records found.</h3>
+            @endif
+            </div>
+         <!-- For CES Direcotr -->
+         @elseif($designation_id == $director_id)
+            <div class="tab-pane active" id="for-approval">
+
+            <?php 
+            $department = \App\Department::find(Auth::user()->department_id);
+
+            $proposals = \App\Proposal::
+                  join('processes', 'processes.proposal_id', '=', 'proposals.id')
+                  ->where([
+                     ['proposals.status', 'Pending'],
+                     ['processes.status', 'For VPAA Approval']
+                  ])
+                  ->select('proposals.title as title', 'proposals.updated_at as updated_at')
+                  ->get();
+            ?>
+
+            @if(!$proposals->isEmpty())                 
+               <table class="table">
+                  <thead>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Submitted By</strong></th>
+                     <th><strong>Date Submitted</strong></th>
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     <tr>
+                        <td>{{$proposal->title}}</td>
+                        <td>{{$proposal->title}}</td>
+                        <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
+                     </tr>
+                     @endforeach
+                  </tbody>
+               </table>
+            @else
+               <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
+               <h3 class="text-center text-muted mb-5">No records found.</h3>
+            @endif
+            </div>
+         <!-- For VPAA -->
+         @elseif($designation_id == $vpaa_id)
+            <div class="tab-pane active" id="for-approval">
+
+            <?php 
+            $department = \App\Department::find(Auth::user()->department_id);
+
+            $proposals = \App\Proposal::
+                  join('processes', 'processes.proposal_id', '=', 'proposals.id')
+                  ->where([
+                     ['proposals.status', 'Pending'],
+                     ['processes.status', 'For VPAA Approval']
                   ])
                   ->select('proposals.title as title', 'proposals.updated_at as updated_at')
                   ->get();
@@ -455,6 +584,27 @@ $dean_ids = [7];
    </div>
    <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
    <script>
+      $(".forward-btn").click(function(){
+         $.ajax({
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          url: "/updateProcess",
+          type: "POST",
+          data: { 
+             proposal_id: $(this).data('id'), 
+             submitted_by: {{Auth::user()->id}},
+             status: $(this).data('status')
+         },
+          success: function(result){
+              console.log(result);
+          },
+          error: function(xhr, resp, text){
+              console.log(xhr, resp, text);
+          }
+        });
+      });
+      
       $(".proposal-titles").click(function(){
 
          //Action Buttons

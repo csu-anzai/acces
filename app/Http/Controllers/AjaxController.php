@@ -18,7 +18,7 @@ class AjaxController extends Controller
         return response()->json(array('departments'=> $departments), 200);
      }
 
-     public function insertProposal(Request $request){
+     public function createProposal(Request $request){
        $proposal = new \App\Proposal;
        $user = \App\User::find($request->input('creator_id'));
 
@@ -29,7 +29,7 @@ class AjaxController extends Controller
         return response()->json($proposal->id, 200);
     }
 
-    public function updateProposal(Request $request){
+    public function submitProposal(Request $request){
         $proposal = \App\Proposal::find($request->input('id'));
         $proposal->status = $request->input('proposal_status');
         $proposal->save();
@@ -46,12 +46,18 @@ class AjaxController extends Controller
             $history['submitted_by'] = [];
             $history['submitted_at'] = [];
         }
-
-        array_push($history['submitted_by'], $request->input('submitted_by'));
-        array_push($history['submitted_at'], (string)$process->updated_at);
-        
         $process->history = $history;
-        $process->save();
+
+        $process->updateProcess($request->input('submitted_by'), $request->input('process_status'));
+
+        return response("Submit Successful", 200);        
+    }
+
+    public function updateProcess(Request $request){
+        $proposal = \App\Proposal::find($request->input('proposal_id'));
+        $process  = $proposal->process;
+
+        $process->updateProcess($request->input('submitted_by'), $request->input('status'));
 
         return response("Update Successful", 200);
     }
