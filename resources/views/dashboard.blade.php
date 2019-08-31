@@ -88,7 +88,7 @@ $dean_ids = [7];
                      @foreach($proposals as $proposal)
                      <tr>
                         <td>{{$proposal->id}}</td>
-                        <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                        <td><a href="javascript:void(0);" data-status="{{$proposal->status}}" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
                         <td>{{\Carbon\Carbon::parse($proposal->created_at)->diffForHumans()}}</td>
                         @if($status == 'Pending')
                         <td>{{$proposal->process->status}}</td>
@@ -289,11 +289,17 @@ $dean_ids = [7];
                         <h4 style="margin-top:3%" id="proposal-modal-venue"></h4>
                         <h4 id="proposal-modal-date"></h4>
                      </div>
-                     <div class="col-md-4 mt-5">
-                        <button class="btn btn-default btn-lg btn-fab ml-2" rel="tooltip" data-placement="bottom" title="Add Comment.">
+
+                     <div class="col-md-4 mt-5" id="continue_editing">
+                        <button class="btn btn-success btn-lg btn-fab ml-4" style="width:100%" rel="tooltip" data-placement="bottom" title="Continue Editing">
+                        <i class="material-icons" style="font-size: 30px">edit</i>
+                        </button>
+                     </div>
+                     <div class="col-md-4 mt-5" id="comment_pdf">
+                        <button class="btn btn-default btn-lg btn-fab ml-2" rel="tooltip" data-placement="bottom" title="Add Comment">
                         <i class="material-icons" style="font-size: 30px">add_comment</i>
                         </button>
-                        <button class="btn btn-success  btn-lg btn-fab ml-3" rel="tooltip" data-placement="bottom" title="Generate PDF.">
+                        <button class="btn btn-success  btn-lg btn-fab ml-3" rel="tooltip" data-placement="bottom" title="Generate PDF">
                         <i class="material-icons" style="font-size: 30px">picture_as_pdf</i>
                         </button>
                      </div>
@@ -450,8 +456,17 @@ $dean_ids = [7];
    <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
    <script>
       $(".proposal-titles").click(function(){
-      
-        var proposal_id = $(this).attr('value')  
+
+         //Action Buttons
+         if($(this).data('status') == 'Draft'){
+            $("#comment_pdf").hide();
+            $("#continue_editing").show();
+         }else{
+            $("#continue_editing").hide();
+            $("#comment_pdf").show();
+         }
+
+        var proposal_id = $(this).attr('value');
       
         $.ajax({
           headers: {
