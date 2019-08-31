@@ -12,6 +12,10 @@ class Process extends Model
         'status', 'history'
     ];
 
+    protected $casts = [
+        'history' => 'array'
+    ];
+
     public function proposal()
     {
         return $this->belongsTo('App\Proposal');

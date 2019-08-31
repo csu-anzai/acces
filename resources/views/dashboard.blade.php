@@ -91,7 +91,7 @@ $dean_ids = [7];
                         <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
                         <td>{{\Carbon\Carbon::parse($proposal->created_at)->diffForHumans()}}</td>
                         @if($status == 'Pending')
-                        <td>{{$proposal->status}}</td>
+                        <td>{{$proposal->process->status}}</td>
                         @endif
                      </tr>
                      @endforeach
