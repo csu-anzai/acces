@@ -81,13 +81,13 @@ $designation_id = Auth::user()->designation_id;
                   @elseif($designation_id == $director_id)
                      <li class="nav-item">
                         <a class="nav-link active" href="#for-dean-endorsement" data-toggle="tab">
-                           <i class="material-icons">assignment_ind</i> For Assignment of Committee Review
+                           <i class="material-icons">supervisor_account</i> For Assignment of Committee Review
                            <div class="ripple-container"></div>
                         </a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#for-dean-endorsement" data-toggle="tab">
-                           <i class="material-icons">assignment_ind</i> Pending/For Endorsement
+                           <i class="material-icons">assignment_late</i> Pending/For Endorsement
                            <div class="ripple-container"></div>
                         </a>
                      </li>
@@ -237,7 +237,7 @@ $designation_id = Auth::user()->designation_id;
                <h3 class="text-center text-muted mb-5">No records found.</h3>
             @endif
             </div>
-         <!-- For CES Direcotr -->
+         <!-- For CES Director -->
          @elseif($designation_id == $director_id)
             <div class="tab-pane active" id="for-approval">
 
@@ -418,9 +418,8 @@ $designation_id = Auth::user()->designation_id;
                         <h4 style="margin-top:3%" id="proposal-modal-venue"></h4>
                         <h4 id="proposal-modal-date"></h4>
                      </div>
-
                      <div class="col-md-4 mt-5" id="continue_editing">
-                        <button class="btn btn-success btn-lg btn-fab ml-4" style="width:100%" rel="tooltip" data-placement="bottom" title="Continue Editing">
+                        <button class="btn btn-success btn-lg btn-fab ml-4" rel="tooltip" data-placement="bottom" title="Continue Editing">
                         <i class="material-icons" style="font-size: 30px">edit</i>
                         </button>
                      </div>
@@ -597,10 +596,20 @@ $designation_id = Auth::user()->designation_id;
              status: $(this).data('status')
          },
           success: function(result){
-              console.log(result);
+            Swal.fire(
+            'Proposal Forwarded!',
+            'Click OK to continue.',
+            'success'
+            ).then(function() {
+               location.reload(); 
+            });
           },
           error: function(xhr, resp, text){
-              console.log(xhr, resp, text);
+              Swal.fire({
+               type: 'error',
+               title: 'Oops...',
+               text: 'Something went wrong!',
+               })
           }
         });
       });
