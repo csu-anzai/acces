@@ -14,6 +14,11 @@
 Route::get('/', 'HomeController@index');
 Route::post('getDepartments','AjaxController@getDepartments');
 
+Route::get('test', function () {
+    event(new \App\Events\ForwardedProposal(Auth::user()->firstname));
+    return "Event has been sent!";
+});
+
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home')->middleware('auth');

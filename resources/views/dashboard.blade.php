@@ -80,14 +80,18 @@ $designation_id = Auth::user()->designation_id;
                   <!-- CES Director -->
                   @elseif($designation_id == $director_id)
                      <li class="nav-item">
+
                         <a class="nav-link active" href="#for-assignment-committee" data-toggle="tab">
-                           <i class="material-icons">assignment_ind</i> For Assignment of Committee Review
+                           <i class="material-icons">supervisor_account</i> For Assignment of Committee Review
+
                            <div class="ripple-container"></div>
                         </a>
                      </li>
                      <li class="nav-item">
+
                         <a class="nav-link" href="#for-pending-endorsement" data-toggle="tab">
-                           <i class="material-icons">assignment_ind</i> Pending / For Endorsement
+                           <i class="material-icons">assignment_late</i> Pending / For Endorsement
+
                            <div class="ripple-container"></div>
                         </a>
                      </li>
@@ -181,7 +185,7 @@ $designation_id = Auth::user()->designation_id;
                      @foreach($proposals as $proposal)
                      <tr>
                         <td>{{$proposal->id}}</td>
-                        <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                        <td><a href="javascript:void(0);" data-status="{{$proposal->status}}" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
                         <td>{{\Carbon\Carbon::parse($proposal->created_at)->diffForHumans()}}</td>
                         @if($status == 'Pending')
                         <td>{{$proposal->process->status}}</td>
@@ -267,7 +271,7 @@ $designation_id = Auth::user()->designation_id;
                <h3 class="text-center text-muted mb-5">No records found.</h3>
             @endif
             </div>
-         <!-- For CES Direcotr -->
+         <!-- For CES Director -->
          @elseif($designation_id == $director_id)
             <!-- Table for assigning review committee -->
             <div class="tab-pane active" id="for-assignment-committee">
@@ -482,11 +486,16 @@ $designation_id = Auth::user()->designation_id;
                         <h4 style="margin-top:3%" id="proposal-modal-venue"></h4>
                         <h4 id="proposal-modal-date"></h4>
                      </div>
-                     <div class="col-md-4 mt-5">
-                        <button class="btn btn-default btn-lg btn-fab ml-2" rel="tooltip" data-placement="bottom" title="Add Comment.">
+                     <div class="col-md-4 mt-5" id="continue_editing">
+                        <button class="btn btn-success btn-lg btn-fab ml-4" rel="tooltip" data-placement="bottom" title="Continue Editing">
+                        <i class="material-icons" style="font-size: 30px">edit</i>
+                        </button>
+                     </div>
+                     <div class="col-md-4 mt-5" id="comment_pdf">
+                        <button class="btn btn-default btn-lg btn-fab ml-2" rel="tooltip" data-placement="bottom" title="Add Comment">
                         <i class="material-icons" style="font-size: 30px">add_comment</i>
                         </button>
-                        <button class="btn btn-success  btn-lg btn-fab ml-3" rel="tooltip" data-placement="bottom" title="Generate PDF.">
+                        <button class="btn btn-success  btn-lg btn-fab ml-3" rel="tooltip" data-placement="bottom" title="Generate PDF">
                         <i class="material-icons" style="font-size: 30px">picture_as_pdf</i>
                         </button>
                      </div>
@@ -655,17 +664,36 @@ $designation_id = Auth::user()->designation_id;
              status: $(this).data('status')
          },
           success: function(result){
-              console.log(result);
+            Swal.fire(
+            'Proposal Forwarded!',
+            'Click OK to continue.',
+            'success'
+            ).then(function() {
+               location.reload(); 
+            });
           },
           error: function(xhr, resp, text){
-              console.log(xhr, resp, text);
+              Swal.fire({
+               type: 'error',
+               title: 'Oops...',
+               text: 'Something went wrong!',
+               })
           }
         });
       });
       
       $(".proposal-titles").click(function(){
-      
-        var proposal_id = $(this).attr('value')  
+
+         //Action Buttons
+         if($(this).data('status') == 'Draft'){
+            $("#comment_pdf").hide();
+            $("#continue_editing").show();
+         }else{
+            $("#continue_editing").hide();
+            $("#comment_pdf").show();
+         }
+
+        var proposal_id = $(this).attr('value');
       
         $.ajax({
           headers: {

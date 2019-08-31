@@ -22,9 +22,24 @@ $ php artisan serve
 
 Configure the following in the .env file:
 
-    MAIL_DRIVER=smtp
-    MAIL_HOST=smtp.gmail.com
-    MAIL_PORT=587
-    MAIL_USERNAME=accessdontreply@gmail.com
-    MAIL_PASSWORD=accessecret123
-    MAIL_ENCRYPTION=tls
+```sh
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=accessdontreply@gmail.com
+MAIL_PASSWORD=accessecret123
+MAIL_ENCRYPTION=tls
+```
+
+### To setup realtime notifications
+
+Configure the following in the .env file:
+
+```sh
+BROADCAST_DRIVER=pusher
+
+PUSHER_APP_ID=853424
+PUSHER_APP_KEY=3e85f19a74e16a51033f
+PUSHER_APP_SECRET=7371194d4107e2249fbf
+PUSHER_APP_CLUSTER=ap1
+```
