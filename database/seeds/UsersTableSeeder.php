@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         $username = ['co', 'extra', 'faculty', 'org', 'rep', 'chair', 'coord', 'dean' , 'director', 'vpaa', 'admin'];
 
-        for($i = 0; $i < 100; $i++) {
+        for($i = 0; $i < 50; $i++) {
             if($i >= 0 && $i < 11){
                 DB::table('users')->insert([
                     'username' => $username[$i],
