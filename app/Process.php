@@ -20,4 +20,19 @@ class Process extends Model
     {
         return $this->belongsTo('App\Proposal');
     }
+
+    public function updateProcess($submitted_by, $status)
+    {
+        $this->touch();
+
+        $history = $this->history;
+
+        array_push($history['submitted_by'], $submitted_by);
+        array_push($history['submitted_at'], (string)$this->updated_at);
+
+        $this->history = $history;
+        $this->status = $status;
+
+        $this->save();
+    }
 }

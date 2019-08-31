@@ -20,8 +20,9 @@ Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
 	
-	Route::post('sendProposal','AjaxController@insertProposal');
-	Route::post('updateProposal','AjaxController@updateProposal');
+	Route::post('createProposal','AjaxController@createProposal');
+	Route::post('submitProposal','AjaxController@submitProposal');
+	Route::post('updateProcess','AjaxController@updateProcess');
 	Route::post('getProposal','AjaxController@getProposal');
 	
 	Route::get('form1', function () {
