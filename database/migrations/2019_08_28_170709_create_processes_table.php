@@ -19,8 +19,9 @@ class CreateProcessesTable extends Migration
                 'For Department Chair Endorsement',
                 'For CES Coordinator Endorsement',
                 'For School Dean Endorsement',
-                'For CES Director Endorsement',
                 'For Review Committee Assignment',
+                'On Going Committee Review',
+                'For CES Director Endorsement',
                 'For VPAA Approval'
             ));
             $table->json('history')->nullable()->default(NULL);

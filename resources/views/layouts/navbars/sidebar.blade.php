@@ -1,7 +1,7 @@
 <?php
   $user = \App\User::find(Auth::user()->id);
   
-  $pending_ids = [1, 2, 3, 4, 5]
+  $pending_ids = [1, 2, 3, 4]
 ?>
 
 <div class="sidebar bg-success" data-color="orange" data-background-color="black">
