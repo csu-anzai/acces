@@ -44,6 +44,7 @@ $organizations = DB::table('organizations')->get();
 
   .margin-top{
     margin-top:5%;
+    margin-bottom:3%;
   }
 
   .forestgreen-text{
@@ -257,219 +258,256 @@ $organizations = DB::table('organizations')->get();
 </div>
 
 <!-- Congregational directions-->
-<div class="container-fluid">
-  <div class="row margin-top">
+<div class="container-fluid margin-top">
+  <div class="row">
     <div class="col-sm-12 text-center">
       <h1 class="roboto-text">
         CONGREGATIONAL DIRECTIONS
       </h1>
     </div>
   </div>
-  <!-- AD INTRA -->
   <div class="row justify-content-center">
-    <div class="col-sm-10">
-      <div class="card">
-        <div class="card-header card-header-success">
-          AD INTRA CONGREGATIONAL DIRECTIONS
+  <!-- AD INTRA -->
+  <div class="col-md-10">
+    <div class="row justify-content-center">
+      <h3>
+        <strong>AD INTRA CONGREGATIONAL DIRECTIONS</strong>
+      </h3>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="row">
+          <h4>
+            <i>
+              SPIRITUALITY
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Trinitarian and incarnational spirituality
+            </li>
+            <li>
+              Sharing in this spirituality across cultural differences that helps promote unity
+            </li>
+          </ul>
         </div>
-        <div class="card-body">
-          <div class="col-sm-10">
-            <div class="row">
-              <ul>
-                <h4>
-                  SPRITUALITY
-                </h4>
-                <li>
-                  Trinitarian and incarnational spirituality
-                </li>
-                <li>
-                  Sharing in this spirituality across cultural differences that helps promote unity
-                </li>
-              </ul>
-            </div>
-            <div class="row">
-              <ul>
-                <h4>
-                  COMMUNITY
-                </h4>
-                <li>
-                  Inter-cultural communities need to be consciously created intentionally promoted, cared for and nurtured
-                </li>
-              </ul>
-            </div>              
-            <div class="row">
-              <ul>
-                <h4>
-                  LEADERSHIP
-                </h4>
-                <li>
-                  Commitment to serve that requires an attitude of solidarity, respect and love
-                </li>
-                <li>
-                  Participative leadership needs to be the hallmark of our community
-                </li>
-              </ul>
-            </div>
-            <div class="row">
-              <ul>
-                <h4>
-                  FINANCE
-                </h4>
-                <li>
-                  Commitment to the vow of poverty and simple lifestyle and sharing of resources
-                </li>
-              </ul>
-            </div>
-            <div class="row">
-              <ul>
-                <h4>
-                  FORMATION
-                </h4>
-                <li>
-                  As Divine Word missionaries, we participate in God's mission through personal growth in the spirit of inter-culturality
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div class="row">
+          <h4>
+            <i>
+              COMMUNITY
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Inter-cultural communities need to be consciously created intentionally promoted, cared for and nurtured
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              LEADERSHIP
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Commitment to serve that requires an attitude of solidarity, respect and love
+            </li>
+            <li>
+              Participative leadership needs to be the hallmark of our community
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="row">
+          <h4>
+            <i>
+              FINANCE
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Commitment to the vow of poverty and simple lifestyle and sharing of resources
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              FORMATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              As Divine Word missionaries, we participate in God's mission through personal growth in the spirit of inter-culturality
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
   <!-- End of AD INTRA -->
+
   <!-- AD EXTRA -->
-  <div class="row justify-content-center">
-    <div class="col-sm-10">
-      <div class="card">
-        <div class="card-header card-header-success">
-          AD EXTRA CONGREGATIONAL DIRECTIONS
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <ul>
-              <h4>
-                PRIMARY AND NEW EVANGELIZATION
-              </h4>
-              <li>
-                Faith seekers
-              </li>
-              <li>
-                People who are confused in life
-              </li>
-              <li>
-                Promote transformation of the whole community
-              </li>
-              <li>
-                Directed who do not know Christ and does not live in the Christian faith
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <ul>
-              <h4>
-                ECUMENICAL AND INTERRELIGIOUS DIALOGUE
-              </h4>
-              <li>
-                Respect, mutual acceptance through ecumenical and interreligious dialogue
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <ul>
-              <h4>
-                PROMOTION OF CULTURE AND LIFE
-              </h4>
-              <li>
-                Promote and defend the sanctity of human life
-              </li>
-              <li>
-                Promoting the culture of life vs. abortion, euthanasia, capital punishment
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <ul>
-              <h4>
-                FAMILY AND YOUTH
-              </h4>
-              <li>
-                Promotion of family bonding
-              </li>
-              <li>
-                Care for the family and youth
-              </li>
-              <li>
-                Witnessing transformation in family structure
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <ul>
-              <h4>
-                EDUCATION AND RESEARCH
-              </h4>
-              <li>
-                Promote research that enhances Catholic character of the institution, social justice and interculturality
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <ul>
-              <h4>
-                INDIGENOUS AND ETHNIC COMMUNITIES
-              </h4>
-              <li>
-                Formulate and implement programs on pastoral responses, cultural identity, land rights advocacy, health care, bilingual education, human rights and affirmative action
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <ul>
-              <h4>
-                MIGRATION
-              </h4>
-              <li>
-                Pastoral care for migrants (internal migration: students from other areas)
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <ul>
-              <h4>
-                RECONCILIATION AND PEACE-BUILDING
-              </h4>
-              <li>
-                Work for justice and peace and for the progress of people
-              </li>
-              <li>
-                Eliminate instances of ethnic, religious, political and social conflicts
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <ul>
-              <h4>
-                SOCIAL JUSTICE AND POVERTY ERADICATION
-              </h4>
-              <li>
-                Commitment to work for social justice and solidarity with the poor
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <ul>
-              <h4>
-                INTEGRITY OF CREATION
-              </h4>
-              <li>
-                Promote and protect the environment as God's creation
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> 
+  <div class="col-md-10">
+    <div class="row justify-content-center">
+      <h3>
+        <strong>AD EXTRA CONGREGATIONAL DIRECTIONS</strong>
+      </h3>
     </div>
-  </div> 
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="row">
+          <h4>
+            <i>
+              PRIMARY AND NEW EVANGELIZATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Faith seekers
+            </li>
+            <li>
+              People who are confused in life  
+            </li>
+            <li>
+              Promote transformation of the whole community            
+            </li>
+            <li>
+              Directed who do not know Christ and does not live in the Christian faith
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              ECUMENICAL AND INTERRELIGIOUS DIALOGUE
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Respect, mutual acceptance through ecumenical and interreligious dialogue
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              PROMOTION OF CULTURE AND LIFE
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Promote and defend the sanctity of human life
+            </li>
+            <li>
+              Promoting the culture of life vs. abortion, euthanasia, capital punishment
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              FAMILY AND YOUTH
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Promotion of family bonding
+            </li>
+            <li>
+              Care for the family and youth
+            </li>
+            <li>
+              Witnessing transformation in family structure
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              EDUCATION AND RESEARCH
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Promote research that enhances Catholic character of the institution, social justice and interculturality
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="row">
+          <h4>
+            <i>
+              INDIGENOUS AND ETHNIC COMMUNITIES
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Formulate and implement programs on pastoral responses, cultural identity, land rights advocacy, health care, bilingual education, human rights and affirmative action
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              MIGRATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Pastoral care for migrants (internal migration: students from other areas)  
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              RECONCILIATION AND PEACE-BUILDING
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Work for justice and peace and for the progress of people  
+            </li>
+            <li>
+              Eliminate instances of ethnic, religious, political and social conflicts
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              SOCIAL JUSTICE AND POVERTY ERADICATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Commitment to work for social justice and solidarity with the poor  
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              INTEGRITY OF CREATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Promote and protect the environment as God's creation  
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- End of AD EXTRA -->
+  </div>
+  
+  
 </div>
 <!-- End of Congregational directions-->
 
@@ -478,7 +516,7 @@ $organizations = DB::table('organizations')->get();
   <div class="row">
     <div class="col-md-12 bg-white">
       <div class="row justify-content-center margin-top">
-          <div class="col-md-11">
+          <div class="col-md-10">
             <div class="row justify-content-center">
               <h1 class="roboto-text forestgreen-text">
                 GUIDING PRINCIPLES ON THE NATURE OF <br/> COMMUNITY EXTENSION SERVICES
