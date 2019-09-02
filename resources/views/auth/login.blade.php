@@ -21,7 +21,7 @@ $organizations = DB::table('organizations')->get();
     height: 100%;
     z-index: 9999;
     background-color: white;
-    background: url('../images/gradient.gif') 50% 50% no-repeat rgb(249, 249, 249);
+    background: url('images/gradient.gif') 50% 50% no-repeat rgb(249, 249, 249);
   }
 
   .loader img {
@@ -133,7 +133,7 @@ $organizations = DB::table('organizations')->get();
   <div class="row">
     <div class="col-md-12 text-center" style="background:white; margin-top:10%" id="about">
       <div data-aos="fade-up" data-aos-duration="2000">
-        <img src="../../images/landing_page/uscces_logo.png" style="
+        <img src="images/landing_page/uscces_logo.png" style="
         width: 70%;
         height: auto;
         display: block;
@@ -220,7 +220,7 @@ $organizations = DB::table('organizations')->get();
   <div class="row">
     <div class="col-md-6" style="background:white">
       <div data-aos="fade-up" data-aos-duration="2000">
-        <img src="../../images/landing_page/svd_gc1.png" style="
+        <img src="images/landing_page/svd_gc1.png" style="
           width: 100%;
           height: auto;
           display: block;
@@ -231,7 +231,7 @@ $organizations = DB::table('organizations')->get();
     </div>
     <div class="col-md-6" style="background:white">
       <div data-aos="fade-up" data-aos-duration="2000">
-        <img src="../../images/landing_page/svd_gc2.png" style="
+        <img src="images/landing_page/svd_gc2.png" style="
           width: 100%;
           height: auto;
           display: block;
