@@ -3,7 +3,7 @@
   <div class="container">
     <div class="navbar-wrapper">
       <div class="navbar-brand">
-        <img src="../../images/usc_logo.png" style="
+        <img src="images/usc_logo.png" style="
         width: 100%;
         max-width: 225px;
         height: auto;
