@@ -786,6 +786,10 @@ $designation_id = Auth::user()->designation_id;
           }
         });
       });
+
+      $('#btn-committe-submit').click(function(){
+         
+      });
       
       $(".proposal-titles").click(function(){
 
