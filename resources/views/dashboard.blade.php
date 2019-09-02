@@ -297,7 +297,7 @@ $designation_id = Auth::user()->designation_id;
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
                      <td data-id="{{$user->id}}">{{$user->getFullName()}}</td>
                      <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
-                     <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" class="text-warning btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
+                     <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" class="btn-assign-committee text-success btn-link"><i class="material-icons" style="font-size:400%;">supervised_user_circle</i></a></td>
                   </tr>
                   @endforeach
                </tbody>
@@ -306,6 +306,56 @@ $designation_id = Auth::user()->designation_id;
                <h1 class="text-center mt-5"><i class="material-icons text-muted" style="font-size:200%">error</i></h1>
                <h3 class="text-center text-muted mb-5">No records found.</h3>
             @endif
+            </div>
+            
+            <!-- Assign Review Committee Modal -->
+            <div class="modal fade" id="assign-committee-modal">
+               <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                     <form class="border border-light p-5">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="material-icons" style="font-size: 35px">clear</i>
+                        </button>
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-md-8">
+                                 <h3 style='font-weight: 900;'><strong id="review-proposal-title">Title</strong></h3>
+                                 <h4 id="review-proposal-school">School</h4>
+                                 <h4 style="margin-top:3%" id="review-proposal-department">Departments</h4>
+                                 <h4 id="review-proposal-date">Date</h4>
+                              </div>
+                              <div class="card" style="margin-top:10%">
+                                 <div class="card-header card-header-text card-header-success">
+                                    <div class="card-text">
+                                       <h5 class="card-title"><strong>Choose Review Committee</strong></h5>
+                                    </div>
+                                 </div>
+                                 <div class="card-body">
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <label for="input-reviewer-one">Reviewer1:</label>
+                                          <select id="input-reviewer-one" class="dropbox-reviewer browser-default custom-select no-include" required>
+                                          </select>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <label for="input-reviewer-two">Reviewer1:</label>
+                                          <select id="input-reviewer-two" class="dropbox-reviewer browser-default custom-select no-include" required>
+                                          </select>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                     <div class="modal-footer">
+                        <button class='btn btn-success' id="btn-committe-submit">
+                           <strong> Submit </strong>
+                           <span class="material-icons" style="font-size:25px;">chevron_right</span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
             </div>
 
             <!-- Table for Pending or Approval -->
@@ -681,6 +731,61 @@ $designation_id = Auth::user()->designation_id;
           }
         });
       });
+
+      $(".btn-assign-committee").click(function(){
+         var proposal_id = $(this).data('id');
+
+         $.ajax({
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          url: "/getProposalDataForReview",
+          type: "POST",
+          data: { id: proposal_id},
+          success: function(result){
+               var startDate = new Date(result.start_date);
+               var endDate = new Date(result.end_date);
+            
+               var dateString = "";
+            
+               dateString += getFormattedDate(startDate);
+               dateString += " to ";
+               dateString += getFormattedDate(endDate);
+
+               $('#review-proposal-title').html(result.title);
+               $('#review-proposal-school').html(result.school);
+               $('#review-proposal-department').html(result.department);
+               $('#review-proposal-date').html(dateString);
+               $('#assign-committee-modal').modal(focus);
+
+              console.log(result);
+
+              $.ajax({
+               headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               },
+               url: "/getReviewCommittee",
+               type: "POST",
+               success: function(result){
+                  console.log(result);
+                  var options = '<option disabled selected value="">Review Committee</option>';
+                  $.each(result, function(key, value) {
+                     options += '<option value="' + value.id + '">' + value.firstname + ' ' + value.lastname + ' [' + value.school_name + ' ' + value.school_id + ']' + '</option>';
+                  });
+
+                  $(".dropbox-reviewer").html(options);
+               },
+               error: function(xhr, resp, text){
+                  console.log(xhr, resp, text);
+               }
+              });
+
+          },
+          error: function(xhr, resp, text){
+              console.log(xhr, resp, text);
+          }
+        });
+      });
       
       $(".proposal-titles").click(function(){
 
@@ -712,8 +817,10 @@ $designation_id = Auth::user()->designation_id;
               console.log(xhr, resp, text);
           }
         });
+
+      });
       
-        function makeArray(data){
+      function makeArray(data){
           var temp;
       
           temp = data;
@@ -840,7 +947,6 @@ $designation_id = Auth::user()->designation_id;
           $('#proposal-modal-transportations').html("");
           $('#proposal-modal-materials').html("");
         }     
-      });
    </script>
 </div>
 @endsection

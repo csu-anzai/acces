@@ -70,4 +70,28 @@ class AjaxController extends Controller
 
         return response()->json($proposal, 200);
     }
+
+    public function getProposalDataForReview(Request $request){
+        $id = $request->input('id');
+        $proposal = DB::table('proposals')
+            ->join('users', 'users.id', 'proposals.creator_id')
+            ->join('departments', 'departments.id', 'users.department_id')
+            ->join('schools', 'schools.id', 'departments.school_id')
+            ->where('proposals.id', $request->input('id'))
+            ->select('title', 'schools.name as school', 'departments.name as department', 'start_date', 'end_date')
+            ->first();
+
+        return response()->json($proposal, 200);
+    }
+
+    public function getReviewCommittee(Request $request){
+        $users = DB::table('users')
+            ->join('departments', 'departments.id', 'users.department_id')
+            ->join('schools', 'schools.id', 'departments.school_id')
+            ->where('designation_id', 7)
+            ->select('firstname', 'lastname', 'schools.name as school_name', 'schools.id as school_id')
+            ->get();
+
+        return response()->json($users, 200);
+    }
 }
