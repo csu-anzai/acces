@@ -131,7 +131,15 @@ $organizations = DB::table('organizations')->get();
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12 text-center" style="background:white; margin-top:10%" id="about">
+    <div class="col-md-12 text-center"
+    style="background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(255,255,255,1));
+    padding-bottom: 10%;
+    padding-top: 10%;
+    ">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center" style="background:white" id="about">
       <div data-aos="fade-up" data-aos-duration="2000">
         <img src="images/landing_page/uscces_logo.png" style="
         width: 70%;
