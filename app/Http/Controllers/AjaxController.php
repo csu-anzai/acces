@@ -94,15 +94,30 @@ class AjaxController extends Controller
             ->join('departments', 'departments.id', 'users.department_id')
             ->join('schools', 'schools.id', 'departments.school_id')
             ->where('designation_id', 7)
-            ->select('firstname', 'lastname', 'schools.name as school_name', 'schools.id as school_id')
+            ->select('users.id as id', 'firstname', 'lastname', 'schools.name as school_name', 'schools.id as school_id')
             ->get();
 
         return response()->json($users, 200);
     }
 
     public function markAsRead(Request $request){
-
         Auth::user()->unreadNotifications->markAsRead();
         return response("Good!", 200);
+    }
+    
+    public function assignReviewCommittee(Request $request){
+        $proposal = \App\Proposal::find($request->input('proposal_id'));
+        $reviewer_one = \App\User::find($request->input('reviewer_one_id'));
+        $reviewer_two = \App\User::find($request->input('reviewer_two_id'));
+        $process = $proposal->process;
+
+        $proposal->reviewer_one()->associate($reviewer_one);
+        $proposal->reviewer_two()->associate($reviewer_two);
+
+        $process->updateProcess($request->input('submitted_by'), "On Going Committee Review");
+
+        $proposal->save();
+
+        return response("Assign Successful", 200);
     }
 }

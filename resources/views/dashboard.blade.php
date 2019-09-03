@@ -132,8 +132,8 @@ $designation_id = Auth::user()->designation_id;
                   if($status == $coord_status[4]){
                      $proposals = \App\Proposal::getProposalBy(true, $user->department->school->id, 'For CES Coordinator Endorsement');
                   }else{
-                     //If Review ( Temp )
-                     $proposals = $user->proposals->where('status', $status);
+                     //If Review
+                     $proposals = \App\Proposal::getProposalAsReviewer(Auth::user()->id);
                   }
 
                }else{
@@ -168,7 +168,30 @@ $designation_id = Auth::user()->designation_id;
                   </tbody>
                <!-- If For Review -->
                @else
-
+                  <thead>
+                     <th><strong>Title of Project/Program/Activity Proposal</strong></th>
+                     <th><strong>Created By</strong></th>
+                     <th><strong>Date Submitted</strong></th>
+                     <th><strong>Review Committee Pair</strong></th>
+                     <th><strong>View Scores</strong></th>
+                  </thead>
+                  <tbody>
+                     @foreach($proposals as $proposal)
+                     <?php 
+                        $creator = \App\User::find($proposal->creator->id);
+                        
+                        $pair_id = ($proposal->reviewer_one->id == Auth::user()->id)? $proposal->reviewer_two->id : $proposal->reviewer_one->id;
+                        $pair = \App\User::find($pair_id);
+                     ?>
+                     <tr>
+                        <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
+                        <td data-id="{{$creator->id}}">{{$creator->getFullName()}}</td>
+                        <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
+                        <td data-id="{{$pair->id}}">{{$pair->getFullName()}}</td>
+                        <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" class="text-success btn-link"><i class="material-icons" style="font-size:250%;">visibility</i></a></td>
+                     </tr>
+                     @endforeach
+                  </tbody>
                @endif
 
                <!-- Table Content for Co, Extra Curricular, Faculty, CES Representative -->
@@ -218,11 +241,11 @@ $designation_id = Auth::user()->designation_id;
                      <th><strong>Date Created</strong></th>
                      <th></th>
                   </thead>
-                  <tbody>
+                  <tbody><!--here-->
                      @foreach($proposals as $proposal)
                      <tr>
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                        <td>{{$proposal->creator->getFullName()}}</td>
+                        <td><a href="" data-toggle="modal" data-target="#routing-modal" style="color:forestgreen">{{$proposal->creator->getFullName()}}</a></td>
                         <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
                         <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For CES Coordinator Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
                      </tr>
@@ -699,6 +722,34 @@ $designation_id = Auth::user()->designation_id;
          </div>
       </div>
    </div>
+   <!--View Routing Modal-->
+   <div class="modal fade" id="routing-modal">
+      <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+            <form class="border border-light p-5">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <i class="material-icons" style="font-size: 35px">clear</i>
+               </button>
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-8">
+                        <h3 style='font-weight: 900;'><strong>Proposal Routing History</strong></h3>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="card">
+                           <div class="card-header card-header-text card-header-success">
+                              <div class="card-text">
+                                 <h5 class="card-title"><strong>Routa</strong></h5>
+                              </div>
+                           </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
    <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
    <script>
       $(".forward-btn").click(function(){
@@ -757,6 +808,7 @@ $designation_id = Auth::user()->designation_id;
                $('#review-proposal-department').html(result.department);
                $('#review-proposal-date').html(dateString);
                $('#assign-committee-modal').modal(focus);
+               $('#btn-committe-submit').data('id', proposal_id);
 
               console.log(result);
 
@@ -788,7 +840,27 @@ $designation_id = Auth::user()->designation_id;
       });
 
       $('#btn-committe-submit').click(function(){
-         
+
+         console.log($(this).data('id'), $('#input-reviewer-one').val(), $('#input-reviewer-two').val());
+         $.ajax({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/assignReviewCommittee",
+            type: "POST",
+            data: {
+               proposal_id: $(this).data('id'),
+               reviewer_one_id: $('#input-reviewer-one').val(),
+               reviewer_two_id: $('#input-reviewer-two').val(),
+               submitted_by: {{Auth::user()->id}}
+            },
+            success: function(result){
+               console.log(result);
+            },
+            error: function(xhr, resp, text){
+               console.log(xhr, resp, text);
+            }
+         });
       });
       
       $(".proposal-titles").click(function(){

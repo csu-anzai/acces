@@ -46,6 +46,15 @@ class User extends Authenticatable
         return $this->hasMany('App\Proposal', 'creator_id');
     }
 
+    public function proposalsForReviewerOne()
+    {
+        return $this->hasMany('App\Proposal', 'reviewer_one_id');
+    }
+    public function proposalsForReviewerTwo()
+    {
+        return $this->hasMany('App\Proposal', 'reviewer_two_id');
+    }
+
     public function department()
     {
         return $this->belongsTo('App\Department');
