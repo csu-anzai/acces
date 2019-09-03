@@ -27,12 +27,12 @@ class Proposal extends Model
 
     public function reviewer_one()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'reviewer_one_id')->withDefault();
     }
 
     public function reviewer_two()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'reviewer_two_id')->withDefault();
     }
 
     public static function getProposalByStatus($status){
@@ -83,6 +83,26 @@ class Proposal extends Model
         $proposals = collect();
         foreach($temp as $proposal){
            $proposals->push(\App\Proposal::find($proposal->id));
+        }
+
+        return $proposals;
+    }
+
+    public static function getProposalAsReviewer($user_id){
+        $temp = DB::table('proposals')
+            ->join('processes', 'processes.proposal_id' , '=', 'proposals.id')
+            ->where([
+                ['proposals.status', 'Pending'],
+                ['processes.status', "On Going Committee Review"]
+            ])
+            ->where('reviewer_one_id', $user_id)
+            ->orWhere('reviewer_two_id', $user_id)
+            ->select('proposals.id as id')
+            ->get();
+        
+        $proposals = collect();
+        foreach($temp as $proposal){
+            $proposals->push(\App\Proposal::find($proposal->id));
         }
 
         return $proposals;
