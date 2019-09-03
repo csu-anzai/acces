@@ -699,7 +699,7 @@ $designation_id = Auth::user()->designation_id;
          </div>
       </div>
    </div>
-   <!--View Routing Modal--><!--for npw same lang sa ug sulod sa proposal modal-->
+   <!--View Routing Modal-->
    <div class="modal fade" id="routing-modal">
       <div class="modal-dialog modal-lg" role="document">
          <div class="modal-content">
@@ -708,6 +708,20 @@ $designation_id = Auth::user()->designation_id;
                <i class="material-icons" style="font-size: 35px">clear</i>
                </button>
                <div class="container">
+                  <div class="row">
+                     <div class="col-md-8">
+                        <h3 style='font-weight: 900;'><strong>Proposal Routing History</strong></h3>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="card">
+                           <div class="card-header card-header-text card-header-success">
+                              <div class="card-text">
+                                 <h5 class="card-title"><strong>Routa</strong></h5>
+                              </div>
+                           </div>
+                     </div>
+                  </div>
                </div>
             </form>
          </div>
