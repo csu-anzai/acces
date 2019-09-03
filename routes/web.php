@@ -14,10 +14,10 @@
 Route::get('/', 'HomeController@index');
 Route::post('getDepartments','AjaxController@getDepartments');
 
-Route::get('test', function () {
-    event(new \App\Events\ForwardedProposal(Auth::user()->firstname));
-    return "Event has been sent!";
-});
+// Route::get('test', function () {
+//     event(new \App\Events\ForwardedProposal("Bryl Lim", ""));
+//     return "Event has been sent!";
+// });
 
 Auth::routes();
 

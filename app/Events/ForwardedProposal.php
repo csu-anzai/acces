@@ -16,11 +16,13 @@ class ForwardedProposal implements ShouldBroadcast
 
   public $username;
   public $message;
+  public $creator_id;
 
-  public function __construct($username)
+  public function __construct($username, $creator_id)
   {
       $this->username = $username;
       $this->message = "{$username} forwarded your proposal.";
+      $this->creator_id = $creator_id;
   }
 
   public function broadcastOn()

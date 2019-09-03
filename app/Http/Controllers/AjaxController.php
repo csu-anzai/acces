@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Proposal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AjaxController extends Controller
 {
@@ -59,6 +60,7 @@ class AjaxController extends Controller
 
         $process->updateProcess($request->input('submitted_by'), $request->input('status'));
 
+        event(new \App\Events\ForwardedProposal(Auth::user()->firstname . " " . Auth::user()->lastname, $proposal->creator_id));
         return response("Update Successful", 200);
     }
 

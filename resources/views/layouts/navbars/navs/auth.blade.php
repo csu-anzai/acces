@@ -28,7 +28,7 @@
       </form>
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">notifications</i>
             <span id="notification-count" style="display:none" class="notification"></span>
             <p class="d-lg-none d-md-block">
@@ -60,18 +60,9 @@
 <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
 <script src="//js.pusher.com/3.1/pusher.min.js"></script>
 <script type="text/javascript">
-      var notificationsWrapper   = $('#dropdown_notifications');
-      var notificationsToggle    = notificationsWrapper.find('a[data-toggle]');
-      var notificationsCountElem = notificationsToggle.find('span[data-count]');
-      var notificationsCount     = parseInt(notificationsCountElem.data('count'));
-      var notifications          = notificationsWrapper.find('div.dropdown-menu');
-
-      // if (notificationsCount <= 0) {
-      //   notificationsWrapper.hide();
-      // }
 
       // Enable pusher logging - don't include this in production
-      Pusher.logToConsole = true;
+      // Pusher.logToConsole = true;
 
       var pusher = new Pusher('3e85f19a74e16a51033f', {
         cluster: 'ap1',
@@ -83,23 +74,27 @@
       var notificationCount = 0;
 
       channel.bind('forwarded-proposal', function(data) {
-        notificationCount++;
+        
+        if(data['creator_id'] == $("#user-id").html()){
 
-        $("#notification-count").show();
-        $("#notification-count").html(notificationCount);
+          notificationCount++;
 
-        $.notify({
-            icon: "add_alert",
-            message: "<strong>"+data['username']+"</strong> has forwarded your proposal."
+          $("#notification-count").show();
+          $("#notification-count").html(notificationCount);
 
-        },{
-            type: 'success',
-            timer: 4000,
-            placement: {
-                from: 'top',
-                align: 'right'
-            }
-        });
+          $.notify({
+              icon: "add_alert",
+              message: "<strong>"+data['username']+"</strong> has forwarded your proposal."
+          },{
+              type: 'success',
+              timer: 4000,
+              placement: {
+                  from: 'top',
+                  align: 'right'
+              }
+          });
+
+        }
 
       });
 

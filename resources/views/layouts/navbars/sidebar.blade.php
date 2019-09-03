@@ -20,6 +20,7 @@
       <div class="alert alert-{{ $activePage == 'profile' ? 'warning' : 'success' }} ml-3" role="alert">
         <a href="{{ route('profile.edit') }}" class="alert-link mb-3">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a>
         <div>{{$user->designation->name}}</div>    
+        <div hidden id="user-id">{{Auth::user()->id}}</div>
       </div>
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
