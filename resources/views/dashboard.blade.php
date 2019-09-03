@@ -218,11 +218,11 @@ $designation_id = Auth::user()->designation_id;
                      <th><strong>Date Created</strong></th>
                      <th></th>
                   </thead>
-                  <tbody>
+                  <tbody><!--here-->
                      @foreach($proposals as $proposal)
                      <tr>
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                        <td>{{$proposal->creator->getFullName()}}</td>
+                        <td><a href="" data-toggle="modal" data-target="#routing-modal" style="color:forestgreen">{{$proposal->creator->getFullName()}}</a></td>
                         <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
                         <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For CES Coordinator Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
                      </tr>
@@ -696,6 +696,34 @@ $designation_id = Auth::user()->designation_id;
             </form>
             </div>
             </div>
+         </div>
+      </div>
+   </div>
+   <!--View Routing Modal-->
+   <div class="modal fade" id="routing-modal">
+      <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+            <form class="border border-light p-5">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <i class="material-icons" style="font-size: 35px">clear</i>
+               </button>
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-8">
+                        <h3 style='font-weight: 900;'><strong>Proposal Routing History</strong></h3>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="card">
+                           <div class="card-header card-header-text card-header-success">
+                              <div class="card-text">
+                                 <h5 class="card-title"><strong>Routa</strong></h5>
+                              </div>
+                           </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
          </div>
       </div>
    </div>
