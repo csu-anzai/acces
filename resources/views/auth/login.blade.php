@@ -37,6 +37,19 @@ $organizations = DB::table('organizations')->get();
   html{
     scroll-behavior: smooth;
   }
+
+  .roboto-text{
+    font-weight:900;
+  }
+
+  .forestgreen-text{
+    color:forestgreen;
+  }
+
+  .margin-adjust{
+    margin-top:5%;
+    margin-bottom:3%;
+  }
 </style>
 
 @extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('ACCES')])
@@ -250,6 +263,350 @@ $organizations = DB::table('organizations')->get();
     </div>
   </div>
 </div>
+
+<!-- Congregational directions-->
+<div class="container-fluid margin-adjust">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1 class="roboto-text">
+        CONGREGATIONAL DIRECTIONS
+      </h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+  <!-- AD INTRA -->
+  <div class="col-md-10">
+    <div class="row justify-content-center">
+      <h3>
+        <strong>AD INTRA CONGREGATIONAL DIRECTIONS</strong>
+      </h3>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="row">
+          <h4>
+            <i>
+              SPIRITUALITY
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Trinitarian and incarnational spirituality
+            </li>
+            <li>
+              Sharing in this spirituality across cultural differences that helps promote unity
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              COMMUNITY
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Inter-cultural communities need to be consciously created intentionally promoted, cared for and nurtured
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              LEADERSHIP
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Commitment to serve that requires an attitude of solidarity, respect and love
+            </li>
+            <li>
+              Participative leadership needs to be the hallmark of our community
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="row">
+          <h4>
+            <i>
+              FINANCE
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Commitment to the vow of poverty and simple lifestyle and sharing of resources
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              FORMATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              As Divine Word missionaries, we participate in God's mission through personal growth in the spirit of inter-culturality
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of AD INTRA -->
+  </div>
+  <div class="row justify-content-center">
+  <!-- AD EXTRA -->
+  <div class="col-md-10">
+    <div class="row justify-content-center">
+      <h3>
+        <strong>AD EXTRA CONGREGATIONAL DIRECTIONS</strong>
+      </h3>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="row">
+          <h4>
+            <i>
+              PRIMARY AND NEW EVANGELIZATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Faith seekers
+            </li>
+            <li>
+              People who are confused in life  
+            </li>
+            <li>
+              Promote transformation of the whole community            
+            </li>
+            <li>
+              Directed who do not know Christ and does not live in the Christian faith
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              ECUMENICAL AND INTERRELIGIOUS DIALOGUE
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Respect, mutual acceptance through ecumenical and interreligious dialogue
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              PROMOTION OF CULTURE AND LIFE
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Promote and defend the sanctity of human life
+            </li>
+            <li>
+              Promoting the culture of life vs. abortion, euthanasia, capital punishment
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              FAMILY AND YOUTH
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Promotion of family bonding
+            </li>
+            <li>
+              Care for the family and youth
+            </li>
+            <li>
+              Witnessing transformation in family structure
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              EDUCATION AND RESEARCH
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Promote research that enhances Catholic character of the institution, social justice and interculturality
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="row">
+          <h4>
+            <i>
+              INDIGENOUS AND ETHNIC COMMUNITIES
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Formulate and implement programs on pastoral responses, cultural identity, land rights advocacy, health care, bilingual education, human rights and affirmative action
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              MIGRATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Pastoral care for migrants (internal migration: students from other areas)  
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              RECONCILIATION AND PEACE-BUILDING
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Work for justice and peace and for the progress of people  
+            </li>
+            <li>
+              Eliminate instances of ethnic, religious, political and social conflicts
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              SOCIAL JUSTICE AND POVERTY ERADICATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Commitment to work for social justice and solidarity with the poor  
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <h4>
+            <i>
+              INTEGRITY OF CREATION
+            </i>
+          </h4>
+          <ul>
+            <li>
+              Promote and protect the environment as God's creation  
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of AD EXTRA -->
+  </div>
+</div>
+<!-- End of Congregational directions-->
+
+<!--GUIDING PRINCIPLES ON THE NATURE OF COMMUNITY EXTENSION SERVICES-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 bg-white">
+      <div class="row justify-content-center margin-adjust">
+          <div class="col-md-10">
+            <div class="row justify-content-center">
+              <h1 class="roboto-text forestgreen-text">
+                GUIDING PRINCIPLES ON THE NATURE OF <br/> COMMUNITY EXTENSION SERVICES
+              </h1>
+            </div>
+            <div class="row justify-content-center margin-adjust">
+              <h3 class="text-dark" align="justify">
+                As an HEI settled in a particular locale and community, USC recognizes that it has an undeniable role to its context. 
+                The needs of its context must be considered of primary importance in developing a CES Program and in organizing 
+                pertinent activities. Data and information must be gathered using valid and reliable tools to serve as bases for the
+                university, through its units, to offer appropriate and relevant response to community needs. All CES programs, projects, 
+                and activities must be <strong>context-responsive.</strong>
+              </h3>
+              <h3 class="text-dark" align="justify">
+                In creating a truly appropriate and relevant response, the discipline that can best provide the extension service be 
+                tapped and mobilized. This shall essentially provide faculty and students the opportunity to practice their profession in 
+                actual and real cases/situations. The competencies are ably executed while at the same time assisting the communities in 
+                their needs and problems. Hence, all CES programs, projects, and activities must be <strong>specialized-based.</strong>
+              </h3>
+              <h3 class="text-dark" align="justify">
+                Recognizing the multi-faceted character of socio-cultural, economic and political realities academic and 
+                administrative units will be tapped to work together in crafting comprehensive extension initiatives, multi and inter-disciplinary 
+                approaches will be used. Also, to ensure the responsiveness of all extension works communities, 
+                organizations, and institutions are treated not as beneficiaries only but as partners. The latter 
+                are believed to have the capacities essential for making CES programs work, there shall be no denying of their contributions to as
+                partners. Hence, all CES programs, projects, and activities must be <strong>collaborative and inclusive.</strong>
+              </h3>
+              <h3 class="text-dark" align="justify">
+                Since CES undertakings are intended to be programmatic, outputs and outcomes are both tangible and intangible 
+                results that must come out of the program, they are to be mmeasured and gauged. These outputs and outcomes serve as 
+                guideposts in determining whether interventions have impact to these lives of both partners. Moreover, it is essential to 
+                ensure that interventions don't have limited lifespans but one that can continue to serve the purpose as possible. Hence, all 
+                CES programs, projects, and activities must be <strong>sustainable and outcomes-based.</strong>
+              </h3>
+              <h3 class="text-dark" align="justify">
+                What is important to underlie all of the above guiding principles of CES is the value of <strong>voluntarism,</strong> one that defines 
+                the character of extension service.
+              </h3>
+              <img src="images/gp.png">
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of GUIDING PRINCIPLES ON THE NATURE OF COMMUNITY EXTENSION SERVICES-->
+
+<!-- PROGRAM AREAS-->
+<!-- End of PROGRAM AREAS-->
+
+<!-- Who are in charge of CES-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 bg-white">
+      <div class="row justify-content-center">
+        <h1 class="roboto-text forestgreen-text">
+          WHO ARE IN CHARGE OF THE CES?
+        </h1>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <h3 align="justify" class="text-dark">
+            The CES office was constituted to fulfill the above mandate. The office takes a major role in 
+            networking, organizing, coordinating, and facilitating the various CES initiatives of departments, 
+            colleges, support offices, as well as of student organizations. It also conducts monitoring and 
+            evaluation of CES programs, projects, and activities with the college-appointed coordinators. 
+            Thus, students, faculty, and staff are highly enjoined to make learning more meaningful by 
+            volunteering in the various extension initiatives of the university.
+          </h3>
+
+          <h3 class="text-dark" align="justify">
+            The CES office was constituted to fulfill the above mandate. The office takes a major role in 
+            networking, organizing, coordinating, and facilitating the various CES initiatives of departments, 
+            colleges, support offices, as well as of student organizations. It also conducts monitoring and 
+            evaluation of CES programs, projects, and activities with the college-appointed coordinators. 
+            Thus, students, faculty, and staff are highly enjoined to make learning more meaningful by 
+            volunteering in the various extension initiatives of the university.
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Who are in charge of CES-->
 
 <div class="container text-center" id="contact">
   <div class="row">
