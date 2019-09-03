@@ -110,4 +110,35 @@ class AjaxController extends Controller
 
         return response("Assign Successful", 200);
     }
+
+    public function getHistory(Request $request){
+        $process = \App\Process::find($request->input('process_id'));
+
+        $json = $process->history;
+        $json['designation'] = [];
+        $json['school'] = [];
+
+        $result = DB::table('users')
+            ->whereIn('users.id', $json['submitted_by'])
+            ->select('firstname', 'lastname', 'id')
+            ->get();
+
+        $len = count($json['submitted_by']);
+
+        for($x = 0; $x < $len; $x++){
+            foreach($result as $temp){
+                if($temp->id == $json['submitted_by'][$x]){
+                    $user = \App\User::find($temp->id);
+                    
+                    $json['submitted_by'][$x] = $temp->firstname." ".$temp->lastname;
+                    $json['designation'][$x] = $user->designation->name;
+                    $json['school'][$x] = $user->department->school->name;
+
+                    break;
+                }
+            }
+        }
+
+        return response()->json($json, 200);
+    }
 }

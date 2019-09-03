@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('getProposalDataForReview','AjaxController@getProposalDataForReview');
 	Route::post('getReviewCommittee','AjaxController@getReviewCommittee');
 	Route::post('assignReviewCommittee','AjaxController@assignReviewCommittee');
+	Route::post('getHistory','AjaxController@getHistory');
 	
 	Route::get('form1', function () {
 		return view('forms.form1');
