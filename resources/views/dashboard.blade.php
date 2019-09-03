@@ -160,7 +160,7 @@ $designation_id = Auth::user()->designation_id;
                      ?>
                      <tr>
                         <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                        <td data-id="{{$user->id}}">{{$user->getFullName()}}</td>
+                        <td><a href="javascript:void(0);" class="btn-routing-modal" data-id="{{$proposal->process->id}}" style="color:forestgreen">{{$user->getFullName()}}</a></td>
                         <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
                         <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For School Dean Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
                      </tr>
@@ -241,11 +241,14 @@ $designation_id = Auth::user()->designation_id;
                      <th><strong>Date Created</strong></th>
                      <th></th>
                   </thead>
-                  <tbody><!--here-->
+                  <tbody>
                      @foreach($proposals as $proposal)
+                     <?php 
+                        $user = \App\User::find($proposal->process->getLatestSubmittedBy());
+                     ?>
                      <tr>
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                        <td><a href="" data-toggle="modal" data-target="#routing-modal" style="color:forestgreen">{{$proposal->creator->getFullName()}}</a></td>
+                        <td><a href="javascript:void(0);" class="btn-routing-modal" data-id="{{$proposal->process->id}}" style="color:forestgreen">{{$user->getFullName()}}</a></td>
                         <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
                         <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For CES Coordinator Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
                      </tr>
@@ -282,7 +285,7 @@ $designation_id = Auth::user()->designation_id;
                   ?>
                   <tr>
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                     <td data-id="{{$user->id}}">{{$user->getFullName()}}</td>
+                     <td><a href="javascript:void(0);" class="btn-routing-modal" data-id="{{$proposal->process->id}}" style="color:forestgreen">{{$user->getFullName()}}</a></td>
                      <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
                      <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For Review Committee Assignment" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
                   </tr>
@@ -318,7 +321,7 @@ $designation_id = Auth::user()->designation_id;
                   ?>
                   <tr>
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                     <td data-id="{{$user->id}}">{{$user->getFullName()}}</td>
+                     <td><a href="javascript:void(0);" class="btn-routing-modal" data-id="{{$proposal->process->id}}" style="color:forestgreen">{{$user->getFullName()}}</a></td>
                      <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
                      <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" class="btn-assign-committee text-success btn-link"><i class="material-icons" style="font-size:400%;">supervised_user_circle</i></a></td>
                   </tr>
@@ -405,7 +408,7 @@ $designation_id = Auth::user()->designation_id;
                   ?>
                   <tr>
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                     <td data-id="{{$user->id}}">{{$user->getFullName()}}</td>
+                     <td><a href="javascript:void(0);" class="btn-routing-modal" data-id="{{$proposal->process->id}}" style="color:forestgreen">{{$user->getFullName()}}</a></td>
                      <td>{{$proposal->process->getLatestSubmittedAt()}}</td>
                      <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For CES Director Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
                   </tr>
@@ -443,9 +446,12 @@ $designation_id = Auth::user()->designation_id;
                   </thead>
                   <tbody>
                      @foreach($proposals as $proposal)
+                     <?php 
+                        $user = \App\User::find($proposal->process->getLatestSubmittedBy());
+                     ?>
                      <tr>
                         <td>{{$proposal->title}}</td>
-                        <td>{{$proposal->title}}</td>
+                        <td><a href="javascript:void(0);" class="btn-routing-modal" data-id="{{$proposal->process->id}}" style="color:forestgreen">{{$user->getFullName()}}</a></td>
                         <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
                      </tr>
                      @endforeach
@@ -732,18 +738,21 @@ $designation_id = Auth::user()->designation_id;
                </button>
                <div class="container">
                   <div class="row">
-                     <div class="col-md-8">
-                        <h3 style='font-weight: 900;'><strong>Proposal Routing History</strong></h3>
+                     <div class="col-md-12 text-center">
+                        <h3 style='font-weight: 900;'><strong>History</strong></h3>
                      </div>
                   </div>
                   <div class="row">
-                     <div class="card">
-                           <div class="card-header card-header-text card-header-success">
-                              <div class="card-text">
-                                 <h5 class="card-title"><strong>Routa</strong></h5>
-                              </div>
-                           </div>
-                     </div>
+                     <table class="table">
+                        <thead>
+                           <th>Date Submitted</th>
+                           <th>Submitted By</th>
+                           <th>Designation</th>
+                           <th>School</th>
+                        </thead>
+                        <tbody id="routing-modal-content">
+                        </tbody>
+                     </table>
                   </div>
                </div>
             </form>
@@ -837,6 +846,38 @@ $designation_id = Auth::user()->designation_id;
               console.log(xhr, resp, text);
           }
         });
+      });
+
+      $('.btn-routing-modal').click(function(){
+         $.ajax({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/getHistory",
+            type: "POST",
+            data: {
+               process_id: $(this).data('id')
+            },
+            success: function(result){
+               var length = result['submitted_at'].length;
+               var content = "";
+
+               for(var x=length-1; x >= 0; x--){
+                  content += "<tr>"
+                           + "<td>" + result['submitted_at'][x] + "</td>"
+                           + "<td>" + result['submitted_by'][x] + "</td>"
+                           + "<td>" + result['designation'][x] + "</td>"
+                           + "<td>" + result['school'][x] + "</td>"
+                           +"</tr>"
+               }
+
+               $('#routing-modal-content').html(content);
+               $('#routing-modal').modal(focus);
+            },
+            error: function(xhr, resp, text){
+               console.log(xhr, resp, text);
+            }
+         });
       });
 
       $('#btn-committe-submit').click(function(){
