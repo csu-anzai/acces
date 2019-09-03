@@ -6,6 +6,8 @@ use DB;
 use App\Proposal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\ProposalSent;
+use App\User;
 
 class AjaxController extends Controller
 {
@@ -60,7 +62,8 @@ class AjaxController extends Controller
 
         $process->updateProcess($request->input('submitted_by'), $request->input('status'));
 
-        event(new \App\Events\ForwardedProposal(Auth::user()->firstname . " " . Auth::user()->lastname, $proposal->creator_id));
+        event(new \App\Events\ForwardedProposal(Auth::user()->firstname . " " . Auth::user()->lastname, $proposal->creator->id));
+        User::find($proposal->creator->id)->notify(new ProposalSent(User::findOrFail(Auth::user()->id)));
         return response("Update Successful", 200);
     }
 
@@ -95,5 +98,11 @@ class AjaxController extends Controller
             ->get();
 
         return response()->json($users, 200);
+    }
+
+    public function markAsRead(Request $request){
+
+        Auth::user()->unreadNotifications->markAsRead();
+        return response("Good!", 200);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Notifications\ProposalSent;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +15,12 @@
 
 Route::get('/', 'HomeController@index');
 Route::post('getDepartments','AjaxController@getDepartments');
+Route::get('/test', function(){
+	User::find(3)->notify(new ProposalSent(User::findOrFail(6)));
+	event(new \App\Events\ForwardedProposal("Bryl Lim", 3));
+	return "inserted!";
+});
 
-// Route::get('test', function () {
-//     event(new \App\Events\ForwardedProposal("Bryl Lim", ""));
-//     return "Event has been sent!";
-// });
 
 Auth::routes();
 
@@ -31,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('getProposal','AjaxController@getProposal');
 	Route::post('getProposalDataForReview','AjaxController@getProposalDataForReview');
 	Route::post('getReviewCommittee','AjaxController@getReviewCommittee');
+	Route::post('markAsRead','AjaxController@markAsRead');
 	
 	Route::get('form1', function () {
 		return view('forms.form1');

@@ -27,16 +27,38 @@
         </div>
       </form>
       <ul class="navbar-nav">
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" id="notification-part">
+          @if(!Auth::user()->unreadNotifications->isEmpty())
           <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">notifications</i>
-            <span id="notification-count" style="display:none" class="notification"></span>
+            <span class="notification" id="notification-full">{{count(Auth::user()->unreadNotifications)}}</span>
+            <p class="d-lg-none d-md-block">
+              {{ __('notifications') }}
+            </p>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            @foreach(Auth::user()->unreadNotifications as $notification)   
+            <a class="dropdown-item" href="#">
+              {{$notification->data['firstname']}} 
+              {{$notification->data['lastname']}} 
+              forwarded your proposal. 
+              &nbsp
+              <small>{{$notification->created_at->diffForHumans()}}</small>
+            </a>  
+            @endforeach
+          </div>
+          @else
+          <a class="nav-link" href="markAsRead" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons">notifications</i>
+            <span class="notification" id="notification-empty" hidden></span>
             <p class="d-lg-none d-md-block">
               {{ __('Some Actions') }}
             </p>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          </div>
+            <a class="dropdown-item" href="#">You have no notifications.</a>  
+          @endif
+          
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,6 +83,24 @@
 <script src="//js.pusher.com/3.1/pusher.min.js"></script>
 <script type="text/javascript">
 
+//notifications will be marked as read on clicking
+$("#navbarDropdownMenuLink").click(function(){  
+  $('.notification').fadeOut();
+  $.ajax({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    url: "/markAsRead",
+    type: "POST",
+    success: function(result){
+        console.log("good!");
+    },
+    error: function(xhr, resp, text){
+        console.log(xhr, resp, text);
+    }
+  });
+});
+
       // Enable pusher logging - don't include this in production
       // Pusher.logToConsole = true;
 
@@ -72,6 +112,7 @@
       var channel = pusher.subscribe('proposal-channel');
 
       var notificationCount = 0;
+      var temporary = $("#notification-full").html();
 
       channel.bind('forwarded-proposal', function(data) {
         
@@ -79,8 +120,9 @@
 
           notificationCount++;
 
-          $("#notification-count").show();
-          $("#notification-count").html(notificationCount);
+          $("#notification-empty").removeAttr('hidden');
+          $("#notification-empty").html(notificationCount);
+          $("#notification-full").html(parseInt(temporary)+notificationCount);
 
           $.notify({
               icon: "add_alert",
