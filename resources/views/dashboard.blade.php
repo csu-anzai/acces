@@ -222,7 +222,7 @@ $designation_id = Auth::user()->designation_id;
                      @foreach($proposals as $proposal)
                      <tr>
                      <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->title}}</a></td>
-                        <td>{{$proposal->creator->getFullName()}}</td>
+                        <td><a href="javascript:void(0);" value="{{$proposal->id}}" class="proposal-titles" style="color:forestgreen">{{$proposal->creator->getFullName()}}</a></td>
                         <td>{{\Carbon\Carbon::parse($proposal->updated_at)->diffForHumans()}}</td>
                         <td><a href="javascript:void(0);" data-id="{{$proposal->id}}" data-status="For CES Coordinator Endorsement" class="forward-btn text-success btn-link"><i class="material-icons" style="font-size:400%;">check_box</i></a></td>
                      </tr>
@@ -522,6 +522,185 @@ $designation_id = Auth::user()->designation_id;
    </div>
    <!-- View Proposal Modal -->
    <div class="modal fade" id="proposal-modal">
+      <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+            <form class="border border-light p-5">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <i class="material-icons" style="font-size: 35px">clear</i>
+               </button>
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-8">
+                        <h3 style='font-weight: 900;'><strong id="proposal-modal-title"></strong></h3>
+                        <h4 id="proposal-modal-cestype"></h4>
+                        <h4 style="margin-top:3%" id="proposal-modal-venue"></h4>
+                        <h4 id="proposal-modal-date"></h4>
+                     </div>
+                     <div class="col-md-4 mt-5" id="continue_editing">
+                        <button class="btn btn-success btn-lg btn-fab ml-4" rel="tooltip" data-placement="bottom" title="Continue Editing">
+                        <i class="material-icons" style="font-size: 30px">edit</i>
+                        </button>
+                     </div>
+                     <div class="col-md-4 mt-5" id="comment_pdf">
+                        <button class="btn btn-default btn-lg btn-fab ml-2" rel="tooltip" data-placement="bottom" title="Add Comment">
+                        <i class="material-icons" style="font-size: 30px">add_comment</i>
+                        </button>
+                        <button class="btn btn-success  btn-lg btn-fab ml-3" rel="tooltip" data-placement="bottom" title="Generate PDF">
+                        <i class="material-icons" style="font-size: 30px">picture_as_pdf</i>
+                        </button>
+                     </div>
+                     <div class="card" style="margin-top:10%">
+                        <div class="card-header card-header-text card-header-success">
+                           <div class="card-text">
+                              <h5 class="card-title"><strong>I. Rationale and Contextualization</strong></h5>
+                           </div>
+                        </div>
+                        <div class="card-body" id="proposal-modal-rationale">
+                        </div>
+                     </div>
+                     <div class="card">
+                        <div class="card-header card-header-text card-header-success">
+                           <div class="card-text">
+                              <h5 class="card-title"><strong>II. Goal, Objectives, and Outcomes</strong></h5>
+                           </div>
+                        </div>
+                        <div class="card-body" id="proposal-modal-goals">
+                        </div>
+                     </div>
+                     <div class="card">
+                        <div class="card-header card-header-text card-header-success">
+                           <div class="card-text">
+                              <h5 class="card-title"><strong>III. Participants, Partners and Beneficiaries</strong></h5>
+                           </div>
+                        </div>
+                        <div class="card-body" id="proposal-modal-participants">
+                        </div>
+                     </div>
+                     <div class="card">
+                        <div class="card-header card-header-text card-header-success">
+                           <div class="card-text">
+                              <h4 class="card-title">IV. Outline of Activities</h4>
+                           </div>
+                        </div>
+                        <div class="card-body">
+                           <div class="table-responsive">
+                              <table class="table">
+                                 <thead>
+                                    <th>
+                                       Tentative date
+                                    </th>
+                                    <th>
+                                       Activities
+                                    </th>
+                                    <th>
+                                       Participants needed
+                                    </th>
+                                    <th>
+                                       Person/s In-charge
+                                    </th>
+                                 </thead>
+                                 <tbody id="proposal-modal-outline">
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card">
+                        <div class="card-header card-header-text card-header-success">
+                           <div class="card-text">
+                              <h4 class="card-title">V. Budgetary Requirements</h4>
+                           </div>
+                        </div>
+                        <div class="card-body">
+                           <div class="table-responsive">
+                              <table class="table">
+                                 <thead class=" text-primary" style='color:black !important;'>
+                                    <th>
+                                       Particulars
+                                    </th>
+                                    <th>
+                                       Frequency
+                                    </th>
+                                    <th>
+                                       Quantity
+                                    </th>
+                                    <th>
+                                       Amount 
+                                    </th>
+                                    <th>
+                                       Subtotal
+                                    </th>
+                                 </thead>
+                                 <thead class="text-primary" style='color:black !important;'>
+                                    <th>
+                                       A. Meals / Snacks 
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                 </thead>
+                                 <tbody id="proposal-modal-meals">
+                                 </tbody>
+                                 <thead class=" text-primary" style='color:black !important;'>
+                                    <th>
+                                       B. Transportations
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                 </thead>
+                                 <tbody id="proposal-modal-transportations">
+                                 </tbody>
+                                 <thead class=" text-primary" style='color:black !important;'>
+                                    <th>
+                                       C. Materials
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                 </thead>
+                                 <tbody id="proposal-modal-materials">
+                                 </tbody>
+                                 <thead class=" text-primary" style='color:black !important;'>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th><strong> Grand Total: </strong>
+                                    </th>
+                                    <th id="proposal-modal-grand-total">
+                                    </th>
+                                    <th></th>
+                                 </thead>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+            </form>
+            </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--View Routing Modal--><!--for npw same lang sa ug sulod sa proposal modal-->
+   <div class="modal fade" id="routing-modal">
       <div class="modal-dialog modal-lg" role="document">
          <div class="modal-content">
             <form class="border border-light p-5">
